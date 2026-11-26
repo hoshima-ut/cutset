@@ -53,6 +53,7 @@ iconography, images or other Adobe assets; open licences only; every asset attri
 | `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 | `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 | `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `docs/development/images/cutset-logo-studies.png` | Cutset contributors, with OpenAI ImageGen | Original text-to-image design study for the documentation. | MIT OR Apache-2.0 |
 | `apps/filmcraft-web/web/favicon.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 
 ## Golden test images
