@@ -22,3 +22,7 @@
 - [every_interchange_document_the_importer_reads_is_listed](../../../../crates/engine/src/media_browser_tests.rs#L380) は <code>mediaBrowser.list</code> を呼ぶ。
 - [favorites_add_and_remove](../../../../crates/engine/src/media_browser_tests.rs#L186) は <code>mediaBrowser.favorite</code> を呼ぶ。
 - 関連する既存テストモジュール：[crates/engine/src/media_browser.rs](../../../../crates/engine/src/media_browser.rs)。
+
+## 確認した操作
+
+音声付きH.264素材を空の案件に取り込み、保存後に開き直して編集と書き出しに使用しました。[素材・操作・検証結果](../../../verification/macos-install.md#操作マニュアルの編集例を再現する)

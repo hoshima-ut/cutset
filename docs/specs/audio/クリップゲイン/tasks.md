@@ -22,3 +22,7 @@
 - [audio_gain_modes_and_peak](../../../../crates/engine/src/mixer_tests.rs#L333) は <code>clip.audioGain</code> を呼ぶ。
 - [audio_gain_reports_only_audio_items_it_updates](../../../../crates/engine/src/mixer_tests.rs#L364) は <code>clip.audioGain</code> を呼ぶ。
 - 関連する既存テストモジュール：[crates/ui-egui/src/panels/timeline_volume.rs](../../../../crates/ui-egui/src/panels/timeline_volume.rs)。
+
+## 確認した操作
+
+ゲインを−3 dBに設定して保存・再開しました。書き出した定常音の実測差は−3.01 dBでした。[素材・操作・検証結果](../../../verification/macos-install.md#操作マニュアルの編集例を再現する)

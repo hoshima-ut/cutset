@@ -23,3 +23,7 @@
 - [caption_list_track_filter_never_falls_back_to_every_track](../../../../crates/engine/src/captions/tests.rs#L143) は <code>captions.list</code> を呼ぶ。
 - [captions_duplicate_copies_and_overwrites](../../../../crates/engine/src/captions/tests.rs#L318) は <code>captions.duplicate</code> を呼ぶ。
 - [set_style_font_style](../../../../crates/engine/src/captions/tests.rs#L379) は <code>captions.setStyle</code> を呼ぶ。
+
+## 確認した操作
+
+CLIで日本語字幕を追加し、保存した案件を開き直して本文と表示区間を確認しました。[素材・操作・検証結果](../../../verification/macos-install.md#操作マニュアルの編集例を再現する)

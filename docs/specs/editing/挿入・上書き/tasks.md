@@ -22,3 +22,7 @@
 - [source_insert_three_point](../../../../crates/engine/src/tests.rs#L98) は <code>source.insert</code> を呼ぶ。
 - [make_and_edit_subclips](../../../../crates/engine/src/clip_ops_tests.rs#L349) は <code>source.overwrite</code> を呼ぶ。
 - 関連する既存テストモジュール：[crates/engine/src/source_placement_tests.rs](../../../../crates/engine/src/source_placement_tests.rs)。
+
+## 確認した操作
+
+素材のIn点6・Out点41（24 fps）から36フレームを空のシーケンスに挿入しました。[素材・操作・検証結果](../../../verification/macos-install.md#操作マニュアルの編集例を再現する)

@@ -19,3 +19,7 @@
 ソースで確認した試験の入口。機能全体の合格判定はこのページの具体例で行う。
 
 - 関連する既存テストモジュール：[crates/ui-egui/src/panels/caption_export.rs](../../../../crates/ui-egui/src/panels/caption_export.rs)。
+
+## 確認した操作
+
+MP4とSRTを同時に出力し、SRTの本文と時刻0.250～0.750秒を照合しました。[素材・操作・検証結果](../../../verification/macos-install.md#操作マニュアルの編集例を再現する)
