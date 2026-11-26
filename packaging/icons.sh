@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
-# Regenerate every derived app icon from assets/app-icon/filmcraft.svg (the canonical artwork; a
-# 512-unit full-bleed tile with rx=112). filmcraft-small.svg is a lighter trace of the same drawing
-# and is copied, not generated.
-#
-# Needs: resvg (brew install resvg / cargo install resvg). On macOS, iconutil also writes the
-# .icns. The outputs are committed, so builds and packaging never need these tools.
-#
-#   packaging/icons.sh
+# Regenerate the committed Cutset icons from the canonical vector. Install librsvg for rsvg-convert.
+# macOS iconutil generates the ICNS assets in addition to the platform-independent outputs.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DIR="$ROOT/assets/app-icon"
@@ -15,49 +9,47 @@ APP_ID="ai.storyteller.filmcraft"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-command -v resvg >/dev/null || { echo "error: resvg not found (brew install resvg)" >&2; exit 1; }
+render() {
+  rsvg-convert --width "$2" --height "$2" --output "$3" "$1"
+}
 
-# macOS icons follow Apple's grid: the tile body is 824 of 1024 px with a transparent margin, so
-# the Dock shows it at the same size as other apps. 512 * 1024 / 824 = 636.27 units, margin 62.14.
-MAC="$TMP/mac.svg"
-sed 's/viewBox="0 0 512 512"/viewBox="-62.14 -62.14 636.27 636.27"/' "$SVG" >"$MAC"
-grep -q 'viewBox="-62.14' "$MAC" || { echo "error: unexpected viewBox in $SVG" >&2; exit 1; }
+render_channel() {
+  local svg="$1" stem="$2" mac="$TMP/$2-mac.svg" size set
+  local icons=()
+  # Apple's icon grid leaves a transparent margin around the 824/1024 tile.
+  sed 's/viewBox="0 0 512 512"/viewBox="-62.14 -62.14 636.27 636.27"/' "$svg" >"$mac"
+  grep -q 'viewBox="-62.14' "$mac" || { echo "Unexpected master icon viewBox" >&2; exit 1; }
+  render "$mac" 512 "$DIR/$stem-macos-512.png"
+  for size in 16 20 24 32 40 48 64 128 256; do
+    render "$svg" "$size" "$TMP/$stem-$size.png"
+    icons+=("$TMP/$stem-$size.png")
+  done
+  (cd "$ROOT" && cargo run --quiet --locked -p xtask -- ico "$DIR/$stem.ico" "${icons[@]}")
+  if command -v iconutil >/dev/null; then
+    set="$TMP/$stem.iconset"
+    mkdir -p "$set"
+    for size in 16 32 128 256 512; do
+      render "$mac" "$size" "$set/icon_${size}x${size}.png"
+      render "$mac" $((size * 2)) "$set/icon_${size}x${size}@2x.png"
+    done
+    iconutil -c icns -o "$DIR/$stem.icns" "$set"
+  else
+    echo "To regenerate $stem.icns, run packaging/icons.sh on macOS." >&2
+  fi
+}
 
-render() { local input="$1" size="$2" output="$3"; resvg -w "$size" -h "$size" "$input" "$output" </dev/null; }
-
+cp "$SVG" "$DIR/filmcraft-small.svg"
 render "$SVG" 1024 "$DIR/filmcraft-1024.png"
-# Runtime window/Dock icon on macOS (apps/filmcraft/src/main.rs embeds it).
-render "$MAC" 512 "$DIR/filmcraft-macos-512.png"
+render_channel "$SVG" filmcraft
 
-# Linux hicolor theme. Windows and Linux use the full-bleed tile.
-for s in 16 24 32 48 64 128 256 512; do
-  mkdir -p "$DIR/hicolor/${s}x${s}/apps"
-  render "$SVG" "$s" "$DIR/hicolor/${s}x${s}/apps/$APP_ID.png"
+for size in 16 24 32 48 64 128 256 512; do
+  render "$SVG" "$size" "$DIR/hicolor/${size}x${size}/apps/$APP_ID.png"
 done
-mkdir -p "$DIR/hicolor/scalable/apps"
-cp "$DIR/filmcraft-small.svg" "$DIR/hicolor/scalable/apps/$APP_ID.svg"
-
-# Web app favicon and loading image.
+cp "$SVG" "$DIR/hicolor/scalable/apps/$APP_ID.svg"
 render "$SVG" 128 "$ROOT/apps/filmcraft-web/web/favicon.png"
 
-# Windows .ico.
-ICO_PNGS=()
-for s in 16 20 24 32 40 48 64 128 256; do
-  render "$SVG" "$s" "$TMP/ico-$s.png"
-  ICO_PNGS+=("$TMP/ico-$s.png")
-done
-(cd "$ROOT" && cargo run -q -p xtask -- ico "$DIR/filmcraft.ico" "${ICO_PNGS[@]}")
-
-# macOS .icns.
-if command -v iconutil >/dev/null; then
-  SET="$TMP/filmcraft.iconset"
-  mkdir -p "$SET"
-  for s in 16 32 128 256 512; do
-    render "$MAC" "$s" "$SET/icon_${s}x${s}.png"
-    render "$MAC" $((s * 2)) "$SET/icon_${s}x${s}@2x.png"
-  done
-  iconutil -c icns -o "$DIR/filmcraft.icns" "$SET"
-else
-  echo "warning: iconutil not found (macOS only); filmcraft.icns not regenerated" >&2
-fi
-echo "icons written to $DIR"
+# A cooler cut distinguishes the development channel at Dock size.
+sed 's/#B8F44A/#8CCDE3/' "$SVG" > "$TMP/nightly.svg"
+render_channel "$TMP/nightly.svg" filmcraft-nightly
+render "$TMP/nightly.svg" 256 "$DIR/filmcraft-nightly.png"
+render "$TMP/filmcraft-nightly-mac.svg" 1024 "$DIR/filmcraft-nightly-1024.png"

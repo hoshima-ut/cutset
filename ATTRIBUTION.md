@@ -31,29 +31,29 @@ iconography, images or other Adobe assets; open licences only; every asset attri
 | `assets/fonts/Inter-Italic.ttf` | The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) |
 | `assets/fonts/NotoSerif-Regular.ttf` | The Noto Project Authors | https://github.com/notofonts/latin-greek-cyrillic | OFL-1.1 (`assets/fonts/OFL-NotoSerif.txt`) |
 | `assets/fonts/JetBrainsMono-Regular.ttf` | The JetBrains Mono Project Authors | https://github.com/JetBrains/JetBrainsMono | OFL-1.1 (`assets/fonts/OFL-JetBrainsMono.txt`) |
-| `assets/app-icon/filmcraft.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; canonical vector | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
-| `packaging/macos/dmg/background.tiff` | @XusBadia | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
-| `assets/app-icon/filmcraft-small.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; lighter vector | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-1024.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; 1024 px render | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-macos-512.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; macOS runtime Dock icon (512 px) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft.icns` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; macOS .icns | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft.ico` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Windows .ico (16-256 px) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-nightly.png` | Brandon Thomas (FilmCraft owner) | Derived from the FilmCraft app icon: only the background contribution is recoloured for the Nightly channel (deep field `#3c2a63`); artwork, alpha and padding unchanged; native 256 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-nightly-1024.png` | Brandon Thomas (FilmCraft owner) | Nightly recolour of `filmcraft-1024.png`; 1024 px master on the Apple icon grid | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-nightly.ico` | Brandon Thomas (FilmCraft owner) | Nightly recolour of the FilmCraft app icon, Windows .ico (16-256 px); embedded in `filmcraft.exe` for the nightly channel only | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-nightly.icns` | Brandon Thomas (FilmCraft owner) | Nightly recolour of the FilmCraft app icon, macOS .icns (16-1024 px PNG slots) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/filmcraft-nightly-macos-512.png` | Brandon Thomas (FilmCraft owner) | Nightly recolour of `filmcraft-macos-512.png`; the runtime Dock icon of FilmCraft Nightly | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 16 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 24 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 32 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 48 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 64 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 128 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 256 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme 512 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; Linux hicolor theme scalable | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
-| `apps/filmcraft-web/web/favicon.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; 128 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
+| `assets/app-icon/filmcraft.svg` | Cutset contributors | Original geometric vector made for Cutset. | MIT OR Apache-2.0 |
+| `packaging/macos/dmg/background.svg` | Cutset contributors | Original geometric installer artwork with outlined Inter lettering (Inter Project Authors, OFL-1.1). | MIT OR Apache-2.0 |
+| `packaging/macos/dmg/background.tiff` | Cutset contributors | Rendered from packaging/macos/dmg/background.svg by packaging/macos/dmg/generate.py. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-small.svg` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-1024.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-macos-512.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft.icns` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft.ico` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly-1024.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.ico` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.icns` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly-macos-512.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `apps/filmcraft-web/web/favicon.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 
 ## Golden test images
 
