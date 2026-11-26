@@ -1,10 +1,12 @@
 # Cutset
 
+![Cutsetのロゴ](assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png)
+
 Cutsetは、FilmCraftをベースにしたオープンソースの動画編集ソフトです。AIによる編集支援と、他の動画編集ソフトとの編集データの受け渡しに取り組んでいます。
 
 ## インストールと使い方
 
-社内配布版を使う方は[インストール手順](docs/manual/install.md)から、素材の読み込み・カット・字幕・書き出しは[操作マニュアル](docs/manual/README.md)から始められます。配布担当者向けに[ソースからインストーラーを作る手順](docs/development/build-installer.md)も用意しています。
+Macへの導入、素材の読み込み、カット、字幕、書き出しの手順をまとめています。配布担当者は署名と公証を済ませたDMGを作成できます。[Macへのインストール](docs/manual/install.md) ・ [操作マニュアル](docs/manual/README.md) ・ [配布用DMGの作成](docs/development/build-installer.md)
 
 ## 仕様と開発計画
 
@@ -33,5 +35,7 @@ mkdir -p target/first-run
 - FilmCraft v0.20.1の機能一覧と対応環境は、上流のREADMEで確認できます。[上流の機能一覧](https://github.com/storytold/filmcraft/blob/v0.20.1/README.md)
 
 ## ライセンスとクレジット
+
+Cutsetのロゴと配布用の画像はこちらで確認できます。[ロゴの設計と候補](docs/development/visual-identity.md)
 
 FilmCraft本体はMITまたはApache-2.0を選択して利用できます。著作権表示は「Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors」です。フォント、画像などの素材には個別の条件があり、ArtCraftの名称・ロゴにはブランド利用条件が適用されます。[MIT](LICENSE-MIT) · [Apache-2.0](LICENSE-APACHE) · [NOTICE](NOTICE) · [素材の帰属表示](ATTRIBUTION.md) · [ブランド利用条件](docs/brand/LICENSE-brand.txt)

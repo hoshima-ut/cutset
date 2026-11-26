@@ -23,28 +23,51 @@ cargo run --locked --release -p filmcraft-cli -- --version
 cargo run --locked --release -p filmcraft -- --empty --data-dir ./target/cutset-trial-profile
 ```
 
-## macOSでDMGを作る
+## macOSの配布用DMGとCLIを作る
 
-以下はFilmCraftから継承したパッケージを調べる手順です。上流版を導入済みのMacでは、作成した `FilmCraft.app` を既存の `/Applications/FilmCraft.app` に重ねず、後述の作業フォルダーから起動してください。アプリ名とbundle ID `ai.storyteller.filmcraft` を共有しています。[バンドル定義](../../packaging/macos/Info.plist.in)
+組織の署名を扱うMacに、秘密鍵付きの「Developer ID Application」証明書と、`notarytool` および `stapler` が使えるXcodeのツールを用意します。配布対象はAppleシリコンなら `aarch64`、Intelなら `x86_64`、両方なら `universal` です。以下は両方のCPUに対応する例です。証明書の発行やAppleへの組織登録から始める場合は、[初回の署名設定](macos-signing.md)を確認してください。
 
-Xcode Command Line Toolsのほか、`lipo`、`codesign`、`hdiutil` を使います。Apple SiliconのMacでApple Silicon用のDMGとCLIのZIPを作る例です。ターゲットと依存関係を取得済みなら、Cargoの通信を無効にしてビルドできます。この通常手順ではGUIの追加機能 `neural-voices` を有効にします。読み上げ用のモデルは初回利用時に別途取得します。
+```sh
+rustup target add aarch64-apple-darwin x86_64-apple-darwin
+security find-identity -v -p codesigning
+xcrun notarytool store-credentials "cutset-notary"
+```
+
+最後のコマンドは初回だけ実行します。組織のApple ID・Team ID・アプリ用パスワード等は対話入力し、キーチェーンに保存します。ビルド時に使うのはプロファイル名と、前の一覧にある署名証明書のSHA-1指紋または完全な表示名です。次の例の「証明書のSHA-1指紋」を自組織の値に置き換えます。[Appleの公証手順](https://developer.apple.com/documentation/security/customizing-the-notarization-workflow)
+
+```sh
+export MACOS_SIGN_IDENTITY='証明書のSHA-1指紋'
+export CUTSET_NOTARY_PROFILE='cutset-notary'
+bash packaging/macos/package.sh --arch universal
+```
+
+スクリプトは証明書とAppleへの認証を先に検査し、GUIとCLIをビルドします。アプリとDMGを署名・公証してチケットを添付し、Gatekeeperの評価も確認します。CLIのZIPも公証します。単体のCLIにはチケットを添付できないため、macOSは必要に応じてオンラインで確認します。標準ビルドには追加の音声合成機能も含まれます。[パッケージ処理](../../packaging/macos/package.sh)
+
+`dist/release/` に同じ版・CPUの3ファイルが揃います。以下はバージョン0.20.1での照合例です。別の版は実際のファイル名に置き換えます。
+
+```sh
+cd dist/release
+shasum -a 256 -c cutset-0.20.1-macos-universal.sha256
+xcrun stapler validate cutset-0.20.1-macos-universal.dmg
+spctl --assess --type open --context context:primary-signature --verbose=2 cutset-0.20.1-macos-universal.dmg
+```
+
+`.dmg` は編集者用、`cutset-cli-…zip` は自動化用です。配布担当は、作成元コミット、版、CPU、署名者・Team ID、公証結果、SHA-256を記録します。利用者には社内の配布経路から対象のDMGと照合値を案内します。別のMacでの初回起動、FilmCraftとの共存、案件の開閉は[導入検証](../verification/macos-install.md)に沿って確認します。
+
+## 自分のMacで試す
+
+自分のMac上で動作を確認する場合は `--local` を指定します。アドホック署名は署名後に中身が変更されたかを検査できます。開発元を証明する署名とAppleの公証は正式配布時に加えます。
 
 ```sh
 rustup target add aarch64-apple-darwin
-MACOS_SIGN_IDENTITY=- bash packaging/macos/package.sh --arch aarch64
-ls -lh dist/release
+bash packaging/macos/package.sh --arch aarch64 --local
 ```
 
-Intel Mac用はターゲットに `x86_64-apple-darwin`、引数に `--arch x86_64` を指定します。両形式をまとめる場合は両ターゲットを導入して `--arch universal` を指定します。スクリプトはGUIとCLIをビルドし、アプリ内の実行ファイル、バンドル、DMGの順に署名を検証します。DMG名は `filmcraft-<version>-macos-<arch>.dmg` です。[ビルドスクリプト](../../packaging/macos/package.sh)
+ビルドしたMacで `dist/release/cutset-バージョン-macos-aarch64-local.dmg` を開き、空の試用フォルダーへ `Cutset.app` をコピーします。IntelのMacではターゲットと `--arch` を `x86_64` 用に変更します。Cargoの既定機能で試す場合は[最小構成の検証手順](../verification/macos-install.md)を使います。
 
-```sh
-codesign --verify --strict --deep target/macos-package/FilmCraft.app
-target/macos-package/FilmCraft.app/Contents/MacOS/FilmCraft --empty --data-dir ./target/cutset-trial-profile
-```
+## macOS以外の配布状況
 
-`MACOS_SIGN_IDENTITY=-` は自分のMacで試すためのアドホック署名です。別のMacへ通常の手順で配布する際は、配布者のDeveloper ID Application証明書による署名とAppleの公証を使います。スクリプトは実署名のIDと `APPLE_ID`、`APPLE_PASSWORD`、`APPLE_TEAM_ID` が揃うとAppleへ提出します。公証には通信が必要です。[署名と公証の処理](../../packaging/macos/package.sh) ・ [Appleの公証手順](https://developer.apple.com/documentation/security/notarizing-macos-software-before-distribution)
-
-既定のCargo機能で最小限の試用版を作り、DMGからコピーして起動する場合は[Appleシリコンでのインストール検証](../verification/macos-install.md)を使います。
+以下は上流の生成手順を開発・検証するための資料です。Windows・Linux・FreeBSDのCutset社内配布は、既存版とのインストール先・製品識別子の分離と、各OSでの受入確認が残っています。
 
 ## WindowsでMSIとポータブル版を作る
 
@@ -58,7 +81,7 @@ pwsh ./packaging/windows/package.ps1 -Arch x64
 Get-ChildItem ./dist/release
 ```
 
-出力は `filmcraft-<version>-windows-x64.msi` と `…-portable.zip` です。既存のFilmCraftと同じPCで試す場合は、ZIPを別のフォルダーに展開して `filmcraft.exe` を起動します。`portable.txt` を同じ場所に残すと設定などを隣の `data/` に置きます。MSIは既存製品とUpgradeCodeを共有し、同じ版でも置換できます。インストーラー検証には独立したWindows環境を使用します。既定は現在のユーザーへのインストールで、全ユーザーも選べます。[インストール仕様](../../packaging/windows/INSTALLATION.md) ・ [MSI定義](../../packaging/windows/filmcraft.wxs)
+出力は `filmcraft-<version>-windows-x64.msi` と `…-portable.zip` です。既存のFilmCraftと同じPCで試す場合は、ZIPを別のフォルダーに展開して `filmcraft.exe` を起動します。`portable.txt` を同じ場所に残すと設定などを隣の `cutset-data/` に置きます。MSIは既存製品とUpgradeCodeを共有し、同じ版でも置換できます。インストーラー検証には独立したWindows環境を使用します。既定は現在のユーザーへのインストールで、全ユーザーも選べます。[インストール仕様](../../packaging/windows/INSTALLATION.md) ・ [MSI定義](../../packaging/windows/filmcraft.wxs)
 
 32ビット版は `-Arch x86` と `i686-pc-windows-msvc`、ARM64版は `-Arch arm64` と `aarch64-pc-windows-msvc` を使います。ARM64には対応するMSVCツールも必要です。署名情報がない場合もローカル試用のMSIとZIPを作成できます。社内配布でAuthenticode署名を使う場合はEXEとMSIの署名者を確認します。[署名設定](../../packaging/windows/sign.ps1)
 

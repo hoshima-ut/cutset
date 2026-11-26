@@ -1,6 +1,6 @@
 # macOSの配布物を試す
 
-AppleシリコンのMacで、Cargoの既定機能を使ったGUIとCLIを同じソースからビルドし、DMGとCLIのZIPに梱包する手順です。通常の配布ビルドでは追加の音声合成機能も有効になります。[通常のビルド・署名・公証](../development/build-installer.md)
+AppleシリコンのMacで、Cargoの既定機能を使ったGUIとCLIを同じソースからビルドし、DMGとCLIのZIPに梱包する手順です。このページでは試用ビルド、正式配布時の受入、旧版の検証記録を扱います。[通常のビルド・署名・公証](../development/build-installer.md)
 
 ## ビルドと梱包
 
@@ -12,22 +12,22 @@ export CARGO_TARGET_DIR="$PWD/target"
 export MACOSX_DEPLOYMENT_TARGET=11.0
 export FILMCRAFT_BUILD_SHA="$(git rev-parse HEAD)"
 cargo build --release --locked --target aarch64-apple-darwin -p filmcraft -p filmcraft-cli
-MACOS_SIGN_IDENTITY=- bash packaging/macos/package.sh --arch aarch64 --skip-build
+bash packaging/macos/package.sh --arch aarch64 --skip-build --local
 ```
 
-`--skip-build` は直前に作ったターゲット別のGUIとCLIを使います。通常の出力先は `dist/release` です。DMGはデスクトップアプリ、ZIPは検査や自動処理に使うCLIです。GUIを使う方にはDMGだけで足ります。
+`--skip-build` は直前に作ったターゲット別のGUIとCLIを使います。通常の出力先は `dist/release` です。`-local.dmg` はデスクトップアプリ、`-local.zip` はCLI、`-local.sha256` は両ファイルの照合値です。
 
-## インストール後の確認
+## ビルドしたMacでの確認
 
 1. DMGに `hdiutil verify ファイル名.dmg` を実行し、チェックサムが有効であることを確認します。
-2. DMGを開き、空の試用フォルダーに `FilmCraft.app` をコピーしてDMGを取り出します。コピー先のアプリに `codesign --verify --strict --deep アプリのパス` を実行します。
+2. DMGを開き、空の試用フォルダーに `Cutset.app` をコピーしてDMGを取り出します。コピー先のアプリに `codesign --verify --strict --deep アプリのパス` を実行します。
 3. コピー先の実行ファイルに `--demo --data-dir 専用フォルダー` を指定して起動します。編集画面から書き出し画面に移動し、形式と出力先を選べることを確認して編集画面に戻ります。
 4. デモのシーケンスにマーカーを一つ追加し、取り消し・やり直しを試します。別名で検証用の案件を保存し、アプリを終了します。
-5. CLIのZIPを空のフォルダーに展開します。次の `filmcraft-cli` を展開した実行ファイルのパスに置き換え、保存した案件を指定して実行します。最後のコマンドにはffprobeを使用します。
+5. CLIのZIPを空のフォルダーに展開します。次の `cutset-cli` を展開した実行ファイルのパスに置き換え、保存した案件を指定して実行します。最後のコマンドにはffprobeを使用します。
 
 ```sh
-filmcraft-cli --project manual-smoke.fcproj inspect sequence
-filmcraft-cli --project manual-smoke.fcproj export manual-smoke.mp4 \
+cutset-cli --project manual-smoke.fcproj inspect sequence
+cutset-cli --project manual-smoke.fcproj export manual-smoke.mp4 \
   --format h264 --start 0 --end 0.5 --scale 0.25 --gpu-rendering off
 ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,sample_rate,channels:format=duration \
   -of json manual-smoke.mp4
@@ -35,7 +35,17 @@ ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,sample_
 
 画面だけで書き出す場合は[音量・字幕・MP4の操作手順](../manual/audio-captions-export.md)を参照してください。
 
-## 確認した版と結果
+## 社内配布版を別のMacで受け入れる
+
+署名用Mac以外のMacで、社内の通常の配布経路から正式DMGを取得します。受け渡しと初回起動を、配布先と同じユーザー権限で試します。
+
+1. DMGのSHA-256を配布元の値と照合します。DMGへ `xcrun stapler validate` と `spctl --assess --type open --context context:primary-signature --verbose=2` を実行します。
+2. FinderでDMGを開き、Cutsetの背景・アイコン・アプリ名が表示されることを確認します。アプリケーションにコピーし、DMGを取り出します。
+3. `codesign -dv --verbose=4 /Applications/Cutset.app` の識別子 `io.github.hoshima-ut.cutset` とTeam IDを照合します。コマンド `xcrun stapler validate /Applications/Cutset.app` と `spctl --assess --type execute --verbose=2 /Applications/Cutset.app` を確認してからFinderで起動します。
+4. FilmCraftが入ったMacで、既存の案件のコピーを用意します。Finderの「このアプリケーションで開く」からCutsetを指定し、別名保存・再生・短い書き出しを試します。FilmCraftも従来の場所から起動し、元の案件と設定が開けること、既存の既定アプリの選択が維持されていることを確認します。
+5. 前のCutset配布版がある場合は新しい版で置き換え、案件と設定が開くことを確認します。OS・CPU、バージョン、コミット、Team ID、SHA-256、初回起動と共存の結果を記録します。
+
+## 旧FilmCraft名の試用版で確認した結果（履歴）
 
 2026-11-26、Appleシリコン搭載のMac（macOS 27.2.1、Rust 1.99.1）で検証しました。アプリのソースは `1527b422`、APFSで梱包するスクリプトは `3c7a6609`、表示バージョンは `0.20.1` です。この実行ではホストのarm64向けにCargoの既定機能でGUIとCLIをビルドし、専用のターゲット別ディレクトリに2ファイルを置いて `--skip-build` を使いました。追加の音声合成モデルは使用していません。
 
@@ -48,7 +58,7 @@ ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,sample_
 
 この試用DMGのSHA-256は `6e005996d3515300c6c8bd752e85f68680a6baa9070038e497015516b5d453f6` です。別にビルドしたファイルを配る際は、その成果物からSHA-256を取得します。
 
-今回試した署名はアドホック署名です。社内配布の受入には、配布用の署名・公証を済ませた成果物を別のMacに導入し、既存のFilmCraftとの共存、更新、関連付けを確認します。Finderの背景・ウィンドウの自動表示、Windows・Linux・FreeBSDの実機インストールも個別の確認項目です。
+この表と照合値は旧名称のアドホック署名DMGの記録です。Cutsetの新しい配布物では、ビルドごとの照合値と受入結果を使います。
 
 ## 操作マニュアルの編集例を再現する
 
