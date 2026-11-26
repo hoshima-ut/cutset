@@ -23,6 +23,7 @@ mkdir -p target/first-run
 
 ## 開発に参加する
 
+- ソースを初めて読む方は、[ディレクトリ案内](docs/development/repository-map.md)で構成を確認し、[Rustコードの読み方](docs/development/reading-rust.md)でマーカーの追加と取り消しを追えます。
 - Cutsetの目的・設計・作業順は[開発ハンドブック](docs/development/README.md)で確認できます。AIエージェントによる変更は[エージェント向けの入口](AGENTS.md)から始めます。
 - 編集エンジンの構造、ローカルテスト、既存の編集命令はFilmCraftの技術資料を参照します。[構成](docs/architecture/engine.md) · [テスト](docs/verification/engine.md) · [CLI・MCP](docs/reference/filmcraft/agents.md)
 - FilmCraft v0.20.1の機能一覧と対応環境は、上流のREADMEで確認できます。[上流の機能一覧](https://github.com/storytold/filmcraft/blob/v0.20.1/README.md)

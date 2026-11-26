@@ -3,6 +3,7 @@
 | 知りたいこと | 入口 |
 | --- | --- |
 | 機能ごとの要件、設計、残作業 | [製品仕様](specs/README.md) ・ [機能索引](specs/index.md) |
+| Rustのコードを初めて読む | [ディレクトリ案内](development/repository-map.md) ・ [マーカーの追加と取り消しを追う](development/reading-rust.md) |
 | 編集エンジン、案件形式とAIの責務 | [エンジン構成](architecture/engine.md) ・ [製品設計](architecture/product.md) ・ [モデル接続](architecture/model-connections.md) |
 | 開発を始める、次の担当へ引き継ぐ | [開発ガイド](development/README.md) ・ [進捗](development/progress.md) ・ [マイルストーン](development/milestones.md) |
 | 実装を検証する | [カバレッジ](verification/coverage.md) ・ [ローカル試験](verification/engine.md) ・ [編集者の試験案件](verification/interview.md) |
