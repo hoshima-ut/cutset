@@ -1,10 +1,8 @@
 # Cutset
 
-Cutsetは、ArtCraftチームとFilmCraftのコントリビューターが開発した動画エディタFilmCraftを土台にしたOSSプロジェクトです。編集者がAIの提案を原音と聴き比べ、残したい一呼吸を自分で選び、その編集を別のツールへ引き継げることを目指しています。[開発ハンドブック](handbook/README.md)
+Cutsetは、FilmCraftをベースにしたオープンソースの動画編集ソフトです。AIによる編集支援と、他の動画編集ソフトとの編集データの受け渡しに取り組んでいます。
 
-最初の試作は、64秒の日本語インタビューを60秒に仕上げる作業です。上流版の手編集を基準に、候補を一つずつ試聴して採用し、一度のUndoで戻せる操作を設計します。固定事例の試聴範囲を計算する開発用CLIがあります。画面での候補試聴とAIモデル接続は計画段階です。[パイロットの素材と評価手順](handbook/pilot.md)
-
-## 何が使え、何を作るか
+## 仕様と開発計画
 
 既存機能と追加機能の動作、検証条件、実装の順序を公開しています。[製品仕様](spec/README.md) ・ [マイルストーン](spec/milestones.md) ・ [AIモデルと個人プランの設計](spec/model-connections.md)
 
@@ -27,7 +25,7 @@ mkdir -p target/first-run
 
 - Cutsetの目的・設計・作業順は[開発ハンドブック](handbook/README.md)で確認できます。AIエージェントによる変更は[エージェント向けの入口](AGENTS.md)から始めます。
 - 編集エンジンの構造、ローカルテスト、既存の編集命令はFilmCraftの技術資料を参照します。[構成](docs/architecture.md) · [テスト](docs/testing.md) · [CLI・MCP](docs/agents.md)
-- この試作の基準はFilmCraft v0.20.1です。編集・音声・カラー・書き出しの機能一覧と対応環境は、基準版のREADMEで確認できます。[上流の機能一覧](https://github.com/storytold/filmcraft/blob/v0.20.1/README.md)
+- FilmCraft v0.20.1の機能一覧と対応環境は、上流のREADMEで確認できます。[上流の機能一覧](https://github.com/storytold/filmcraft/blob/v0.20.1/README.md)
 
 ## ライセンスとクレジット
 
