@@ -2,6 +2,8 @@
 
 FilmCraftから引き継いだ資料です。対応状況や測定値には、各文書の対象版と確認日を使用してください。Cutsetの実装計画は[機能索引](../../specs/index.md)にあります。
 
+上流の進捗は[FilmCraftのロードマップ](upstream-roadmap.md)、上流を取り込む手順は[同期ガイド](../../development/upstream-sync.md)にあります。
+
 ## 編集・プロジェクト
 
 - [Agents](agents.md)
