@@ -563,7 +563,7 @@ fn app_creator(
         if let Some(health) = session_notice {
             if health.previous_unclean || health.warning {
                 let message = if health.previous_unclean {
-                    "The previous Cutset Nightly session did not finish normally. You can report a problem from About. No diagnostics have been sent."
+                    "The previous Cutset Nightly session did not finish normally. Open Help → Reveal Log Files to inspect the session log."
                 } else {
                     "Cutset Nightly could not record session health in its private profile. You can still edit, but abnormal-exit detection is unavailable."
                 };

@@ -27,20 +27,20 @@ pub fn available() -> bool {
     })
 }
 
-async fn root() -> Result<FileSystemDirectoryHandle, JsValue> {
+async fn root(create: bool) -> Result<FileSystemDirectoryHandle, JsValue> {
     if !available() {
         return Err("OPFS not available".into());
     }
     let w = web_sys::window().ok_or("no window")?;
     let origin: FileSystemDirectoryHandle = JsFuture::from(w.navigator().storage().get_directory()).await?.dyn_into()?;
     let options = web_sys::FileSystemGetDirectoryOptions::new();
-    options.set_create(true);
+    options.set_create(create);
     JsFuture::from(origin.get_directory_handle_with_options("cutset", &options)).await?.dyn_into()
 }
 
 /// The directory holding `rel` (created when `create`) and the file name.
 async fn parent(rel: &str, create: bool) -> Result<(FileSystemDirectoryHandle, String), JsValue> {
-    let mut dir = root().await?;
+    let mut dir = root(create).await?;
     let parts: Vec<&str> = rel.split('/').filter(|p| !p.is_empty()).collect();
     let (name, dirs) = parts.split_last().ok_or("empty path")?;
     for d in dirs {
@@ -137,7 +137,7 @@ pub async fn store_blob(rel: &str, blob: &web_sys::Blob) -> Result<(), JsValue> 
 pub async fn files_in(dir_rel: &str) -> Vec<(String, web_sys::File)> {
     let mut out = Vec::new();
     let Ok(dir) = (async {
-        let mut d = root().await?;
+        let mut d = root(false).await?;
         for p in dir_rel.split('/').filter(|p| !p.is_empty()) {
             d = JsFuture::from(d.get_directory_handle(p)).await?.dyn_into()?;
         }

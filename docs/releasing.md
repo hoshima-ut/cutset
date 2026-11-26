@@ -1,9 +1,8 @@
-# Releasing FilmCraft
+# Upstream FilmCraft release process
 
-> **Cutset currently ships source only.** The recipes below document FilmCraft's release process. Building an installer from these templates can register or replace an existing FilmCraft installation. A Cutset binary release needs its own bundle and installer IDs, data directories, update feed, signing configuration and fresh screenshots. For local development use `cargo run -p filmcraft`.
+> **Cutset currently ships source only.** The recipes below document FilmCraft's release process. Building an installer from these templates can register or replace an existing FilmCraft installation. A Cutset binary release needs its own package IDs, signing configuration, update feed and install/upgrade tests with an existing FilmCraft profile. For local development use `cargo run -p filmcraft`.
 
-
-Every push to the `release` branch runs `.github/workflows/release.yml`. The workflow builds
+Every upstream push to the `release` branch runs `.github/workflows/release.yml`. The workflow builds
 installers for macOS, Windows, Linux (AppImage, deb, rpm, tarball, Flatpak) and FreeBSD, plus
 the web build, and creates or updates a **draft**
 GitHub Release named `FilmCraft v<version>`. Nobody sees a draft until a maintainer publishes it.

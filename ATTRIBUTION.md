@@ -1,6 +1,6 @@
 # Attribution
 
-Every non-code asset in FilmCraft, with its author, source and licence. Each file listed here also has
+Assets in the Cutset source tree, with their authors, sources and licences. Each file listed here also has
 a `<file>.attribution` sidecar with full details. The rules are in [clean-room.md](https://github.com/storytold/craft-contrib/blob/main/standards/clean-room.md): no Adobe
 iconography, images or other Adobe assets; open licences only; every asset attributed.
 `cargo xtask assets` checks that this index and the sidecars cover every asset in the repository.
