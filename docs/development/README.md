@@ -4,6 +4,7 @@ Cutsetの開発手順、設計上の判断、検証方法をまとめていま�
 
 | 必要なこと | 読む文書 |
 | --- | --- |
+| 社内向けの配布物を作る | [ソースからビルド](build-installer.md) ・ [利用者の操作マニュアル](../manual/README.md) |
 | ソースを読む順番を決める、Rustの型と編集履歴の関係を理解する | [ディレクトリ案内](repository-map.md) ・ [Rustコードの読み方](reading-rust.md) |
 | 編集者に何を届けるか、編集命令・互換性・Webの境界を決める | [製品設計](../architecture/product.md) |
 | 次の作業を一つ選ぶ、担当を交代する | [作業台と再開メモ](progress.md) |

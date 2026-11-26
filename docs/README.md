@@ -2,6 +2,7 @@
 
 | 知りたいこと | 入口 |
 | --- | --- |
+| インストールして動画を編集する | [操作マニュアル](manual/README.md) ・ [ソースから配布物を作る](development/build-installer.md) |
 | 機能ごとの要件、設計、残作業 | [製品仕様](specs/README.md) ・ [機能索引](specs/index.md) |
 | Rustのコードを初めて読む | [ディレクトリ案内](development/repository-map.md) ・ [マーカーの追加と取り消しを追う](development/reading-rust.md) |
 | 編集エンジン、案件形式とAIの責務 | [エンジン構成](architecture/engine.md) ・ [製品設計](architecture/product.md) ・ [モデル接続](architecture/model-connections.md) |

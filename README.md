@@ -2,6 +2,10 @@
 
 Cutsetは、FilmCraftをベースにしたオープンソースの動画編集ソフトです。AIによる編集支援と、他の動画編集ソフトとの編集データの受け渡しに取り組んでいます。
 
+## インストールと使い方
+
+社内配布版を使う方は[インストール手順](docs/manual/install.md)から、素材の読み込み・カット・字幕・書き出しは[操作マニュアル](docs/manual/README.md)から始められます。配布担当者向けに[ソースからインストーラーを作る手順](docs/development/build-installer.md)も用意しています。
+
 ## 仕様と開発計画
 
 既存機能と追加機能の動作、検証条件、実装の順序を公開しています。[ドキュメント](docs/README.md) ・ [機能別の仕様](docs/specs/index.md) ・ [マイルストーン](docs/development/milestones.md) ・ [AIモデルと個人プランの設計](docs/architecture/model-connections.md)
