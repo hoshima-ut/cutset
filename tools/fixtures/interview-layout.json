@@ -1,0 +1,120 @@
+{
+  "name": "Interview Pilot",
+  "id": 5,
+  "durationFrames": 1600,
+  "audio": [
+    {
+      "id": 2,
+      "locked": false,
+      "enabled": true,
+      "syncLock": true,
+      "muted": false,
+      "solo": false,
+      "items": [
+        {
+          "clip": 13,
+          "item": 6,
+          "link": 11,
+          "startFrame": 0,
+          "endFrame": 1100,
+          "sourceIn": 0,
+          "sourceOut": 11176704000000,
+          "name": "shot-1.mov",
+          "speed": 1.0,
+          "reverse": false,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "locked": false,
+      "enabled": true,
+      "syncLock": true,
+      "muted": false,
+      "solo": false,
+      "items": [
+        {
+          "clip": 16,
+          "item": 7,
+          "link": 14,
+          "startFrame": 1100,
+          "endFrame": 1600,
+          "sourceIn": 11176704000000,
+          "sourceOut": 16257024000000,
+          "name": "shot-2.mov",
+          "speed": 1.0,
+          "reverse": false,
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "locked": true,
+      "enabled": true,
+      "syncLock": false,
+      "muted": false,
+      "solo": false,
+      "items": [
+        {
+          "clip": 17,
+          "item": 8,
+          "link": null,
+          "startFrame": 0,
+          "endFrame": 1500,
+          "sourceIn": 0,
+          "sourceOut": 15240960000000,
+          "name": "music.wav",
+          "speed": 1.0,
+          "reverse": false,
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "video": [
+    {
+      "id": 1,
+      "locked": false,
+      "enabled": true,
+      "syncLock": true,
+      "muted": false,
+      "solo": false,
+      "items": [
+        {
+          "clip": 12,
+          "item": 6,
+          "link": 11,
+          "startFrame": 0,
+          "endFrame": 1100,
+          "sourceIn": 0,
+          "sourceOut": 11176704000000,
+          "name": "shot-1.mov",
+          "speed": 1.0,
+          "reverse": false,
+          "enabled": true
+        },
+        {
+          "clip": 15,
+          "item": 7,
+          "link": 14,
+          "startFrame": 1100,
+          "endFrame": 1600,
+          "sourceIn": 11176704000000,
+          "sourceOut": 16257024000000,
+          "name": "shot-2.mov",
+          "speed": 1.0,
+          "reverse": false,
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "frame_rate": {
+      "den": 1,
+      "num": 25
+    }
+  }
+}
