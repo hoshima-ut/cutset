@@ -64,10 +64,10 @@ pub fn export(project: &Project, sequence: ItemId, opts: &AafOptions) -> Result<
     let name = opts.name.clone().or_else(|| project.item(sequence).map(|i| i.name.clone())).unwrap_or_else(|| "Sequence".into());
     let doc = comp::from_project(project, sequence, &name, &opts.media, comp::Nests::Compositions, &mut report)?;
     let identity = craft_aaf::Identity {
-        company: "FilmCraft",
-        product: "FilmCraft",
+        company: "Cutset",
+        product: "Cutset",
         version: env!("CARGO_PKG_VERSION"),
-        platform: "FilmCraft",
+        platform: "Cutset",
         product_id: [0x4d, 0x4c, 0x49, 0x46, 0x52, 0x43, 0x46, 0x41, b'T', b'-', b'A', b'A', b'F', b'-', b'E', b'P'],
     };
     let options = craft_aaf::aaf::WriteOptions { identity, small_sectors: opts.small_sectors };

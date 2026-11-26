@@ -78,7 +78,7 @@ fn file_edit_clip_menu_order_and_shortcuts_match_premiere() {
         ("file.close", "Close", Some("Cmd+W")),
         ("file.importFromMediaBrowser", "Import from Media Browser", Some("Cmd+Alt+I")),
         ("file.mediaProperties", "Selection…", Some("Cmd+Shift+H")),
-        ("file.exportSelectionProject", "Selection as FilmCraft Project…", None),
+        ("file.exportSelectionProject", "Selection as Cutset Project…", None),
         ("file.exportAle", "Avid Log Exchange…", None),
         ("edit.find", "Find…", Some("Cmd+F")),
         ("edit.editOriginal", "Edit Original", Some("Cmd+E")),
@@ -315,7 +315,7 @@ fn media_properties_settings_and_scratch_disks() {
     // Scratch Disks: previews follow the Video Previews folder once the project is saved
     let proj = dir.join("Show.fcproj").to_string_lossy().to_string();
     s.execute("file.saveAs", json!({"path": proj})).unwrap();
-    assert_eq!(crate::project_tools::previews_dir(&s).unwrap(), dir.join("FilmCraft Previews").join("Show"));
+    assert_eq!(crate::project_tools::previews_dir(&s).unwrap(), dir.join("Cutset Previews").join("Show"));
     let scratch = dir.join("scratch").to_string_lossy().to_string();
     let r = s.execute("file.projectSettings.scratchDisks", json!({"videoPreviews": scratch, "autoSave": scratch})).unwrap();
     assert_eq!(crate::project_tools::previews_dir(&s).unwrap(), dir.join("scratch").join("Show"));
@@ -399,6 +399,14 @@ fn edit_original_update_metadata_and_clip_items() {
     let x = std::fs::read_to_string(&side).unwrap();
     assert!(x.contains("<xmpDM:scene>12A</xmpDM:scene>") && x.contains("<xmpDM:logComment>best &lt;take&gt;</xmpDM:logComment>"), "{x}");
     assert!(x.contains("<rdf:li xml:lang=\"x-default\">take.mp4</rdf:li>"));
+    assert!(x.contains(r#"xmp:CreatorTool="Cutset""#));
+    let rewritten = s.execute("clip.updateMetadata", json!({})).unwrap();
+    assert_eq!(rewritten["written"][0]["path"], side.to_string_lossy().as_ref());
+    let filmcraft_sidecar = x.replace(r#"xmp:CreatorTool="Cutset""#, r#"xmp:CreatorTool="FilmCraft""#);
+    std::fs::write(&side, &filmcraft_sidecar).unwrap();
+    let upstream = s.execute("clip.updateMetadata", json!({})).unwrap();
+    assert_eq!(upstream["skipped"].as_array().unwrap().len(), 1);
+    assert_eq!(std::fs::read_to_string(&side).unwrap(), filmcraft_sidecar);
     // a sidecar from another application is left alone
     std::fs::write(&side, "<x:xmpmeta>someone else's</x:xmpmeta>").unwrap();
     let r = s.execute("clip.updateMetadata", json!({})).unwrap();

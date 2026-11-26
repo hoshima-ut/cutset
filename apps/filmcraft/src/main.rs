@@ -231,16 +231,16 @@ fn main() -> eframe::Result {
             return Ok(());
         }
         Ok(Cli::Version) => {
-            tell(&format!("filmcraft {}\n", version_text()), false);
+            tell(&format!("Cutset {}\n", version_text()), false);
             return Ok(());
         }
         Err(e) => {
-            tell(&format!("filmcraft: {e}\n\n{}", args::USAGE), true);
+            tell(&format!("Cutset: {e}\n\n{}", args::USAGE), true);
             std::process::exit(2);
         }
     };
     if nightly && (launch.control_port.is_some() || launch.control_input_only) {
-        eprintln!("filmcraft: a nightly-v1 start does not start the stable control server; use the configured nightly launch profile");
+        eprintln!("Cutset: a nightly-v1 start does not start the stable control server; use the configured nightly launch profile");
         std::process::exit(2);
     }
     let data_root = launch.data_dir.clone().or_else(default_data_dir);
@@ -359,7 +359,7 @@ fn main() -> eframe::Result {
                     nightly_session::release(&nightly_session);
                     match relaunch(graphics.mode()) {
                         Ok(code) => std::process::exit(code),
-                        Err(e) => log::error!("can't start FilmCraft again in graphics mode {}: {e}", graphics.mode().name()),
+                        Err(e) => log::error!("can't start Cutset again in graphics mode {}: {e}", graphics.mode().name()),
                     }
                 }
                 Err(eframe::Error::AppCreation(what.into()))
@@ -418,7 +418,7 @@ fn relaunch(mode: graphics::Mode) -> std::io::Result<i32> {
         Some(image) => std::path::PathBuf::from(image),
         None => std::env::current_exe()?,
     };
-    log::warn!("starting FilmCraft again in graphics mode {}", mode.name());
+    log::warn!("starting Cutset again in graphics mode {}", mode.name());
     let status = std::process::Command::new(exe).args(relaunch_args(std::env::args_os().skip(1), mode)).env(RELAUNCHED, "1").status()?;
     Ok(status.code().unwrap_or(1))
 }
@@ -609,7 +609,7 @@ fn app_creator(
         }));
         app.hooks.pick_save = Some(Box::new(|name: &str| {
             rfd::FileDialog::new()
-                .add_filter(filmcraft_ui_egui::i18n::t("FilmCraft Project"), &file_filters::extensions(&["fcproj"]))
+                .add_filter(filmcraft_ui_egui::i18n::t("Cutset Project"), &file_filters::extensions(&["fcproj"]))
                 .set_file_name(name)
                 .save_file()
                 .map(|p| p.to_string_lossy().to_string())
@@ -658,7 +658,7 @@ fn app_creator(
         }));
         app.hooks.pick_open_project = Some(Box::new(|| {
             rfd::FileDialog::new()
-                .add_filter(filmcraft_ui_egui::i18n::t("FilmCraft Project"), &file_filters::extensions(&["fcproj"]))
+                .add_filter(filmcraft_ui_egui::i18n::t("Cutset Project"), &file_filters::extensions(&["fcproj"]))
                 // #1644: where the system MIME database doesn't know `.fcproj`, the project
                 // filter hides every saved project; "All files" keeps them reachable.
                 .add_filter(filmcraft_ui_egui::i18n::t("All files"), &file_filters::all_files())
@@ -813,7 +813,7 @@ fn run_dialog_off_thread(dialog: filmcraft_ui_egui::native_dialogs::FileDialog) 
     use filmcraft_ui_egui::native_dialogs::FileDialog;
     let t = |s: &str| filmcraft_ui_egui::i18n::t(s).to_string();
     let media = t("Media");
-    let project = t("FilmCraft Project");
+    let project = t("Cutset Project");
     let all_files = t("All files");
     let all_files_exts = file_filters::all_files();
     let project_exts = project_patterns();
@@ -914,7 +914,7 @@ mod tests {
         let child = os(&["--test-graphics-start", "default", "--launch-profile", "nightly-v1", "--profile-root", root, "--"]);
         let launch = crate::launch_profile::parse(child[2..].to_vec()).unwrap();
         assert_eq!(super::runnable_argv(true, child.clone(), &launch), child);
-        assert!(crate::args::parse(None, argv).is_err(), "the raw Launcher line is not a FilmCraft command line");
+        assert!(crate::args::parse(None, argv).is_err(), "the raw Launcher line is not a Cutset command line");
     }
 
     /// The new start after a graphics panic keeps the arguments and picks the next mode, replacing a

@@ -140,8 +140,8 @@ pub fn install(app: &FilmcraftApp, ctx: egui::Context) -> (Receiver<String>, Men
         if use_native == native_shown.get() {
             return Ok(());
         }
-        let regular = edit_menu.as_ref().ok_or("FilmCraft Edit menu is unavailable")?;
-        let index = MENUS.iter().position(|top| *top == "Edit").ok_or("FilmCraft Edit menu is unavailable")? + 1;
+        let regular = edit_menu.as_ref().ok_or("Cutset Edit menu is unavailable")?;
+        let index = MENUS.iter().position(|top| *top == "Edit").ok_or("Cutset Edit menu is unavailable")? + 1;
         let (old, new) = if use_native { (regular, &color_edit) } else { (&color_edit, regular) };
         menu_bar.insert(new, index).map_err(|e| e.to_string())?;
         if let Err(error) = menu_bar.remove(old) {

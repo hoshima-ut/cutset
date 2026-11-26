@@ -71,8 +71,8 @@ mod windows {
     pub fn embed_resources(nightly: bool, version: &str) {
         let mut res = winresource::WindowsResource::new();
         res.set_icon(super::build_channel::windows_icon_path(nightly))
-            .set("ProductName", if nightly { "FilmCraft Nightly" } else { "FilmCraft" })
-            .set("FileDescription", if nightly { "FilmCraft Nightly video editor" } else { "FilmCraft video editor" })
+            .set("ProductName", if nightly { "FilmCraft Nightly" } else { "Cutset" })
+            .set("FileDescription", if nightly { "FilmCraft Nightly video editor" } else { "Cutset video editor" })
             .set("LegalCopyright", "Copyright (c) the FilmCraft contributors. MIT OR Apache-2.0.")
             .set("OriginalFilename", "filmcraft.exe")
             .set("InternalName", "filmcraft");

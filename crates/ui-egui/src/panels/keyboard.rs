@@ -133,12 +133,12 @@ pub const COMMANDS: &[UiCommand] = &[
     uic!("mixer.showHideTracks", "Show/Hide Tracks…", [], None),
     uic!("mixer.meterInputOnly", "Meter Input(s) Only", [], None),
     uic!("graphics.beginTextEditing", "Begin Text Editing for a Graphic Layer", [], Some("Cmd+Alt+'")),
-    uic!("help.filmcraftHelp", "FilmCraft Help…", ["Help"], Some("F1")),
+    uic!("help.filmcraftHelp", "Cutset Help…", ["Help"], Some("F1")),
     uic!("app.quit", "Quit Cutset", [], Some("Cmd+Q")),
 ];
 
 /// FilmCraft's documentation (Help ▸ FilmCraft Help…, F1).
-pub const HELP_URL: &str = "https://github.com/hoshima-ut/cutset/tree/main/docs";
+pub const HELP_URL: &str = "https://github.com/hoshima-ut/cutset/blob/main/docs/manual/README.md";
 
 const HEIGHT_STEP: f32 = 12.0;
 const MIN_TRACK_H: f32 = 24.0;

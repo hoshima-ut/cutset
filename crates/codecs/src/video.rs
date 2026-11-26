@@ -211,7 +211,7 @@ impl VideoDecoder for MjpegDecoder {
         limits.max_alloc = 512 << 20;
         let decoded = craft_jpeg::decode(&sample, &limits, adobe).map_err(|e| CodecError::Decode(e.to_string()))?;
         let craft_jpeg::Samples::U8(samples) = decoded.samples else {
-            return Err(CodecError::Decode("12-bit Motion JPEG is not supported by FilmCraft frames".into()));
+            return Err(CodecError::Decode("12-bit Motion JPEG is not supported by Cutset frames".into()));
         };
         let rgba = mjpeg_rgba(&samples, decoded.components)?;
         Ok(vec![DecodedFrame { pts, frame: VideoFrame::rgba8(decoded.width, decoded.height, rgba), draft: false }])
@@ -316,7 +316,7 @@ impl VideoDecoder for H264Decoder {
         }
     }
     fn name(&self) -> &str {
-        "FilmCraft H.264"
+        "Cutset H.264"
     }
     fn thread_limited(&self) -> bool {
         self.threads < h264_threads()
@@ -441,7 +441,7 @@ impl VideoDecoder for HevcDecoder {
         }
     }
     fn name(&self) -> &str {
-        "FilmCraft HEVC"
+        "Cutset HEVC"
     }
     fn is_disposable(&self, sample: &[u8]) -> bool {
         hevc_disposable(sample, self.length_size, self.highest_tid)
@@ -569,7 +569,7 @@ impl VideoDecoder for Vp9Decoder {
         self.dec.reset();
     }
     fn name(&self) -> &str {
-        "FilmCraft VP9"
+        "Cutset VP9"
     }
     fn set_draft(&mut self, on: bool) {
         self.dec.set_draft(on);
@@ -628,7 +628,7 @@ impl VideoDecoder for Vp8Decoder {
         self.dec.reset();
     }
     fn name(&self) -> &str {
-        "FilmCraft VP8"
+        "Cutset VP8"
     }
     fn is_random_access(&self, sample: &[u8]) -> Option<bool> {
         Some(craft_video::vp8::is_keyframe(sample))
@@ -717,7 +717,7 @@ impl VideoDecoder for Av1Decoder {
         self.primed = false;
     }
     fn name(&self) -> &str {
-        "FilmCraft AV1"
+        "Cutset AV1"
     }
     fn set_draft(&mut self, on: bool) {
         self.dec.set_draft(on);
@@ -772,7 +772,7 @@ impl VideoDecoder for ProResDecoder {
     }
     fn reset(&mut self) {}
     fn name(&self) -> &str {
-        "FilmCraft ProRes"
+        "Cutset ProRes"
     }
     fn intra_only(&self) -> bool {
         true
@@ -840,7 +840,7 @@ impl VideoDecoder for ApvDecoder {
     }
     fn reset(&mut self) {}
     fn name(&self) -> &str {
-        "FilmCraft APV"
+        "Cutset APV"
     }
     fn intra_only(&self) -> bool {
         true
@@ -912,7 +912,7 @@ impl VideoDecoder for DnxDecoder {
     }
     fn reset(&mut self) {}
     fn name(&self) -> &str {
-        "FilmCraft DNxHD/DNxHR"
+        "Cutset DNxHD/DNxHR"
     }
     fn intra_only(&self) -> bool {
         true
@@ -1017,7 +1017,7 @@ impl VideoDecoder for Mpeg2Decoder {
         self.prime();
     }
     fn name(&self) -> &str {
-        "FilmCraft MPEG-2"
+        "Cutset MPEG-2"
     }
     fn is_random_access(&self, sample: &[u8]) -> Option<bool> {
         Some(craft_video::mpeg2::scan_access_unit(sample).is_intra())

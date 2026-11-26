@@ -120,7 +120,7 @@ pub fn private_temp_dir() -> std::io::Result<std::path::PathBuf> {
     let mut last = None;
     for _ in 0..16 {
         let nonce = std::collections::hash_map::RandomState::new().build_hasher().finish();
-        let path = temp_dir().join(format!("FilmCraft-{nonce:016x}"));
+        let path = temp_dir().join(format!("Cutset-{nonce:016x}"));
         if cfg!(target_arch = "wasm32") {
             *cached = Some((path.clone(), None));
             return Ok(path);

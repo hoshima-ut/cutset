@@ -35,7 +35,7 @@ use crate::FilmcraftApp;
 /// The app's name and version for the runtime's dialogs and the dock's words. FilmCraft's own catalogs are not
 /// craft-i18n's, so the host carries none and the framework's words are English.
 static HOST: LazyLock<Arc<Host>> =
-    LazyLock::new(|| Arc::new(Host::builder(AppInfo { id: "filmcraft", name: "FilmCraft", version: env!("CARGO_PKG_VERSION") }).build()));
+    LazyLock::new(|| Arc::new(Host::builder(AppInfo { id: "cutset", name: "Cutset", version: env!("CARGO_PKG_VERSION") }).build()));
 
 /// F6 and Shift+F6 stay keys of the app's own shortcut table (the keyboard editor offers them), so the runtime's
 /// pane moves are unbound. One `Arc` for the app's life: the runtime rebuilds its keymap when the `Arc` changes.

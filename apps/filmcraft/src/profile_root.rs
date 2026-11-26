@@ -149,6 +149,11 @@ fn forbidden_roots(platform: Platform, env: &impl Fn(&str) -> Option<OsString>, 
                 library.join("Preferences/FilmCraft"),
                 library.join("Preferences/ai.storyteller.filmcraft.plist"),
                 library.join("Saved Application State/ai.storyteller.filmcraft.savedState"),
+                library.join("Caches/io.github.hoshima-ut.cutset"),
+                library.join("Preferences/io.github.hoshima-ut.cutset.plist"),
+                library.join("Saved Application State/io.github.hoshima-ut.cutset.savedState"),
+                home.join("Applications/Cutset.app"),
+                PathBuf::from("/Applications/Cutset.app"),
                 home.join("Applications/FilmCraft.app"),
                 PathBuf::from("/Applications/FilmCraft.app"),
             ]
@@ -474,7 +479,12 @@ mod tests {
         let inside_resources = fixture.exe.parent().unwrap().parent().unwrap().join("Resources/profile");
         assert!(fixture.refuse(Platform::Mac, &inside_resources).contains("overlap"));
         assert!(!inside_resources.exists());
-        for bundle in [fixture.home().join("Applications/FilmCraft.app"), PathBuf::from("/Applications/FilmCraft.app")] {
+        for bundle in [
+            fixture.home().join("Applications/FilmCraft.app"),
+            PathBuf::from("/Applications/FilmCraft.app"),
+            fixture.home().join("Applications/Cutset.app"),
+            PathBuf::from("/Applications/Cutset.app"),
+        ] {
             assert!(!fixture.refuse(Platform::Mac, &bundle.join("profile")).is_empty());
         }
         let valid = library.join("Application Support/ArtCraftLauncher/nightly/profiles/filmcraft");

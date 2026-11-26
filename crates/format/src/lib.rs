@@ -81,7 +81,7 @@ impl Loaded {
 
 /// Writer identification stored in the envelope.
 pub fn generator() -> String {
-    format!("FilmCraft {}", env!("CARGO_PKG_VERSION"))
+    format!("Cutset {}", env!("CARGO_PKG_VERSION"))
 }
 
 fn loaded(env: craft_fcproj_format::EnvelopeIn<Project>, schema_version: u32) -> Loaded {
@@ -263,6 +263,16 @@ mod tests {
             assert!(!l.migrated());
             assert_eq!(l.generator.as_deref(), Some(generator().as_str()));
         }
+    }
+
+    #[test]
+    fn cutset_saves_projects_from_filmcraft_with_the_original_format() {
+        let upstream = decode(include_bytes!("../tests/fixtures/v10-minimal.fcproj")).unwrap();
+        assert_eq!(upstream.generator.as_deref(), Some("FilmCraft 0.1.0"));
+        let saved = encode(&upstream.project, false);
+        let restored = decode(&saved).unwrap();
+        assert_eq!(restored.project, upstream.project);
+        assert_eq!(restored.generator.as_deref(), Some(concat!("Cutset ", env!("CARGO_PKG_VERSION"))));
     }
 
     #[test]

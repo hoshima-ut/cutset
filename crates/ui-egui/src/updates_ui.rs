@@ -315,7 +315,7 @@ mod tests {
         let release = craft_update::Release {
             tag: "v99.0.0".into(),
             version: craft_update::parse_version("99.0.0"),
-            name: "FilmCraft 99.0.0".into(),
+            name: "Cutset 99.0.0".into(),
             html_url: "https://github.com/hoshima-ut/cutset/releases/tag/v99.0.0".into(),
             ..Default::default()
         };

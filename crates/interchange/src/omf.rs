@@ -51,8 +51,7 @@ pub fn export(project: &Project, sequence: ItemId, opts: &OmfOptions) -> Result<
     if project.sequence(sequence).is_some_and(|q| q.video_tracks.iter().any(|t| !t.items.is_empty())) {
         report.info("video tracks are not written to OMF (audio only)");
     }
-    let identity =
-        craft_aaf::Identity { company: "FilmCraft", product: "FilmCraft", version: env!("CARGO_PKG_VERSION"), platform: "FilmCraft", product_id: [0; 16] };
+    let identity = craft_aaf::Identity { company: "Cutset", product: "Cutset", version: env!("CARGO_PKG_VERSION"), platform: "Cutset", product_id: [0; 16] };
     let mut shared_report = craft_aaf::Report::default();
     let bytes = craft_aaf::omf::write(&shared_model::to_shared(doc), &identity, &mut shared_report).map_err(shared_model::error)?;
     shared_model::merge_report(&mut report, shared_report);

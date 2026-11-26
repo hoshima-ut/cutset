@@ -13,7 +13,7 @@ pub const COMPILED: BuildFlavor = if cfg!(filmcraft_nightly_v1) { BuildFlavor::N
 pub fn require_profile(flavor: BuildFlavor, profile: &Profile) -> Result<(), String> {
     match (flavor, profile.is_nightly()) {
         (BuildFlavor::NightlyV1, false) => Err("Start Cutset Nightly with a nightly launch profile".into()),
-        (BuildFlavor::Stable, true) => Err("This is a stable FilmCraft build; nightly-v1 requires the nightly build".into()),
+        (BuildFlavor::Stable, true) => Err("This is a stable Cutset build; nightly-v1 requires the nightly build".into()),
         _ => Ok(()),
     }
 }

@@ -143,7 +143,7 @@
 	File	Berkas
 	File…	Berkas…
 	Fill frame	Isi bingkai
-	FilmCraft Help…	Bantuan FilmCraft…
+	Cutset Help…	Bantuan Cutset…
 	Find Next	Cari Berikutnya
 	Find…	Cari…
 	Fit	Pas
@@ -315,7 +315,7 @@
 	Select Previous Graphic	Pilih Grafis Sebelumnya
 	Select Previous Layer	Pilih Lapisan Sebelumnya
 	Selection Follows Playhead	Pilihan Mengikuti Kepala Putar
-	Selection as FilmCraft Project…	Pilihan sebagai Proyek FilmCraft…
+	Selection as Cutset Project…	Pilihan sebagai Proyek Cutset…
 	Selection…	Pilihan…
 	Send Backward	Kirim Mundur
 	Send to Back	Kirim ke Belakang
@@ -443,8 +443,8 @@
 	No background jobs.	Tidak ada tugas latar belakang.
 	Recover Unsaved Changes	Pulihkan Perubahan yang Belum Disimpan
 	Untitled	Tanpa Judul
-	FilmCraft was closed while “{name}” had unsaved changes.	FilmCraft ditutup saat “{name}” masih memiliki perubahan yang belum disimpan.
-	FilmCraft quit unexpectedly while “{name}” had unsaved changes.	FilmCraft keluar secara tak terduga saat “{name}” masih memiliki perubahan yang belum disimpan.
+	Cutset was closed while “{name}” had unsaved changes.	Cutset ditutup saat “{name}” masih memiliki perubahan yang belum disimpan.
+	Cutset quit unexpectedly while “{name}” had unsaved changes.	Cutset keluar secara tak terduga saat “{name}” masih memiliki perubahan yang belum disimpan.
 	Recover unsaved changes from {when}?	Pulihkan perubahan yang belum disimpan dari {when}?
 	The project had not been saved yet.	Proyek ini belum pernah disimpan.
 	{n} sessions have unsaved changes:	{n} sesi memiliki perubahan yang belum disimpan:
@@ -976,7 +976,7 @@
 	Font family	Keluarga font
 	Label Colors	Warna Label
 	Decoded frames held for the monitors and thumbnails: {used} of {budget}.	Bingkai terdekode yang disimpan untuk monitor dan gambar mini: {used} dari {budget}.
-	FilmCraft keeps the rest of the RAM free for other applications.	FilmCraft membiarkan sisa RAM bebas untuk aplikasi lain.
+	Cutset keeps the rest of the RAM free for other applications.	Cutset membiarkan sisa RAM bebas untuk aplikasi lain.
 	not available in this session	tidak tersedia di sesi ini
 	Currently: {loc} — {files} file(s), {size}	Saat ini: {loc} — {files} berkas, {size}
 	 ({ch} output channels)	 ({ch} kanal output)
@@ -1087,7 +1087,7 @@
 	Video Frame	Bingkai Video
 	Pin To	Sematkan ke
 	Pinned Edges	Tepi Tersemat
-	FilmCraft Graphics Template	Templat Grafis FilmCraft
+	Cutset Graphics Template	Templat Grafis Cutset
 	{n} Font	Font {n}
 	{n} Size	Ukuran {n}
 	{n} Color	Warna {n}
@@ -1097,7 +1097,7 @@
 	Export As Motion Graphics Template	Ekspor sebagai Templat Grafis Gerak
 	Category:	Kategori:
 	Editable properties:	Properti yang dapat diedit:
-	Saved as a FilmCraft graphics template (.fcgt) in your templates folder.	Disimpan sebagai templat grafis FilmCraft (.fcgt) di folder templat Anda.
+	Saved as a Cutset graphics template (.fcgt) in your templates folder.	Disimpan sebagai templat grafis Cutset (.fcgt) di folder templat Anda.
 	Exported graphics template to {path}	Templat grafis diekspor ke {path}
 	Replace Fonts in Projects	Ganti Font di Proyek
 	Fonts used in the project:	Font yang dipakai di proyek:
@@ -1468,7 +1468,7 @@
 	Center of Sphere	Pusat Bola
 	Cents	Sen
 	Change to Color	Ubah ke Warna
-	Changes are copied in the background a moment after each edit. If FilmCraft quits unexpectedly, they are offered the next time it starts.	Perubahan disalin di latar belakang sesaat setelah setiap edit. Jika FilmCraft keluar secara tak terduga, perubahan itu ditawarkan saat FilmCraft dimulai berikutnya.
+	Changes are copied in the background a moment after each edit. If Cutset quits unexpectedly, they are offered the next time it starts.	Perubahan disalin di latar belakang sesaat setelah setiap edit. Jika Cutset keluar secara tak terduga, perubahan itu ditawarkan saat Cutset dimulai berikutnya.
 	Channel	Kanal
 	Channel Blur	Buram Kanal
 	Channel Mix	Campuran Kanal
@@ -1841,7 +1841,7 @@
 	Hard Limiter	Limiter Keras
 	Hard Mix	Campuran Keras
 	Hardware decoding	Dekode perangkat keras
-	Hardware decoding: Auto uses the system's video decoder (VideoToolbox on macOS, Media Foundation on Windows, VA-API or NVDEC for H.264 and HEVC on Linux) for the streams it supports, and FilmCraft's own decoder for everything else or if the hardware fails. Media that is already open keeps its decoder until it is reopened.	Dekode perangkat keras: Otomatis menggunakan dekoder video sistem (VideoToolbox di macOS, Media Foundation di Windows, VA-API atau NVDEC untuk H.264 dan HEVC di Linux) untuk stream yang didukungnya, dan dekoder FilmCraft sendiri untuk yang lainnya atau jika perangkat keras gagal. Media yang sudah terbuka tetap memakai dekodernya sampai dibuka ulang.
+	Hardware decoding: Auto uses the system's video decoder (VideoToolbox on macOS, Media Foundation on Windows, VA-API or NVDEC for H.264 and HEVC on Linux) for the streams it supports, and Cutset's own decoder for everything else or if the hardware fails. Media that is already open keeps its decoder until it is reopened.	Dekode perangkat keras: Otomatis menggunakan dekoder video sistem (VideoToolbox di macOS, Media Foundation di Windows, VA-API atau NVDEC untuk H.264 dan HEVC di Linux) untuk stream yang didukungnya, dan dekoder Cutset sendiri untuk yang lainnya atau jika perangkat keras gagal. Media yang sudah terbuka tetap memakai dekodernya sampai dibuka ulang.
 	Head Size	Ukuran Kepala
 	Heart	Hati
 	Height	Tinggi
@@ -2116,7 +2116,7 @@
 	Night	Malam
 	No Motion	Tanpa Gerak
 	No Scroll	Tanpa Gulir
-	No plugins are installed. Changes will take effect the next time you start FilmCraft.	Tidak ada plugin yang terpasang. Perubahan akan berlaku saat Anda memulai FilmCraft berikutnya.
+	No plugins are installed. Changes will take effect the next time you start Cutset.	Tidak ada plugin yang terpasang. Perubahan akan berlaku saat Anda memulai Cutset berikutnya.
 	Noise	Derau
 	Noise & Grain	Derau & Butiran
 	Noise (Legacy)	Derau (Lama)
@@ -2547,7 +2547,7 @@
 	Template Properties	Properti Templat
 	Text Animator	Animator Teks
 	Text Color	Warna Teks
-	The media cache holds render previews of unsaved projects and other files FilmCraft can recreate. Deleting them is always safe; FilmCraft rebuilds them as needed.	Cache media menyimpan pratinjau render dari proyek yang belum disimpan dan berkas lain yang dapat dibuat ulang oleh FilmCraft. Menghapusnya selalu aman; FilmCraft membangunnya kembali bila diperlukan.
+	The media cache holds render previews of unsaved projects and other files Cutset can recreate. Deleting them is always safe; Cutset rebuilds them as needed.	Cache media menyimpan pratinjau render dari proyek yang belum disimpan dan berkas lain yang dapat dibuat ulang oleh Cutset. Menghapusnya selalu aman; Cutset membangunnya kembali bila diperlukan.
 	Thickness	Ketebalan
 	Tile Gradient	Gradien Ubin
 	Tilt	Miringkan
@@ -2757,7 +2757,7 @@
 	System Compatibility Report	Laporan Kompatibilitas Sistem
 	no GPU adapter: the CPU compositor is used	tidak ada adaptor GPU: kompositor CPU digunakan
 	Avid Log Exchange	Avid Log Exchange
-	FilmCraft Project	Proyek FilmCraft
+	Cutset Project	Proyek Cutset
 	{name} Selection.fcproj	{name} Pilihan.fcproj
 	{name} (Simplified)	{name} (Disederhanakan)
 	Find in:	Cari di:
@@ -2897,7 +2897,7 @@
 	Start Queue	Mulai Antrean
 	Stop	Berhenti
 	Clear Finished	Hapus yang Selesai
-	Not supported by FilmCraft's encoders yet	Belum didukung oleh enkoder FilmCraft
+	Not supported by Cutset's encoders yet	Belum didukung oleh enkoder Cutset
 	Sequence name	Nama sekuens
 	Folder	Folder
 	Preset	Preset
@@ -2987,7 +2987,7 @@
 	Drag a clip to slide it between its neighbours.	Seret klip untuk menggesernya di antara klip tetangganya.
 	Drag to scroll the timeline.	Seret untuk menggulir linimasa.
 	Click to zoom in; Opt-click to zoom out.	Klik untuk memperbesar; Opt-klik untuk memperkecil.
-	FilmCraft hit an error	FilmCraft mengalami galat
+	Cutset hit an error	Cutset mengalami galat
 	Details: {path}	Detail: {path}
 	Opened {url}	Membuka {url}
 	(empty)	(kosong)
@@ -3541,8 +3541,8 @@
 	Composite in Linear Color	Komposit dalam Warna Linier
 	Auto Tone Map Media (HDR and log into SDR)	Pemetaan Nada Otomatis Media (HDR dan log ke SDR)
 	Configure…	Konfigurasi…
-	Not supported in FilmCraft yet	Belum didukung di FilmCraft
-	FilmCraft always composites in linear light	FilmCraft selalu mengomposit dalam cahaya linier
+	Not supported in Cutset yet	Belum didukung di Cutset
+	Cutset always composites in linear light	Cutset selalu mengomposit dalam cahaya linier
 	Loop marked range	Ulangi rentang yang ditandai
 	Play Source	Putar Sumber
 	Source Play/Stop	Putar/Berhenti Sumber

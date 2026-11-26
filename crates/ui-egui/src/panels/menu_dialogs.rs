@@ -226,7 +226,7 @@ pub fn route(app: &mut FilmcraftApp, ctx: &egui::Context, id: &str, params: &Val
             let (filter, ext, name) = if id == "file.exportAle" {
                 (tl!("Avid Log Exchange"), "ale", format!("{}.ale", app.session.project.name))
             } else {
-                (tl!("FilmCraft Project"), "fcproj", tlf!("{name} Selection.fcproj", name = app.session.project.name))
+                (tl!("Cutset Project"), "fcproj", tlf!("{name} Selection.fcproj", name = app.session.project.name))
             };
             let mut p = params.clone();
             if !p.is_object() {
@@ -646,8 +646,8 @@ pub fn show(app: &mut FilmcraftApp, ctx: &egui::Context) {
                     _ => {
                         ui.label(RichText::new(tl!("Video Rendering and Playback")).strong());
                         let rs = vec![
-                            (filmcraft_engine::project_tools::RENDERER_GPU.to_string(), filmcraft_engine::project_tools::RENDERER_GPU.to_string()),
-                            (filmcraft_engine::project_tools::RENDERER_SOFTWARE.to_string(), filmcraft_engine::project_tools::RENDERER_SOFTWARE.to_string()),
+                            (filmcraft_engine::project_tools::RENDERER_GPU.to_string(), "Cutset GPU Acceleration (wgpu)".to_string()),
+                            (filmcraft_engine::project_tools::RENDERER_SOFTWARE.to_string(), "Cutset Software Only (CPU)".to_string()),
                         ];
                         combo(ui, &mut elems, "projectSettings.renderer", tl!("Renderer:"), &mut p["renderer"], &rs);
                         ui.label(RichText::new(tl!("Video")).strong());

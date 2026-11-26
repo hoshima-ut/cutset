@@ -216,6 +216,11 @@ fn small_button(app: &mut FilmcraftApp, ui: &mut egui::Ui, id: &str, label: &str
     r.clicked()
 }
 
+// Preset names are also file and command identifiers, including in older shortcut exports.
+fn preset_label(name: &str) -> &str {
+    if name == filmcraft_engine::shortcuts::DEFAULT_PRESET { "Cutset Default" } else { name }
+}
+
 fn header(app: &mut FilmcraftApp, ui: &mut egui::Ui, t: &Tokens) {
     let presets = app.session.execute("shortcuts.presets", json!({})).unwrap_or_default();
     let active = presets["active"].as_str().unwrap_or("").to_string();
@@ -224,14 +229,16 @@ fn header(app: &mut FilmcraftApp, ui: &mut egui::Ui, t: &Tokens) {
     let custom: Vec<String> = presets["custom"].as_array().into_iter().flatten().filter_map(|v| v.as_str().map(str::to_string)).collect();
     ui.horizontal(|ui| {
         ui.label(RichText::new(tl!("Preset:")).size(13.0).color(t.text_dim));
-        let shown = if modified { tlf!("{active} (modified)", active) } else { active.clone() };
+        let active_label = preset_label(&active);
+        let shown = if modified { tlf!("{active} (modified)", active = active_label) } else { active_label.to_owned() };
         let r = crate::legacy_dropdown::Dropdown::from_id_salt("shortcuts-preset").width(280.0).selected_text(shown).show_ui(ui, |ui| {
             for name in builtin.iter().chain(custom.iter()) {
-                let r = ui.selectable_label(*name == active && !modified, name);
-                app.auto.add(&format!("shortcuts.preset.{name}"), r.rect, name);
+                let label = preset_label(name);
+                let r = ui.selectable_label(*name == active && !modified, label);
+                app.auto.add(&format!("shortcuts.preset.{name}"), r.rect, label);
                 if r.clicked() {
                     exec(app, "shortcuts.loadPreset", json!({"name": name}));
-                    app.shortcut_editor.message = tlf!("Loaded “{name}”", name);
+                    app.shortcut_editor.message = tlf!("Loaded “{name}”", name = label);
                 }
             }
         });
@@ -246,13 +253,15 @@ fn header(app: &mut FilmcraftApp, ui: &mut egui::Ui, t: &Tokens) {
             app.shortcut_editor.message = tlf!("Deleted preset “{active}”", active);
         }
         if small_button(app, ui, "shortcuts.export", tl!("Export…"), true) {
-            app.pick_ui(FileDialog::save_as(tl!("Keyboard Shortcuts"), &["json"], &format!("{active}.json")), |app, paths| match paths.into_iter().next() {
-                Some(path) => {
-                    if exec(app, "shortcuts.export", json!({"path": path})).is_some() {
-                        app.shortcut_editor.message = tlf!("Exported to {path}", path);
+            app.pick_ui(FileDialog::save_as(tl!("Keyboard Shortcuts"), &["json"], &format!("{active_label}.json")), |app, paths| {
+                match paths.into_iter().next() {
+                    Some(path) => {
+                        if exec(app, "shortcuts.export", json!({"path": path})).is_some() {
+                            app.shortcut_editor.message = tlf!("Exported to {path}", path);
+                        }
                     }
+                    None => app.shortcut_editor.message = tl!("Export: no file chosen (agents: shortcuts.export {path})").into(),
                 }
-                None => app.shortcut_editor.message = tl!("Export: no file chosen (agents: shortcuts.export {path})").into(),
             });
         }
         if small_button(app, ui, "shortcuts.import", tl!("Import…"), true) {
