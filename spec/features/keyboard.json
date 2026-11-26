@@ -1,0 +1,280 @@
+{
+  "groups": [
+    {
+      "context": "file",
+      "feature": "IO-01",
+      "intents": [
+        "project.new",
+        "sequence.new",
+        "project.open",
+        "view.close",
+        "project.close",
+        "project.save",
+        "project.save-as",
+        "project.copy",
+        "browser.import",
+        "file.import",
+        "media.export",
+        "export.enqueue",
+        "selection.inspect",
+        "app.quit"
+      ]
+    },
+    {
+      "context": "edit",
+      "feature": "ED-18",
+      "intents": [
+        "history.undo",
+        "history.redo",
+        "selection.cut",
+        "selection.copy",
+        "clipboard.place",
+        "clipboard.attributes",
+        "selection.remove",
+        "selection.close-gap",
+        "selection.duplicate",
+        "selection.all",
+        "selection.clear",
+        "selection.find",
+        "source.open-external",
+        "keyboard.configure"
+      ]
+    },
+    {
+      "context": "clip",
+      "feature": "ED-17",
+      "intents": [
+        "subclip.create",
+        "input.channels",
+        "gain.set",
+        "rate.set",
+        "source.insert",
+        "source.overwrite",
+        "clip.enabled",
+        "av.link",
+        "group.make",
+        "group.release"
+      ]
+    },
+    {
+      "context": "sequence",
+      "feature": "ED-10",
+      "intents": [
+        "range.render",
+        "frame.locate-source",
+        "frame.locate-placement",
+        "cut.target",
+        "cut.all",
+        "trim.open",
+        "trim.extend-to-head",
+        "transition.video",
+        "transition.audio",
+        "transition.selection",
+        "range.lift",
+        "range.extract",
+        "view.zoom-in",
+        "view.zoom-out",
+        "navigate.next",
+        "navigate.previous",
+        "snap.toggle",
+        "sequence.from-selection",
+        "caption.track-new",
+        "caption.at-head",
+        "caption.next",
+        "caption.previous"
+      ]
+    },
+    {
+      "context": "mark",
+      "feature": "ED-55",
+      "intents": [
+        "range.start",
+        "range.end",
+        "range.clip",
+        "range.selection",
+        "seek.start",
+        "seek.end",
+        "clear.start",
+        "clear.end",
+        "clear.range",
+        "marker.add",
+        "marker.next",
+        "marker.previous",
+        "marker.remove",
+        "marker.clear"
+      ]
+    },
+    {
+      "context": "graphic",
+      "feature": "GR-02",
+      "intents": [
+        "layer.text",
+        "layer.rectangle",
+        "layer.ellipse",
+        "order.front",
+        "order.raise",
+        "order.lower",
+        "order.back",
+        "select.next-layer",
+        "select.previous-layer"
+      ]
+    },
+    {
+      "context": "layout",
+      "feature": "UI-08",
+      "intents": [
+        "workspace.all",
+        "workspace.assembly",
+        "workspace.sound",
+        "workspace.titles",
+        "workspace.grade",
+        "workspace.cut",
+        "workspace.effects",
+        "workspace.general",
+        "workspace.learning",
+        "workspace.restore",
+        "panel.maximize",
+        "show.clip-mix",
+        "show.track-mix",
+        "show.controls",
+        "show.effects",
+        "show.browser",
+        "show.output",
+        "show.assets",
+        "show.source",
+        "show.sequence"
+      ]
+    },
+    {
+      "context": "track-mix",
+      "feature": "AU-06",
+      "intents": [
+        "strips.visibility",
+        "transport.loop",
+        "meters.input"
+      ]
+    },
+    {
+      "context": "effect-stack",
+      "feature": "FX-02",
+      "intents": [
+        "effect.remove",
+        "audio.loop"
+      ]
+    },
+    {
+      "context": "effect-library",
+      "feature": "FX-01",
+      "intents": [
+        "group.new",
+        "group.remove"
+      ]
+    },
+    {
+      "context": "history",
+      "feature": "ED-45",
+      "intents": [
+        "history.previous",
+        "history.forward",
+        "history.remove"
+      ]
+    },
+    {
+      "context": "browser",
+      "feature": "IO-15",
+      "intents": [
+        "source.open",
+        "focus.folders",
+        "focus.media"
+      ]
+    },
+    {
+      "context": "metadata",
+      "feature": "IO-19",
+      "intents": [
+        "transport.loop",
+        "transport.play"
+      ]
+    },
+    {
+      "context": "output",
+      "feature": "ED-06",
+      "intents": [
+        "rulers.show",
+        "guides.show",
+        "guides.snap",
+        "guides.lock",
+        "object.up-large",
+        "object.right-large",
+        "object.left-large",
+        "object.down-large",
+        "object.up-small",
+        "object.right-small",
+        "object.left-small",
+        "object.down-small"
+      ]
+    },
+    {
+      "context": "assets",
+      "feature": "ED-03",
+      "intents": [
+        "bin.new",
+        "item.remove",
+        "view.list",
+        "view.cards",
+        "thumbnail.scrub",
+        "item.remove-with-options",
+        "extend.down",
+        "extend.left",
+        "extend.right",
+        "extend.up",
+        "select.down",
+        "select.last",
+        "select.first",
+        "select.left",
+        "select.page-down",
+        "select.page-up",
+        "select.right",
+        "select.up",
+        "field.next",
+        "field.row-next",
+        "source.open",
+        "field.previous",
+        "field.row-previous",
+        "thumbnail.larger",
+        "thumbnail.smaller",
+        "view.cycle",
+        "view.zoom-in",
+        "view.zoom-out"
+      ]
+    },
+    {
+      "context": "timeline",
+      "feature": "ED-10",
+      "intents": [
+        "selection.remove",
+        "height.audio-less",
+        "height.video-less",
+        "height.audio-more",
+        "height.video-more",
+        "nudge.left-large",
+        "nudge.left-one",
+        "nudge.right-large",
+        "nudge.right-one",
+        "selection.close-gap",
+        "work.start",
+        "work.end",
+        "view.page-next",
+        "view.page-previous",
+        "slide.left-large",
+        "slide.left-one",
+        "slide.right-large",
+        "slide.right-one",
+        "slip.left-large",
+        "slip.left-one",
+        "slip.right-large",
+        "slip.right-one"
+      ]
+    }
+  ]
+}

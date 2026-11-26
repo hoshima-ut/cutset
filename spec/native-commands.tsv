@@ -1,0 +1,720 @@
+command	feature	label	menu	defaultShortcut	params	registrySource
+audio.toggleScrubbing	ED-05	Toggle Audio During Scrubbing		Shift+S	{}	crates/engine/src/keyboard.rs
+audio.voiceover.settings	IO-13	Voice-Over Record Settings			"{""source"":str?,""inputChannel"":n?,""name"":str?,""countdownSoundCues"":bool?,""prerollSeconds"":f64?,""postrollSeconds"":f64?}"	crates/engine/src/voiceover.rs
+audio.voiceover.start	IO-13	Start Voice-over Recording			"{""track"":""A1""|id?,""time"":ticks?,""preroll"":seconds?}"	crates/engine/src/voiceover.rs
+audio.voiceover.stop	IO-13	Stop Voice-over Recording			"{""time"":ticks?,""dir"":str?,""discard"":bool?}"	crates/engine/src/voiceover.rs
+audio.voiceover.sync	IO-13	Sync Voice-over Capture			"{""time"":ticks?}"	crates/engine/src/voiceover.rs
+captions.add	CC-02	Add Caption at Playhead	Sequence > Captions	Cmd+Alt+C	"{""track"":id|""C1""?,""text"":str?,""time"":ticks?,""seconds"":f64?,""durationSeconds"":f64=3}"	crates/engine/src/captions.rs
+captions.delete	CC-02	Delete Captions			"{""captions"":[id]?,""ripple"":bool=false}"	crates/engine/src/captions.rs
+captions.deleteTrack	CC-02	Delete Caption Track			"{""track"":id|""C1""}"	crates/engine/src/captions.rs
+captions.duplicate	CC-02	Duplicate Captions			"{""captions"":[id]?,""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/captions.rs
+captions.export	CC-03	Captions…	File > Export		"{""path"":str,""format"":""srt|vtt|scc|mcc|stl|ttml|dfxp""? (default: from the extension),""track"":id|""C1""?,""dropFrame"":bool=true}"	crates/engine/src/captions.rs
+captions.goTo	CC-02	Go to Caption			"{""caption"":id}"	crates/engine/src/captions.rs
+captions.hideAll	CC-02	Hide All Caption Tracks	Sequence > Captions		{}	crates/engine/src/captions.rs
+captions.import	CC-03	Import Captions…			"{""path"":str,""name"":str?,""language"":str?}"	crates/engine/src/captions.rs
+captions.list	CC-02	List Captions			"{""track"":id|""C1""?}"	crates/engine/src/captions.rs
+captions.merge	CC-02	Merge Captions			"{""captions"":[id]?}"	crates/engine/src/captions.rs
+captions.move	CC-02	Move Captions			"{""captions"":[id]?,""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/captions.rs
+captions.newTrack	CC-02	Add New Caption Track…	Sequence > Captions	Cmd+Alt+A	"{""format"":""Subtitle|CEA-608|CEA-708|Teletext"",""name"":str?,""language"":str?}"	crates/engine/src/captions.rs
+captions.next	CC-02	Go to Next Caption Segment	Sequence > Captions	Cmd+Alt+Down	{}	crates/engine/src/captions.rs
+captions.previous	CC-02	Go to Previous Caption Segment	Sequence > Captions	Cmd+Alt+Up	{}	crates/engine/src/captions.rs
+captions.select	CC-02	Select Captions			"{""captions"":[id],""add"":bool?}"	crates/engine/src/captions.rs
+captions.setStyle	CC-02	Caption Track Style			"{""track"":id|""C1"",""font"":str?,""fontStyle"":str=""SemiBold"" (Regular, Medium, Bold…)?,""size"":f32?,""color"":""#rrggbb[aa]""?,""background"":bool?,""backgroundColor"":""#rrggbbaa""?,""align"":""left|center|right""?,""anchor"":""top|middle|bottom""?,""margin"":0..0.45 (fraction of frame height)?,""lineSpacing"":f32?,""outline"":f32?,""outlineColor"":str?,""reset"":bool?}"	crates/engine/src/captions.rs
+captions.setText	CC-02	Edit Caption Text			"{""caption"":id?,""text"":str?,""speaker"":str|null?}"	crates/engine/src/captions.rs
+captions.setTimes	CC-02	Set Caption In/Out			"{""caption"":id?,""startTime|startFrame|startSeconds|startTimecode"":…,""endTime|endFrame|endSeconds|endTimecode"":…}"	crates/engine/src/captions.rs
+captions.setTrack	CC-02	Caption Track Settings			"{""track"":id|""C1"",""name"":str?,""format"":str?,""language"":str?,""enabled"":bool?,""locked"":bool?,""syncLock"":bool?}"	crates/engine/src/captions.rs
+captions.showActiveOnly	CC-02	Show Active Caption Tracks Only	Sequence > Captions		"{""track"":id|""C1""?}"	crates/engine/src/project_tools.rs
+captions.showAll	CC-02	Show All Caption Tracks	Sequence > Captions		{}	crates/engine/src/captions.rs
+captions.split	CC-02	Split Caption			"{""caption"":id?,""time"":ticks?}"	crates/engine/src/captions.rs
+captions.trim	CC-02	Trim Caption			"{""caption"":id,""edge"":""in|out"",""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/captions.rs
+clip.audioChannels	AU-01	Audio Channels…	Clip > Modify	Shift+G	"{""items"":[id]?,""format"":""mono|stereo|5.1|adaptive"",""clips"":[[channel]]?,""channels"":[channel]?}"	crates/engine/src/clip_ops/subclip.rs
+clip.audioGain	AU-04	Audio Gain…	Clip > Audio Options	G	"{""clips"":[id]?,""mode"":""set|adjust|normalizeMax|normalizeAll""?,""db"":f64,""relative"":bool?}"	crates/engine/src/clip_ops.rs
+clip.audioPeak	AU-04	Audio Clip Peak Amplitude			"{""clips"":[id]?}"	crates/engine/src/commands.rs
+clip.automateToSequence	ED-16	Automate to Sequence…	Clip		"{""items"":[id]?,""ordering"":""sort|selection""?,""placement"":""sequentially|unnumberedMarkers""?,""method"":""insert|overwrite""?,""overlapFrames"":n=30,""stillFrames"":n?,""videoTransition"":bool=true,""audioTransition"":bool=true,""ignoreAudio"":bool=false,""ignoreVideo"":bool=false}"	crates/engine/src/project_tools.rs
+clip.breakoutToMono	AU-01	Breakout to Mono	Clip > Audio Options		"{""items"":[id]?}"	crates/engine/src/clip_ops/audio_options.rs
+clip.clearPosterFrame	ED-18	Clear Poster Frame		Alt+P	"{""item"":id?}"	crates/engine/src/keyboard.rs
+clip.createMulticam	ED-37	Create Multi-Camera Source Sequence…	Clip		"{""items"":[id]?,""name"":str?,""method"":""in|out|timecode|marker|audio"",""ignoreHours"":bool?,""marker"":str?,""offset"":frames?,""audio"":""camera1|all|switch"",""cameraNames"":""clip|track|metadata"",""processedBin"":bool?,""reference"":item?}"	crates/engine/src/multicam.rs
+clip.editOffline	ED-18	Edit Offline…	Clip		"{""item"":id?,""mediaName"":str?,""tapeName"":str?,""description"":str?,""scene"":str?,""shot"":str?,""logNote"":str?}"	crates/engine/src/project_tools.rs
+clip.editSubclip	ED-18	Edit Subclip…	Clip		"{""item"":id?,""start"":ticks?,""end"":ticks?,""startFrame"":i64?,""endFrame"":i64?,""restrictTrims"":bool?,""convertToMaster"":bool?}"	crates/engine/src/clip_ops/subclip.rs
+clip.enable	ED-18	Enable	Clip	Shift+E	"{""clips"":[id]?}"	crates/engine/src/commands.rs
+clip.extractAudio	AU-01	Extract Audio	Clip > Audio Options		"{""items"":[id]?,""dir"":str?}"	crates/engine/src/clip_ops/audio_options.rs
+clip.fieldOptions	IO-10	Field Options…	Clip > Video Options		"{""clips"":[id]?,""reverseFieldDominance"":bool=false,""processing"":""none|alwaysDeinterlace|flickerRemoval""?}"	crates/engine/src/clip_ops/video_options.rs
+clip.fillFrame	FX-08	Fill frame	Clip > Video Options		"{""clips"":[id]?}"	crates/engine/src/clip_ops/video_options.rs
+clip.fitToFrame	FX-08	Fit to frame	Clip > Video Options		"{""clips"":[id]?}"	crates/engine/src/clip_ops/video_options.rs
+clip.frameHold	ED-35	Add Frame Hold	Clip > Video Options		"{""clips"":[id]?,""time"":ticks?}"	crates/engine/src/clip_ops.rs
+clip.frameHoldOptions	ED-35	Frame Hold Options…	Clip > Video Options		"{""clips"":[id]?,""enabled"":bool=true,""holdOn"":""sourceTimecode|sequenceTime|in|out|playhead""?,""time"":ticks?,""timecode"":str?,""holdFilters"":bool=false}"	crates/engine/src/clip_ops/video_options.rs
+clip.generateAudioWaveform	ED-18	Generate Audio Waveform	Clip		"{""items"":[id]?}"	crates/engine/src/project_tools.rs
+clip.group	ED-18	Group	Clip	Cmd+G	{}	crates/engine/src/commands.rs
+clip.insertFrameHoldSegment	ED-35	Insert Frame Hold Segment	Clip > Video Options		"{""clip"":id?,""time"":ticks?,""seconds"":f64=2}"	crates/engine/src/clip_ops.rs
+clip.interpretFootage	IO-10	Interpret Footage…	Clip > Modify		"{""items"":[id]?,""colorSpace"":""auto""|""<color space id>""?,""pixelAspect"":[num,den]|""file""?}"	crates/engine/src/clip_ops.rs
+clip.link	ED-18	Link	Clip	Cmd+L	"{""clips"":[id]?}"	crates/engine/src/commands.rs
+clip.makeSubclip	ED-18	Make Subclip…	Clip	Cmd+U	"{""item"":id?,""clip"":id?,""name"":str?,""start"":ticks?,""end"":ticks?,""startFrame"":i64?,""endFrame"":i64?,""restrictTrims"":bool=true}"	crates/engine/src/clip_ops/subclip.rs
+clip.mergeClips	ED-37	Merge Clips…	Clip		"{""items"":[id]?,""method"":""in|out|timecode|marker|audio"",""name"":str?,""removeVideoAudio"":bool?,""ignoreHours"":bool?,""marker"":str?,""offset"":frames?}"	crates/engine/src/multicam.rs
+clip.modifyTimecode	IO-10	Timecode…	Clip > Modify		"{""item"":id?,""timecode"":""HH:MM:SS:FF""?,""frame"":i64?,""tapeName"":str?,""reset"":bool?}"	crates/engine/src/clip_ops/subclip.rs
+clip.multicamEnable	ED-37	Enable	Clip > Multi-Camera		"{""clips"":[id]?,""enabled"":bool?}"	crates/engine/src/multicam.rs
+clip.multicamFlatten	ED-37	Flatten	Clip > Multi-Camera		"{""clips"":[id]?}"	crates/engine/src/multicam.rs
+clip.nest	ED-24	Nest…	Clip		"{""name"":str?}"	crates/engine/src/commands.rs
+clip.nudgeVolumeDown1	AU-04	Nudge Volume -1dB			{}	crates/engine/src/keyboard.rs
+clip.nudgeVolumeDown3	AU-04	Nudge Volume -3dB			{}	crates/engine/src/keyboard.rs
+clip.nudgeVolumeUp1	AU-04	Nudge Volume +1dB			{}	crates/engine/src/keyboard.rs
+clip.nudgeVolumeUp3	AU-04	Nudge Volume +3dB			{}	crates/engine/src/keyboard.rs
+clip.remix	AU-11	Remix			"{""clip"":id?,""duration"":ticks?,""seconds"":f64?,""frame"":n?,""timecode"":str?,""segments"":0..100?,""variations"":0..100?}"	crates/engine/src/remix.rs
+clip.remix.enable	AU-11	Enable Remix	Clip > Remix		"{""clip"":id?}"	crates/engine/src/remix.rs
+clip.remix.properties	AU-11	Remix Properties…	Clip > Remix		"{""clip"":id?,""duration"":ticks?,""seconds"":f64?,""frame"":n?,""timecode"":str?,""segments"":0..100?,""variations"":0..100?}"	crates/engine/src/remix.rs
+clip.remix.revert	AU-11	Revert Remix	Clip > Remix		"{""clip"":id?}"	crates/engine/src/remix.rs
+clip.rename	ED-18	Rename…	Clip		"{""clip"":id?,""clips"":[id]?,""item"":id?,""name"":str?}"	crates/engine/src/clip_ops.rs
+clip.replaceFromBin	ED-21	From Bin	Clip > Replace With Clip		"{""clips"":[id]?,""item"":id?,""keepSourceIn"":bool=false}"	crates/engine/src/clip_ops/replace.rs
+clip.replaceFromSource	ED-21	From Source Monitor	Clip > Replace With Clip		"{""clips"":[id]?}"	crates/engine/src/clip_ops/replace.rs
+clip.replaceFromSourceMatchFrame	ED-21	From Source Monitor, Match Frame	Clip > Replace With Clip		"{""clips"":[id]?}"	crates/engine/src/clip_ops/replace.rs
+clip.restoreCaptionsFromSource	CC-02	Restore Captions from Source Clip	Clip		{}	crates/engine/src/project_tools.rs
+clip.revealInProject	ED-18	Reveal in Project			"{""clip"":id?}"	crates/engine/src/commands.rs
+clip.scaleToFrameSize	FX-08	Scale to Frame Size	Clip > Video Options		{}	crates/engine/src/clip_ops.rs
+clip.sceneEditDetection	ED-25	Scene Edit Detection…	Clip		"{""clips"":[id]?,""sensitivity"":0..100=50,""minShotFrames"":n=6,""applyCuts"":bool=true,""createSubclips"":bool=false,""generateMarkers"":bool=false,""wait"":bool=false}"	crates/engine/src/project_tools.rs
+clip.setPosterFrame	ED-18	Set Poster Frame		Cmd+P	"{""item"":id?,""time"":ticks?}"	crates/engine/src/keyboard.rs
+clip.setTimeInterpolation	ED-33	Set Time Interpolation			"{""clips"":[id]?,""mode"":""frameSampling|frameBlending|opticalFlow""}"	crates/engine/src/clip_ops/video_options.rs
+clip.sourceSettings	ED-18	Source Settings…	Clip		"{""item"":id?}"	crates/engine/src/project_tools.rs
+clip.speedDuration	ED-33	Speed/Duration…	Clip	Cmd+R	"{""clips"":[id]?,""speed"":percent=100,""reverse"":bool,""ripple"":bool,""maintainPitch"":bool? (Maintain Audio Pitch; unchanged when left out),""interpolation"":""frameSampling|frameBlending|opticalFlow""?}"	crates/engine/src/commands.rs
+clip.synchronize	ED-37	Synchronize…	Clip		"{""method"":""in|out|timecode|marker|audio"",""clips"":[id]?,""reference"":clip?,""track"":""V1""|""A1""?,""ignoreHours"":bool?,""marker"":str?,""offset"":frames?}"	crates/engine/src/multicam.rs
+clip.timeInterpolation.frameBlending	ED-33	Frame Blending	Clip > Video Options > Time Interpolation		"{""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+clip.timeInterpolation.frameSampling	ED-33	Frame Sampling	Clip > Video Options > Time Interpolation		"{""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+clip.timeInterpolation.opticalFlow	ED-33	Optical Flow	Clip > Video Options > Time Interpolation		"{""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+clip.ungroup	ED-18	Ungroup	Clip	Cmd+Shift+G	{}	crates/engine/src/commands.rs
+clip.updateMetadata	IO-19	Update Metadata…	Clip		"{""items"":[id]?}"	crates/engine/src/project_tools.rs
+clip.volumeDown	AU-04	Decrease Clip Volume		[	{}	crates/engine/src/keyboard.rs
+clip.volumeDownMany	AU-04	Decrease Clip Volume Many		Shift+[	{}	crates/engine/src/keyboard.rs
+clip.volumeUp	AU-04	Increase Clip Volume		]	{}	crates/engine/src/keyboard.rs
+clip.volumeUpMany	AU-04	Increase Clip Volume Many		Shift+]	{}	crates/engine/src/keyboard.rs
+clipMixer.release	AU-05	Release Clip Mixer Control			"{""track"":""A1""|id,""lane"":""volume|pan"",""time"":ticks?}"	crates/engine/src/mixer.rs
+clipMixer.set	AU-05	Audio Clip Mixer Adjust			"{""clip"":id,""effect"":""volume""|""panner"",""param"":""level""|""balance"",""value"":f64,""keyframe"":bool?,""time"":ticks?,""begin"":bool?}"	crates/engine/src/mixer.rs
+clipMixer.setMode	AU-05	Audio Clip Mixer Automation Mode			"{""track"":""A1""|id,""mode"":""Off|Read|Latch|Touch|Write""}"	crates/engine/src/mixer.rs
+clipMixer.touch	AU-05	Touch Clip Mixer Control			"{""track"":""A1""|id,""lane"":""volume|pan"",""value"":f64,""time"":ticks?}"	crates/engine/src/mixer.rs
+color.spaces	CO-01	List Colour Spaces			{}	crates/engine/src/color.rs
+colors.addCustom	IO-17	Add Custom Color			"{""color"":hex,""name"":str?}"	crates/engine/src/commands.rs
+colors.removeCustom	IO-17	Remove Custom Color			"{""color"":hex}"	crates/engine/src/commands.rs
+colors.updateCustom	IO-17	Edit Custom Color			"{""color"":hex,""replacement"":hex?,""name"":str?}"	crates/engine/src/commands.rs
+command.list	AI-06	List Commands			{}	crates/engine/src/commands.rs
+edit.clear	ED-20	Clear	Edit	Backspace	"{""clips"":[id]?,""clip"":id?} (explicit clips work without a selection)"	crates/engine/src/commands.rs
+edit.consolidateDuplicates	IO-16	Consolidate Duplicates	Edit		{}	crates/engine/src/clip_ops.rs
+edit.copy	ED-18	Copy	Edit	Cmd+C	{}	crates/engine/src/commands.rs
+edit.cut	ED-20	Cut	Edit	Cmd+X	{}	crates/engine/src/commands.rs
+edit.deselectAll	ED-18	Deselect All	Edit	Cmd+Shift+A	{}	crates/engine/src/commands.rs
+edit.duplicate	ED-18	Duplicate	Edit	Cmd+Shift+/	{}	crates/engine/src/clip_ops.rs
+edit.editOriginal	ED-18	Edit Original	Edit	Cmd+E	"{""items"":[id]?}"	crates/engine/src/project_tools.rs
+edit.find	ED-18	Find…	Edit	Cmd+F	"{""scope"":""project|timeline""?,""column"":str?,""operator"":""contains|matches|beginsWith|endsWith|doesNotContain""?,""text"":str?,""rows"":[{""column"":str,""operator"":str,""text"":str}]?,""matchAll"":bool=true,""caseSensitive"":bool=false,""in"":""all|clips|markers""?}"	crates/engine/src/project_tools.rs
+edit.findNext	ED-18	Find Next	Edit		{}	crates/engine/src/project_tools.rs
+edit.label	IO-17	Label			"{""label"":""preset|#RRGGBB"",""clips"":[id]?,""items"":[id]?,""sequence"":id?,""saveColor"":bool?}"	crates/engine/src/commands.rs
+edit.label.blue	IO-17	Blue	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.brown	IO-17	Brown	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.caribbean	IO-17	Caribbean	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.cerulean	IO-17	Cerulean	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.forest	IO-17	Forest	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.green	IO-17	Green	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.iris	IO-17	Iris	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.lavender	IO-17	Lavender	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.magenta	IO-17	Magenta	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.mango	IO-17	Mango	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.purple	IO-17	Purple	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.rose	IO-17	Rose	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.tan	IO-17	Tan	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.teal	IO-17	Teal	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.violet	IO-17	Violet	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.label.yellow	IO-17	Yellow	Edit > Label		"{""items"":[id]?,""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.paste	ED-18	Paste	Edit	Cmd+V	{}	crates/engine/src/captions.rs
+edit.pasteAttributes	FX-02	Paste Attributes…	Edit	Cmd+Alt+V	"{""clips"":[id]?,""motion"":bool=true,""opacity"":bool=true,""timeRemapping"":bool=true,""volume"":bool=true,""channelVolume"":bool=true,""panner"":bool=true,""effects"":bool|[effectId]=true,""scaleTimes"":bool=true}"	crates/engine/src/clip_ops.rs
+edit.pasteInsert	ED-18	Paste Insert	Edit	Cmd+Shift+V	{}	crates/engine/src/clip_ops.rs
+edit.pasteMedia	ED-18	Paste Media			"{""paths"":[str],""insert"":bool?,""place"":bool=true,""bin"":binId?}"	crates/engine/src/paste_media.rs
+edit.redo	ED-45	Redo	Edit	Cmd+Shift+Z	{}	crates/engine/src/commands.rs
+edit.removeAttributes	FX-02	Remove Attributes…	Edit		"{""clips"":[id]?,""motion"":bool=true,""opacity"":bool=true,""timeRemapping"":bool=true,""volume"":bool=true,""channelVolume"":bool=true,""panner"":bool=true,""effects"":bool|[effectId]=true}"	crates/engine/src/clip_ops.rs
+edit.removeUnused	IO-16	Remove Unused	Edit		{}	crates/engine/src/clip_ops.rs
+edit.rippleDelete	ED-20	Ripple Delete	Edit	Shift+Delete	"{""clips"":[id]?,""clip"":id?} (explicit clips work without a selection)"	crates/engine/src/commands.rs
+edit.rippleDeleteHead	ED-20	Ripple Delete Head Frame	Edit		"{""clips"":[id]?,""clip"":id?}"	crates/engine/src/commands.rs
+edit.selectAll	ED-18	Select All	Edit	Cmd+A	{}	crates/engine/src/clip_ops.rs
+edit.selectAllMatching	ED-18	Select All Matching	Edit		"{""clips"":[id]?}"	crates/engine/src/clip_ops.rs
+edit.selectLabelGroup	IO-17	Select Label Group	Edit > Label		{}	crates/engine/src/clip_ops.rs
+edit.undo	ED-45	Undo	Edit	Cmd+Z	{}	crates/engine/src/commands.rs
+effects.addKeyframe	FX-06	Add/Remove Keyframe			"{""clip"":id,""effect"":str|index,""param"":str,""mask"":n?,""time"":ticks?}"	crates/engine/src/commands.rs
+effects.apply	FX-02	Apply Effect			"{""clips"":[id]?,""effect"":""gaussian_blur|Gaussian Blur|…""}"	crates/engine/src/color.rs
+effects.deleteKeyframe	FX-06	Delete Keyframe			"{""clip"":id,""effect"":str|index,""param"":str,""mediaTime"":ticks}"	crates/engine/src/commands.rs
+effects.list	FX-02	List Effects			"{""kind"":""Video""|""Audio""|""VideoTransition""|""AudioTransition""?,""folder"":""Video Transitions/Wipe""?,""detail"":bool?}"	crates/engine/src/commands.rs
+effects.moveKeyframe	FX-06	Move Keyframe			"{""clip"":id,""effect"":str|index,""param"":str,""mediaTime"":ticks,""to"":ticks,""value"":any?,""merge"":bool?,""begin"":bool?}"	crates/engine/src/commands.rs
+effects.moveKeyframes	FX-06	Move Keyframes			"{""keyframes"":[{""clip"":id,""effect"":index,""param"":str,""mask"":n?,""time"":mediaTicks}],""delta"":timelineTicks}"	crates/engine/src/commands.rs
+effects.remove	FX-02	Remove Effect			"{""clip"":id,""index"":n}"	crates/engine/src/commands.rs
+effects.reset	FX-02	Reset Effect			"{""clip"":id,""index"":n}"	crates/engine/src/commands.rs
+effects.resetParam	FX-02	Reset Parameter			"{""clip"":id,""effect"":str|index,""param"":str}"	crates/engine/src/commands.rs
+effects.select	FX-02	Select Effect			"{""clip"":id,""effect"":index|id}|{""none"":true}"	crates/engine/src/commands.rs
+effects.setDefaultTransition	FX-02	Set Selected as Default Transition			"{""effect"":""constant_power|constant_gain|exponential_fade|<video transition>""}"	crates/engine/src/mixer.rs
+effects.setInterpolation	FX-02	Keyframe Interpolation			"{""clip"":id,""effect"":str|index,""param"":str,""mediaTime"":ticks,""interpolation"":""linear|bezier|autoBezier|continuousBezier|hold|easeIn|easeOut""}|{""keyframes"":[{""clip"":id,""effect"":index,""param"":str,""mask"":n?,""time"":mediaTicks}],""interpolation"":str}"	crates/engine/src/commands.rs
+effects.setKeyframe	FX-06	Edit Keyframe			"{""clip"":id,""effect"":str|index,""param"":str,""mediaTime"":ticks,""value"":any?,""inInfluence"":0..1?,""outInfluence"":0..1?,""merge"":bool?,""begin"":bool?}"	crates/engine/src/commands.rs
+effects.setParam	FX-02	Set Effect Parameter			"{""clip"":id,""effect"":""motion""|index,""param"":str,""mask"":n?,""value"":num|[x,y]|""#rrggbb""|bool|path|""option name"" (a choice takes its index or its name),""time"":ticks? (where the keyframe goes when the parameter is animated, kept there even outside the clip; default: the playhead, pinned to the clip; a parameter that is not animated gets a new static value whatever the time),""keyframe"":bool? (true: write a keyframe at `time` and animate the parameter),""merge"":bool|key?,""begin"":bool?}"	crates/engine/src/commands.rs
+effects.toggleAnimation	FX-02	Toggle Animation			"{""clip"":id,""effect"":str|index,""param"":str,""mask"":n?}"	crates/engine/src/commands.rs
+effects.toggleEnabled	FX-02	Toggle Effect			"{""clip"":id,""index"":n}"	crates/engine/src/commands.rs
+essentialSound.applyPreset	AU-08	Apply Sound Preset			"{""clips"":[id]?,""preset"":str,""type"":""dialogue|music|sfx|ambience""?}"	crates/engine/src/essential_sound.rs
+essentialSound.autoMatch	AU-08	Auto-Match Loudness			"{""clips"":[id]?,""target"":lufs?}"	crates/engine/src/essential_sound.rs
+essentialSound.clearType	AU-08	Clear Audio Type			"{""clips"":[id]?}"	crates/engine/src/essential_sound.rs
+essentialSound.deletePreset	AU-08	Delete Sound Preset			"{""name"":str,""type"":""dialogue|music|sfx|ambience""?}"	crates/engine/src/essential_sound.rs
+essentialSound.generateDucking	AU-08	Generate Ducking Keyframes			"{""clips"":[id]?}"	crates/engine/src/essential_sound.rs
+essentialSound.inspect	AU-08	Inspect Essential Sound			"{""clips"":[id]?}"	crates/engine/src/essential_sound.rs
+essentialSound.savePreset	AU-08	Save Sound Preset			"{""clips"":[id]?,""name"":str}"	crates/engine/src/essential_sound.rs
+essentialSound.set	AU-08	Essential Sound Setting			"{""clips"":[id]?,""key"":""repair.noise.on|repair.noise.amount|repair.humHz|clarity.eqPreset|creative.reverbPreset|ducking.reduceDb|volume.levelDb|mute|…"",""value"":any,""values"":{key:value}?,""begin"":bool?}"	crates/engine/src/essential_sound.rs
+essentialSound.setType	AU-08	Set Audio Type			"{""clips"":[id]?,""type"":""dialogue|music|sfx|ambience""}"	crates/engine/src/essential_sound.rs
+events.clear	UI-17	Clear All Events			{}	crates/engine/src/panels.rs
+events.list	UI-17	List Events			"{""level"":""info|warning|error""?,""since"":id?}"	crates/engine/src/panels.rs
+export.formats	IO-41	List Export Formats			{}	crates/engine/src/export_tools.rs
+export.presets.delete	IO-41	Delete Export Preset			"{""name"":str}"	crates/engine/src/export_tools.rs
+export.presets.export	IO-41	Export Export Presets			"{""path"":str,""names"":[str]?}"	crates/engine/src/export_tools.rs
+export.presets.favorite	IO-41	Favorite Export Preset			"{""name"":str,""favorite"":bool?}"	crates/engine/src/export_tools.rs
+export.presets.get	IO-41	Get Export Preset			"{""name"":str}"	crates/engine/src/export_tools.rs
+export.presets.import	IO-41	Import Export Presets			"{""path"":str}"	crates/engine/src/export_tools.rs
+export.presets.list	IO-41	List Export Presets			"{""query"":str?,""category"":str?,""format"":str?,""favorites"":bool?}"	crates/engine/src/export_tools.rs
+export.presets.save	IO-41	Save Export Preset			"{""name"":str,""from"":str?,""settings"":ExportSettings?,""category"":str?,""description"":str?,""overwrite"":bool=true, …flat overrides}"	crates/engine/src/export_tools.rs
+export.queue.add	IO-48	Send to Export Queue			"{…settings params,""path"":str|dir?,""sequences"":[id]?,""ranges"":[range]?,""start"":bool?,""wait"":bool?}"	crates/engine/src/export_tools.rs
+export.queue.cancel	IO-48	Cancel Queued Export			"{""id"":id?,""wait"":bool?}"	crates/engine/src/export_tools.rs
+export.queue.clear	IO-48	Clear Finished Exports			"{""all"":bool=false}"	crates/engine/src/export_tools.rs
+export.queue.list	IO-48	List Export Queue			{}	crates/engine/src/export_tools.rs
+export.queue.move	IO-48	Reorder Queued Export			"{""id"":id,""to"":index?,""by"":int?}"	crates/engine/src/export_tools.rs
+export.queue.remove	IO-48	Remove Queued Export			"{""id"":id}"	crates/engine/src/export_tools.rs
+export.queue.retry	IO-48	Retry Queued Export			"{""id"":id,""start"":bool?,""wait"":bool?}"	crates/engine/src/export_tools.rs
+export.queue.start	IO-48	Start Export Queue			"{""wait"":bool=false}"	crates/engine/src/export_tools.rs
+export.queue.stop	IO-48	Stop Export Queue			{}	crates/engine/src/export_tools.rs
+export.quick	IO-41	Quick Export			"{""preset"":str?,""path"":str?,""wait"":bool?, …settings params}"	crates/engine/src/export_tools.rs
+export.resolve	IO-41	Resolve Export Settings			"{…settings params, ""path"":str?}"	crates/engine/src/export_tools.rs
+file.autoSaveNow	UI-20	Auto Save Now			{}	crates/engine/src/autosave.rs
+file.autoSaveStatus	UI-20	Auto Save Status			{}	crates/engine/src/autosave.rs
+file.close	IO-30	Close	File	Cmd+W	"{""item"":id?}"	crates/engine/src/project_tools.rs
+file.closeAllOtherProjects	IO-30	Close All Other Projects	File		{}	crates/engine/src/project_tools.rs
+file.closeAllProjects	IO-30	Close All Projects	File		"{""force"":bool?}"	crates/engine/src/project_tools.rs
+file.closeProject	IO-30	Close Project	File	Cmd+Shift+W	"{""force"":bool?}"	crates/engine/src/clip_ops.rs
+file.discardRecovery	UI-20	Discard Unsaved Changes			"{""id"":str?,""all"":bool?}"	crates/engine/src/commands.rs
+file.exportAaf	IO-55	AAF…	File > Export		"{""path"":str,""sequence"":id?,""mixdownVideo"":bool?,""mixdownFormat"":""mov|mxf""?,""breakoutToMono"":bool?,""audio"":""embedded|separate|linked""?,""audioFormat"":""wav|aiff|mxf""?,""sampleRate"":int?,""bitDepth"":""16|24""?,""trimAudio"":bool?,""handles"":frames?,""renderAudioEffects"":bool?,""smallSectors"":bool?}"	crates/engine/src/aaf_omf.rs
+file.exportAle	IO-40	Avid Log Exchange…	File > Export		"{""path"":str,""items"":[id]?}"	crates/engine/src/project_tools.rs
+file.exportEdl	IO-54	EDL…	File > Export		"{""path"":str}"	crates/engine/src/commands.rs
+file.exportFcp7Xml	IO-53	Final Cut Pro XML…	File > Export		"{""path"":str}"	crates/engine/src/commands.rs
+file.exportFcpxml	IO-53	FCPXML…	File > Export		"{""path"":str}"	crates/engine/src/commands.rs
+file.exportFrame	IO-47	Export Frame			"{""path"":str?,""format"":""png|jpeg|tiff|bmp""?,""depth"":8|16?,""import"":bool?,""target"":""source|program""?,""item"":id?,""sequence"":id?,""time"":ticks?}"	crates/engine/src/keyboard.rs
+file.exportGraphicsTemplate	GR-07	Motion Graphics Template…	File > Export		as graphics.template.export	crates/engine/src/graphic_templates.rs
+file.exportInterchange	IO-40	Export Interchange			"{""format"":""edl|xml|fcpxml|otio|aaf|omf""=xml,""path"":str,""sequence"":id?}"	crates/engine/src/commands.rs
+file.exportMedia	IO-40	Media…	File > Export		"{""path"":str,""preset"":str?,""settings"":ExportSettings?,""format"":""h264|hevc|prores|dnxhr|apv|mjpeg|mxf-op1a|mxf-opatom|png|tiff|bmp|jpg|tga|dpx|exr|gif|wav|aiff|aac|mp3|flac""?,""audioCodec"":""auto|aac|pcm|flac""?,""flacLevel"":0..8=5,""width"":u32?,""height"":u32?,""fps"":f64?,""bitrateKbps"":u32?,""bitrateMode"":""cbr|vbr1Pass|vbr2Pass|crf""?,""crf"":0..51=23,""hardwareEncoding"":""off|auto""?,""scale"":f32=1,""audio"":bool=true,""quality"":0..100,""burnCaptions"":bool=false,""alpha"":bool=false,""exrCompression"":""none|rle|zips|zip""?,""captionSidecar"":""srt|vtt""?,""loudnessLufs"":f64?,""proresProfile"":""proxy|lt|standard|hq|4444|4444xq""?,""dnxProfile"":""lb|sq|hq|hqx""?,""apvProfile"":""422-10|422-12|444-10|444-12|4444-10|4444-12|400-10""?,""h264Profile"":""baseline|main|high|high10""?,""h264IntraOnly"":bool=false,""mxfVideoCodec"":""dnxhr|proRes|h264""?,""sequence"":id?,""range"":""entire|inOut|workArea|custom""?,""startSeconds"":f64?,""endSeconds"":f64?,""wait"":bool=false}"	crates/engine/src/commands.rs
+file.exportOmf	IO-55	OMF…	File > Export		"{""path"":str,""sequence"":id?,""title"":str?,""audio"":""embedded|separate""?,""audioFormat"":""wav|aiff""?,""sampleRate"":int?,""bitDepth"":""16|24""?,""trimAudio"":bool?,""handles"":frames?,""renderAudioEffects"":bool?,""breakoutToMono"":bool?}"	crates/engine/src/aaf_omf.rs
+file.exportOtio	IO-52	OpenTimelineIO…	File > Export		"{""path"":str}"	crates/engine/src/commands.rs
+file.exportSelectionProject	IO-40	Selection as FilmCraft Project…	File > Export		"{""path"":str,""items"":[id]?}"	crates/engine/src/project_tools.rs
+file.import	IO-04	Import…	File	Cmd+I	"{""paths"":[str],""bin"":binId?,""imageSequence"":bool?,""replace"":bool?}"	crates/engine/src/commands.rs
+file.importAaf	IO-55	Import AAF…			"{""path"":str,""bin"":binId?}"	crates/engine/src/commands.rs
+file.importDemoFootage	IO-04	Demo Footage	File > Import From		"{""scene"":""OceanSunset|Aurora|CityNight|Dunes|Plasma|Forest""}"	crates/engine/src/commands.rs
+file.importFromMediaBrowser	IO-04	Import from Media Browser	File	Cmd+Alt+I	"{""paths"":[str]?,""imageSequence"":bool?}"	crates/engine/src/project_tools.rs
+file.importImageSequence	IO-07	Import Image Sequence…	File		"{""path"":str,""bin"":binId?}"	crates/engine/src/project_tools.rs
+file.listAutoSaves	UI-20	Browse Auto-Saves			{}	crates/engine/src/commands.rs
+file.mediaProperties	IO-30	Selection…	File > Get Media File Properties for	Cmd+Shift+H	"{""items"":[id]?}"	crates/engine/src/media_pool.rs
+file.mediaPropertiesFile	IO-30	File…	File > Get Media File Properties for		"{""path"":str}"	crates/engine/src/project_tools.rs
+file.newAdjustmentLayer	FX-04	Adjustment Layer…	File > New		"{""seconds"":f64=5,""bin"":binId?}"	crates/engine/src/commands.rs
+file.newBarsAndTone	IO-11	Bars and Tone…	File > New		"{""seconds"":f64=10,""bin"":binId?}"	crates/engine/src/commands.rs
+file.newBin	IO-15	Bin	File > New	Cmd+B	"{""name"":str,""parent"":binId?}"	crates/engine/src/clip_ops.rs
+file.newBinFromSelection	IO-15	Bin From Selection	File > New	Shift+B	"{""items"":[id]?,""name"":str?}"	crates/engine/src/clip_ops/file.rs
+file.newBlackVideo	IO-11	Black Video…	File > New		"{""seconds"":f64,""bin"":binId?}"	crates/engine/src/commands.rs
+file.newColorMatte	IO-11	Color Matte…	File > New		"{""color"":""#rrggbb""?,""seconds"":f64=5,""bin"":binId?}"	crates/engine/src/commands.rs
+file.newCountingLeader	IO-11	Universal Counting Leader…	File > New		"{""bin"":binId?}"	crates/engine/src/commands.rs
+file.newOfflineFile	IO-11	Offline File…	File > New		"{""name"":str?,""fileName"":str?,""tapeName"":str?,""video"":bool=true,""audio"":bool=true,""width"":u32?,""height"":u32?,""fps"":f64?,""sampleRate"":u32=48000,""channels"":u32=2,""timecode"":""HH:MM:SS:FF""?,""seconds"":f64=10,""description"":str?}"	crates/engine/src/clip_ops/file.rs
+file.newProject	IO-01	Project…	File > New	Cmd+Alt+N	"{""name"":str}"	crates/engine/src/commands.rs
+file.newProjectFromTemplate	IO-01	New Project from Template			"{""template"":name|path,""name"":str?}"	crates/engine/src/project_tools.rs
+file.newSearchBin	IO-15	Search Bin	File > New		"{""name"":str?,""column"":str?,""operator"":str?,""text"":str?,""rows"":[..]?,""matchAll"":bool?,""caseSensitive"":bool?}"	crates/engine/src/project_tools.rs
+file.newSequence	ED-09	Sequence…	File > New	Cmd+N	"{""name"":str,""width"":u32=1920,""height"":u32=1080,""fps"":f64=23.976,""sampleRate"":u32=48000,""video"":n=3,""audio"":n=3,""mix"":""Stereo|Mono|5.1|Adaptive""?,""trackType"":""Standard|Mono|5.1|Adaptive""?,""fromItem"":itemId?,""fromItems"":[itemId]?,""bin"":binId?}"	crates/engine/src/clip_ops.rs
+file.newSequenceFromClip	ED-09	Sequence From Clip	File > New		"{""items"":[id]?}"	crates/engine/src/clip_ops/file.rs
+file.newTransparentVideo	IO-11	Transparent Video…	File > New		"{""bin"":binId?}"	crates/engine/src/commands.rs
+file.open	IO-30	Open Project…	File	Cmd+O	"{""path"":str}"	crates/engine/src/commands.rs
+file.openDemoProject	IO-30	Demo Project	File > New		{}	crates/engine/src/autosave.rs
+file.projectManager	IO-56	Project Manager…	File		"{""destination"":str,""mode"":""collect|consolidate"",""sequences"":[id]?,""excludeUnused"":bool=true,""handles"":frames=30,""preset"":""prores_lt|prores_hq|h264|…"",""includeProxies"":bool,""includePreviews"":bool=false,""projectName"":str?,""dryRun"":bool=false,""overwrite"":bool=false,""wait"":bool=false}"	crates/engine/src/project_manager.rs
+file.projectSettings.general	IO-30	General…	File > Project Settings		"{""renderer"":""gpu|software""?,""videoDisplay"":""timecode|feet35|feet16|frames""?,""audioDisplay"":""samples|milliseconds""?,""captureFormat"":""DV|HDV""?,""titleSafe"":[h,v]?,""actionSafe"":[h,v]?}"	crates/engine/src/project_tools.rs
+file.projectSettings.scratchDisks	IO-30	Scratch Disks…	File > Project Settings		"{""captured"":path|null?,""videoPreviews"":path|null?,""audioPreviews"":path|null?,""autoSave"":path|null?}"	crates/engine/src/project_tools.rs
+file.recover	UI-20	Recover Unsaved Changes…	File		"{""id"":str?}"	crates/engine/src/autosave.rs
+file.recoveryList	UI-20	List Recoverable Sessions			{}	crates/engine/src/commands.rs
+file.replaceFonts	GR-01	Replace Fonts in Projects…	Graphics and Titles		"{""from"":family|{""family"",""style""?},""to"":family|{""family"",""style""?},""toStyle"":str?}"	crates/engine/src/graphic_templates.rs
+file.reveal	IO-30	Reveal in Finder			"{""items"":[id]?}"	crates/engine/src/project_tools.rs
+file.revert	IO-30	Revert	File		{}	crates/engine/src/commands.rs
+file.save	IO-30	Save	File	Cmd+S	"{""path"":str?}"	crates/engine/src/clip_ops.rs
+file.saveAll	IO-30	Save All	File		{}	crates/engine/src/clip_ops.rs
+file.saveAs	IO-30	Save As…	File	Cmd+Shift+S	"{""path"":str}"	crates/engine/src/autosave.rs
+file.saveAsTemplate	IO-30	Save as Template…	File		"{""name"":str?,""path"":str?}"	crates/engine/src/project_tools.rs
+file.saveCopy	IO-30	Save a Copy…	File	Cmd+Alt+S	"{""path"":str}"	crates/engine/src/clip_ops.rs
+file.templates	IO-30	List Project Templates			{}	crates/engine/src/project_tools.rs
+fonts.list	GR-01	List Fonts			"{""system"":bool=true (scan the system font folders)}"	crates/engine/src/graphics.rs
+graphics.align	GR-05	Align Layers			"{""clip"":id?,""layers"":[n]?,""align"":""left|hcenter|right|top|vcenter|bottom"",""to"":""frame|group|selection""=""frame"" (frame: each layer; group: the layers' union; one layer always aligns to the frame)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.bottom	GR-05	Bottom	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.hcenter	GR-05	Center Horizontally	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.left	GR-05	Left	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.right	GR-05	Right	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.top	GR-05	Top	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignFrame.vcenter	GR-05	Center Vertically	Graphics and Titles > Align to Video Frame		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.bottom	GR-05	Bottom	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.hcenter	GR-05	Center Horizontally	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.left	GR-05	Left	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.right	GR-05	Right	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.top	GR-05	Top	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignGroup.vcenter	GR-05	Center Vertically	Graphics and Titles > Align to Video Frame as Group		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.bottom	GR-05	Bottom	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.hcenter	GR-05	Center Horizontally	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.left	GR-05	Left	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.right	GR-05	Right	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.top	GR-05	Top	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignSelection.vcenter	GR-05	Center Vertically	Graphics and Titles > Align to Selection		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.alignTextCenter	GR-01	Center align text		Cmd+Shift+C	{}	crates/engine/src/keyboard.rs
+graphics.alignTextLeft	GR-01	Left align text		Cmd+Shift+L	{}	crates/engine/src/keyboard.rs
+graphics.alignTextRight	GR-01	Right align text		Cmd+Shift+R	{}	crates/engine/src/keyboard.rs
+graphics.arrangeLayer	GR-02	Arrange Graphic Layer			"{""clip"":id?,""layer"":n?,""to"":""front|back|forward|backward""|index}"	crates/engine/src/graphics.rs
+graphics.bringForward	GR-05	Bring Forward	Graphics and Titles > Arrange	Cmd+]	"{""clip"":id?,""layer"":n?}"	crates/engine/src/graphics.rs
+graphics.bringToFront	GR-05	Bring to Front	Graphics and Titles > Arrange	Cmd+Shift+]	"{""clip"":id?,""layer"":n?}"	crates/engine/src/graphics.rs
+graphics.deleteLayer	GR-02	Delete Graphic Layer			"{""clip"":id?,""layer"":n?}"	crates/engine/src/graphics.rs
+graphics.distribute	GR-05	Distribute Layers			"{""clip"":id?,""layers"":[n] (3 or more)?,""axis"":""horizontal|vertical"",""space"":bool=false (equal gaps instead of equal centre spacing)}"	crates/engine/src/graphics.rs
+graphics.distributeHorizontally	GR-05	Distribute Horizontally	Graphics and Titles > Distribute		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.distributeSpaceHorizontally	GR-05	Distribute Space Horizontally	Graphics and Titles > Distribute		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.distributeSpaceVertically	GR-05	Distribute Space Vertically	Graphics and Titles > Distribute		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.distributeVertically	GR-05	Distribute Vertically	Graphics and Titles > Distribute		"{""clip"":id?,""layers"":[n]? (default: the selected layers; selected video clips move by Motion Position)}"	crates/engine/src/graphics.rs
+graphics.fontSizeDown	GR-01	Decrease Font Size by One Unit		Cmd+Alt+Left	{}	crates/engine/src/keyboard.rs
+graphics.fontSizeDown5	GR-01	Decrease Font Size by Five Units		Cmd+Alt+Shift+Left	{}	crates/engine/src/keyboard.rs
+graphics.fontSizeUp	GR-01	Increase Font Size by One Unit		Cmd+Alt+Right	{}	crates/engine/src/keyboard.rs
+graphics.fontSizeUp5	GR-01	Increase Font Size by Five Units		Cmd+Alt+Shift+Right	{}	crates/engine/src/keyboard.rs
+graphics.fonts.used	GR-01	List Fonts Used			{}	crates/engine/src/graphic_templates.rs
+graphics.leadingDown	GR-01	Decrease Leading by One Unit		Alt+Down	{}	crates/engine/src/keyboard.rs
+graphics.leadingDown5	GR-01	Decrease Leading by Five Units		Alt+Shift+Down	{}	crates/engine/src/keyboard.rs
+graphics.leadingUp	GR-01	Increase Leading by One Unit		Alt+Up	{}	crates/engine/src/keyboard.rs
+graphics.leadingUp5	GR-01	Increase Leading by Five Units		Alt+Shift+Up	{}	crates/engine/src/keyboard.rs
+graphics.list	GR-02	List Graphic Layers			"{""clip"":id?}"	crates/engine/src/graphics.rs
+graphics.moveLayers	GR-02	Move Graphic Layers			"{""clip"":id?,""layers"":[n]? (default: the selected layers),""delta"":[dx,dy] (graphic pixels)}"	crates/engine/src/graphics.rs
+graphics.newEllipse	GR-02	Ellipse	Graphics and Titles > New Layer	Cmd+Alt+E	"{""position"":[x,y]?,""size"":[w,h]=[400,200],""clip"":id?,""seconds"":f64=5,""track"":index?,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.newFromFile	GR-02	From file…	Graphics and Titles > New Layer		"{""path"":str,""time"":ticks?,""track"":index?} (imports the image or video and places it above the clips at the playhead)"	crates/engine/src/graphics.rs
+graphics.newPolygon	GR-02	Polygon	Graphics and Titles > New Layer		"{""position"":[x,y]?,""size"":[w,h]=[300,300],""sides"":n=6,""clip"":id?,""seconds"":f64=5,""track"":index?,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.newRectangle	GR-02	Rectangle	Graphics and Titles > New Layer	Cmd+Alt+R	"{""position"":[x,y]?,""size"":[w,h]=[400,200],""clip"":id?,""seconds"":f64=5,""track"":index?,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.newShape	GR-02	Shape			"{""shape"":""rectangle|ellipse|polygon|path"",""position"":[x,y]? (the shape's centre),""size"":[w,h]=[400,200],""points"":[[x,y],…]?,""clip"":id? (add the shape to this graphic),""seconds"":f64=5,""track"":index?,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.newText	GR-01	Text	Graphics and Titles > New Layer	Cmd+T	"{""text"":str=""New Text"",""position"":[x,y]? (point text: its alignment point on the first baseline; with `box`: the box's top-left corner),""box"":[w,h]? (paragraph text wrapped in a box this size),""clip"":id?,""newClip"":bool?,""vertical"":bool=false,""size"":px=100,""font"":str?,""fontStyle"":str?,""seconds"":f64=5,""track"":index?,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.newVerticalText	GR-01	Vertical Text	Graphics and Titles > New Layer		"{""text"":str=""New Text"",""position"":[x,y]?,""clip"":id?,""size"":px=100,""seconds"":f64=5,""time"":ticks?}"	crates/engine/src/graphics.rs
+graphics.nudgeDown	GR-02	Nudge Selected Object down by one			{}	crates/engine/src/keyboard.rs
+graphics.nudgeDown5	GR-02	Nudge Selected Object down by five			{}	crates/engine/src/keyboard.rs
+graphics.nudgeLeft	GR-02	Nudge Selected Object to left by one			{}	crates/engine/src/keyboard.rs
+graphics.nudgeLeft5	GR-02	Nudge Selected Object to left by five			{}	crates/engine/src/keyboard.rs
+graphics.nudgeRight	GR-02	Nudge Selected Object to right by one			{}	crates/engine/src/keyboard.rs
+graphics.nudgeRight5	GR-02	Nudge Selected Object to right by five			{}	crates/engine/src/keyboard.rs
+graphics.nudgeUp	GR-02	Nudge Selected Object up by one			{}	crates/engine/src/keyboard.rs
+graphics.nudgeUp5	GR-02	Nudge Selected Object up by five			{}	crates/engine/src/keyboard.rs
+graphics.pin	GR-03	Responsive Design - Position			"{""clip"":id?,""layer"":n|name?,""to"":""frame""|""none""|layer index|layer name,""edges"":[""left"",""top"",""right"",""bottom""]|""all""=""all""}"	crates/engine/src/graphic_templates.rs
+graphics.resetAllParameters	GR-02	Reset All Parameters	Graphics and Titles		"{""clip"":id?,""layers"":[n]? (default: the selected layers, else all)}"	crates/engine/src/graphics.rs
+graphics.resetDuration	GR-02	Reset Duration	Graphics and Titles		"{""clip"":id?,""seconds"":f64=5 (the default graphic duration; limited by the next clip on the track)}"	crates/engine/src/graphics.rs
+graphics.selectLayer	GR-02	Select Graphic Layer			"{""clip"":id?,""layers"":[n]}"	crates/engine/src/graphics.rs
+graphics.selectNextGraphic	GR-02	Select Next Graphic	Graphics and Titles > Select		{}	crates/engine/src/graphics.rs
+graphics.selectNextLayer	GR-02	Select Next Layer	Graphics and Titles > Select	Cmd+Alt+]	{}	crates/engine/src/graphics.rs
+graphics.selectPreviousGraphic	GR-02	Select Previous Graphic	Graphics and Titles > Select		{}	crates/engine/src/graphics.rs
+graphics.selectPreviousLayer	GR-02	Select Previous Layer	Graphics and Titles > Select	Cmd+Alt+[	{}	crates/engine/src/graphics.rs
+graphics.sendBackward	GR-05	Send Backward	Graphics and Titles > Arrange	Cmd+[	"{""clip"":id?,""layer"":n?}"	crates/engine/src/graphics.rs
+graphics.sendToBack	GR-05	Send to Back	Graphics and Titles > Arrange	Cmd+Shift+[	"{""clip"":id?,""layer"":n?}"	crates/engine/src/graphics.rs
+graphics.set	GR-02	Set Graphic Properties			"{""clip"":id?,""layer"":n|name?,""props"":{""font"":""Inter"",""font_style"":""Bold"",""size"":120,""align"":""center"",""tracking"":50,""leading"":0,""fill_color"":""#ffcc00"",""stroke"":true,""stroke_width"":6,""background"":true,""shadow"":true,""position"":[x,y],""scale"":100,""rotation"":0,""opacity"":100,…},""time"":ticks? (timeline time, default the playhead: a property that is already animated gets or changes a keyframe there, any other changes its fixed value),""keyframe"":bool? (true: every property in `props` gets a keyframe at `time` and becomes animated; the result lists each one's keyframe count),""merge"":bool?,""begin"":bool?}"	crates/engine/src/graphics.rs
+graphics.setCharStyle	GR-01	Character Style			"{""clip"":id?,""layer"":n|name?,""start"":char=0,""end"":char=len,""style"":{""font"":str,""fontStyle"":str,""size"":px,""color"":""#rrggbb"",""stroke"":bool,""strokeColor"":""#rrggbb"",""strokeWidth"":px,""strokeType"":""outer|center|inner"",""stroke2"":bool,""stroke2Color"":""#rrggbb"",""stroke2Width"":px,""stroke2Type"":""outer|center|inner"",""bold"":bool,""italic"":bool,""underline"":bool,""strikethrough"":bool,""tracking"":n,""baselineShift"":px,""caps"":""normal|all caps|small caps""},""clear"":bool? (remove styles from the range),""merge"":bool?,""begin"":bool? (start a new undo gesture)}"	crates/engine/src/graphic_templates.rs
+graphics.setResponsiveTime	GR-03	Responsive Design - Time			"{""clip"":id?,""introFrames"":n?,""outroFrames"":n? (or introSeconds / outroSeconds, or ticks as intro / outro)}"	crates/engine/src/graphic_templates.rs
+graphics.setRoll	GR-03	Roll/Crawl Options			"{""clip"":id?,""mode"":""off|roll|crawlLeft|crawlRight""?,""startOffScreen"":bool?,""endOffScreen"":bool?,""prerollFrames"":n?,""easeInFrames"":n?,""easeOutFrames"":n?,""postrollFrames"":n? (or …Seconds, or ticks as preroll/easeIn/easeOut/postroll)}"	crates/engine/src/graphic_templates.rs
+graphics.setText	GR-01	Edit Text			"{""clip"":id?,""layer"":n|name?,""text"":str,""merge"":bool? (coalesce with the previous Edit Text undo step)}"	crates/engine/src/graphics.rs
+graphics.setTextType	GR-01	Text Layer Type			"{""clip"":id?,""layer"":n|name?,""type"":""point|paragraph"" (point: no box, handles scale the text; paragraph: the text wraps in a box that handles resize)}"	crates/engine/src/graphics.rs
+graphics.template.apply	GR-07	Apply Graphics Template			"{""template"":id|name|path,""values"":{control id or name: value}?,""time"":ticks?,""track"":index?}"	crates/engine/src/graphic_templates.rs
+graphics.template.controls	GR-07	List Template Properties			"{""clip"":id?}"	crates/engine/src/graphic_templates.rs
+graphics.template.export	GR-07	Export As Motion Graphics Template…	Graphics and Titles		"{""clip"":id?,""name"":str,""category"":str=""My Templates"",""description"":str?,""controls"":[{""layer"":n|name,""param"":""text|fill_color|size|font|position|enabled|…"",""name"":str?,""kind"":""text|color|slider|checkbox|font|position""?,""min"":f64?,""max"":f64?,""id"":str?}]? (default: each text layer's text),""path"":str? (default: the user templates folder),""embedFonts"":bool=false,""fontLicense"":str?}"	crates/engine/src/graphic_templates.rs
+graphics.template.install	GR-07	Install Motion Graphics Template…	Graphics and Titles		"{""path"":str (a .fcgt file; Adobe .mogrt files are refused)}"	crates/engine/src/graphic_templates.rs
+graphics.template.list	GR-07	List Graphics Templates			"{""query"":str? (search names, categories, descriptions, tags),""category"":str?,""source"":""builtin|user""?}"	crates/engine/src/graphic_templates.rs
+graphics.template.remove	GR-07	Remove Graphics Template			"{""template"":id|name (a user template)}"	crates/engine/src/graphic_templates.rs
+graphics.template.set	GR-07	Set Template Property			"{""clip"":id?,""control"":id|name,""value"":any} or {""clip"":id?,""values"":{control: value}}"	crates/engine/src/graphic_templates.rs
+graphics.template.thumbnail	GR-07	Graphics Template Thumbnail			"{""template"":id|name|path,""width"":px=320,""path"":str? (write a PNG there; else returned as pngBase64)}"	crates/engine/src/graphic_templates.rs
+graphics.upgradeCaption	GR-02	Upgrade Caption to Graphic	Graphics and Titles		"{""captions"":[id]? (default: the selected captions, else the one under the playhead)}"	crates/engine/src/graphic_templates.rs
+graphics.upgradeToSourceGraphic	GR-02	Upgrade to Source Graphic	Graphics and Titles		"{""clip"":id?}"	crates/engine/src/graphic_templates.rs
+help.systemReport	UI-16	System Compatibility Report			{}	crates/engine/src/project_tools.rs
+history.clear	ED-59	Clear History			{}	crates/engine/src/commands.rs
+history.deleteRedoable	ED-59	Delete Redoable Actions			{}	crates/engine/src/commands.rs
+history.list	ED-59	List History			{}	crates/engine/src/commands.rs
+jobs.cancel	UI-12	Cancel Job			"{""job"":id}"	crates/engine/src/commands.rs
+jobs.list	UI-12	List Jobs			{}	crates/engine/src/commands.rs
+labels.deletePreset	IO-17	Delete Label Color Preset			"{""name"":str}"	crates/engine/src/settings/commands.rs
+labels.exportPreset	IO-17	Export Label Color Preset			"{""path"":str}"	crates/engine/src/settings/commands.rs
+labels.importPreset	IO-17	Import Label Color Preset			"{""path"":str}"	crates/engine/src/settings/commands.rs
+labels.presets	IO-17	Label Color Presets			{}	crates/engine/src/settings/commands.rs
+lumetri.applyMatch	CO-04	Apply Match			"{""clip"":id?,""referenceTime"":ticks?|""referenceFrame"":n?|""referenceTimecode"":str?,""faceDetection"":bool=true}"	crates/engine/src/color.rs
+lumetri.applyPreset	CO-04	Apply Color Grading Preset			"{""name"":str,""clips"":[id]?}"	crates/engine/src/color.rs
+lumetri.exportCube	CO-04	Export .cube…			"{""clip"":id?,""path"":str,""size"":n=33}"	crates/engine/src/color.rs
+lumetri.presetThumbnails	CO-04	Color Grading Preset Thumbnails			"{""folder"":str?,""names"":[str]?,""width"":n=160,""columns"":n=4,""path"":str?}"	crates/engine/src/color.rs
+lumetri.presets	CO-04	List Color Grading Presets			"{""folder"":str?}"	crates/engine/src/color.rs
+lumetri.setInputLut	CO-04	Set Input LUT			"{""clip"":id?,""lut"":""lib:<id>""|""builtin:<id>""|""""?,""path"":str?}"	crates/engine/src/color.rs
+lumetri.setLook	CO-04	Set Creative Look			"{""clip"":id?,""lut"":""lib:<id>""|""builtin:<id>""|""""?,""path"":str?}"	crates/engine/src/color.rs
+lumetri.setSection	CO-04	Toggle Color Grading Section			"{""clip"":id?,""section"":""basic""|""creative""|""curves""|""wheels""|""hsl""|""vignette"",""on"":bool?}"	crates/engine/src/color.rs
+lut.export	CO-05	Export LUT			"{""lut"":""lib:<id>""|""builtin:<id>"",""path"":str,""format"":""cube""|""3dl""?}"	crates/engine/src/color.rs
+lut.import	CO-05	Import LUT…			"{""path"":str,""name"":str?}"	crates/engine/src/color.rs
+lut.list	CO-05	List LUTs			{}	crates/engine/src/color.rs
+lut.remove	CO-05	Remove LUT			"{""id"":str}"	crates/engine/src/color.rs
+markers.add	ED-55	Add Marker	Markers	M	"{""target"":""program|source"",""time"":ticks?,""name"":str?,""comment"":str?,""color"":label_or_hex?,""author"":str?,""durationFrames"":i64?}"	crates/engine/src/commands.rs
+markers.addChapter	ED-55	Add Chapter Marker…	Markers		"{""time"":ticks?,""name"":str?,""comment"":str?,""color"":label_or_hex?,""author"":str?}"	crates/engine/src/project_tools.rs
+markers.addFlashCue	ED-55	Add Flash Cue Marker…	Markers		"{""time"":ticks?,""name"":str?,""comment"":str?,""color"":label_or_hex?,""author"":str?}"	crates/engine/src/project_tools.rs
+markers.addRange	ED-55	Add Range Marker	Markers	Ctrl+Shift+M	"{""time"":ticks?,""durationFrames"":i64=1s,""duration"":ticks?,""name"":str?,""comment"":str?,""color"":label_or_hex?,""author"":str?}"	crates/engine/src/sequence_tools.rs
+markers.addRangeInOut	ED-55	Add Range Marker to In and Out	Markers	Ctrl+M	"{""name"":str?,""comment"":str?,""color"":label_or_hex?,""author"":str?}"	crates/engine/src/sequence_tools.rs
+markers.clearAll	ED-55	Clear Markers	Markers	Cmd+Alt+Shift+M	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.clearCurrent	ED-55	Clear Selected Marker	Markers	Cmd+Alt+M	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.clearIn	ED-55	Clear In	Markers	Cmd+Shift+I	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.clearInOut	ED-55	Clear In and Out	Markers	Cmd+Shift+X	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.clearOut	ED-55	Clear Out	Markers	Cmd+Shift+O	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.copyPasteIncludesSequenceMarkers	ED-55	Copy Paste Includes Sequence Markers	Markers		"{""on"":bool?}"	crates/engine/src/sequence_tools.rs
+markers.delete	ED-55	Delete Markers			"{""target"":""program|source"",""sequence"":id?,""item"":id?,""marker"":id|""markers"":[id]}"	crates/engine/src/commands.rs
+markers.edit	ED-55	Edit Marker…			"{""target"":""program|source"",""sequence"":id?,""item"":id?,""marker"":id|""markers"":[id],""time"":ticks?,""frame"":i64?,""durationFrames"":i64?,""name"":str?,""comment"":str?,""author"":str?,""url"":str?,""color"":label_or_hex?,""kind"":""comment|chapter|segmentation|webLink|flashCue""?}"	crates/engine/src/commands.rs
+markers.exportCsv	ED-55	Export Markers as CSV…	Markers		"{""path"":str} (all markers in the active sequence)"	crates/engine/src/commands.rs
+markers.filterColors	ED-55	Marker Colour Filter			"{""hidden"":[label_or_hex]}|{""color"":label_or_hex,""visible"":bool?}"	crates/engine/src/sequence_tools.rs
+markers.goNext	ED-55	Go to Next Marker	Markers	Shift+M	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.goPrev	ED-55	Go to Previous Marker	Markers	Cmd+Shift+M	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.goToIn	ED-55	Go to In	Markers	Shift+I	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.goToOut	ED-55	Go to Out	Markers	Shift+O	"{""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.goToSplitAudioIn	ED-55	Audio In	Markers > Go to Split		"{""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.goToSplitAudioOut	ED-55	Audio Out	Markers > Go to Split		"{""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.goToSplitVideoIn	ED-55	Video In	Markers > Go to Split		"{""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.goToSplitVideoOut	ED-55	Video Out	Markers > Go to Split		"{""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.markClip	ED-55	Mark Clip	Markers	X	{}	crates/engine/src/commands.rs
+markers.markIn	ED-55	Mark In	Markers	I	"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.markOut	ED-55	Mark Out	Markers	O	"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/commands.rs
+markers.markSelection	ED-55	Mark Selection	Markers	/	{}	crates/engine/src/commands.rs
+markers.markSplitAudioIn	ED-55	Audio In	Markers > Mark Split		"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.markSplitAudioOut	ED-55	Audio Out	Markers > Mark Split		"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.markSplitVideoIn	ED-55	Video In	Markers > Mark Split		"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.markSplitVideoOut	ED-55	Video Out	Markers > Mark Split		"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?,""target"":""program|source""}"	crates/engine/src/sequence_tools.rs
+markers.rippleSequenceMarkers	ED-55	Ripple Sequence Markers	Markers		"{""on"":bool?}"	crates/engine/src/sequence_tools.rs
+markers.showAllMarkerColors	ED-55	Show All Marker Colors	Markers		{}	crates/engine/src/sequence_tools.rs
+masks.add	FX-10	Create Mask			"{""clip"":id?,""effect"":index|id?=""opacity"",""shape"":""ellipse""|""polygon""|""rectangle""|""bezier"",""path"":[[x,y]…]|{vertices}?,""center"":[x,y]?,""size"":[w,h]?,""cornerRadius"":px?}"	crates/engine/src/masks.rs
+masks.addVertex	FX-10	Add Mask Vertex			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""after"":n,""at"":[x,y]}"	crates/engine/src/masks.rs
+masks.list	FX-10	List Masks			"{""clip"":id?,""time"":ticks?}"	crates/engine/src/masks.rs
+masks.moveVertex	FX-10	Move Mask Vertex			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""vertex"":n|""vertices"":[n],""handle"":""point""|""in""|""out""?,""to"":[x,y]?|""delta"":[dx,dy]?,""breakHandles"":bool?,""merge"":key?}"	crates/engine/src/masks.rs
+masks.remove	FX-10	Delete Mask			"{""clip"":id?,""effect"":index|id?,""mask"":n?}"	crates/engine/src/masks.rs
+masks.removeVertex	FX-10	Delete Mask Vertex			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""vertex"":n}"	crates/engine/src/masks.rs
+masks.roundCorners	FX-10	Round Mask Corners			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""radius"":px,""vertices"":[n]?}"	crates/engine/src/masks.rs
+masks.select	FX-10	Select Mask			"{""clip"":id,""effect"":index|id,""mask"":n}|{""none"":true}"	crates/engine/src/masks.rs
+masks.set	FX-10	Change Mask			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""name"":str?,""inverted"":bool?,""mode"":""none|add|subtract|intersect|lighten|darken|difference""?,""trackMethod"":""position|positionRotation|positionScaleRotation""?,""feather"":px?,""opacity"":pct?,""expansion"":px?,""path"":path?,""time"":ticks?,""merge"":key?}"	crates/engine/src/masks.rs
+masks.toggleVertexSmooth	FX-10	Convert Mask Vertex			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""vertex"":n}"	crates/engine/src/masks.rs
+masks.track	FX-10	Track Selected Mask			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""direction"":""forward""|""backward""?,""frames"":n?,""method"":""position|positionRotation|positionScaleRotation""?,""wait"":bool?}"	crates/engine/src/masks.rs
+masks.translate	FX-10	Move Mask			"{""clip"":id?,""effect"":index|id?,""mask"":n?,""delta"":[dx,dy],""merge"":key?}"	crates/engine/src/masks.rs
+media.attachProxies	IO-24	Attach Proxies…	Clip > Proxy		"{""item"":id,""path"":str}|{""items"":[id],""paths"":[str]},""force"":bool=false"	crates/engine/src/proxies.rs
+media.autoRelink	IO-23	Relink Moved Media			"{""from"":str,""to"":str}|{""folder"":str} + match options"	crates/engine/src/relink.rs
+media.colorInfo	CO-01	Media Colour Info			"{""item"":id}"	crates/engine/src/color.rs
+media.createProxies	IO-24	Create Proxies…	Clip > Proxy		"{""items"":[id]?,""preset"":""prores_proxy_quarter|prores_proxy_half|prores_lt_half|h264_quarter|h264_half""?,""destination"":str?,""attach"":bool=true,""wait"":bool=false}"	crates/engine/src/proxies.rs
+media.detachProxies	IO-24	Detach Proxies	Clip > Proxy		"{""items"":[id]?}"	crates/engine/src/proxies.rs
+media.findMissing	IO-23	Find Missing Media			{}	crates/engine/src/relink.rs
+media.linkMedia	IO-23	Link Media…	File		{}  (opens the Link Media dialog; agents use media.relink / media.autoRelink)	crates/engine/src/relink.rs
+media.makeOffline	IO-23	Make Offline…	File		"{""items"":[id]?,""deleteFiles"":bool=false}"	crates/engine/src/project_tools.rs
+media.offlineAll	IO-23	Offline All			{}  (mark every missing file offline, saved with the project, and close the Link Media dialog)	crates/engine/src/relink.rs
+media.proxyPresets	IO-24	Proxy Presets			{}	crates/engine/src/proxies.rs
+media.reconnectFullRes	IO-24	Reconnect Full Resolution Media…	Clip > Proxy		"{""item"":id,""path"":str}"	crates/engine/src/proxies.rs
+media.refreshChanged	IO-23	Refresh Changed Media			{}	crates/engine/src/relink.rs
+media.relink	IO-23	Relink Media			"{""item"":id,""path"":str,""force"":bool=false,""relinkOthers"":bool=true,""alignTimecode"":bool=false,""match"":{""fileName"":bool,""extension"":bool,""clipId"":bool,""duration"":bool,""mediaStart"":bool,""metadata"":bool}?}"	crates/engine/src/relink.rs
+media.replaceFootage	IO-23	Replace Footage…			"{""item"":id,""path"":str}"	crates/engine/src/relink.rs
+media.search	IO-23	Search for Media			"{""folder"":str,""item"":id?,""exactName"":bool=true}"	crates/engine/src/relink.rs
+media.status	IO-23	Media Status			"{""item"":id?}"	crates/engine/src/relink.rs
+media.toggleProxies	IO-24	Toggle Proxies	View		"{""enabled"":bool?}"	crates/engine/src/proxies.rs
+mediaBrowser.clearRecent	IO-04	Clear Recent Directories			{}	crates/engine/src/media_browser.rs
+mediaBrowser.favorite	IO-04	Add to Favorites			"{""path"":str?,""remove"":bool?}"	crates/engine/src/media_browser.rs
+mediaBrowser.import	IO-04	Import			"{""paths"":[str]?,""bin"":binId?,""imageSequence"":bool?}"	crates/engine/src/media_browser.rs
+mediaBrowser.list	IO-04	List Directory			"{""path"":str?,""fileTypes"":str?}"	crates/engine/src/media_browser.rs
+mediaBrowser.navigate	IO-04	Go to Directory			"{""path"":str} | {""back"":true} | {""forward"":true} | {""up"":true}"	crates/engine/src/media_browser.rs
+mediaBrowser.openInSource	IO-04	Open In Source Monitor			"{""path"":str?}"	crates/engine/src/media_browser.rs
+mediaBrowser.probe	IO-04	Media File Properties			"{""path"":str}"	crates/engine/src/media_browser.rs
+mediaBrowser.roots	IO-04	Media Browser Locations			{}	crates/engine/src/media_browser.rs
+mediaBrowser.select	IO-04	Select Files			"{""paths"":[str]}"	crates/engine/src/media_browser.rs
+mediaBrowser.settings	IO-04	Media Browser Settings			"{""fileTypes"":""all|video|audio|image|project|caption|<ext>""?,""view"":""list|thumbnails""?,""columns"":[str]?,""columnWidths"":{str:f32}?,""importAsImageSequence"":bool?,""hoverScrub"":bool?,""thumbnailSize"":f32?}"	crates/engine/src/media_browser.rs
+mediaCache.clean	IO-29	Delete Media Cache Files			"{""all"":bool?}"	crates/engine/src/settings/commands.rs
+mediaCache.info	IO-29	Media Cache Info			{}	crates/engine/src/settings/commands.rs
+metadata.get	IO-19	Get Metadata			"{""item"":id?,""clip"":id?}"	crates/engine/src/panels.rs
+metadata.set	IO-19	Edit Metadata			"{""item"":id?,""clip"":id?,""field"":""Name|Label|Description|Scene|Shot|Log Note|Comment|Tape Name|Client|Camera Angle|…"",""value"":str} | {""item"":id?,""fields"":{name:str}}"	crates/engine/src/panels.rs
+mixer.addInsert	AU-06	Add Track Effect			"{""strip"":""A1""|""S1""|""Mix""|id,""effect"":str,""slot"":n?,""postFader"":bool?}"	crates/engine/src/mixer.rs
+mixer.addSend	AU-06	Add Send			"{""strip"":""A1""|""S1""|id,""target"":""S1""|id,""levelDb"":f64?,""preFader"":bool?,""pan"":f64?}"	crates/engine/src/mixer.rs
+mixer.addSubmix	AU-06	Add Audio Submix Track	Sequence		"{""name"":str?,""channels"":""Mono|Stereo|5.1""?}"	crates/engine/src/mixer.rs
+mixer.clearLane	AU-06	Clear Track Keyframes			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?}"	crates/engine/src/mixer.rs
+mixer.deleteKeyframe	AU-06	Delete Track Keyframe			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?,""time"":ticks}"	crates/engine/src/mixer.rs
+mixer.deleteSubmix	AU-06	Delete Submix Track			"{""strip"":""S1""|id}"	crates/engine/src/mixer.rs
+mixer.inspect	AU-06	Inspect Audio Track Mixer			"{""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.moveKeyframe	AU-06	Move Track Keyframe			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?,""time"":ticks,""newTime"":ticks?,""value"":f64?}"	crates/engine/src/mixer.rs
+mixer.recordStart	AU-06	Start Automation Pass			"{""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.recordStop	AU-06	Write Automation			"{""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.release	AU-06	Release Mixer Control			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?,""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.removeInsert	AU-06	Remove Track Effect			"{""strip"":""A1""|""S1""|""Mix""|id,""slot"":n}"	crates/engine/src/mixer.rs
+mixer.removeSend	AU-06	Remove Send			"{""strip"":""A1""|""S1""|id,""send"":n}"	crates/engine/src/mixer.rs
+mixer.setInsert	AU-06	Track Effect Settings			"{""strip"":""A1""|""S1""|""Mix""|id,""slot"":n,""enabled"":bool?,""postFader"":bool?,""params"":{id:value}?}"	crates/engine/src/mixer.rs
+mixer.setKeyframe	AU-06	Add Track Keyframe			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?,""time"":ticks?,""value"":f64}"	crates/engine/src/mixer.rs
+mixer.setSend	AU-06	Send Settings			"{""strip"":""A1""|""S1""|id,""send"":n,""levelDb"":f64?,""pan"":f64?,""preFader"":bool?,""muted"":bool?,""target"":""S1""?}"	crates/engine/src/mixer.rs
+mixer.setStrip	AU-06	Track Mixer Settings			"{""strip"":""A1""|""S1""|""Mix""|id,""name"":str?,""volumeDb"":f64?,""pan"":f64?,""muted"":bool?,""solo"":bool?,""recordArm"":bool?,""soloSafe"":bool?,""mode"":""Off|Read|Latch|Touch|Write""?,""output"":""Mix""|""S1""?,""inputMap"":""Stereo|Left|Right|Swap|Mono""?,""channels"":""Mono|Stereo|5.1""?}"	crates/engine/src/mixer.rs
+mixer.setValue	AU-06	Set Mixer Control			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":""volume|pan|mute|send.<i>.level|fx.<slot>.<param>"",""value"":f64,""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.touch	AU-06	Touch Mixer Control			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":""volume|pan|mute|send.<i>.level|fx.<slot>.<param>"",""value"":f64,""time"":ticks?}"	crates/engine/src/mixer.rs
+mixer.writeAutomation	AU-06	Write Automation Points			"{""strip"":""A1""|""S1""|""Mix""|id,""lane"":str?,""points"":[[ticks,value]],""tolerance"":f64?}"	crates/engine/src/mixer.rs
+multicam.audioFollowsVideo	ED-38	Multi-Camera Audio Follows Video			"{""enabled"":bool?}"	crates/engine/src/multicam.rs
+multicam.autoAdjustQuality	ED-38	Auto-Adjust Multi-Camera Playback Quality			"{""enabled"":bool?}"	crates/engine/src/multicam.rs
+multicam.cut	ED-38	Cut to Camera			"{""camera"":1..16|""angle"":0-based,""time"":ticks?,""videoOnly"":bool?}"	crates/engine/src/multicam.rs
+multicam.cutToCamera	ED-38	Cut to Camera			"{""camera"":1..16|""angle"":0-based,""time"":ticks?,""videoOnly"":bool?}"	crates/engine/src/multicam.rs
+multicam.cutToCamera1	ED-38	Cut to Camera 1		Ctrl+1	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera2	ED-38	Cut to Camera 2		Ctrl+2	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera3	ED-38	Cut to Camera 3		Ctrl+3	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera4	ED-38	Cut to Camera 4		Ctrl+4	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera5	ED-38	Cut to Camera 5		Ctrl+5	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera6	ED-38	Cut to Camera 6		Ctrl+6	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera7	ED-38	Cut to Camera 7		Ctrl+7	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera8	ED-38	Cut to Camera 8		Ctrl+8	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.cutToCamera9	ED-38	Cut to Camera 9		Ctrl+9	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.editCameras	ED-38	Edit Cameras…			"{""sequence"":id?,""cameras"":[{""angle"":0-based,""name"":str?,""enabled"":bool?}]?,""audio"":""camera1|all|switch""?}"	crates/engine/src/multicam.rs
+multicam.grid	ED-38	Multi-Camera Grid			"{""time"":ticks?,""playing"":bool?,""cellPixels"":f32?,""playbackScale"":f32?}"	crates/engine/src/multicam.rs
+multicam.gridLayout	ED-38	Multi-Camera Layout			"{""layout"":""auto|2x2|3x3|4x4""}"	crates/engine/src/multicam.rs
+multicam.inspect	ED-38	Inspect Multi-Camera			"{""time"":ticks?}"	crates/engine/src/multicam.rs
+multicam.nextPage	ED-38	Next Multi-Camera Page			{}	crates/engine/src/multicam.rs
+multicam.page	ED-38	Multi-Camera Page			"{""page"":0-based|""next""|""prev""}"	crates/engine/src/multicam.rs
+multicam.prevPage	ED-38	Previous Multi-Camera Page			{}	crates/engine/src/multicam.rs
+multicam.recordStart	ED-38	Start Multi-Camera Recording			"{""time"":ticks?}"	crates/engine/src/multicam.rs
+multicam.recordStop	ED-38	Stop Multi-Camera Recording			"{""time"":ticks?}"	crates/engine/src/multicam.rs
+multicam.selectCamera1	ED-38	Select Camera 1		1	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera2	ED-38	Select Camera 2		2	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera3	ED-38	Select Camera 3		3	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera4	ED-38	Select Camera 4		4	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera5	ED-38	Select Camera 5		5	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera6	ED-38	Select Camera 6		6	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera7	ED-38	Select Camera 7		7	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera8	ED-38	Select Camera 8		8	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectCamera9	ED-38	Select Camera 9		9	"{""videoOnly"":bool?}"	crates/engine/src/shortcut_presets.rs
+multicam.selectionTopDown	ED-38	Multi-Camera Selection Top Down			"{""enabled"":bool?}"	crates/engine/src/multicam.rs
+multicam.showPreviewMonitor	ED-38	Show Multi-Camera Preview Monitor			"{""enabled"":bool?}"	crates/engine/src/multicam.rs
+multicam.switchAngle	ED-38	Switch Multi-Camera Angle			"{""camera"":1..16 (shown order)|""angle"":0-based,""clips"":[id]?,""time"":ticks?,""videoOnly"":bool?,""audioOnly"":bool?}"	crates/engine/src/multicam.rs
+multicam.transmitView	ED-38	Transmit Multi-Camera View			"{""enabled"":bool?}"	crates/engine/src/multicam.rs
+perf.stats	UI-16	Performance Statistics			{}	crates/engine/src/commands.rs
+playhead.end	ED-05	Go to Sequence End		End	{}	crates/engine/src/commands.rs
+playhead.nextEdit	ED-05	Go to Next Edit Point		Down	{}	crates/engine/src/commands.rs
+playhead.nextEditAnyTrack	ED-05	Go to Next Edit Point on Any Track		Shift+Down	{}	crates/engine/src/keyboard.rs
+playhead.prevEdit	ED-05	Go to Previous Edit Point		Up	{}	crates/engine/src/commands.rs
+playhead.prevEditAnyTrack	ED-05	Go to Previous Edit Point on Any Track		Shift+Up	{}	crates/engine/src/keyboard.rs
+playhead.selectedClipEnd	ED-05	Go to Selected Clip End		Shift+End	{}	crates/engine/src/keyboard.rs
+playhead.selectedClipStart	ED-05	Go to Selected Clip Start		Shift+Home	{}	crates/engine/src/keyboard.rs
+playhead.set	ED-05	Set Playhead			"{""time"":ticks|""frame"":i64|""seconds"":f64|""timecode"":str}"	crates/engine/src/commands.rs
+playhead.start	ED-05	Go to Sequence Start		Home	{}	crates/engine/src/commands.rs
+playhead.step	ED-05	Step Frames			"{""frames"":i64}"	crates/engine/src/commands.rs
+playhead.stepBack	ED-05	Step Back One Frame		Left	{}	crates/engine/src/commands.rs
+playhead.stepBack5	ED-05	Step Back Five Frames		Shift+Left	{}	crates/engine/src/commands.rs
+playhead.stepForward	ED-05	Step Forward One Frame		Right	{}	crates/engine/src/commands.rs
+playhead.stepForward5	ED-05	Step Forward Five Frames		Shift+Right	{}	crates/engine/src/commands.rs
+prefs.get	UI-14	Get Preferences			"{""key"":str?}"	crates/engine/src/commands.rs
+prefs.reset	UI-14	Reset Preferences			"{""category"":str?}"	crates/engine/src/commands.rs
+prefs.schema	UI-14	Settings Schema			"{""category"":str?}"	crates/engine/src/settings/commands.rs
+prefs.set	UI-14	Set Preferences			"{""key"":str,""value"":any}|{""values"":{key:value}}"	crates/engine/src/autosave.rs
+presets.apply	FX-18	Apply Preset			"{""preset"":str,""clips"":[id]?}"	crates/engine/src/presets.rs
+presets.delete	FX-18	Delete Preset			"{""name"":str}"	crates/engine/src/presets.rs
+presets.export	FX-18	Export Presets			"{""path"":str,""names"":[str]?}"	crates/engine/src/presets.rs
+presets.import	FX-18	Import Presets			"{""path"":str}"	crates/engine/src/commands.rs
+presets.list	FX-18	List Effect Presets			{}	crates/engine/src/presets.rs
+presets.rename	FX-18	Rename Preset			"{""name"":str,""to"":str}"	crates/engine/src/presets.rs
+presets.save	FX-18	Save Preset			"{""clip"":id?,""effects"":[index]?,""name"":str,""description"":str?,""keyframes"":""scale""|""anchorIn""|""anchorOut""|""none""?}"	crates/engine/src/presets.rs
+presets.scan	FX-18	Scan Preset Library			{}	crates/engine/src/presets.rs
+project.columns.list	ED-03	List Project Columns			{}	crates/engine/src/project_panel.rs
+project.columns.resize	ED-03	Resize Column			"{""column"":str,""width"":f32}"	crates/engine/src/project_panel.rs
+project.columns.set	ED-03	Metadata Display			"{""columns"":[name|{""name"":str,""width"":f32}]}"	crates/engine/src/project_panel.rs
+project.delete	ED-03	Clear		Delete	"{""items"":[id]?}"	crates/engine/src/commands.rs
+project.deleteSearchBin	IO-16	Delete Search Bin			"{""bin"":id}"	crates/engine/src/project_tools.rs
+project.deselectAll	ED-03	Deselect All Project Items			{}	crates/engine/src/project_panel.rs
+project.editSearchBin	IO-16	Edit Search Bin			"{""bin"":id,""name"":str?,""column"":str?,""operator"":str?,""text"":str?,""rows"":[..]?,""matchAll"":bool?,""caseSensitive"":bool?}"	crates/engine/src/project_tools.rs
+project.freeform.alignToGrid	ED-03	Align to Grid			"{""bin"":binId?,""grid"":f32?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.arrangements	ED-03	List Arrangements			"{""bin"":binId?}"	crates/engine/src/project_panel.rs
+project.freeform.deleteArrangement	ED-03	Delete Arrangement			"{""name"":str,""bin"":binId?}"	crates/engine/src/project_panel.rs
+project.freeform.layout	ED-03	Freeform Layout			"{""bin"":binId?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.move	ED-03	Move Clip Cards			"{""items"":[id]?,""x"":f32,""y"":f32,""snap"":bool?,""width"":f32?} | {""positions"":{""<id>"":[x,y]},""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.options	ED-03	Freeform View Options…			"{""grid"":f32?,""snap"":bool?,""showNames"":bool?,""showDurations"":bool?,""cardSize"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.reset	ED-03	Reset to Grid			"{""bin"":binId?}"	crates/engine/src/project_panel.rs
+project.freeform.resize	ED-03	Clip Size			"{""items"":[id]?,""size"":f32?,""step"":1|-1?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.restoreArrangement	ED-03	Restore Arrangement			"{""name"":str,""bin"":binId?}"	crates/engine/src/project_panel.rs
+project.freeform.saveArrangement	ED-03	Save Arrangement			"{""name"":str,""bin"":binId?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.stack	ED-03	Stack Clips			"{""items"":[id]?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.freeform.unstack	ED-03	Unstack Clips			"{""items"":[id]?,""width"":f32?}"	crates/engine/src/project_panel.rs
+project.ingestSettings	IO-04	Ingest Settings…	File > Project Settings		"{""enabled"":bool?,""action"":""copy|transcode|createProxies|copyAndCreateProxies""?,""destination"":str?,""preset"":str?}"	crates/engine/src/project_tools.rs
+project.inspect	ED-03	Inspect Project			{}	crates/engine/src/commands.rs
+project.items	ED-03	List Project Panel Rows			"{""bin"":binId?,""recursive"":bool?}"	crates/engine/src/project_panel.rs
+project.matteColor	ED-03	Color Matte Color…			"{""item"":id?,""color"":""#rrggbb""}"	crates/engine/src/commands.rs
+project.moveToBin	ED-03	Move to Bin			"{""items"":[id|binId]?,""bin"":binId|null}"	crates/engine/src/commands.rs
+project.notes	ED-03	Get Project Notes			{}	crates/engine/src/panels.rs
+project.renameBin	ED-03	Rename Bin			"{""bin"":binId,""name"":str}"	crates/engine/src/project_panel.rs
+project.searchBinItems	IO-16	Search Bin Contents			"{""bin"":id}"	crates/engine/src/project_tools.rs
+project.select	ED-03	Select Project Items			"{""items"":[id]}"	crates/engine/src/commands.rs
+project.selectAll	ED-03	Select All Project Items			"{""bin"":binId?,""expanded"":[binId]?}"	crates/engine/src/project_panel.rs
+project.setMarks	ED-03	Set Source In/Out			"{""item"":id,""in"":ticks?|null,""out"":ticks?|null}"	crates/engine/src/commands.rs
+project.setNotes	ED-03	Edit Project Notes			"{""text"":str,""merge"":str?}"	crates/engine/src/panels.rs
+project.sort	ED-03	Sort Project Items			"{""column"":str,""descending"":bool?}"	crates/engine/src/project_panel.rs
+project.view.get	ED-03	Project Panel View			{}	crates/engine/src/project_panel.rs
+project.view.set	ED-03	Set Project Panel View			"{""view"":""list|icon|freeform""?,""iconSize"":f32?,""fontSize"":""small|medium|large|extraLarge""?,""previewArea"":bool?,""thumbnails"":bool?,""thumbnailsShowEffects"":bool?,""hoverScrub"":bool?,""thumbnailControlsAllDevices"":bool?,""iconSort"":column|{""column"":str,""descending"":bool}?}"	crates/engine/src/project_panel.rs
+project.viewPreset.delete	ED-03	Delete View Preset			"{""slot"":1..10}"	crates/engine/src/project_panel.rs
+project.viewPreset.list	ED-03	List View Presets			{}	crates/engine/src/project_panel.rs
+project.viewPreset.rename	ED-03	Rename View Preset			"{""slot"":1..10,""name"":str}"	crates/engine/src/project_panel.rs
+project.viewPreset.restore	ED-03	Restore View Preset			"{""slot"":1..10}"	crates/engine/src/project_panel.rs
+project.viewPreset.save	ED-03	Save Current View Preset			"{""slot"":1..10?,""name"":str?}"	crates/engine/src/project_panel.rs
+project.viewPreset.saveAs	ED-03	Save As New View Preset			"{""name"":str?,""slot"":1..10?}"	crates/engine/src/project_panel.rs
+scopes.read	CO-09	Read Video Scopes			"{""scopes"":[""waveform"",""parade"",""histogram"",""vectorscopeYuv"",""vectorscopeHls""]?,""waveformType"":""rgb|luma|yc|ycNoChroma""?,""paradeType"":""rgb|yuv|rgbWhite""?,""colorSpace"":""auto|601|709|2100""?,""clamp"":bool=true,""columns"":n=8,""peaks"":n=8,""bins"":bool=true,""scale"":0.5,""time"":ticks?|""frame""|""seconds""|""timecode""}"	crates/engine/src/scopes.rs
+sequence.addEdit	ED-19	Add Edit	Sequence	Cmd+K	"{""time"":ticks?}"	crates/engine/src/autosave.rs
+sequence.addEditAllTracks	ED-19	Add Edit to All Tracks	Sequence	Cmd+Shift+K	"{""time"":ticks?}"	crates/engine/src/commands.rs
+sequence.addTracks	ED-11	Add Tracks…	Sequence		"{""video"":n=1,""audio"":n=0,""submix"":n=0,""videoAfter"":""first""|""V2""|n?,""audioAfter"":""first""|""A2""|n?,""submixAfter"":""first""|""S1""|n?,""audioType"":""standard|5.1|adaptive|mono""?,""submixType"":""stereo|5.1|adaptive|mono""?}"	crates/engine/src/commands.rs
+sequence.applyAudioTransition	AU-12	Apply Audio Transition	Sequence	Cmd+Shift+D	"{""clip"":id?,""effect"":""constant_power|Constant Power|…""?,""frames"":i64?,""edge"":""in""|""out""?,""align"":""center""|""start""|""end""?,""params"":{param:value}?,""reverse"":bool?}"	crates/engine/src/commands.rs
+sequence.applyVideoTransition	FX-16	Apply Video Transition	Sequence	Cmd+D	"{""clip"":id?,""effect"":""cross_dissolve|Cross Dissolve|…""?,""frames"":i64?,""edge"":""in""|""out""?,""align"":""center""|""start""|""end""?,""params"":{param:value}?,""reverse"":bool?}"	crates/engine/src/commands.rs
+sequence.close	ED-10	Close Sequence			"{""item"":id?}"	crates/engine/src/commands.rs
+sequence.closeGap	ED-20	Close Gap	Sequence		"{""track"":""V1""|id?,""time"":ticks?}"	crates/engine/src/commands.rs
+sequence.closeOthers	ED-10	Close Other Timeline Panels			"{""item"":id?}"	crates/engine/src/commands.rs
+sequence.colorSettings	CO-02	Color Management…	Sequence		"{""workingSpace"":""rec709""|""rec2100-pq""|""rec2100-hlg""?,""wideGamut"":bool?,""autoToneMap"":bool?}"	crates/engine/src/color.rs
+sequence.deleteRenderFiles	IO-32	Delete Render Files	Sequence		{}	crates/engine/src/commands.rs
+sequence.deleteRenderFilesInToOut	IO-32	Delete Render Files In to Out	Sequence		{}	crates/engine/src/commands.rs
+sequence.deleteTrack	ED-11	Delete Track			"{""track"":""V3""|id}"	crates/engine/src/commands.rs
+sequence.deleteTracks	ED-11	Delete Tracks…	Sequence		"{""video"":""empty""|""V2""|id?,""audio"":""empty""|""A2""|id?,""captions"":""empty""|""C2""|id?}"	crates/engine/src/project_tools.rs
+sequence.duplicateFrames	ED-10	List Duplicate Frames			{}	crates/engine/src/sequence_tools.rs
+sequence.extract	ED-20	Extract	Sequence	'	{}	crates/engine/src/commands.rs
+sequence.goToNextGap	ED-10	Next in Sequence	Sequence > Go to Gap	Shift+;	{}	crates/engine/src/project_tools.rs
+sequence.goToNextGapInTrack	ED-10	Next in Track	Sequence > Go to Gap		"{""track"":""V1""|id?}"	crates/engine/src/project_tools.rs
+sequence.goToPrevGap	ED-10	Previous in Sequence	Sequence > Go to Gap	Cmd+Shift+;	{}	crates/engine/src/project_tools.rs
+sequence.goToPrevGapInTrack	ED-10	Previous in Track	Sequence > Go to Gap		"{""track"":""V1""|id?}"	crates/engine/src/project_tools.rs
+sequence.inspect	ED-10	Inspect Sequence			"{""item"":id?}"	crates/engine/src/commands.rs
+sequence.joinThroughEdits	ED-19	Join Through Edits			"{""clips"":[id]?,""cut"":[id,id]?,""all"":bool?}"	crates/engine/src/sequence_tools.rs
+sequence.lift	ED-20	Lift	Sequence	;	{}	crates/engine/src/commands.rs
+sequence.linkedSelection	ED-10	Linked Selection	Sequence		"{""on"":bool?}"	crates/engine/src/commands.rs
+sequence.makeSubsequence	ED-24	Make Subsequence	Sequence	Shift+U	"{""name"":str?}"	crates/engine/src/project_tools.rs
+sequence.matchFrame	ED-52	Match Frame	Sequence	F	{}	crates/engine/src/commands.rs
+sequence.moveTab	ED-10	Move Sequence Tab			"{""item"":id?,""index"":int}"	crates/engine/src/commands.rs
+sequence.nestSequences	ED-24	Insert and overwrite sequences as nests or individual clips			"{""on"":bool?}"	crates/engine/src/commands.rs
+sequence.normalizeMixTrack	ED-10	Normalize Mix Track…	Sequence		"{""db"":f64=0}"	crates/engine/src/project_tools.rs
+sequence.open	ED-10	Open in Timeline			"{""item"":id}"	crates/engine/src/commands.rs
+sequence.removeTransition	FX-16	Clear Transition			"{""transitions"":[id]?}"	crates/engine/src/commands.rs
+sequence.renderAudio	IO-32	Render Audio	Sequence		"{""wait"":bool=false}"	crates/engine/src/commands.rs
+sequence.renderBar	IO-32	Render Bar			{}	crates/engine/src/commands.rs
+sequence.renderEffectsInToOut	IO-32	Render Effects In to Out	Sequence	Enter	"{""wait"":bool=false}"	crates/engine/src/commands.rs
+sequence.renderInToOut	IO-32	Render In to Out	Sequence		"{""wait"":bool=false}"	crates/engine/src/commands.rs
+sequence.renderSelection	IO-32	Render Selection	Sequence		"{""wait"":bool=false}"	crates/engine/src/commands.rs
+sequence.revealInProject	ED-10	Reveal Sequence in Project			"{""item"":id?}"	crates/engine/src/commands.rs
+sequence.revealNested	ED-24	Reveal Nested Sequence		Cmd+Alt+F	{}	crates/engine/src/keyboard.rs
+sequence.reverseMatchFrame	ED-52	Reverse Match Frame	Sequence	Shift+R	{}	crates/engine/src/project_tools.rs
+sequence.selectionFollowsPlayhead	ED-10	Selection Follows Playhead	Sequence		"{""on"":bool?}"	crates/engine/src/project_tools.rs
+sequence.setTransition	FX-16	Edit Transition Settings			"{""transition"":id,""params"":{param:value}?,""reverse"":bool?,""reset"":bool?,""duration"":ticks?|""frames"":n?,""align"":""center""|""start""|""end""?|""start"":ticks?,""merge"":bool?,""begin"":bool?}"	crates/engine/src/commands.rs
+sequence.setWorkArea	ED-10	Set Work Area			"{""start"":ticks,""end"":ticks}"	crates/engine/src/commands.rs
+sequence.setWorkAreaIn	ED-10	Set Work Area Bar In Point			"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?}"	crates/engine/src/commands.rs
+sequence.setWorkAreaOut	ED-10	Set Work Area Bar Out Point			"{""time"":ticks?,""frame"":i64?,""seconds"":f64?,""timecode"":str?}"	crates/engine/src/commands.rs
+sequence.settings	ED-10	Sequence Settings…	Sequence		"{""width"":u32?,""height"":u32?,""fps"":f64?,""name"":str?,""sampleRate"":u32?,""mix"":""Stereo|Mono|5.1|Adaptive""?,""dropFrame"":bool?,""videoDisplay"":""timecode|feet35|feet16|frames""?,""maxRenderQuality"":bool?,""workingSpace"":""rec709""|""rec2100-pq""|""rec2100-hlg""?,""wideGamut"":bool?,""autoToneMap"":bool?,""scaleMotion"":bool=false}"	crates/engine/src/commands.rs
+sequence.showDuplicateFrameMarkers	ED-10	Show Duplicate Frame Markers			"{""on"":bool?}"	crates/engine/src/sequence_tools.rs
+sequence.showThroughEdits	ED-10	Show Through Edits	Sequence		"{""on"":bool?}"	crates/engine/src/project_tools.rs
+sequence.simplify	ED-51	Simplify Sequence…	Sequence		"{""name"":str?,""removeDisabled"":bool=true,""removeEmptyTracks"":bool=true,""closeGaps"":bool=false,""moveClipsDown"":bool=false,""removeVideoEffects"":bool=false,""removeAudioEffects"":bool=false,""removeText"":bool=false,""keep"":""both|video|audio""?}"	crates/engine/src/project_tools.rs
+sequence.snap	ED-10	Snap in Timeline	Sequence	S	"{""on"":bool?}"	crates/engine/src/commands.rs
+sequence.throughEdits	ED-10	List Through Edits			{}	crates/engine/src/sequence_tools.rs
+sequence.transcribe	ED-41	Transcribe Sequence…	Sequence		"{""track"":""mix""|""A1""|id?,""language"":""en|auto""?,""diarize"":bool?,""maxSpeakers"":n?,""model"":str?}"	crates/engine/src/project_tools.rs
+sequence.workAreaBar	ED-10	Work Area Bar			"{""show"":bool?}"	crates/engine/src/commands.rs
+shortcuts.audit	UI-04	Shortcut Audit			{}	crates/engine/src/shortcuts.rs
+shortcuts.clear	UI-04	Clear Shortcut			"{""command"":id,""keys"":str?,""panel"":str?}"	crates/engine/src/shortcuts.rs
+shortcuts.conflicts	UI-04	Shortcut Conflicts			"{""platform"":""mac|windows|linux""?}"	crates/engine/src/shortcuts.rs
+shortcuts.deletePreset	UI-04	Delete Shortcut Preset			"{""name"":str}"	crates/engine/src/shortcuts.rs
+shortcuts.export	UI-04	Export Keyboard Shortcuts			"{""path"":str}"	crates/engine/src/shortcuts.rs
+shortcuts.forKey	UI-04	Shortcuts on a Key			"{""key"":""K"",""platform"":str?}"	crates/engine/src/shortcuts.rs
+shortcuts.get	UI-04	Get Shortcuts of a Command			"{""command"":id,""platform"":str?}"	crates/engine/src/shortcuts.rs
+shortcuts.import	UI-04	Import Keyboard Shortcuts			"{""path"":str,""activate"":bool=true}"	crates/engine/src/shortcuts.rs
+shortcuts.list	UI-04	List Keyboard Shortcuts			"{""query"":str?,""panel"":str?,""assigned"":bool?,""platform"":""mac|windows|linux""?}"	crates/engine/src/shortcuts.rs
+shortcuts.loadPreset	UI-04	Load Shortcut Preset			"{""name"":str}"	crates/engine/src/shortcuts.rs
+shortcuts.presets	UI-04	Keyboard Shortcut Presets			{}	crates/engine/src/shortcuts.rs
+shortcuts.redo	UI-04	Redo Shortcut Change			{}	crates/engine/src/shortcuts.rs
+shortcuts.resolve	UI-04	Resolve Shortcut			"{""keys"":str,""panel"":str?,""platform"":str?}"	crates/engine/src/shortcuts.rs
+shortcuts.savePreset	UI-04	Save Shortcut Preset As			"{""name"":str}"	crates/engine/src/shortcuts.rs
+shortcuts.set	UI-04	Assign Shortcut			"{""command"":id,""keys"":""Cmd+Shift+K"",""panel"":str?,""add"":bool?,""keepConflicts"":bool?}"	crates/engine/src/shortcuts.rs
+shortcuts.undo	UI-04	Undo Shortcut Change			{}	crates/engine/src/shortcuts.rs
+source.close	ED-04	Close			{}	crates/engine/src/commands.rs
+source.closeAll	ED-04	Close All			{}	crates/engine/src/commands.rs
+source.insert	ED-15	Insert	Clip	,	"{""matchSequence"":bool=false}"	crates/engine/src/commands.rs
+source.inspect	ED-04	Inspect Source Monitor			{}	crates/engine/src/commands.rs
+source.open	ED-04	Open in Source Monitor			"{""item"":id?,""clip"":id?}"	crates/engine/src/commands.rs
+source.overwrite	ED-15	Overwrite	Clip	.	"{""matchSequence"":bool=false}"	crates/engine/src/clip_ops.rs
+source.setPlayhead	ED-04	Set Source Playhead			"{""time"":ticks|""frame"":i64|""seconds"":f64}"	crates/engine/src/commands.rs
+state.inspect	AI-06	Inspect Editor State			{}	crates/engine/src/commands.rs
+timeline.delete	ED-20	Delete Clips			"{""clips"":[id]?,""clip"":id?,""ripple"":bool?} (deletes the named clips, else the selection; ripple closes the gap)"	crates/engine/src/commands.rs
+timeline.move	ED-10	Move Clips			"{""moves"":[{""clip"":id,""track"":id|""V2""|""new"" (after the last of its kind),""time"":ticks|{""seconds"":f}|{""frame"":n}|{""timecode"":str}}],""insert"":bool,""linked"":bool?,""copy"":bool?,""captions"":[id]?}"	crates/engine/src/commands.rs
+timeline.moveAudioTargetsDown	ED-11	Move All Audio Targets Down			{}	crates/engine/src/keyboard.rs
+timeline.moveAudioTargetsUp	ED-11	Move All Audio Targets Up			{}	crates/engine/src/keyboard.rs
+timeline.moveVideoTargetsDown	ED-11	Move All Video Targets Down			{}	crates/engine/src/keyboard.rs
+timeline.moveVideoTargetsUp	ED-11	Move All Video Targets Up			{}	crates/engine/src/keyboard.rs
+timeline.nudgeDown	ED-10	Nudge Clip Selection Down			{}	crates/engine/src/keyboard.rs
+timeline.nudgeLeft	ED-10	Nudge Clip Selection Left One Frame			{}	crates/engine/src/keyboard.rs
+timeline.nudgeLeft5	ED-10	Nudge Clip Selection Left Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.nudgeRight	ED-10	Nudge Clip Selection Right One Frame			{}	crates/engine/src/keyboard.rs
+timeline.nudgeRight5	ED-10	Nudge Clip Selection Right Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.nudgeUp	ED-10	Nudge Clip Selection Up			{}	crates/engine/src/keyboard.rs
+timeline.place	ED-10	Place Clip			"{""item"":id|""items"":[id] (back to back, one undo step),""track"":""V1""|id|""A1"" (sound only)|""new"" (a video track after the last)?,""audioTrack"":""A1""|id|""new""?,""time"":ticks|""frame"":i64|""seconds"":f64,""insert"":bool,""sourceIn"":ticks|{""frame""|""seconds""|""timecode""}?,""duration"":ticks|{""frame""|""seconds""|""timecode""}?,""video"":bool=true,""audio"":bool=true,""matchSequence"":bool=false (an empty sequence first takes the clip's frame size and rate)}"	crates/engine/src/commands.rs
+timeline.rateStretch	ED-33	Rate Stretch			"{""clip"":id,""edge"":""in|out"",""delta"":ticks,""linked"":bool?}"	crates/engine/src/commands.rs
+timeline.razor	ED-19	Razor			"{""time"":ticks,""track"":""V1""|id?,""clip"":id?}"	crates/engine/src/commands.rs
+timeline.roll	ED-28	Rolling Edit			"{""left"":id,""right"":id,""delta"":ticks|""deltaFrames"":i64,""followLinks""?:bool}"	crates/engine/src/commands.rs
+timeline.select	ED-18	Select Clips			"{""clips"":[id],""transitions"":[id]?,""add"":bool,""toggle"":bool,""linked"":bool?}"	crates/engine/src/commands.rs
+timeline.selectClipAtPlayhead	ED-18	Select Clip at Playhead		D	{}	crates/engine/src/keyboard.rs
+timeline.selectGap	ED-18	Select Gap			"{""track"":""V1""|id,""time"":ticks|""frame"":n|""seconds"":f}"	crates/engine/src/commands.rs
+timeline.selectNextClip	ED-18	Select Next Clip		Cmd+Down	{}	crates/engine/src/keyboard.rs
+timeline.selectPrevClip	ED-18	Select Previous Clip		Cmd+Up	{}	crates/engine/src/keyboard.rs
+timeline.setTargeting	ED-11	Track Targeting			"{""track"":""V1""|id,""targeted"":bool?,""sourcePatch"":bool?}"	crates/engine/src/commands.rs
+timeline.setTrack	ED-11	Track Settings			"{""track"":""V1""|id,""locked"":bool?,""syncLock"":bool?,""enabled"":bool?,""muted"":bool?,""solo"":bool?,""name"":str?,""volumeDb"":f64?,""pan"":f64?,""label"":""Violet|Iris|…""|""""|null?}"	crates/engine/src/commands.rs
+timeline.slide	ED-30	Slide			"{""clip"":id,""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/commands.rs
+timeline.slideLeft	ED-30	Slide Clip Selection Left One Frame			{}	crates/engine/src/keyboard.rs
+timeline.slideLeft5	ED-30	Slide Clip Selection Left Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.slideRight	ED-30	Slide Clip Selection Right One Frame			{}	crates/engine/src/keyboard.rs
+timeline.slideRight5	ED-30	Slide Clip Selection Right Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.slip	ED-29	Slip			"{""clip"":id,""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/commands.rs
+timeline.slipLeft	ED-29	Slip Clip Selection Left One Frame			{}	crates/engine/src/keyboard.rs
+timeline.slipLeft5	ED-29	Slip Clip Selection Left Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.slipPreview	ED-29	Slip Preview			"{""clip"":id,""delta"":ticks|""deltaFrames"":i64}"	crates/engine/src/commands.rs
+timeline.slipRight	ED-29	Slip Clip Selection Right One Frame			{}	crates/engine/src/keyboard.rs
+timeline.slipRight5	ED-29	Slip Clip Selection Right Five Frames			{}	crates/engine/src/keyboard.rs
+timeline.toggleAllAudioTargets	ED-11	Toggle All Audio Targets		Cmd+9	{}	crates/engine/src/keyboard.rs
+timeline.toggleAllSourceAudio	ED-10	Toggle All Source Audio		Cmd+Alt+9	{}	crates/engine/src/keyboard.rs
+timeline.toggleAllSourceVideo	ED-10	Toggle All Source Video		Cmd+Alt+0	{}	crates/engine/src/keyboard.rs
+timeline.toggleAllVideoTargets	ED-11	Toggle All Video Targets		Cmd+0	{}	crates/engine/src/keyboard.rs
+timeline.toggleMuteTargetedAudio	ED-11	Toggle Mute for All Targeted Audio Tracks			{}	crates/engine/src/keyboard.rs
+timeline.toggleOutputTargetedVideo	ED-11	Toggle Track Output for All Targeted Video Tracks			{}	crates/engine/src/keyboard.rs
+timeline.toggleSoloTargetedAudio	ED-11	Toggle Solo for All Targeted Audio Tracks			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA1	ED-11	Toggle Target Audio 1			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA2	ED-11	Toggle Target Audio 2			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA3	ED-11	Toggle Target Audio 3			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA4	ED-11	Toggle Target Audio 4			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA5	ED-11	Toggle Target Audio 5			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA6	ED-11	Toggle Target Audio 6			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA7	ED-11	Toggle Target Audio 7			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetA8	ED-11	Toggle Target Audio 8			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV1	ED-11	Toggle Target Video 1			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV2	ED-11	Toggle Target Video 2			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV3	ED-11	Toggle Target Video 3			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV4	ED-11	Toggle Target Video 4			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV5	ED-11	Toggle Target Video 5			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV6	ED-11	Toggle Target Video 6			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV7	ED-11	Toggle Target Video 7			{}	crates/engine/src/keyboard.rs
+timeline.toggleTargetV8	ED-11	Toggle Target Video 8			{}	crates/engine/src/keyboard.rs
+timeline.trim	ED-26	Trim Edit			"{""clip"":id,""edge"":""in|out"",""mode"":""regular|ripple"",""delta"":ticks|""deltaFrames"":i64,""linked"":bool?}"	crates/engine/src/commands.rs
+transcript.createCaptions	CC-01	Create Captions from Transcript…	Sequence > Transcript		"{""maxChars"":n?,""lines"":1|2?,""minSeconds"":f?,""maxSeconds"":f?,""gapFrames"":n?,""format"":str?,""name"":str?}"	crates/engine/src/transcript.rs
+transcript.delete	ED-41	Delete Transcript	Sequence > Transcript		"{""items"":[id]?}"	crates/engine/src/transcript.rs
+transcript.downloadModel	ED-41	Download Speech Model			"{""model"":""whisper-base""?}"	crates/engine/src/transcript.rs
+transcript.extract	ED-41	Extract Selected Text			"{""from"":word,""to"":word?}"	crates/engine/src/transcript.rs
+transcript.generate	ED-41	Transcribe…	Sequence > Transcript		"{""items"":[id]?,""model"":""whisper-base""?,""language"":""en|auto""?,""diarize"":bool?,""maxSpeakers"":n?}"	crates/engine/src/commands.rs
+transcript.inspect	ED-41	Inspect Transcript			"{""paragraphGapSeconds"":f?}"	crates/engine/src/transcript.rs
+transcript.lift	ED-41	Lift Selected Text			"{""from"":word,""to"":word?}"	crates/engine/src/transcript.rs
+transcript.models	ED-41	List Speech Models			{}	crates/engine/src/transcript.rs
+transcript.removeFillers	ED-41	Remove Filler Words	Sequence > Transcript		"{""fillers"":[str]?}"	crates/engine/src/transcript.rs
+transcript.removePauses	ED-43	Remove Pauses	Sequence > Transcript		"{""minSeconds"":f?,""keepSeconds"":f?}"	crates/engine/src/transcript.rs
+transcript.renameSpeaker	ED-41	Rename Speaker…			"{""speaker"":""Speaker 1""|index,""name"":str,""item"":id?}"	crates/engine/src/transcript.rs
+transcript.search	ED-41	Search Transcript			"{""query"":str}"	crates/engine/src/transcript.rs
+transcript.select	ED-41	Mark Selected Text			"{""from"":word,""to"":word?}"	crates/engine/src/transcript.rs
+transcript.set	ED-41	Import Transcript			"{""item"":id,""transcript"":{""language"":str,""speakers"":[{""name"":str}],""words"":[{""text"":str,""start"":tick,""end"":tick,""speaker"":n?}]}}"	crates/engine/src/transcript.rs
+trim.applyDefaultTransition	ED-32	Apply Default Transitions to Selection	Sequence		"{""clips"":[id]?}"	crates/engine/src/commands.rs
+trim.backward	ED-32	Trim Backward		Alt+Left	{}	crates/engine/src/commands.rs
+trim.backwardMany	ED-32	Trim Backward Many		Alt+Shift+Left	{}	crates/engine/src/commands.rs
+trim.cancelDynamic	ED-32	Cancel Dynamic Trim			{}	crates/engine/src/commands.rs
+trim.clear	ED-32	Clear Edit Point Selection			{}	crates/engine/src/commands.rs
+trim.edit	ED-32	Trim Edit	Sequence	Shift+T	{}	crates/engine/src/commands.rs
+trim.extendNextEdit	ED-32	Extend Next Edit To Playhead		Shift+W	{}	crates/engine/src/keyboard.rs
+trim.extendPreviousEdit	ED-32	Extend Previous Edit To Playhead		Shift+Q	{}	crates/engine/src/keyboard.rs
+trim.extendToPlayhead	ED-32	Extend Selected Edit to Playhead		E	{}	crates/engine/src/commands.rs
+trim.forward	ED-32	Trim Forward		Alt+Right	{}	crates/engine/src/commands.rs
+trim.forwardMany	ED-32	Trim Forward Many		Alt+Shift+Right	{}	crates/engine/src/commands.rs
+trim.monitor	ED-32	Trim Monitor State			{}	crates/engine/src/commands.rs
+trim.next	ED-32	Trim Next Edit to Playhead		Alt+W	{}	crates/engine/src/commands.rs
+trim.nudge	ED-32	Trim by Frames			"{""frames"":i64}"	crates/engine/src/commands.rs
+trim.playAround	ED-32	Play Around Edit			"{""clock"":seconds,""loop"":bool=true,""toggle"":bool?}"	crates/engine/src/commands.rs
+trim.previous	ED-32	Trim Previous Edit to Playhead		Alt+Q	{}	crates/engine/src/commands.rs
+trim.rippleNext	ED-32	Ripple Trim Next Edit to Playhead		W	{}	crates/engine/src/commands.rs
+trim.ripplePrevious	ED-32	Ripple Trim Previous Edit to Playhead		Q	{}	crates/engine/src/commands.rs
+trim.selectEditPoint	ED-32	Select Edit Point			"{""clip"":id,""edge"":""in|out"",""kind"":""trim|ripple|roll"",""add"":bool?}"	crates/engine/src/commands.rs
+trim.selectNearest	ED-32	Select Nearest Edit Point			"{""kind"":""rippleIn|rippleOut|roll|trimIn|trimOut""}"	crates/engine/src/commands.rs
+trim.shuttle	ED-32	Dynamic Trim (Shuttle)			"{""direction"":""forward|reverse"",""slow"":bool?,""clock"":seconds}"	crates/engine/src/commands.rs
+trim.shuttleStop	ED-32	Dynamic Trim Stop			"{""clock"":seconds?}"	crates/engine/src/commands.rs
+trim.tick	ED-32	Advance Trim Playback			"{""clock"":seconds}"	crates/engine/src/commands.rs
+trim.toggleType	ED-32	Toggle Trim Type		Ctrl+T	{}	crates/engine/src/commands.rs
+tts.create	IO-13	New Narration			"{""text"":str,""voice"":str?,""pitch"":""extraLow|low|default|high|extraHigh""?,""pace"":0.5..2?,""time"":ticks?,""track"":""A1""|id?,""dir"":str?}"	crates/engine/src/narration.rs
+tts.downloadVoices	IO-13	Download Natural Voices			"{""wait"":bool?}"	crates/engine/src/narration.rs
+tts.edit	IO-13	Edit Narration			"{""clip"":id?,""text"":str?,""voice"":str?,""pitch"":str?,""pace"":f64?,""dir"":str?}"	crates/engine/src/narration.rs
+tts.inspect	IO-13	Inspect Narration			"{""clip"":id?,""item"":id?}"	crates/engine/src/narration.rs
+tts.preview	IO-13	Preview Narration			"{""text"":str?,""voice"":str?,""pitch"":""default""?,""pace"":f64?,""sample"":bool?,""clip"":id?,""path"":str?}"	crates/engine/src/narration.rs
+tts.render	IO-13	Synthesize Narration			"{""text"":str?,""voice"":str?,""pitch"":str?,""pace"":f64?,""sample"":bool?,""clip"":id?,""wait"":bool?}"	crates/engine/src/narration.rs
+tts.voices	IO-13	List Narration Voices			{}	crates/engine/src/narration.rs
