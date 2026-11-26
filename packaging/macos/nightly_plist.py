@@ -30,7 +30,7 @@ def render(template: bytes, version: str, commit: str) -> bytes:
     data = plistlib.loads(template)
     if not isinstance(data, dict) or data.get("CFBundlePackageType") != "APPL":
         raise ValueError("expected the app-owned application plist template")
-    for key in ASSOCIATIONS:
+    for key in (*ASSOCIATIONS, "CutsetVersion", "CutsetBuildCommit"):
         data.pop(key, None)
     data.update(
         CFBundleDisplayName="FilmCraft Nightly",
