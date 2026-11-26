@@ -31,4 +31,4 @@
 | 書き出した動画に音がない | シーケンスを再生して元の音が鳴るか、トラックがミュートになっていないか、書き出し画面で音声が有効かを確認します。 |
 | H.265やAV1が選べない | 対応するハードウェアエンコーダーが必要です。動作確認にはH.264を選べます。 |
 
-字幕の交換形式とトラックの扱いは[字幕の技術資料](../reference/filmcraft/captions.md)にあります。製品としての拡張予定や受け入れ条件は各機能仕様を参照してください。[クリップゲイン](../specs/audio/AU-04/requirements.md) ・ [字幕の手編集](../specs/captions/CC-02/requirements.md) ・ [字幕の納品](../specs/captions/CC-04/requirements.md)
+字幕の交換形式とトラックの扱いは[字幕の技術資料](../reference/filmcraft/captions.md)にあります。製品としての拡張予定や受け入れ条件は各機能仕様を参照してください。[クリップゲイン](../specs/audio/クリップゲイン/requirements.md) ・ [字幕の手編集](../specs/captions/字幕の手編集/requirements.md) ・ [字幕の納品](../specs/captions/字幕納品/requirements.md)

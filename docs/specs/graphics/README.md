@@ -4,11 +4,11 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| GR-01 画面上の文字組み | [要件](GR-01/requirements.md) | [設計](GR-01/design.md) | [作業](GR-01/tasks.md) | 既存部品を利用 | M5 |
-| GR-02 図形・画像レイヤー | [要件](GR-02/requirements.md) | [設計](GR-02/design.md) | [作業](GR-02/tasks.md) | 既存部品を利用 | M5 |
-| GR-03 レイアウト追従 | [要件](GR-03/requirements.md) | [設計](GR-03/design.md) | [作業](GR-03/tasks.md) | 既存部品を利用 | M5 |
-| GR-04 動くタイトル | [要件](GR-04/requirements.md) | [設計](GR-04/design.md) | [作業](GR-04/tasks.md) | 既存部品を利用 | M5 |
-| GR-05 再利用するスタイル | [要件](GR-05/requirements.md) | [設計](GR-05/design.md) | [作業](GR-05/tasks.md) | 既存部品を利用 | M5 |
-| GR-06 テロップとフォントの検索 | [要件](GR-06/requirements.md) | [設計](GR-06/design.md) | [作業](GR-06/tasks.md) | 既存部品を利用 | M5 |
-| GR-07 タイトルテンプレート | [要件](GR-07/requirements.md) | [設計](GR-07/design.md) | [作業](GR-07/tasks.md) | 既存部品を利用 | M5 |
-| GR-08 テンプレート交換 | [要件](GR-08/requirements.md) | [設計](GR-08/design.md) | [作業](GR-08/tasks.md) | 既存部品を利用 | M5 |
+| 画面上の文字組み（GR-01） | [要件](画面上の文字組み/requirements.md) | [設計](画面上の文字組み/design.md) | [作業](画面上の文字組み/tasks.md) | 既存部品を利用 | M5 |
+| 図形・画像レイヤー（GR-02） | [要件](図形・画像レイヤー/requirements.md) | [設計](図形・画像レイヤー/design.md) | [作業](図形・画像レイヤー/tasks.md) | 既存部品を利用 | M5 |
+| レイアウト追従（GR-03） | [要件](レイアウト追従/requirements.md) | [設計](レイアウト追従/design.md) | [作業](レイアウト追従/tasks.md) | 既存部品を利用 | M5 |
+| 動くタイトル（GR-04） | [要件](動くタイトル/requirements.md) | [設計](動くタイトル/design.md) | [作業](動くタイトル/tasks.md) | 既存部品を利用 | M5 |
+| 再利用するスタイル（GR-05） | [要件](再利用するスタイル/requirements.md) | [設計](再利用するスタイル/design.md) | [作業](再利用するスタイル/tasks.md) | 既存部品を利用 | M5 |
+| テロップとフォントの検索（GR-06） | [要件](テロップとフォントの検索/requirements.md) | [設計](テロップとフォントの検索/design.md) | [作業](テロップとフォントの検索/tasks.md) | 既存部品を利用 | M5 |
+| タイトルテンプレート（GR-07） | [要件](タイトルテンプレート/requirements.md) | [設計](タイトルテンプレート/design.md) | [作業](タイトルテンプレート/tasks.md) | 既存部品を利用 | M5 |
+| テンプレート交換（GR-08） | [要件](テンプレート交換/requirements.md) | [設計](テンプレート交換/design.md) | [作業](テンプレート交換/tasks.md) | 既存部品を利用 | M5 |

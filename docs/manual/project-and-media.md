@@ -22,4 +22,4 @@
 
 次は、読み込んだ素材から使う部分を選びます。[素材を切り出してタイムラインを編集する](timeline-editing.md)
 
-取り込みの要件・今後の確認範囲は機能仕様にあります。[素材の取り込み](../specs/media-delivery/IO-04/requirements.md) ・ [シーケンスの作成](../specs/editing/ED-09/requirements.md)
+取り込みの要件・今後の確認範囲は機能仕様にあります。[素材の取り込み](../specs/media-delivery/取り込み処理/requirements.md) ・ [シーケンスの作成](../specs/editing/シーケンス作成/requirements.md)

@@ -4,17 +4,17 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| UX-01 編集命令の共通化 | [要件](UX-01/requirements.md) | [設計](UX-01/design.md) | [作業](UX-01/tasks.md) | 既存部品を拡張 | M2 |
-| UX-02 ビンの連続試聴 | [要件](UX-02/requirements.md) | [設計](UX-02/design.md) | [作業](UX-02/tasks.md) | 新規設計 | M5 |
-| UX-03 同期テイクからの差し替え | [要件](UX-03/requirements.md) | [設計](UX-03/design.md) | [作業](UX-03/tasks.md) | 既存部品を拡張 | M5 |
-| UX-04 発言に追従する配置 | [要件](UX-04/requirements.md) | [設計](UX-04/design.md) | [作業](UX-04/tasks.md) | 新規設計 | M5 |
-| UX-05 手編集と提案の比較 | [要件](UX-05/requirements.md) | [設計](UX-05/design.md) | [作業](UX-05/tasks.md) | 新規設計 | M1 |
-| UX-06 無音短縮の試聴 | [要件](UX-06/requirements.md) | [設計](UX-06/design.md) | [作業](UX-06/tasks.md) | 既存部品を拡張 | M1 |
-| UX-07 素材横断の発言検索 | [要件](UX-07/requirements.md) | [設計](UX-07/design.md) | [作業](UX-07/tasks.md) | 既存部品を拡張 | M3 |
-| UX-08 編集中の部分レンダー | [要件](UX-08/requirements.md) | [設計](UX-08/design.md) | [作業](UX-08/tasks.md) | 既存部品を拡張 | M5 |
-| UX-09 受け渡しの選択 | [要件](UX-09/requirements.md) | [設計](UX-09/design.md) | [作業](UX-09/tasks.md) | 新規設計 | M4 |
-| UX-10 往復後の差分 | [要件](UX-10/requirements.md) | [設計](UX-10/design.md) | [作業](UX-10/tasks.md) | 新規設計 | M4 |
-| UX-11 指摘から修正版へ | [要件](UX-11/requirements.md) | [設計](UX-11/design.md) | [作業](UX-11/tasks.md) | 新規設計 | M6 |
-| UX-12 ブラウザの段階導入 | [要件](UX-12/requirements.md) | [設計](UX-12/design.md) | [作業](UX-12/tasks.md) | 新規設計 | M6 |
-| UX-13 編集経路の完了判定 | [要件](UX-13/requirements.md) | [設計](UX-13/design.md) | [作業](UX-13/tasks.md) | 新規設計 | M5 |
-| UX-14 作業面を跨ぐ位置の維持 | [要件](UX-14/requirements.md) | [設計](UX-14/design.md) | [作業](UX-14/tasks.md) | 既存部品を拡張 | M5 |
+| 編集命令の共通化（UX-01） | [要件](編集命令の共通化/requirements.md) | [設計](編集命令の共通化/design.md) | [作業](編集命令の共通化/tasks.md) | 既存部品を拡張 | M2 |
+| ビンの連続試聴（UX-02） | [要件](ビンの連続試聴/requirements.md) | [設計](ビンの連続試聴/design.md) | [作業](ビンの連続試聴/tasks.md) | 新規設計 | M5 |
+| 同期テイクからの差し替え（UX-03） | [要件](同期テイクからの差し替え/requirements.md) | [設計](同期テイクからの差し替え/design.md) | [作業](同期テイクからの差し替え/tasks.md) | 既存部品を拡張 | M5 |
+| 発言に追従する配置（UX-04） | [要件](発言に追従する配置/requirements.md) | [設計](発言に追従する配置/design.md) | [作業](発言に追従する配置/tasks.md) | 新規設計 | M5 |
+| 手編集と提案の比較（UX-05） | [要件](手編集と提案の比較/requirements.md) | [設計](手編集と提案の比較/design.md) | [作業](手編集と提案の比較/tasks.md) | 新規設計 | M1 |
+| 無音短縮の試聴（UX-06） | [要件](無音短縮の試聴/requirements.md) | [設計](無音短縮の試聴/design.md) | [作業](無音短縮の試聴/tasks.md) | 既存部品を拡張 | M1 |
+| 素材横断の発言検索（UX-07） | [要件](素材横断の発言検索/requirements.md) | [設計](素材横断の発言検索/design.md) | [作業](素材横断の発言検索/tasks.md) | 既存部品を拡張 | M3 |
+| 編集中の部分レンダー（UX-08） | [要件](編集中の部分レンダー/requirements.md) | [設計](編集中の部分レンダー/design.md) | [作業](編集中の部分レンダー/tasks.md) | 既存部品を拡張 | M5 |
+| 受け渡しの選択（UX-09） | [要件](受け渡しの選択/requirements.md) | [設計](受け渡しの選択/design.md) | [作業](受け渡しの選択/tasks.md) | 新規設計 | M4 |
+| 往復後の差分（UX-10） | [要件](往復後の差分/requirements.md) | [設計](往復後の差分/design.md) | [作業](往復後の差分/tasks.md) | 新規設計 | M4 |
+| 指摘から修正版へ（UX-11） | [要件](指摘から修正版へ/requirements.md) | [設計](指摘から修正版へ/design.md) | [作業](指摘から修正版へ/tasks.md) | 新規設計 | M6 |
+| ブラウザの段階導入（UX-12） | [要件](ブラウザの段階導入/requirements.md) | [設計](ブラウザの段階導入/design.md) | [作業](ブラウザの段階導入/tasks.md) | 新規設計 | M6 |
+| 編集経路の完了判定（UX-13） | [要件](編集経路の完了判定/requirements.md) | [設計](編集経路の完了判定/design.md) | [作業](編集経路の完了判定/tasks.md) | 新規設計 | M5 |
+| 作業面を跨ぐ位置の維持（UX-14） | [要件](作業面を跨ぐ位置の維持/requirements.md) | [設計](作業面を跨ぐ位置の維持/design.md) | [作業](作業面を跨ぐ位置の維持/tasks.md) | 既存部品を拡張 | M5 |

@@ -1,0 +1,26 @@
+# 保存と案件切替の作業・試験（IO-30）
+
+[要件](requirements.md) ・ [設計](design.md) ・ [作業・試験](tasks.md) ・ [分野一覧](../README.md)
+
+## 実装と検証
+
+ハーネスの作業IDは `BUILD-IO-30`、受入IDは `AC-IO-30`。
+
+- [ ] 関連する上流部品の挙動と、設計に追加した条件の差分を確認する。
+- [ ] [状態遷移とデータ境界](design.md)を実装経路で照合し、不足分を実装する。
+- [ ] 下の入力で結果を照合し、[例外と復旧](requirements.md#例外と復旧)のケースを再現する。実行した版と結果を記録する。
+
+## 具体的な試験
+
+案件Aだけを編集してBへ切り替え、保存先を読取専用にする。Aの保存失敗が分かり、Bの保存版とAの直前の保存版を両方開ける。
+
+- QA-10　ロックした音楽を含む範囲に短縮候補を出し、一部を採用。確定直後に中断し、再起動後に結果通知をもう一度受信。 期待結果：一回だけ適用され、音楽と残す間を維持する。モデルを停止したまま再生・Undo・書き出しができる。
+
+## 既存テストとの対応
+
+ソースで確認した試験の入口。機能全体の合格判定はこのページの具体例で行う。
+
+- [auto_save_ring_rotates_and_can_save_the_project](../../../../crates/engine/src/autosave_tests.rs#L339) は <code>file.open</code> を呼ぶ。
+- [crash_recovery_end_to_end](../../../../crates/engine/src/autosave_tests.rs#L159) は <code>file.save</code> を呼ぶ。
+- [project_captured_folder_outside_the_project_is_not_used](../../../../crates/engine/src/autosave_tests.rs#L494) は <code>file.projectSettings.scratchDisks</code> を呼ぶ。
+- 関連する既存テストモジュール：[crates/engine/src/autosave.rs](../../../../crates/engine/src/autosave.rs)。

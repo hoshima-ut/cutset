@@ -2,7 +2,7 @@
 
 タイムラインにマーカーを一つ追加し、Undoで元に戻す処理を読みます。追うのは「入力を受け取る関数」「案件を書き換える箇所」「履歴を確定する箇所」の三つです。コードを読むだけならビルドは不要です。
 
-編集者から見た動作は[マーカーの仕様](../specs/editing/ED-55/requirements.md)と[Undo・Redoの仕様](../specs/editing/ED-45/requirements.md)にあります。他の機能を調べるときは[ディレクトリ案内](repository-map.md)から担当パッケージを探せます。
+編集者から見た動作は[マーカーの仕様](../specs/editing/マーカーの所属と範囲/requirements.md)と[Undo・Redoの仕様](../specs/editing/操作履歴/requirements.md)にあります。他の機能を調べるときは[ディレクトリ案内](repository-map.md)から担当パッケージを探せます。
 
 ## 最初に開くファイル
 

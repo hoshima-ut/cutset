@@ -4,12 +4,12 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| AI-01 参照対象の明示 | [要件](AI-01/requirements.md) | [設計](AI-01/design.md) | [作業](AI-01/tasks.md) | 新規設計 | M3 |
-| AI-02 発言検索と根拠の試聴 | [要件](AI-02/requirements.md) | [設計](AI-02/design.md) | [作業](AI-02/tasks.md) | 既存部品を拡張 | M3 |
-| AI-03 変更提案のプレビュー | [要件](AI-03/requirements.md) | [設計](AI-03/design.md) | [作業](AI-03/tasks.md) | 新規設計 | M3 |
-| AI-04 採用の取引と取消 | [要件](AI-04/requirements.md) | [設計](AI-04/design.md) | [作業](AI-04/tasks.md) | 新規設計 | M2 |
-| AI-05 編集中の競合 | [要件](AI-05/requirements.md) | [設計](AI-05/design.md) | [作業](AI-05/tasks.md) | 新規設計 | M2 |
-| AI-06 拡張のコマンド契約 | [要件](AI-06/requirements.md) | [設計](AI-06/design.md) | [作業](AI-06/tasks.md) | 既存部品を拡張 | M3 |
-| AI-07 推論先と同意 | [要件](AI-07/requirements.md) | [設計](AI-07/design.md) | [作業](AI-07/tasks.md) | 新規設計 | M3 |
-| AI-08 生成素材の来歴 | [要件](AI-08/requirements.md) | [設計](AI-08/design.md) | [作業](AI-08/tasks.md) | 新規設計 | M3 |
-| AI-09 モデルとエージェントの接続 | [要件](AI-09/requirements.md) | [設計](AI-09/design.md) | [作業](AI-09/tasks.md) | 新規設計 | M3 |
+| 参照対象の明示（AI-01） | [要件](参照対象の明示/requirements.md) | [設計](参照対象の明示/design.md) | [作業](参照対象の明示/tasks.md) | 新規設計 | M3 |
+| 発言検索と根拠の試聴（AI-02） | [要件](発言検索と根拠の試聴/requirements.md) | [設計](発言検索と根拠の試聴/design.md) | [作業](発言検索と根拠の試聴/tasks.md) | 既存部品を拡張 | M3 |
+| 変更提案のプレビュー（AI-03） | [要件](変更提案のプレビュー/requirements.md) | [設計](変更提案のプレビュー/design.md) | [作業](変更提案のプレビュー/tasks.md) | 新規設計 | M3 |
+| 採用の取引と取消（AI-04） | [要件](採用の取引と取消/requirements.md) | [設計](採用の取引と取消/design.md) | [作業](採用の取引と取消/tasks.md) | 新規設計 | M2 |
+| 編集中の競合（AI-05） | [要件](編集中の競合/requirements.md) | [設計](編集中の競合/design.md) | [作業](編集中の競合/tasks.md) | 新規設計 | M2 |
+| 拡張のコマンド契約（AI-06） | [要件](拡張のコマンド契約/requirements.md) | [設計](拡張のコマンド契約/design.md) | [作業](拡張のコマンド契約/tasks.md) | 既存部品を拡張 | M3 |
+| 推論先と同意（AI-07） | [要件](推論先と同意/requirements.md) | [設計](推論先と同意/design.md) | [作業](推論先と同意/tasks.md) | 新規設計 | M3 |
+| 生成素材の来歴（AI-08） | [要件](生成素材の来歴/requirements.md) | [設計](生成素材の来歴/design.md) | [作業](生成素材の来歴/tasks.md) | 新規設計 | M3 |
+| モデルとエージェントの接続（AI-09） | [要件](モデルとエージェントの接続/requirements.md) | [設計](モデルとエージェントの接続/design.md) | [作業](モデルとエージェントの接続/tasks.md) | 新規設計 | M3 |

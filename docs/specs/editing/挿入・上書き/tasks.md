@@ -1,0 +1,24 @@
+# 挿入・上書きの作業・試験（ED-15）
+
+[要件](requirements.md) ・ [設計](design.md) ・ [作業・試験](tasks.md) ・ [分野一覧](../README.md)
+
+## 実装と検証
+
+ハーネスの作業IDは `BUILD-ED-15`、受入IDは `AC-ED-15`。
+
+- [ ] 関連する上流部品の挙動と、設計に追加した条件の差分を確認する。
+- [ ] [状態遷移とデータ境界](design.md)を実装経路で照合し、不足分を実装する。
+- [ ] 下の入力で結果を照合し、[例外と復旧](requirements.md#例外と復旧)のケースを再現する。実行した版と結果を記録する。
+
+## 具体的な試験
+
+[0,40)の映像の時刻10に10フレームを入れる。挿入後の終端は50、上書き後は40であり、元の後半の素材時刻を比較する。
+
+## 既存テストとの対応
+
+ソースで確認した試験の入口。機能全体の合格判定はこのページの具体例で行う。
+
+- [caption_track_follows_sync_locked_insert](../../../../crates/engine/src/captions/tests.rs#L101) は <code>source.insert</code> を呼ぶ。
+- [source_insert_three_point](../../../../crates/engine/src/tests.rs#L98) は <code>source.insert</code> を呼ぶ。
+- [make_and_edit_subclips](../../../../crates/engine/src/clip_ops_tests.rs#L349) は <code>source.overwrite</code> を呼ぶ。
+- 関連する既存テストモジュール：[crates/engine/src/source_placement_tests.rs](../../../../crates/engine/src/source_placement_tests.rs)。

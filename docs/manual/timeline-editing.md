@@ -30,4 +30,4 @@
 
 次は音量を調整し、字幕付きの動画を書き出します。[音量・字幕・書き出し](audio-captions-export.md)
 
-挿入・上書きの設計、モニターの詳しい操作は個別の資料にあります。[挿入と上書きの仕様](../specs/editing/ED-15/requirements.md) ・ [モニターの操作](../reference/filmcraft/monitors.md)
+挿入・上書きの設計、モニターの詳しい操作は個別の資料にあります。[挿入と上書きの仕様](../specs/editing/挿入・上書き/requirements.md) ・ [モニターの操作](../reference/filmcraft/monitors.md)

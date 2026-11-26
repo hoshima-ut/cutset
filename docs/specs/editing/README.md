@@ -4,62 +4,62 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| ED-01 作業の切替 | [要件](ED-01/requirements.md) | [設計](ED-01/design.md) | [作業](ED-01/tasks.md) | 既存部品を利用 | M5 |
-| ED-02 パネルのフォーカス | [要件](ED-02/requirements.md) | [設計](ED-02/design.md) | [作業](ED-02/tasks.md) | 既存部品を利用 | M5 |
-| ED-03 ビンと絵コンテ | [要件](ED-03/requirements.md) | [設計](ED-03/design.md) | [作業](ED-03/tasks.md) | 既存部品を利用 | M5 |
-| ED-04 素材からの範囲選択 | [要件](ED-04/requirements.md) | [設計](ED-04/design.md) | [作業](ED-04/tasks.md) | 既存部品を利用 | M5 |
-| ED-05 フレーム送りとシャトル | [要件](ED-05/requirements.md) | [設計](ED-05/design.md) | [作業](ED-05/tasks.md) | 既存部品を利用 | M1 |
-| ED-06 表示ガイド | [要件](ED-06/requirements.md) | [設計](ED-06/design.md) | [作業](ED-06/tasks.md) | 既存部品を利用 | M5 |
-| ED-07 選択中の対象の調整 | [要件](ED-07/requirements.md) | [設計](ED-07/design.md) | [作業](ED-07/tasks.md) | 既存部品を利用 | M5 |
-| ED-08 入力方式の設定 | [要件](ED-08/requirements.md) | [設計](ED-08/design.md) | [作業](ED-08/tasks.md) | 既存部品を利用 | M1 |
-| ED-09 シーケンス作成 | [要件](ED-09/requirements.md) | [設計](ED-09/design.md) | [作業](ED-09/tasks.md) | 既存部品を利用 | M5 |
-| ED-10 タイムライン移動 | [要件](ED-10/requirements.md) | [設計](ED-10/design.md) | [作業](ED-10/tasks.md) | 既存部品を利用 | M5 |
-| ED-11 トラック管理 | [要件](ED-11/requirements.md) | [設計](ED-11/design.md) | [作業](ED-11/tasks.md) | 既存部品を利用 | M5 |
-| ED-12 挿入先と操作先 | [要件](ED-12/requirements.md) | [設計](ED-12/design.md) | [作業](ED-12/tasks.md) | 既存部品を利用 | M5 |
-| ED-13 ロックと連動 | [要件](ED-13/requirements.md) | [設計](ED-13/design.md) | [作業](ED-13/tasks.md) | 既存部品を利用 | M2 |
-| ED-14 三点・四点編集 | [要件](ED-14/requirements.md) | [設計](ED-14/design.md) | [作業](ED-14/tasks.md) | 既存部品を利用 | M5 |
-| ED-15 挿入・上書き | [要件](ED-15/requirements.md) | [設計](ED-15/design.md) | [作業](ED-15/tasks.md) | 既存部品を利用 | M5 |
-| ED-16 素材の一括配置 | [要件](ED-16/requirements.md) | [設計](ED-16/design.md) | [作業](ED-16/tasks.md) | 既存部品を利用 | M5 |
-| ED-17 サブクリップ | [要件](ED-17/requirements.md) | [設計](ED-17/design.md) | [作業](ED-17/tasks.md) | 既存部品を利用 | M5 |
-| ED-18 選択・リンク・グループ | [要件](ED-18/requirements.md) | [設計](ED-18/design.md) | [作業](ED-18/tasks.md) | 既存部品を利用 | M5 |
-| ED-19 分割と再結合 | [要件](ED-19/requirements.md) | [設計](ED-19/design.md) | [作業](ED-19/tasks.md) | 既存部品を利用 | M2 |
-| ED-20 除去とギャップ | [要件](ED-20/requirements.md) | [設計](ED-20/design.md) | [作業](ED-20/tasks.md) | 既存部品を利用 | M2 |
-| ED-21 配置の置換と属性 | [要件](ED-21/requirements.md) | [設計](ED-21/design.md) | [作業](ED-21/tasks.md) | 既存部品を利用 | M5 |
-| ED-22 配置・マーカー検索 | [要件](ED-22/requirements.md) | [設計](ED-22/design.md) | [作業](ED-22/tasks.md) | 既存部品を利用 | M5 |
-| ED-23 配置から原本へ | [要件](ED-23/requirements.md) | [設計](ED-23/design.md) | [作業](ED-23/tasks.md) | 既存部品を利用 | M5 |
-| ED-24 入れ子と簡略版 | [要件](ED-24/requirements.md) | [設計](ED-24/design.md) | [作業](ED-24/tasks.md) | 既存部品を利用 | M5 |
-| ED-25 カット点検出 | [要件](ED-25/requirements.md) | [設計](ED-25/design.md) | [作業](ED-25/tasks.md) | 既存部品を利用 | M5 |
-| ED-26 端のトリム | [要件](ED-26/requirements.md) | [設計](ED-26/design.md) | [作業](ED-26/tasks.md) | 既存部品を利用 | M2 |
-| ED-27 リップルトリム | [要件](ED-27/requirements.md) | [設計](ED-27/design.md) | [作業](ED-27/tasks.md) | 既存部品を利用 | M2 |
-| ED-28 ロールトリム | [要件](ED-28/requirements.md) | [設計](ED-28/design.md) | [作業](ED-28/tasks.md) | 既存部品を利用 | M5 |
-| ED-29 スリップ | [要件](ED-29/requirements.md) | [設計](ED-29/design.md) | [作業](ED-29/tasks.md) | 既存部品を利用 | M5 |
-| ED-30 スライド | [要件](ED-30/requirements.md) | [設計](ED-30/design.md) | [作業](ED-30/tasks.md) | 既存部品を利用 | M5 |
-| ED-31 音声先行・映像先行のカット | [要件](ED-31/requirements.md) | [設計](ED-31/design.md) | [作業](ED-31/tasks.md) | 既存部品を利用 | M5 |
-| ED-32 トリムの試聴 | [要件](ED-32/requirements.md) | [設計](ED-32/design.md) | [作業](ED-32/tasks.md) | 既存部品を利用 | M5 |
-| ED-33 速度・逆再生 | [要件](ED-33/requirements.md) | [設計](ED-33/design.md) | [作業](ED-33/tasks.md) | 既存部品を利用 | M5 |
-| ED-34 速度の時間変化 | [要件](ED-34/requirements.md) | [設計](ED-34/design.md) | [作業](ED-34/tasks.md) | 既存部品を利用 | M5 |
-| ED-35 静止フレーム | [要件](ED-35/requirements.md) | [設計](ED-35/design.md) | [作業](ED-35/tasks.md) | 既存部品を利用 | M5 |
-| ED-36 素材の時間・画素解釈 | [要件](ED-36/requirements.md) | [設計](ED-36/design.md) | [作業](ED-36/tasks.md) | 既存部品を利用 | M5 |
-| ED-37 複数カメラの同期 | [要件](ED-37/requirements.md) | [設計](ED-37/design.md) | [作業](ED-37/tasks.md) | 既存部品を利用 | M5 |
-| ED-38 カメラ切替編集 | [要件](ED-38/requirements.md) | [設計](ED-38/design.md) | [作業](ED-38/tasks.md) | 既存部品を利用 | M5 |
-| ED-39 没入型の編集 | [要件](ED-39/requirements.md) | [設計](ED-39/design.md) | [作業](ED-39/tasks.md) | 上流対応を要確認 | M5 |
-| ED-40 切替と素材余白 | [要件](ED-40/requirements.md) | [設計](ED-40/design.md) | [作業](ED-40/tasks.md) | 既存部品を利用 | M5 |
-| ED-41 素材・完成版の文字起こし | [要件](ED-41/requirements.md) | [設計](ED-41/design.md) | [作業](ED-41/tasks.md) | 既存部品を利用 | M3 |
-| ED-42 文字から編集 | [要件](ED-42/requirements.md) | [設計](ED-42/design.md) | [作業](ED-42/tasks.md) | 既存部品を利用 | M3 |
-| ED-43 間・フィラー・話者の選別 | [要件](ED-43/requirements.md) | [設計](ED-43/design.md) | [作業](ED-43/tasks.md) | 既存部品を利用 | M3 |
-| ED-44 発言から粗編集 | [要件](ED-44/requirements.md) | [設計](ED-44/design.md) | [作業](ED-44/tasks.md) | 既存部品を利用 | M3 |
-| ED-45 操作履歴 | [要件](ED-45/requirements.md) | [設計](ED-45/design.md) | [作業](ED-45/tasks.md) | 既存部品を利用 | M2 |
-| ED-46 保存と世代復旧 | [要件](ED-46/requirements.md) | [設計](ED-46/design.md) | [作業](ED-46/tasks.md) | 既存部品を利用 | M2 |
-| ED-47 共同作業者管理 | [要件](ED-47/requirements.md) | [設計](ED-47/design.md) | [作業](ED-47/tasks.md) | 新規設計 | M6 |
-| ED-48 シーケンスの共同編集 | [要件](ED-48/requirements.md) | [設計](ED-48/design.md) | [作業](ED-48/tasks.md) | 新規設計 | M6 |
-| ED-49 共有ストレージ上の編集 | [要件](ED-49/requirements.md) | [設計](ED-49/design.md) | [作業](ED-49/tasks.md) | 新規設計 | M6 |
-| ED-50 レビュー注記 | [要件](ED-50/requirements.md) | [設計](ED-50/design.md) | [作業](ED-50/tasks.md) | 新規設計 | M6 |
-| ED-51 受け渡し用の展開 | [要件](ED-51/requirements.md) | [設計](ED-51/design.md) | [作業](ED-51/tasks.md) | 既存部品を利用 | M4 |
-| ED-52 モニターの範囲と挿入 | [要件](ED-52/requirements.md) | [設計](ED-52/design.md) | [作業](ED-52/tasks.md) | 既存部品を利用 | M5 |
-| ED-53 複数ターゲットの優先順位 | [要件](ED-53/requirements.md) | [設計](ED-53/design.md) | [作業](ED-53/tasks.md) | 既存部品を利用 | M5 |
-| ED-54 配置表の点検 | [要件](ED-54/requirements.md) | [設計](ED-54/design.md) | [作業](ED-54/tasks.md) | 既存部品を利用 | M5 |
-| ED-55 マーカーの所属と範囲 | [要件](ED-55/requirements.md) | [設計](ED-55/design.md) | [作業](ED-55/tasks.md) | 既存部品を利用 | M5 |
-| ED-56 速度ランプの調整 | [要件](ED-56/requirements.md) | [設計](ED-56/design.md) | [作業](ED-56/tasks.md) | 上流対応を要確認 | M5 |
-| ED-57 検出結果の適用先 | [要件](ED-57/requirements.md) | [設計](ED-57/design.md) | [作業](ED-57/tasks.md) | 既存部品を利用 | M5 |
-| ED-58 ショット・補正前後の比較 | [要件](ED-58/requirements.md) | [設計](ED-58/design.md) | [作業](ED-58/tasks.md) | 既存部品を利用 | M5 |
-| ED-59 履歴の範囲 | [要件](ED-59/requirements.md) | [設計](ED-59/design.md) | [作業](ED-59/tasks.md) | 既存部品を利用 | M2 |
+| 作業の切替（ED-01） | [要件](作業の切替/requirements.md) | [設計](作業の切替/design.md) | [作業](作業の切替/tasks.md) | 既存部品を利用 | M5 |
+| パネルのフォーカス（ED-02） | [要件](パネルのフォーカス/requirements.md) | [設計](パネルのフォーカス/design.md) | [作業](パネルのフォーカス/tasks.md) | 既存部品を利用 | M5 |
+| ビンと絵コンテ（ED-03） | [要件](ビンと絵コンテ/requirements.md) | [設計](ビンと絵コンテ/design.md) | [作業](ビンと絵コンテ/tasks.md) | 既存部品を利用 | M5 |
+| 素材からの範囲選択（ED-04） | [要件](素材からの範囲選択/requirements.md) | [設計](素材からの範囲選択/design.md) | [作業](素材からの範囲選択/tasks.md) | 既存部品を利用 | M5 |
+| フレーム送りとシャトル（ED-05） | [要件](フレーム送りとシャトル/requirements.md) | [設計](フレーム送りとシャトル/design.md) | [作業](フレーム送りとシャトル/tasks.md) | 既存部品を利用 | M1 |
+| 表示ガイド（ED-06） | [要件](表示ガイド/requirements.md) | [設計](表示ガイド/design.md) | [作業](表示ガイド/tasks.md) | 既存部品を利用 | M5 |
+| 選択中の対象の調整（ED-07） | [要件](選択中の対象の調整/requirements.md) | [設計](選択中の対象の調整/design.md) | [作業](選択中の対象の調整/tasks.md) | 既存部品を利用 | M5 |
+| 入力方式の設定（ED-08） | [要件](入力方式の設定/requirements.md) | [設計](入力方式の設定/design.md) | [作業](入力方式の設定/tasks.md) | 既存部品を利用 | M1 |
+| シーケンス作成（ED-09） | [要件](シーケンス作成/requirements.md) | [設計](シーケンス作成/design.md) | [作業](シーケンス作成/tasks.md) | 既存部品を利用 | M5 |
+| タイムライン移動（ED-10） | [要件](タイムライン移動/requirements.md) | [設計](タイムライン移動/design.md) | [作業](タイムライン移動/tasks.md) | 既存部品を利用 | M5 |
+| トラック管理（ED-11） | [要件](トラック管理/requirements.md) | [設計](トラック管理/design.md) | [作業](トラック管理/tasks.md) | 既存部品を利用 | M5 |
+| 挿入先と操作先（ED-12） | [要件](挿入先と操作先/requirements.md) | [設計](挿入先と操作先/design.md) | [作業](挿入先と操作先/tasks.md) | 既存部品を利用 | M5 |
+| ロックと連動（ED-13） | [要件](ロックと連動/requirements.md) | [設計](ロックと連動/design.md) | [作業](ロックと連動/tasks.md) | 既存部品を利用 | M2 |
+| 三点・四点編集（ED-14） | [要件](三点・四点編集/requirements.md) | [設計](三点・四点編集/design.md) | [作業](三点・四点編集/tasks.md) | 既存部品を利用 | M5 |
+| 挿入・上書き（ED-15） | [要件](挿入・上書き/requirements.md) | [設計](挿入・上書き/design.md) | [作業](挿入・上書き/tasks.md) | 既存部品を利用 | M5 |
+| 素材の一括配置（ED-16） | [要件](素材の一括配置/requirements.md) | [設計](素材の一括配置/design.md) | [作業](素材の一括配置/tasks.md) | 既存部品を利用 | M5 |
+| サブクリップ（ED-17） | [要件](サブクリップ/requirements.md) | [設計](サブクリップ/design.md) | [作業](サブクリップ/tasks.md) | 既存部品を利用 | M5 |
+| 選択・リンク・グループ（ED-18） | [要件](選択・リンク・グループ/requirements.md) | [設計](選択・リンク・グループ/design.md) | [作業](選択・リンク・グループ/tasks.md) | 既存部品を利用 | M5 |
+| 分割と再結合（ED-19） | [要件](分割と再結合/requirements.md) | [設計](分割と再結合/design.md) | [作業](分割と再結合/tasks.md) | 既存部品を利用 | M2 |
+| 除去とギャップ（ED-20） | [要件](除去とギャップ/requirements.md) | [設計](除去とギャップ/design.md) | [作業](除去とギャップ/tasks.md) | 既存部品を利用 | M2 |
+| 配置の置換と属性（ED-21） | [要件](配置の置換と属性/requirements.md) | [設計](配置の置換と属性/design.md) | [作業](配置の置換と属性/tasks.md) | 既存部品を利用 | M5 |
+| 配置・マーカー検索（ED-22） | [要件](配置・マーカー検索/requirements.md) | [設計](配置・マーカー検索/design.md) | [作業](配置・マーカー検索/tasks.md) | 既存部品を利用 | M5 |
+| 配置から原本へ（ED-23） | [要件](配置から原本へ/requirements.md) | [設計](配置から原本へ/design.md) | [作業](配置から原本へ/tasks.md) | 既存部品を利用 | M5 |
+| 入れ子と簡略版（ED-24） | [要件](入れ子と簡略版/requirements.md) | [設計](入れ子と簡略版/design.md) | [作業](入れ子と簡略版/tasks.md) | 既存部品を利用 | M5 |
+| カット点検出（ED-25） | [要件](カット点検出/requirements.md) | [設計](カット点検出/design.md) | [作業](カット点検出/tasks.md) | 既存部品を利用 | M5 |
+| 端のトリム（ED-26） | [要件](端のトリム/requirements.md) | [設計](端のトリム/design.md) | [作業](端のトリム/tasks.md) | 既存部品を利用 | M2 |
+| リップルトリム（ED-27） | [要件](リップルトリム/requirements.md) | [設計](リップルトリム/design.md) | [作業](リップルトリム/tasks.md) | 既存部品を利用 | M2 |
+| ロールトリム（ED-28） | [要件](ロールトリム/requirements.md) | [設計](ロールトリム/design.md) | [作業](ロールトリム/tasks.md) | 既存部品を利用 | M5 |
+| スリップ（ED-29） | [要件](スリップ/requirements.md) | [設計](スリップ/design.md) | [作業](スリップ/tasks.md) | 既存部品を利用 | M5 |
+| スライド（ED-30） | [要件](スライド/requirements.md) | [設計](スライド/design.md) | [作業](スライド/tasks.md) | 既存部品を利用 | M5 |
+| 音声先行・映像先行のカット（ED-31） | [要件](音声先行・映像先行のカット/requirements.md) | [設計](音声先行・映像先行のカット/design.md) | [作業](音声先行・映像先行のカット/tasks.md) | 既存部品を利用 | M5 |
+| トリムの試聴（ED-32） | [要件](トリムの試聴/requirements.md) | [設計](トリムの試聴/design.md) | [作業](トリムの試聴/tasks.md) | 既存部品を利用 | M5 |
+| 速度・逆再生（ED-33） | [要件](速度・逆再生/requirements.md) | [設計](速度・逆再生/design.md) | [作業](速度・逆再生/tasks.md) | 既存部品を利用 | M5 |
+| 速度の時間変化（ED-34） | [要件](速度の時間変化/requirements.md) | [設計](速度の時間変化/design.md) | [作業](速度の時間変化/tasks.md) | 既存部品を利用 | M5 |
+| 静止フレーム（ED-35） | [要件](静止フレーム/requirements.md) | [設計](静止フレーム/design.md) | [作業](静止フレーム/tasks.md) | 既存部品を利用 | M5 |
+| 素材の時間・画素解釈（ED-36） | [要件](素材の時間・画素解釈/requirements.md) | [設計](素材の時間・画素解釈/design.md) | [作業](素材の時間・画素解釈/tasks.md) | 既存部品を利用 | M5 |
+| 複数カメラの同期（ED-37） | [要件](複数カメラの同期/requirements.md) | [設計](複数カメラの同期/design.md) | [作業](複数カメラの同期/tasks.md) | 既存部品を利用 | M5 |
+| カメラ切替編集（ED-38） | [要件](カメラ切替編集/requirements.md) | [設計](カメラ切替編集/design.md) | [作業](カメラ切替編集/tasks.md) | 既存部品を利用 | M5 |
+| 没入型の編集（ED-39） | [要件](没入型の編集/requirements.md) | [設計](没入型の編集/design.md) | [作業](没入型の編集/tasks.md) | 上流対応を要確認 | M5 |
+| 切替と素材余白（ED-40） | [要件](切替と素材余白/requirements.md) | [設計](切替と素材余白/design.md) | [作業](切替と素材余白/tasks.md) | 既存部品を利用 | M5 |
+| 素材・完成版の文字起こし（ED-41） | [要件](素材・完成版の文字起こし/requirements.md) | [設計](素材・完成版の文字起こし/design.md) | [作業](素材・完成版の文字起こし/tasks.md) | 既存部品を利用 | M3 |
+| 文字から編集（ED-42） | [要件](文字から編集/requirements.md) | [設計](文字から編集/design.md) | [作業](文字から編集/tasks.md) | 既存部品を利用 | M3 |
+| 間・フィラー・話者の選別（ED-43） | [要件](間・フィラー・話者の選別/requirements.md) | [設計](間・フィラー・話者の選別/design.md) | [作業](間・フィラー・話者の選別/tasks.md) | 既存部品を利用 | M3 |
+| 発言から粗編集（ED-44） | [要件](発言から粗編集/requirements.md) | [設計](発言から粗編集/design.md) | [作業](発言から粗編集/tasks.md) | 既存部品を利用 | M3 |
+| 操作履歴（ED-45） | [要件](操作履歴/requirements.md) | [設計](操作履歴/design.md) | [作業](操作履歴/tasks.md) | 既存部品を利用 | M2 |
+| 保存と世代復旧（ED-46） | [要件](保存と世代復旧/requirements.md) | [設計](保存と世代復旧/design.md) | [作業](保存と世代復旧/tasks.md) | 既存部品を利用 | M2 |
+| 共同作業者管理（ED-47） | [要件](共同作業者管理/requirements.md) | [設計](共同作業者管理/design.md) | [作業](共同作業者管理/tasks.md) | 新規設計 | M6 |
+| シーケンスの共同編集（ED-48） | [要件](シーケンスの共同編集/requirements.md) | [設計](シーケンスの共同編集/design.md) | [作業](シーケンスの共同編集/tasks.md) | 新規設計 | M6 |
+| 共有ストレージ上の編集（ED-49） | [要件](共有ストレージ上の編集/requirements.md) | [設計](共有ストレージ上の編集/design.md) | [作業](共有ストレージ上の編集/tasks.md) | 新規設計 | M6 |
+| レビュー注記（ED-50） | [要件](レビュー注記/requirements.md) | [設計](レビュー注記/design.md) | [作業](レビュー注記/tasks.md) | 新規設計 | M6 |
+| 受け渡し用の展開（ED-51） | [要件](受け渡し用の展開/requirements.md) | [設計](受け渡し用の展開/design.md) | [作業](受け渡し用の展開/tasks.md) | 既存部品を利用 | M4 |
+| モニターの範囲と挿入（ED-52） | [要件](モニターの範囲と挿入/requirements.md) | [設計](モニターの範囲と挿入/design.md) | [作業](モニターの範囲と挿入/tasks.md) | 既存部品を利用 | M5 |
+| 複数ターゲットの優先順位（ED-53） | [要件](複数ターゲットの優先順位/requirements.md) | [設計](複数ターゲットの優先順位/design.md) | [作業](複数ターゲットの優先順位/tasks.md) | 既存部品を利用 | M5 |
+| 配置表の点検（ED-54） | [要件](配置表の点検/requirements.md) | [設計](配置表の点検/design.md) | [作業](配置表の点検/tasks.md) | 既存部品を利用 | M5 |
+| マーカーの所属と範囲（ED-55） | [要件](マーカーの所属と範囲/requirements.md) | [設計](マーカーの所属と範囲/design.md) | [作業](マーカーの所属と範囲/tasks.md) | 既存部品を利用 | M5 |
+| 速度ランプの調整（ED-56） | [要件](速度ランプの調整/requirements.md) | [設計](速度ランプの調整/design.md) | [作業](速度ランプの調整/tasks.md) | 上流対応を要確認 | M5 |
+| 検出結果の適用先（ED-57） | [要件](検出結果の適用先/requirements.md) | [設計](検出結果の適用先/design.md) | [作業](検出結果の適用先/tasks.md) | 既存部品を利用 | M5 |
+| ショット・補正前後の比較（ED-58） | [要件](ショット・補正前後の比較/requirements.md) | [設計](ショット・補正前後の比較/design.md) | [作業](ショット・補正前後の比較/tasks.md) | 既存部品を利用 | M5 |
+| 履歴の範囲（ED-59） | [要件](履歴の範囲/requirements.md) | [設計](履歴の範囲/design.md) | [作業](履歴の範囲/tasks.md) | 既存部品を利用 | M2 |

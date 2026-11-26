@@ -11,6 +11,18 @@
 | 実装の順序と完了判定 | [マイルストーン](../development/milestones.md) ・ [仕様グラフと検証ループ](../development/harness.md) |
 | 最初の編集を試す | [インタビュー案件](../verification/interview.md) ・ [進行中の作業](../development/progress.md) |
 
+## 機能名で仕様を探す
+
+各分野のフォルダーを開き、調べたい機能の日本語名を選びます。たとえば音声分野の「音声と映像の同期」には次の3文書があります。機能ID（この例では `AU-02`）は、名前や実装が変わってもテスト・履歴から同じ機能を追跡するために使います。
+
+| ファイル | 「音声と映像の同期」で読む内容 |
+| --- | --- |
+| [requirements.md](audio/音声と映像の同期/requirements.md) | 編集者が何を揃えられるか。映像と外録音を同期したあと、どの状態なら成功か。 |
+| [design.md](audio/音声と映像の同期/design.md) | 同期点を共通の時刻に換算し、外録音の配置をどれだけずらすか。 |
+| [tasks.md](audio/音声と映像の同期/tasks.md) | 25 fpsの映像と48 kHzの外録音に0.2秒のずれを作り、補正後にクラップが揃うかを確かめる。 |
+
+Cutsetでは、編集者と確認した要件を保ちながら、実装方式と試験の進捗を個別に更新するため、この3分割を採用しています。Kiroも機能仕様を要件・設計・タスクに分けています。GitHub Spec Kitのテンプレートでは、調査、データモデル、契約なども個別の成果物として扱います。[Kiro Feature Specs](https://kiro.dev/docs/specs/feature-specs/) ・ [GitHub Spec Kitの設計テンプレート](https://github.com/github/spec-kit/blob/main/templates/plan-template.md)
+
 ## UI・UX・AXを各仕様で確かめる
 
 | 観点 | 例「選んだ間を詰める」の受入 |
@@ -44,6 +56,8 @@ python3 tools/check_catalog_links.py --commands-json target/cutset-commands.json
 
 
 ## 仕様を更新する
+
+各仕様は `分野/機能名/` に置きます。たとえばキーボード設定は [workspace/キーの割当と競合](workspace/キーの割当と競合/requirements.md) です。フォルダー名には台帳の機能名、見出しには機能名と機能IDを記載します。機能名を変更するときはフォルダーと参照リンクも合わせて更新してください。
 
 各機能の `requirements.md` が目的・受入条件・例外の正本です。`design.md` に操作、状態の変化、処理の入出力、使える実装を記載します。`tasks.md` には具体的な試験と残る作業を記録します。試験を通した場合は対象の版、入力と結果を残してください。
 

@@ -6,12 +6,14 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unicodedata import normalize
+from unittest.mock import patch
 
 from cutset_harness import Graph
-from feature_docs import PAGES
+from feature_docs import PAGES, check_pages, indexes
 
 ROOT = Path(__file__).resolve().parents[1]
-FEATURE = {"id": "AI-03", "title": "Proposal preview", "category": "ai-plugin",
+FEATURE = {"id": "AI-03", "title": "プレビュー 候補", "category": "ai-plugin",
            "scope": "Read the plan.", "acceptance": "Read the preview."}
 PASS = """import unittest
 class Contract(unittest.TestCase):
@@ -79,11 +81,12 @@ class LoopTest(unittest.TestCase):
         self.write(".gitignore", "/target/\n__pycache__/\n")
         for name in ("cutset_harness.py", "feature_docs.py"):
             shutil.copy(ROOT / "tools" / name, self.base / "tools")
-        directory = self.base / "docs/specs/ai-plugin/AI-03"
+        directory = self.base / "docs/specs/ai-plugin" / FEATURE["title"]
         directory.mkdir(parents=True)
         bodies = {"目的と範囲": FEATURE["scope"], "受入条件": FEATURE["acceptance"]}
         for name, headings in PAGES.items():
-            text = "# AI-03 Proposal preview\n"
+            label = {"requirements.md": "要件", "design.md": "設計", "tasks.md": "作業・試験"}[name]
+            text = f"# {FEATURE['title']}の{label}（AI-03）\n"
             for heading in headings:
                 text += f"\n## {heading}\n\n{bodies.get(heading, 'Fixture detail.')}\n"
             (directory / name).write_text(text, encoding="utf-8")
@@ -131,8 +134,41 @@ class LoopTest(unittest.TestCase):
         self.commit("update")
         self.assertEqual(self.cli("ready")["tasks"]["CHECK-PREVIEW"], "blocked")
 
+    def test_decomposed_listing_and_normalization_collision(self):
+        spec = self.base / "docs/specs"
+        category = spec / FEATURE["category"]
+        for forms in (["NFD"], ["NFC", "NFD"]):
+            with self.subTest(forms=forms):
+                def listed(pattern):
+                    name = Path(pattern).name
+                    return [category / normalize(form, FEATURE["title"]) / name for form in forms]
+
+                with patch.object(Path, "glob", side_effect=listed):
+                    if len(forms) == 1:
+                        self.assertIn("AI-03", check_pages(spec, [FEATURE]))
+                    else:
+                        with self.assertRaisesRegex(ValueError, "duplicate normalized"):
+                            check_pages(spec, [FEATURE])
+
+    def test_spec_links_resolve_after_title_change(self):
+        spec = self.base / "docs/specs"
+        row = dict(FEATURE, title="音声のプレビュー #2（新）", baselineDisposition="verify", milestone="M1")
+        directory = spec / row["category"] / row["title"]
+        (directory.parent / FEATURE["title"]).rename(directory)
+        for name in PAGES:
+            p = directory / name
+            p.write_text(p.read_text(encoding="utf-8").replace(FEATURE["title"], row["title"]), encoding="utf-8")
+        self.write("docs/specs/data/catalog.json", json.dumps({"features": [row]}))
+        self.commit("rename feature while keeping graph ID")
+        self.assertEqual(self.cli("show", "AC-AI-03")["node"]["description"], row["acceptance"])
+        index = indexes(spec, [row])[directory.parent / "README.md"]
+        self.assertIn("(音声のプレビュー%20%232（新）/design.md)", index)
+        p = directory / "design.md"
+        p.write_text(p.read_text(encoding="utf-8").replace("（AI-03）", "（AI-04）"), encoding="utf-8")
+        self.assertIn("AI-03", self.cli("show", "AI-03", code=2)["error"])
+
     def test_clean_commit_with_stale_requirements_is_rejected(self):
-        page = self.base / "docs/specs/ai-plugin/AI-03/requirements.md"
+        page = self.base / "docs/specs/ai-plugin" / FEATURE["title"] / "requirements.md"
         page.write_text(page.read_text(encoding="utf-8").replace(
             FEATURE["acceptance"], "Read the revised preview."), encoding="utf-8")
         self.commit("change canonical acceptance")

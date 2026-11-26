@@ -36,7 +36,7 @@
 | 場所 | 読む場面 |
 | --- | --- |
 | [manual/](../manual/README.md) | 配布されたアプリを導入し、読み込み、カット編集、字幕、書き出しを試すとき。 |
-| [specs/](../specs/README.md) | 編集者の操作や受入条件を調べるとき。分野別の `機能ID/requirements.md`、`design.md`、`tasks.md` を順に読み、機械検証用の台帳は `data/` で見る。 |
+| [specs/](../specs/README.md) | 編集者の操作や受入条件を調べるとき。分野別の `機能名/requirements.md`、`design.md`、`tasks.md` を順に読み、機械検証用の台帳は `data/` で見る。 |
 | [architecture/](../architecture) | 製品全体の境界、エンジン、編集対象の関係を調べるとき。編集操作で何が影響を受けるかは[編集グラフ](../architecture/edit-graph.md)から読める。 |
 | [adr/](../adr/0001-platform-ffi.md) | 設計判断の理由を調べるとき。OS固有APIを呼び出すコードをどこに許すかを記録している。 |
 | [development/](README.md) | 実装やレビューに参加するとき。ハンドブック、マイルストーン、開発の引継ぎを置く。 |

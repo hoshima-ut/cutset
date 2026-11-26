@@ -4,21 +4,21 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| AU-01 入力チャンネル割当 | [要件](AU-01/requirements.md) | [設計](AU-01/design.md) | [作業](AU-01/tasks.md) | 既存部品を利用 | M5 |
-| AU-02 音声と映像の同期 | [要件](AU-02/requirements.md) | [設計](AU-02/design.md) | [作業](AU-02/tasks.md) | 既存部品を利用 | M5 |
-| AU-03 サンプル単位の編集 | [要件](AU-03/requirements.md) | [設計](AU-03/design.md) | [作業](AU-03/tasks.md) | 既存部品を利用 | M5 |
-| AU-04 クリップゲイン | [要件](AU-04/requirements.md) | [設計](AU-04/design.md) | [作業](AU-04/tasks.md) | 既存部品を利用 | M5 |
-| AU-05 配置のミキシング | [要件](AU-05/requirements.md) | [設計](AU-05/design.md) | [作業](AU-05/tasks.md) | 既存部品を利用 | M5 |
-| AU-06 トラックとバス | [要件](AU-06/requirements.md) | [設計](AU-06/design.md) | [作業](AU-06/tasks.md) | 既存部品を利用 | M5 |
-| AU-07 ミックスオートメーション | [要件](AU-07/requirements.md) | [設計](AU-07/design.md) | [作業](AU-07/tasks.md) | 既存部品を利用 | M5 |
-| AU-08 役割別の音作り | [要件](AU-08/requirements.md) | [設計](AU-08/design.md) | [作業](AU-08/tasks.md) | 既存部品を利用 | M5 |
-| AU-09 音声明瞭化 | [要件](AU-09/requirements.md) | [設計](AU-09/design.md) | [作業](AU-09/tasks.md) | 上流対応を要確認 | M5 |
-| AU-10 ダッキング | [要件](AU-10/requirements.md) | [設計](AU-10/design.md) | [作業](AU-10/tasks.md) | 既存部品を利用 | M5 |
-| AU-11 音楽の尺合わせ | [要件](AU-11/requirements.md) | [設計](AU-11/design.md) | [作業](AU-11/tasks.md) | 既存部品を利用 | M5 |
-| AU-12 音声フェード | [要件](AU-12/requirements.md) | [設計](AU-12/design.md) | [作業](AU-12/tasks.md) | 既存部品を利用 | M5 |
-| AU-13 音響処理 | [要件](AU-13/requirements.md) | [設計](AU-13/design.md) | [作業](AU-13/tasks.md) | 既存部品を利用 | M5 |
-| AU-14 ラウドネス測定 | [要件](AU-14/requirements.md) | [設計](AU-14/design.md) | [作業](AU-14/tasks.md) | 既存部品を利用 | M5 |
-| AU-15 タイムラインでの収録 | [要件](AU-15/requirements.md) | [設計](AU-15/design.md) | [作業](AU-15/tasks.md) | 既存部品を利用 | M5 |
-| AU-16 指定語の消音・置換音 | [要件](AU-16/requirements.md) | [設計](AU-16/design.md) | [作業](AU-16/tasks.md) | 上流対応を要確認 | M5 |
-| AU-17 試聴の一括消音 | [要件](AU-17/requirements.md) | [設計](AU-17/design.md) | [作業](AU-17/tasks.md) | 上流対応を要確認 | M5 |
-| AU-18 納品の音声割当 | [要件](AU-18/requirements.md) | [設計](AU-18/design.md) | [作業](AU-18/tasks.md) | 既存部品を利用 | M5 |
+| 入力チャンネル割当（AU-01） | [要件](入力チャンネル割当/requirements.md) | [設計](入力チャンネル割当/design.md) | [作業](入力チャンネル割当/tasks.md) | 既存部品を利用 | M5 |
+| 音声と映像の同期（AU-02） | [要件](音声と映像の同期/requirements.md) | [設計](音声と映像の同期/design.md) | [作業](音声と映像の同期/tasks.md) | 既存部品を利用 | M5 |
+| サンプル単位の編集（AU-03） | [要件](サンプル単位の編集/requirements.md) | [設計](サンプル単位の編集/design.md) | [作業](サンプル単位の編集/tasks.md) | 既存部品を利用 | M5 |
+| クリップゲイン（AU-04） | [要件](クリップゲイン/requirements.md) | [設計](クリップゲイン/design.md) | [作業](クリップゲイン/tasks.md) | 既存部品を利用 | M5 |
+| 配置のミキシング（AU-05） | [要件](配置のミキシング/requirements.md) | [設計](配置のミキシング/design.md) | [作業](配置のミキシング/tasks.md) | 既存部品を利用 | M5 |
+| トラックとバス（AU-06） | [要件](トラックとバス/requirements.md) | [設計](トラックとバス/design.md) | [作業](トラックとバス/tasks.md) | 既存部品を利用 | M5 |
+| ミックスオートメーション（AU-07） | [要件](ミックスオートメーション/requirements.md) | [設計](ミックスオートメーション/design.md) | [作業](ミックスオートメーション/tasks.md) | 既存部品を利用 | M5 |
+| 役割別の音作り（AU-08） | [要件](役割別の音作り/requirements.md) | [設計](役割別の音作り/design.md) | [作業](役割別の音作り/tasks.md) | 既存部品を利用 | M5 |
+| 音声明瞭化（AU-09） | [要件](音声明瞭化/requirements.md) | [設計](音声明瞭化/design.md) | [作業](音声明瞭化/tasks.md) | 上流対応を要確認 | M5 |
+| ダッキング（AU-10） | [要件](ダッキング/requirements.md) | [設計](ダッキング/design.md) | [作業](ダッキング/tasks.md) | 既存部品を利用 | M5 |
+| 音楽の尺合わせ（AU-11） | [要件](音楽の尺合わせ/requirements.md) | [設計](音楽の尺合わせ/design.md) | [作業](音楽の尺合わせ/tasks.md) | 既存部品を利用 | M5 |
+| 音声フェード（AU-12） | [要件](音声フェード/requirements.md) | [設計](音声フェード/design.md) | [作業](音声フェード/tasks.md) | 既存部品を利用 | M5 |
+| 音響処理（AU-13） | [要件](音響処理/requirements.md) | [設計](音響処理/design.md) | [作業](音響処理/tasks.md) | 既存部品を利用 | M5 |
+| ラウドネス測定（AU-14） | [要件](ラウドネス測定/requirements.md) | [設計](ラウドネス測定/design.md) | [作業](ラウドネス測定/tasks.md) | 既存部品を利用 | M5 |
+| タイムラインでの収録（AU-15） | [要件](タイムラインでの収録/requirements.md) | [設計](タイムラインでの収録/design.md) | [作業](タイムラインでの収録/tasks.md) | 既存部品を利用 | M5 |
+| 指定語の消音・置換音（AU-16） | [要件](指定語の消音・置換音/requirements.md) | [設計](指定語の消音・置換音/design.md) | [作業](指定語の消音・置換音/tasks.md) | 上流対応を要確認 | M5 |
+| 試聴の一括消音（AU-17） | [要件](試聴の一括消音/requirements.md) | [設計](試聴の一括消音/design.md) | [作業](試聴の一括消音/tasks.md) | 上流対応を要確認 | M5 |
+| 納品の音声割当（AU-18） | [要件](納品の音声割当/requirements.md) | [設計](納品の音声割当/design.md) | [作業](納品の音声割当/tasks.md) | 既存部品を利用 | M5 |

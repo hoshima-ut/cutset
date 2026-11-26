@@ -33,7 +33,7 @@ Cutsetでは、編集者がAIの提案を確認し、採用する変更を選べ
 
 | 編集者が解きたい問題 | Cutsetでの判断と評価 | 背景 |
 | --- | --- | --- |
-| 案件の受け手が別の編集ソフトを使う | UX-09/10。受け手が一箇所を直し、別工程へ返せることをM4で試す。送り手と受け手でカット位置・字幕・未対応項目を照合する。 | 共同作業を機に編集ソフトを変えた編集者の体験談。[dazzle studioの記事](https://note.com/dazzle_studio/n/n0ab61ea9009b) |
-| 素材を選び直すたびに試聴が止まる | UX-02/03。ビンを連続試聴し、採用時に元の素材・フレームへ戻る。同期テイクへの差し替えは音声とマーカーの扱いを先に示す。 | DaVinci Resolve CutページのSource TapeとSync Bin。[Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve/cut) |
+| 案件の受け手が別の編集ソフトを使う | 受け渡しの選択/10。受け手が一箇所を直し、別工程へ返せることをM4で試す。送り手と受け手でカット位置・字幕・未対応項目を照合する。 | 共同作業を機に編集ソフトを変えた編集者の体験談。[dazzle studioの記事](https://note.com/dazzle_studio/n/n0ab61ea9009b) |
+| 素材を選び直すたびに試聴が止まる | ビンの連続試聴/03。ビンを連続試聴し、採用時に元の素材・フレームへ戻る。同期テイクへの差し替えは音声とマーカーの扱いを先に示す。 | DaVinci Resolve CutページのSource TapeとSync Bin。[Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve/cut) |
 | 発言を動かしたら字幕や挿入画がずれる | UX-04。発言と関連する配置のIDを結び、追従対象と固定対象を試聴前に表示。音楽のロックを保ち、Undoで関連付けを戻す。 | Final Cut Proのストーリーラインと接続クリップ。[Apple](https://support.apple.com/guide/final-cut-pro/arrange-clips-in-the-timeline-verc147f195/mac) |
-| GUIでできた編集を別の操作方法でも再現したい | UX-01/AI-06。FilmCraftの編集命令を継承し、GUI・CLIと公式AIの提案で対象・時間・失敗理由を共有。採用操作の取引境界をエンジンに置く。 | 上流の[コマンドとMCP](../reference/filmcraft/agents.md) ・ [モデル接続](model-connections.md) |
+| GUIでできた編集を別の操作方法でも再現したい | 編集命令の共通化/AI-06。FilmCraftの編集命令を継承し、GUI・CLIと公式AIの提案で対象・時間・失敗理由を共有。採用操作の取引境界をエンジンに置く。 | 上流の[コマンドとMCP](../reference/filmcraft/agents.md) ・ [モデル接続](model-connections.md) |

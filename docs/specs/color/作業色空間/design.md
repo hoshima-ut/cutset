@@ -1,0 +1,25 @@
+# 作業色空間の設計（CO-02）
+
+[要件](requirements.md) ・ [設計](design.md) ・ [作業・試験](tasks.md) ・ [分野一覧](../README.md)
+
+## 操作と状態遷移
+
+シーケンスの作業空間とトーンマッピングを設定し、入力・作業・出力の変換順を確認する。既存案件の変更は比較表示してから確定する。
+
+## データと処理境界
+
+素材の入力変換→作業空間での合成・効果→出力変換の順に評価する。作業空間変更時は中間レンダーの設定参照を更新する。
+
+## 既存実装との対応
+
+方針は「既存部品を利用」。対象マイルストーンは[M5](../../../development/milestones.md)。
+
+上流コードの照合先：[crates/engine/src/color.rs](../../../../crates/engine/src/color.rs)。
+
+既存CLIで列挙できる関連命令。引数とメニューは実バイナリで照合済み。挙動の確認方法は作業表に記載する。
+
+| 命令 | 入力 | 定義・登録の参照先 |
+| --- | --- | --- |
+| <code>sequence.colorSettings</code> | <code>{"workingSpace":"rec709"&#124;"rec2100-pq"&#124;"rec2100-hlg"?,"wideGamut":bool?,"autoToneMap":bool?}</code> | [color.rs](../../../../crates/engine/src/color.rs) |
+
+編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。

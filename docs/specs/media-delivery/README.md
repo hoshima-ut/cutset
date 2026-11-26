@@ -4,59 +4,59 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| IO-01 案件とテンプレート | [要件](IO-01/requirements.md) | [設計](IO-01/design.md) | [作業](IO-01/tasks.md) | 既存部品を利用 | M5 |
-| IO-02 選択トレイ | [要件](IO-02/requirements.md) | [設計](IO-02/design.md) | [作業](IO-02/tasks.md) | 既存部品を利用 | M5 |
-| IO-03 分割収録の取り込み | [要件](IO-03/requirements.md) | [設計](IO-03/design.md) | [作業](IO-03/tasks.md) | 上流対応を要確認 | M5 |
-| IO-04 取り込み処理 | [要件](IO-04/requirements.md) | [設計](IO-04/design.md) | [作業](IO-04/tasks.md) | 既存部品を利用 | M5 |
-| IO-05 形式と上限 | [要件](IO-05/requirements.md) | [設計](IO-05/design.md) | [作業](IO-05/tasks.md) | 既存部品を利用 | M5 |
-| IO-06 カメラRAW | [要件](IO-06/requirements.md) | [設計](IO-06/design.md) | [作業](IO-06/tasks.md) | 既存部品を利用 | M5 |
-| IO-07 静止画・連番 | [要件](IO-07/requirements.md) | [設計](IO-07/design.md) | [作業](IO-07/tasks.md) | 既存部品を利用 | M5 |
-| IO-08 レイヤー画像 | [要件](IO-08/requirements.md) | [設計](IO-08/design.md) | [作業](IO-08/tasks.md) | 既存部品を利用 | M5 |
-| IO-09 音声の取り込み | [要件](IO-09/requirements.md) | [設計](IO-09/design.md) | [作業](IO-09/tasks.md) | 既存部品を利用 | M5 |
-| IO-10 素材の解釈 | [要件](IO-10/requirements.md) | [設計](IO-10/design.md) | [作業](IO-10/tasks.md) | 既存部品を利用 | M5 |
-| IO-11 プレースホルダーと生成素材 | [要件](IO-11/requirements.md) | [設計](IO-11/design.md) | [作業](IO-11/tasks.md) | 既存部品を利用 | M5 |
-| IO-12 増加中の収録素材 | [要件](IO-12/requirements.md) | [設計](IO-12/design.md) | [作業](IO-12/tasks.md) | 既存部品を利用 | M5 |
-| IO-13 ナレーションの取り込み | [要件](IO-13/requirements.md) | [設計](IO-13/design.md) | [作業](IO-13/tasks.md) | 既存部品を利用 | M5 |
-| IO-14 施設入出力 | [要件](IO-14/requirements.md) | [設計](IO-14/design.md) | [作業](IO-14/tasks.md) | 上流対応を要確認 | M5 |
-| IO-15 ビンの整理 | [要件](IO-15/requirements.md) | [設計](IO-15/design.md) | [作業](IO-15/tasks.md) | 既存部品を利用 | M5 |
-| IO-16 重複と条件検索 | [要件](IO-16/requirements.md) | [設計](IO-16/design.md) | [作業](IO-16/tasks.md) | 既存部品を利用 | M5 |
-| IO-17 ラベル・時刻・注記 | [要件](IO-17/requirements.md) | [設計](IO-17/design.md) | [作業](IO-17/tasks.md) | 既存部品を利用 | M5 |
-| IO-18 配置の一覧 | [要件](IO-18/requirements.md) | [設計](IO-18/design.md) | [作業](IO-18/tasks.md) | 既存部品を利用 | M5 |
-| IO-19 メタデータ | [要件](IO-19/requirements.md) | [設計](IO-19/design.md) | [作業](IO-19/tasks.md) | 既存部品を利用 | M5 |
-| IO-20 モニターへの情報表示 | [要件](IO-20/requirements.md) | [設計](IO-20/design.md) | [作業](IO-20/tasks.md) | 既存部品を利用 | M5 |
-| IO-21 内容による素材検索 | [要件](IO-21/requirements.md) | [設計](IO-21/design.md) | [作業](IO-21/tasks.md) | 上流対応を要確認 | M5 |
-| IO-22 類似フレーム検索 | [要件](IO-22/requirements.md) | [設計](IO-22/design.md) | [作業](IO-22/tasks.md) | 上流対応を要確認 | M5 |
-| IO-23 素材の再リンク | [要件](IO-23/requirements.md) | [設計](IO-23/design.md) | [作業](IO-23/tasks.md) | 既存部品を利用 | M4 |
-| IO-24 プロキシの生成 | [要件](IO-24/requirements.md) | [設計](IO-24/design.md) | [作業](IO-24/tasks.md) | 既存部品を利用 | M5 |
-| IO-25 外部プロキシの対応付け | [要件](IO-25/requirements.md) | [設計](IO-25/design.md) | [作業](IO-25/tasks.md) | 既存部品を利用 | M5 |
-| IO-26 試聴と納品の素材選択 | [要件](IO-26/requirements.md) | [設計](IO-26/design.md) | [作業](IO-26/tasks.md) | 既存部品を利用 | M5 |
-| IO-27 ハードウェア処理 | [要件](IO-27/requirements.md) | [設計](IO-27/design.md) | [作業](IO-27/tasks.md) | 既存部品を利用 | M5 |
-| IO-28 監視と操作機器 | [要件](IO-28/requirements.md) | [設計](IO-28/design.md) | [作業](IO-28/tasks.md) | 既存部品を利用 | M5 |
-| IO-29 キャッシュ管理 | [要件](IO-29/requirements.md) | [設計](IO-29/design.md) | [作業](IO-29/tasks.md) | 既存部品を利用 | M5 |
-| IO-30 保存と案件切替 | [要件](IO-30/requirements.md) | [設計](IO-30/design.md) | [作業](IO-30/tasks.md) | 既存部品を利用 | M2 |
-| IO-31 案件の移行 | [要件](IO-31/requirements.md) | [設計](IO-31/design.md) | [作業](IO-31/tasks.md) | 既存部品を利用 | M4 |
-| IO-32 プレビューの計算 | [要件](IO-32/requirements.md) | [設計](IO-32/design.md) | [作業](IO-32/tasks.md) | 既存部品を利用 | M5 |
-| IO-33 中間素材への置換 | [要件](IO-33/requirements.md) | [設計](IO-33/design.md) | [作業](IO-33/tasks.md) | 上流対応を要確認 | M5 |
-| IO-34 共有案件の公開と同期 | [要件](IO-34/requirements.md) | [設計](IO-34/design.md) | [作業](IO-34/tasks.md) | 新規設計 | M6 |
-| IO-35 複数案件の共有 | [要件](IO-35/requirements.md) | [設計](IO-35/design.md) | [作業](IO-35/tasks.md) | 新規設計 | M6 |
-| IO-36 版指定レビュー | [要件](IO-36/requirements.md) | [設計](IO-36/design.md) | [作業](IO-36/tasks.md) | 新規設計 | M6 |
-| IO-37 共有素材・利用権 | [要件](IO-37/requirements.md) | [設計](IO-37/design.md) | [作業](IO-37/tasks.md) | 上流対応を要確認 | M5 |
-| IO-38 外部ツールとの往復 | [要件](IO-38/requirements.md) | [設計](IO-38/design.md) | [作業](IO-38/tasks.md) | 上流対応を要確認 | M4 |
-| IO-39 拡張ホスト | [要件](IO-39/requirements.md) | [設計](IO-39/design.md) | [作業](IO-39/tasks.md) | 既存部品を利用 | M5 |
-| IO-40 納品範囲 | [要件](IO-40/requirements.md) | [設計](IO-40/design.md) | [作業](IO-40/tasks.md) | 既存部品を利用 | M5 |
-| IO-41 出力プリセット | [要件](IO-41/requirements.md) | [設計](IO-41/design.md) | [作業](IO-41/tasks.md) | 既存部品を利用 | M5 |
-| IO-42 ビデオの符号化 | [要件](IO-42/requirements.md) | [設計](IO-42/design.md) | [作業](IO-42/tasks.md) | 既存部品を利用 | M5 |
-| IO-43 音声と多重化 | [要件](IO-43/requirements.md) | [設計](IO-43/design.md) | [作業](IO-43/tasks.md) | 既存部品を利用 | M5 |
-| IO-44 色・画質・重ね表示 | [要件](IO-44/requirements.md) | [設計](IO-44/design.md) | [作業](IO-44/tasks.md) | 既存部品を利用 | M5 |
-| IO-45 再圧縮の回避 | [要件](IO-45/requirements.md) | [設計](IO-45/design.md) | [作業](IO-45/tasks.md) | 上流対応を要確認 | M5 |
-| IO-46 字幕と文字データ | [要件](IO-46/requirements.md) | [設計](IO-46/design.md) | [作業](IO-46/tasks.md) | 既存部品を利用 | M4 |
-| IO-47 フレームと連番出力 | [要件](IO-47/requirements.md) | [設計](IO-47/design.md) | [作業](IO-47/tasks.md) | 既存部品を利用 | M5 |
-| IO-48 書き出しキュー | [要件](IO-48/requirements.md) | [設計](IO-48/design.md) | [作業](IO-48/tasks.md) | 既存部品を利用 | M5 |
-| IO-49 配信と来歴 | [要件](IO-49/requirements.md) | [設計](IO-49/design.md) | [作業](IO-49/tasks.md) | 上流対応を要確認 | M5 |
-| IO-50 遠隔モニタリング | [要件](IO-50/requirements.md) | [設計](IO-50/design.md) | [作業](IO-50/tasks.md) | 上流対応を要確認 | M6 |
-| IO-51 選択シーケンスの取り込み | [要件](IO-51/requirements.md) | [設計](IO-51/design.md) | [作業](IO-51/tasks.md) | 既存部品を利用 | M4 |
-| IO-52 OTIO交換 | [要件](IO-52/requirements.md) | [設計](IO-52/design.md) | [作業](IO-52/tasks.md) | 既存部品を利用 | M4 |
-| IO-53 XML交換 | [要件](IO-53/requirements.md) | [設計](IO-53/design.md) | [作業](IO-53/tasks.md) | 既存部品を利用 | M4 |
-| IO-54 編集決定リスト | [要件](IO-54/requirements.md) | [設計](IO-54/design.md) | [作業](IO-54/tasks.md) | 既存部品を利用 | M4 |
-| IO-55 音声ポスト受け渡し | [要件](IO-55/requirements.md) | [設計](IO-55/design.md) | [作業](IO-55/tasks.md) | 既存部品を利用 | M4 |
-| IO-56 素材の収集と保管 | [要件](IO-56/requirements.md) | [設計](IO-56/design.md) | [作業](IO-56/tasks.md) | 既存部品を利用 | M4 |
+| 案件とテンプレート（IO-01） | [要件](案件とテンプレート/requirements.md) | [設計](案件とテンプレート/design.md) | [作業](案件とテンプレート/tasks.md) | 既存部品を利用 | M5 |
+| 選択トレイ（IO-02） | [要件](選択トレイ/requirements.md) | [設計](選択トレイ/design.md) | [作業](選択トレイ/tasks.md) | 既存部品を利用 | M5 |
+| 分割収録の取り込み（IO-03） | [要件](分割収録の取り込み/requirements.md) | [設計](分割収録の取り込み/design.md) | [作業](分割収録の取り込み/tasks.md) | 上流対応を要確認 | M5 |
+| 取り込み処理（IO-04） | [要件](取り込み処理/requirements.md) | [設計](取り込み処理/design.md) | [作業](取り込み処理/tasks.md) | 既存部品を利用 | M5 |
+| 形式と上限（IO-05） | [要件](形式と上限/requirements.md) | [設計](形式と上限/design.md) | [作業](形式と上限/tasks.md) | 既存部品を利用 | M5 |
+| カメラRAW（IO-06） | [要件](カメラRAW/requirements.md) | [設計](カメラRAW/design.md) | [作業](カメラRAW/tasks.md) | 既存部品を利用 | M5 |
+| 静止画・連番（IO-07） | [要件](静止画・連番/requirements.md) | [設計](静止画・連番/design.md) | [作業](静止画・連番/tasks.md) | 既存部品を利用 | M5 |
+| レイヤー画像（IO-08） | [要件](レイヤー画像/requirements.md) | [設計](レイヤー画像/design.md) | [作業](レイヤー画像/tasks.md) | 既存部品を利用 | M5 |
+| 音声の取り込み（IO-09） | [要件](音声の取り込み/requirements.md) | [設計](音声の取り込み/design.md) | [作業](音声の取り込み/tasks.md) | 既存部品を利用 | M5 |
+| 素材の解釈（IO-10） | [要件](素材の解釈/requirements.md) | [設計](素材の解釈/design.md) | [作業](素材の解釈/tasks.md) | 既存部品を利用 | M5 |
+| プレースホルダーと生成素材（IO-11） | [要件](プレースホルダーと生成素材/requirements.md) | [設計](プレースホルダーと生成素材/design.md) | [作業](プレースホルダーと生成素材/tasks.md) | 既存部品を利用 | M5 |
+| 増加中の収録素材（IO-12） | [要件](増加中の収録素材/requirements.md) | [設計](増加中の収録素材/design.md) | [作業](増加中の収録素材/tasks.md) | 既存部品を利用 | M5 |
+| ナレーションの取り込み（IO-13） | [要件](ナレーションの取り込み/requirements.md) | [設計](ナレーションの取り込み/design.md) | [作業](ナレーションの取り込み/tasks.md) | 既存部品を利用 | M5 |
+| 施設入出力（IO-14） | [要件](施設入出力/requirements.md) | [設計](施設入出力/design.md) | [作業](施設入出力/tasks.md) | 上流対応を要確認 | M5 |
+| ビンの整理（IO-15） | [要件](ビンの整理/requirements.md) | [設計](ビンの整理/design.md) | [作業](ビンの整理/tasks.md) | 既存部品を利用 | M5 |
+| 重複と条件検索（IO-16） | [要件](重複と条件検索/requirements.md) | [設計](重複と条件検索/design.md) | [作業](重複と条件検索/tasks.md) | 既存部品を利用 | M5 |
+| ラベル・時刻・注記（IO-17） | [要件](ラベル・時刻・注記/requirements.md) | [設計](ラベル・時刻・注記/design.md) | [作業](ラベル・時刻・注記/tasks.md) | 既存部品を利用 | M5 |
+| 配置の一覧（IO-18） | [要件](配置の一覧/requirements.md) | [設計](配置の一覧/design.md) | [作業](配置の一覧/tasks.md) | 既存部品を利用 | M5 |
+| メタデータ（IO-19） | [要件](メタデータ/requirements.md) | [設計](メタデータ/design.md) | [作業](メタデータ/tasks.md) | 既存部品を利用 | M5 |
+| モニターへの情報表示（IO-20） | [要件](モニターへの情報表示/requirements.md) | [設計](モニターへの情報表示/design.md) | [作業](モニターへの情報表示/tasks.md) | 既存部品を利用 | M5 |
+| 内容による素材検索（IO-21） | [要件](内容による素材検索/requirements.md) | [設計](内容による素材検索/design.md) | [作業](内容による素材検索/tasks.md) | 上流対応を要確認 | M5 |
+| 類似フレーム検索（IO-22） | [要件](類似フレーム検索/requirements.md) | [設計](類似フレーム検索/design.md) | [作業](類似フレーム検索/tasks.md) | 上流対応を要確認 | M5 |
+| 素材の再リンク（IO-23） | [要件](素材の再リンク/requirements.md) | [設計](素材の再リンク/design.md) | [作業](素材の再リンク/tasks.md) | 既存部品を利用 | M4 |
+| プロキシの生成（IO-24） | [要件](プロキシの生成/requirements.md) | [設計](プロキシの生成/design.md) | [作業](プロキシの生成/tasks.md) | 既存部品を利用 | M5 |
+| 外部プロキシの対応付け（IO-25） | [要件](外部プロキシの対応付け/requirements.md) | [設計](外部プロキシの対応付け/design.md) | [作業](外部プロキシの対応付け/tasks.md) | 既存部品を利用 | M5 |
+| 試聴と納品の素材選択（IO-26） | [要件](試聴と納品の素材選択/requirements.md) | [設計](試聴と納品の素材選択/design.md) | [作業](試聴と納品の素材選択/tasks.md) | 既存部品を利用 | M5 |
+| ハードウェア処理（IO-27） | [要件](ハードウェア処理/requirements.md) | [設計](ハードウェア処理/design.md) | [作業](ハードウェア処理/tasks.md) | 既存部品を利用 | M5 |
+| 監視と操作機器（IO-28） | [要件](監視と操作機器/requirements.md) | [設計](監視と操作機器/design.md) | [作業](監視と操作機器/tasks.md) | 既存部品を利用 | M5 |
+| キャッシュ管理（IO-29） | [要件](キャッシュ管理/requirements.md) | [設計](キャッシュ管理/design.md) | [作業](キャッシュ管理/tasks.md) | 既存部品を利用 | M5 |
+| 保存と案件切替（IO-30） | [要件](保存と案件切替/requirements.md) | [設計](保存と案件切替/design.md) | [作業](保存と案件切替/tasks.md) | 既存部品を利用 | M2 |
+| 案件の移行（IO-31） | [要件](案件の移行/requirements.md) | [設計](案件の移行/design.md) | [作業](案件の移行/tasks.md) | 既存部品を利用 | M4 |
+| プレビューの計算（IO-32） | [要件](プレビューの計算/requirements.md) | [設計](プレビューの計算/design.md) | [作業](プレビューの計算/tasks.md) | 既存部品を利用 | M5 |
+| 中間素材への置換（IO-33） | [要件](中間素材への置換/requirements.md) | [設計](中間素材への置換/design.md) | [作業](中間素材への置換/tasks.md) | 上流対応を要確認 | M5 |
+| 共有案件の公開と同期（IO-34） | [要件](共有案件の公開と同期/requirements.md) | [設計](共有案件の公開と同期/design.md) | [作業](共有案件の公開と同期/tasks.md) | 新規設計 | M6 |
+| 複数案件の共有（IO-35） | [要件](複数案件の共有/requirements.md) | [設計](複数案件の共有/design.md) | [作業](複数案件の共有/tasks.md) | 新規設計 | M6 |
+| 版指定レビュー（IO-36） | [要件](版指定レビュー/requirements.md) | [設計](版指定レビュー/design.md) | [作業](版指定レビュー/tasks.md) | 新規設計 | M6 |
+| 共有素材・利用権（IO-37） | [要件](共有素材・利用権/requirements.md) | [設計](共有素材・利用権/design.md) | [作業](共有素材・利用権/tasks.md) | 上流対応を要確認 | M5 |
+| 外部ツールとの往復（IO-38） | [要件](外部ツールとの往復/requirements.md) | [設計](外部ツールとの往復/design.md) | [作業](外部ツールとの往復/tasks.md) | 上流対応を要確認 | M4 |
+| 拡張ホスト（IO-39） | [要件](拡張ホスト/requirements.md) | [設計](拡張ホスト/design.md) | [作業](拡張ホスト/tasks.md) | 既存部品を利用 | M5 |
+| 納品範囲（IO-40） | [要件](納品範囲/requirements.md) | [設計](納品範囲/design.md) | [作業](納品範囲/tasks.md) | 既存部品を利用 | M5 |
+| 出力プリセット（IO-41） | [要件](出力プリセット/requirements.md) | [設計](出力プリセット/design.md) | [作業](出力プリセット/tasks.md) | 既存部品を利用 | M5 |
+| ビデオの符号化（IO-42） | [要件](ビデオの符号化/requirements.md) | [設計](ビデオの符号化/design.md) | [作業](ビデオの符号化/tasks.md) | 既存部品を利用 | M5 |
+| 音声と多重化（IO-43） | [要件](音声と多重化/requirements.md) | [設計](音声と多重化/design.md) | [作業](音声と多重化/tasks.md) | 既存部品を利用 | M5 |
+| 色・画質・重ね表示（IO-44） | [要件](色・画質・重ね表示/requirements.md) | [設計](色・画質・重ね表示/design.md) | [作業](色・画質・重ね表示/tasks.md) | 既存部品を利用 | M5 |
+| 再圧縮の回避（IO-45） | [要件](再圧縮の回避/requirements.md) | [設計](再圧縮の回避/design.md) | [作業](再圧縮の回避/tasks.md) | 上流対応を要確認 | M5 |
+| 字幕と文字データ（IO-46） | [要件](字幕と文字データ/requirements.md) | [設計](字幕と文字データ/design.md) | [作業](字幕と文字データ/tasks.md) | 既存部品を利用 | M4 |
+| フレームと連番出力（IO-47） | [要件](フレームと連番出力/requirements.md) | [設計](フレームと連番出力/design.md) | [作業](フレームと連番出力/tasks.md) | 既存部品を利用 | M5 |
+| 書き出しキュー（IO-48） | [要件](書き出しキュー/requirements.md) | [設計](書き出しキュー/design.md) | [作業](書き出しキュー/tasks.md) | 既存部品を利用 | M5 |
+| 配信と来歴（IO-49） | [要件](配信と来歴/requirements.md) | [設計](配信と来歴/design.md) | [作業](配信と来歴/tasks.md) | 上流対応を要確認 | M5 |
+| 遠隔モニタリング（IO-50） | [要件](遠隔モニタリング/requirements.md) | [設計](遠隔モニタリング/design.md) | [作業](遠隔モニタリング/tasks.md) | 上流対応を要確認 | M6 |
+| 選択シーケンスの取り込み（IO-51） | [要件](選択シーケンスの取り込み/requirements.md) | [設計](選択シーケンスの取り込み/design.md) | [作業](選択シーケンスの取り込み/tasks.md) | 既存部品を利用 | M4 |
+| OTIO交換（IO-52） | [要件](OTIO交換/requirements.md) | [設計](OTIO交換/design.md) | [作業](OTIO交換/tasks.md) | 既存部品を利用 | M4 |
+| XML交換（IO-53） | [要件](XML交換/requirements.md) | [設計](XML交換/design.md) | [作業](XML交換/tasks.md) | 既存部品を利用 | M4 |
+| 編集決定リスト（IO-54） | [要件](編集決定リスト/requirements.md) | [設計](編集決定リスト/design.md) | [作業](編集決定リスト/tasks.md) | 既存部品を利用 | M4 |
+| 音声ポスト受け渡し（IO-55） | [要件](音声ポスト受け渡し/requirements.md) | [設計](音声ポスト受け渡し/design.md) | [作業](音声ポスト受け渡し/tasks.md) | 既存部品を利用 | M4 |
+| 素材の収集と保管（IO-56） | [要件](素材の収集と保管/requirements.md) | [設計](素材の収集と保管/design.md) | [作業](素材の収集と保管/tasks.md) | 既存部品を利用 | M4 |

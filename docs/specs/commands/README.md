@@ -4,38 +4,38 @@
 
 | 機能 | 要件 | 設計 | 作業・試験 | 方針 | 目標 |
 | --- | --- | --- | --- | --- | --- |
-| MN-01 新規作成の対象 | [要件](MN-01/requirements.md) | [設計](MN-01/design.md) | [作業](MN-01/tasks.md) | 既存部品を利用 | M5 |
-| MN-02 案件の取り込みポリシー | [要件](MN-02/requirements.md) | [設計](MN-02/design.md) | [作業](MN-02/tasks.md) | 既存部品を利用 | M5 |
-| MN-03 保管パッケージ | [要件](MN-03/requirements.md) | [設計](MN-03/design.md) | [作業](MN-03/tasks.md) | 既存部品を利用 | M5 |
-| MN-04 案件の一部を読み込む | [要件](MN-04/requirements.md) | [設計](MN-04/design.md) | [作業](MN-04/tasks.md) | 既存部品を利用 | M5 |
-| MN-05 交換データの出力 | [要件](MN-05/requirements.md) | [設計](MN-05/design.md) | [作業](MN-05/tasks.md) | 既存部品を利用 | M5 |
-| MN-06 字幕ファイルの出力 | [要件](MN-06/requirements.md) | [設計](MN-06/design.md) | [作業](MN-06/tasks.md) | 既存部品を利用 | M5 |
-| MN-07 重複素材の統合 | [要件](MN-07/requirements.md) | [設計](MN-07/design.md) | [作業](MN-07/tasks.md) | 既存部品を利用 | M5 |
-| MN-08 外部音声編集への送出 | [要件](MN-08/requirements.md) | [設計](MN-08/design.md) | [作業](MN-08/tasks.md) | 上流対応を要確認 | M5 |
-| MN-09 アプリ設定の入口 | [要件](MN-09/requirements.md) | [設計](MN-09/design.md) | [作業](MN-09/tasks.md) | 既存部品を利用 | M5 |
-| MN-10 静止フレームの指定 | [要件](MN-10/requirements.md) | [設計](MN-10/design.md) | [作業](MN-10/tasks.md) | 既存部品を利用 | M5 |
-| MN-11 ショット検出の開始 | [要件](MN-11/requirements.md) | [設計](MN-11/design.md) | [作業](MN-11/tasks.md) | 既存部品を利用 | M5 |
-| MN-12 別録り素材の同期 | [要件](MN-12/requirements.md) | [設計](MN-12/design.md) | [作業](MN-12/tasks.md) | 既存部品を利用 | M5 |
-| MN-13 中間レンダーと復帰 | [要件](MN-13/requirements.md) | [設計](MN-13/design.md) | [作業](MN-13/tasks.md) | 上流対応を要確認 | M5 |
-| MN-14 レンダー範囲 | [要件](MN-14/requirements.md) | [設計](MN-14/design.md) | [作業](MN-14/tasks.md) | 既存部品を利用 | M5 |
-| MN-15 ヘッド追従と連続境界 | [要件](MN-15/requirements.md) | [設計](MN-15/design.md) | [作業](MN-15/tasks.md) | 既存部品を利用 | M5 |
-| MN-16 引き渡し版の簡略化 | [要件](MN-16/requirements.md) | [設計](MN-16/design.md) | [作業](MN-16/tasks.md) | 既存部品を利用 | M5 |
-| MN-17 トラックの一括変更 | [要件](MN-17/requirements.md) | [設計](MN-17/design.md) | [作業](MN-17/tasks.md) | 既存部品を利用 | M5 |
-| MN-18 マーカー付き貼り付け | [要件](MN-18/requirements.md) | [設計](MN-18/design.md) | [作業](MN-18/tasks.md) | 既存部品を利用 | M5 |
-| MN-19 再利用タイトルの作成 | [要件](MN-19/requirements.md) | [設計](MN-19/design.md) | [作業](MN-19/tasks.md) | 既存部品を利用 | M5 |
-| MN-20 字幕のグラフィック化 | [要件](MN-20/requirements.md) | [設計](MN-20/design.md) | [作業](MN-20/tasks.md) | 既存部品を利用 | M5 |
-| MN-21 テンプレートを書き出す | [要件](MN-21/requirements.md) | [設計](MN-21/design.md) | [作業](MN-21/tasks.md) | 既存部品を利用 | M5 |
-| MN-22 案件の書体置換 | [要件](MN-22/requirements.md) | [設計](MN-22/design.md) | [作業](MN-22/tasks.md) | 既存部品を利用 | M5 |
-| MN-23 ガイドの編集 | [要件](MN-23/requirements.md) | [設計](MN-23/design.md) | [作業](MN-23/tasks.md) | 既存部品を利用 | M5 |
-| MN-24 ガイドの転用 | [要件](MN-24/requirements.md) | [設計](MN-24/design.md) | [作業](MN-24/tasks.md) | 上流対応を要確認 | M5 |
-| MN-25 レイアウトの管理 | [要件](MN-25/requirements.md) | [設計](MN-25/design.md) | [作業](MN-25/tasks.md) | 既存部品を利用 | M5 |
-| MN-26 一覧パネルへの移動 | [要件](MN-26/requirements.md) | [設計](MN-26/design.md) | [作業](MN-26/tasks.md) | 既存部品を利用 | M5 |
-| MN-27 レビュー用パネル | [要件](MN-27/requirements.md) | [設計](MN-27/design.md) | [作業](MN-27/tasks.md) | 新規設計 | M5 |
-| MN-28 環境レポート | [要件](MN-28/requirements.md) | [設計](MN-28/design.md) | [作業](MN-28/tasks.md) | 既存部品を利用 | M5 |
-| MN-29 プロキシ生成の入口 | [要件](MN-29/requirements.md) | [設計](MN-29/design.md) | [作業](MN-29/tasks.md) | 既存部品を利用 | M5 |
-| MN-30 プロキシ接続の入口 | [要件](MN-30/requirements.md) | [設計](MN-30/design.md) | [作業](MN-30/tasks.md) | 既存部品を利用 | M5 |
-| MN-31 原本の解釈設定 | [要件](MN-31/requirements.md) | [設計](MN-31/design.md) | [作業](MN-31/tasks.md) | 既存部品を利用 | M5 |
-| MN-32 素材一覧の表示切替 | [要件](MN-32/requirements.md) | [設計](MN-32/design.md) | [作業](MN-32/tasks.md) | 既存部品を利用 | M5 |
-| MN-33 表示フレームでの検索 | [要件](MN-33/requirements.md) | [設計](MN-33/design.md) | [作業](MN-33/tasks.md) | 上流対応を要確認 | M5 |
-| MN-34 トラックのコンテキスト操作 | [要件](MN-34/requirements.md) | [設計](MN-34/design.md) | [作業](MN-34/tasks.md) | 既存部品を利用 | M5 |
-| MN-35 パネル別の操作検索 | [要件](MN-35/requirements.md) | [設計](MN-35/design.md) | [作業](MN-35/tasks.md) | 既存部品を利用 | M5 |
+| 新規作成の対象（MN-01） | [要件](新規作成の対象/requirements.md) | [設計](新規作成の対象/design.md) | [作業](新規作成の対象/tasks.md) | 既存部品を利用 | M5 |
+| 案件の取り込みポリシー（MN-02） | [要件](案件の取り込みポリシー/requirements.md) | [設計](案件の取り込みポリシー/design.md) | [作業](案件の取り込みポリシー/tasks.md) | 既存部品を利用 | M5 |
+| 保管パッケージ（MN-03） | [要件](保管パッケージ/requirements.md) | [設計](保管パッケージ/design.md) | [作業](保管パッケージ/tasks.md) | 既存部品を利用 | M5 |
+| 案件の一部を読み込む（MN-04） | [要件](案件の一部を読み込む/requirements.md) | [設計](案件の一部を読み込む/design.md) | [作業](案件の一部を読み込む/tasks.md) | 既存部品を利用 | M5 |
+| 交換データの出力（MN-05） | [要件](交換データの出力/requirements.md) | [設計](交換データの出力/design.md) | [作業](交換データの出力/tasks.md) | 既存部品を利用 | M5 |
+| 字幕ファイルの出力（MN-06） | [要件](字幕ファイルの出力/requirements.md) | [設計](字幕ファイルの出力/design.md) | [作業](字幕ファイルの出力/tasks.md) | 既存部品を利用 | M5 |
+| 重複素材の統合（MN-07） | [要件](重複素材の統合/requirements.md) | [設計](重複素材の統合/design.md) | [作業](重複素材の統合/tasks.md) | 既存部品を利用 | M5 |
+| 外部音声編集への送出（MN-08） | [要件](外部音声編集への送出/requirements.md) | [設計](外部音声編集への送出/design.md) | [作業](外部音声編集への送出/tasks.md) | 上流対応を要確認 | M5 |
+| アプリ設定の入口（MN-09） | [要件](アプリ設定の入口/requirements.md) | [設計](アプリ設定の入口/design.md) | [作業](アプリ設定の入口/tasks.md) | 既存部品を利用 | M5 |
+| 静止フレームの指定（MN-10） | [要件](静止フレームの指定/requirements.md) | [設計](静止フレームの指定/design.md) | [作業](静止フレームの指定/tasks.md) | 既存部品を利用 | M5 |
+| ショット検出の開始（MN-11） | [要件](ショット検出の開始/requirements.md) | [設計](ショット検出の開始/design.md) | [作業](ショット検出の開始/tasks.md) | 既存部品を利用 | M5 |
+| 別録り素材の同期（MN-12） | [要件](別録り素材の同期/requirements.md) | [設計](別録り素材の同期/design.md) | [作業](別録り素材の同期/tasks.md) | 既存部品を利用 | M5 |
+| 中間レンダーと復帰（MN-13） | [要件](中間レンダーと復帰/requirements.md) | [設計](中間レンダーと復帰/design.md) | [作業](中間レンダーと復帰/tasks.md) | 上流対応を要確認 | M5 |
+| レンダー範囲（MN-14） | [要件](レンダー範囲/requirements.md) | [設計](レンダー範囲/design.md) | [作業](レンダー範囲/tasks.md) | 既存部品を利用 | M5 |
+| ヘッド追従と連続境界（MN-15） | [要件](ヘッド追従と連続境界/requirements.md) | [設計](ヘッド追従と連続境界/design.md) | [作業](ヘッド追従と連続境界/tasks.md) | 既存部品を利用 | M5 |
+| 引き渡し版の簡略化（MN-16） | [要件](引き渡し版の簡略化/requirements.md) | [設計](引き渡し版の簡略化/design.md) | [作業](引き渡し版の簡略化/tasks.md) | 既存部品を利用 | M5 |
+| トラックの一括変更（MN-17） | [要件](トラックの一括変更/requirements.md) | [設計](トラックの一括変更/design.md) | [作業](トラックの一括変更/tasks.md) | 既存部品を利用 | M5 |
+| マーカー付き貼り付け（MN-18） | [要件](マーカー付き貼り付け/requirements.md) | [設計](マーカー付き貼り付け/design.md) | [作業](マーカー付き貼り付け/tasks.md) | 既存部品を利用 | M5 |
+| 再利用タイトルの作成（MN-19） | [要件](再利用タイトルの作成/requirements.md) | [設計](再利用タイトルの作成/design.md) | [作業](再利用タイトルの作成/tasks.md) | 既存部品を利用 | M5 |
+| 字幕のグラフィック化（MN-20） | [要件](字幕のグラフィック化/requirements.md) | [設計](字幕のグラフィック化/design.md) | [作業](字幕のグラフィック化/tasks.md) | 既存部品を利用 | M5 |
+| テンプレートを書き出す（MN-21） | [要件](テンプレートを書き出す/requirements.md) | [設計](テンプレートを書き出す/design.md) | [作業](テンプレートを書き出す/tasks.md) | 既存部品を利用 | M5 |
+| 案件の書体置換（MN-22） | [要件](案件の書体置換/requirements.md) | [設計](案件の書体置換/design.md) | [作業](案件の書体置換/tasks.md) | 既存部品を利用 | M5 |
+| ガイドの編集（MN-23） | [要件](ガイドの編集/requirements.md) | [設計](ガイドの編集/design.md) | [作業](ガイドの編集/tasks.md) | 既存部品を利用 | M5 |
+| ガイドの転用（MN-24） | [要件](ガイドの転用/requirements.md) | [設計](ガイドの転用/design.md) | [作業](ガイドの転用/tasks.md) | 上流対応を要確認 | M5 |
+| レイアウトの管理（MN-25） | [要件](レイアウトの管理/requirements.md) | [設計](レイアウトの管理/design.md) | [作業](レイアウトの管理/tasks.md) | 既存部品を利用 | M5 |
+| 一覧パネルへの移動（MN-26） | [要件](一覧パネルへの移動/requirements.md) | [設計](一覧パネルへの移動/design.md) | [作業](一覧パネルへの移動/tasks.md) | 既存部品を利用 | M5 |
+| レビュー用パネル（MN-27） | [要件](レビュー用パネル/requirements.md) | [設計](レビュー用パネル/design.md) | [作業](レビュー用パネル/tasks.md) | 新規設計 | M5 |
+| 環境レポート（MN-28） | [要件](環境レポート/requirements.md) | [設計](環境レポート/design.md) | [作業](環境レポート/tasks.md) | 既存部品を利用 | M5 |
+| プロキシ生成の入口（MN-29） | [要件](プロキシ生成の入口/requirements.md) | [設計](プロキシ生成の入口/design.md) | [作業](プロキシ生成の入口/tasks.md) | 既存部品を利用 | M5 |
+| プロキシ接続の入口（MN-30） | [要件](プロキシ接続の入口/requirements.md) | [設計](プロキシ接続の入口/design.md) | [作業](プロキシ接続の入口/tasks.md) | 既存部品を利用 | M5 |
+| 原本の解釈設定（MN-31） | [要件](原本の解釈設定/requirements.md) | [設計](原本の解釈設定/design.md) | [作業](原本の解釈設定/tasks.md) | 既存部品を利用 | M5 |
+| 素材一覧の表示切替（MN-32） | [要件](素材一覧の表示切替/requirements.md) | [設計](素材一覧の表示切替/design.md) | [作業](素材一覧の表示切替/tasks.md) | 既存部品を利用 | M5 |
+| 表示フレームでの検索（MN-33） | [要件](表示フレームでの検索/requirements.md) | [設計](表示フレームでの検索/design.md) | [作業](表示フレームでの検索/tasks.md) | 上流対応を要確認 | M5 |
+| トラックのコンテキスト操作（MN-34） | [要件](トラックのコンテキスト操作/requirements.md) | [設計](トラックのコンテキスト操作/design.md) | [作業](トラックのコンテキスト操作/tasks.md) | 既存部品を利用 | M5 |
+| パネル別の操作検索（MN-35） | [要件](パネル別の操作検索/requirements.md) | [設計](パネル別の操作検索/design.md) | [作業](パネル別の操作検索/tasks.md) | 既存部品を利用 | M5 |
