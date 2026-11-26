@@ -31,3 +31,9 @@
 - [A741](https://helpx.adobe.com/premiere/desktop/troubleshooting/limitations-and-known-issues/unable-to-send-media-from-firefly-to-premiere.html)　Fireflyからの受信に失敗した場合に同一素材を二重に追加せず再試行できる。（障害診断）
 - [A747](https://helpx.adobe.com/premiere/desktop/troubleshooting/limitations-and-known-issues/creative-cloud-synced-files-end-of-life-for-premiere.html)　廃止サービスの素材参照を検出し、元ファイルへの再リンクで再開できるか確認する。（Creative Cloud Synced filesの終了情報。現行のLibrary／共同編集とは別）
 - [A757](https://helpx.adobe.com/premiere/desktop/troubleshooting/media-issues/video-assets-from-creative-cloud-libraries-broken-between-after-effects-and-premiere.html)　共有ライブラリ由来の映像リンクが切れたとき、参照元と利用先を特定する。（障害診断）
+
+## ボードの選択順から編集可能なシーケンスを作る
+
+ボードで選択した複数素材を取り込む際、素材登録のみ、または選択順でシーケンスを作成する方法を選べる。シーケンスに置いた各クリップは個別に移動・トリム・差し替えできる。
+
+[Premiere 26.x との照合](../../premiere-releases-2026-11.md)

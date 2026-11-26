@@ -17,3 +17,9 @@
 上流コードの照合先：[crates/ui-egui/src/panels/import_mode.rs](../../../../crates/ui-egui/src/panels/import_mode.rs)、[apps/filmcraft/src/main.rs](../../../../apps/filmcraft/src/main.rs)。
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+<a id="premiere-27-1"></a>
+
+## 編集からカラーへ切り替える（27.0との照合）
+
+選択配置、再生フレーム、再生範囲を保ってカラー作業面へ移る。補正は同じ配置の効果履歴に保存する。

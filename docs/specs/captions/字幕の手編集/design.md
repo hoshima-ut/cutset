@@ -44,3 +44,7 @@
 | <code>clip.restoreCaptionsFromSource</code> | <code>{}</code> | [project_tools.rs](../../../../crates/engine/src/project_tools.rs) |
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+## 発話に合わせた一語ずつの字幕表示
+
+時刻付きの語を個別の字幕区間へ変換し、同じトラックスタイルを参照する。日本語は文字起こしの語境界を利用し、語時刻がない区間では手動の分割位置を受け付ける。表示の切替と、文字の拡大や移動などの演出は個別に扱う。

@@ -1,11 +1,12 @@
 # Cutset 製品仕様
 
-各機能の要件、設計、検証作業を分野別に管理します。[機能索引](index.md)から対象の機能IDを選んでください。
+各機能の要件、設計、検証作業を分野別に管理します。[機能索引](index.md)から機能名を選んでください。
 
 | 探したいもの | 入口 |
 | --- | --- |
 | 各機能の振る舞い、現状、受け入れ条件 | [機能索引](index.md) ・ [機械可読台帳](data/catalog.json) |
 | 実装済みの編集命令と入口 | [上流コマンド台帳](data/native-commands.tsv) ・ [エンジンの命令定義](../../crates/engine/src/commands.rs) |
+| Premiereの主要機能とCutsetの対応 | [26.xとAREA記事の7項目](premiere-releases-2026-11.md) ・ [27.0の追加機能](premiere-27-0.md) |
 | 公開資料を元に確認する操作 | [公開資料と個別確認ケース](data/sources.json) |
 | プラグイン、APIキー、個人プラン | [AIモデルの接続と編集権限](../architecture/model-connections.md) |
 | 実装の順序と完了判定 | [マイルストーン](../development/milestones.md) ・ [仕様グラフと検証ループ](../development/harness.md) |

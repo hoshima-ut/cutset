@@ -19,3 +19,9 @@
 - [A493](https://helpx.adobe.com/premiere/desktop/add-video-effects/work-with-masks/create-masks-using-hsl-and-luminance.html)　該当機能を備える版で輝度範囲と色相範囲を切り替え、同明度の異なる色が選択されるか調べる。（27.0の色・輝度範囲マスク。26系の既存HSL Secondaryと区別）
 - [A587](https://helpx.adobe.com/premiere/desktop/correct-color/add-color-effects/correct-color-using-hsl-secondary-controls.html)　対象色の範囲を狭めてマスクを表示し、範囲外が補正されていないか調べる。（公開手順）
 - [A625](https://helpx.adobe.com/premiere/desktop/correct-color/color-mode-fundamentals/isolated-adjustments-using-masks.html)　マスク境界を横切る対象を補正し、境界外の色と追跡結果を比較する。（Color Modeは26.2時点でベータ、27.0で正式。26系正式仕様から分離）
+
+<a id="premiere-27-13"></a>
+
+## HSLマスクと他のマスクを組み合わせる（27.0との照合）
+
+色相、彩度、輝度による被覆率を形状・追跡マスクと組み合わせ、合成順と反転を保存する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/work-with-masks/create-masks-using-hsl-and-luminance.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-13)と[受入試験](tasks.md#premiere-27-13)に記載する。

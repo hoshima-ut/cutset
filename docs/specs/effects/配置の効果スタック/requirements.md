@@ -24,3 +24,9 @@
 - [A397](https://helpx.adobe.com/premiere/desktop/add-video-effects/apply-video-effects/view-effects-in-the-effect-controls-panel.html)　効果の開閉を切り替え、既に適用した処理と時間変化する項目を見つけられるか確かめる。（公開手順）
 - [A401](https://helpx.adobe.com/premiere/desktop/add-video-effects/apply-video-effects/use-fx-badges.html)　固定プロパティを変更した状態と効果を追加した状態のFXバッジを見比べ、対応する設定を開く。（公開手順）
 - [A729](https://helpx.adobe.com/premiere/desktop/collaborate-with-others/collaborate-using-productions/edit-and-enhance-content.html)　ニュース素材の粗編集に映像補正と音声修正を加え、処理した箇所の前後を参照画と聞き比べる。（公開手順）
+
+<a id="premiere-27-12"></a>
+
+## プロパティで映像・音声効果とマスクを調整する（27.0との照合）
+
+簡易カードと詳細パネルは同じ効果・マスクIDを参照する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/edit-projects/intro-to-editing/edit-video-using-the-properties-panel.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-12)と[受入試験](tasks.md#premiere-27-12)に記載する。

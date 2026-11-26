@@ -25,3 +25,9 @@
 | <code>metadata.set</code> | <code>{"item":id?,"clip":id?,"field":"Name&#124;Label&#124;Description&#124;Scene&#124;Shot&#124;Log Note&#124;Comment&#124;Tape Name&#124;Client&#124;Camera Angle&#124;…","value":str} &#124; {"item":id?,"fields":{name:str}}</code> | [panels.rs](../../../../crates/engine/src/panels.rs) |
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+<a id="premiere-27-17"></a>
+
+## 素材とタイムラインでiXMLを表示する（27.0との照合）
+
+録音ファイルから取得したiXMLを素材IDに結び付け、素材モニターと各配置から参照する。テイク名やチャンネル名の欠落と空値を識別する。

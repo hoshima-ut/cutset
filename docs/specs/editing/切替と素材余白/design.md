@@ -17,3 +17,9 @@
 上流コードの照合先：[crates/ui-egui/src/panels/transition_controls.rs](../../../../crates/ui-egui/src/panels/transition_controls.rs)。
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+<a id="premiere-27-15"></a>
+
+## トランジションに足りないフレームを生成する（27.0との照合）
+
+遷移の左右で必要な余白と実在フレームを数え、不足分だけを生成候補として示す。採用前にプレビューし、元のカット点と生成元を記録する。

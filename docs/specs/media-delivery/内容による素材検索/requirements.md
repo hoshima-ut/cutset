@@ -21,3 +21,9 @@
 - [A147](https://helpx.adobe.com/premiere/desktop/organize-media/file-organization/search-for-audio-using-media-intelligence.html)　歓声と拍手が入った素材を用意し、音で検索できる版かを照合して、返った時間範囲を実際に聞き分ける。（25.6正式版の音声内容検索を継承。26.5の音声検索結果再生の不具合修正も根拠）
 - [A148](https://helpx.adobe.com/premiere/desktop/organize-media/file-organization/search-for-similar-visuals-using-media-intelligence.html)　参照となる1フレームを選び、類似画検索を備える版で構図が近い別カットへ移動できるか確認する。（25.6正式版の類似フレーム検索を継承）
 - [A149](https://helpx.adobe.com/premiere/desktop/organize-media/file-organization/manage-media-intelligence-metadata.html)　解析メタデータと素材を別端末へ移し、既存索引の再利用または必要な再解析を画面で判別できるか試す。（公開手順）
+
+## 言葉・音・参照フレームから探す
+
+映像の説明、聞こえる音の説明、発話の文字列、素材の属性から探せる。選択した1フレームから構図の近い別カットも探せる。結果ごとに一致した情報の種類と原本の時刻を表示し、試写できる。
+
+[Premiere 26.x との照合](../../premiere-releases-2026-11.md)

@@ -28,3 +28,9 @@
 | <code>timeline.rateStretch</code> | <code>{"clip":id,"edge":"in&#124;out","delta":ticks,"linked":bool?}</code> | [commands.rs](../../../../crates/engine/src/commands.rs) |
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+<a id="premiere-27-18"></a>
+
+## 音声の時間伸縮方式と音程を選ぶ（27.0との照合）
+
+再生速度、伸縮方式、音程を別々に保存する。対応外の組み合わせを選択時に示し、試聴・再生・書き出しには同じ設定を渡す。

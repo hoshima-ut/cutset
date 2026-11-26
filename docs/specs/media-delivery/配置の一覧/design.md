@@ -17,3 +17,7 @@
 上流コードの照合先：[crates/engine/src/sequence_inspect_tests.rs](../../../../crates/engine/src/sequence_inspect_tests.rs)。
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+## 一覧からの移動とCSV書き出し
+
+行は素材名でなく配置IDに対応付け、シーケンスの時刻とトラックを持つ。表示とCSVは同じ絞り込み・列の設定・並べ替えを使う。絞り込み後に別操作で削除された配置は一覧を更新し、同じ素材の別カットへ移動しない。

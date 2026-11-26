@@ -19,3 +19,9 @@
 - [A373](https://helpx.adobe.com/premiere/desktop/add-text-images/insert-captions/create-captions.html)　指定の最大文字数・行数で字幕を生成し、長い一文の分割位置と表示区間を読む。（公開手順）
 - [A374](https://helpx.adobe.com/premiere/desktop/add-text-images/insert-captions/create-styles-for-captions.html)　新しい字幕スタイルをトラック全体に指定し、二つの離れた字幕で書体と縁の一致を確認する。（公開手順）
 - [A375](https://helpx.adobe.com/premiere/desktop/add-text-images/insert-captions/create-single-word-captions.html)　同じ発話から一語表示の字幕を作り、一時停止した各区間で一語ずつ見えるか照合する。（26.3で1語ずつ表示する字幕を追加）
+
+## 発話に合わせた一語ずつの字幕表示
+
+文字起こしから、一語ずつ発話時刻に合わせて切り替わる字幕を作成する。各語の開始・終了と本文を手で直せる。焼き込みでは配置や色を含め、字幕ファイルでは対応形式の本文と時刻を引き継ぐ。
+
+[Premiere 26.x との照合](../../premiere-releases-2026-11.md)

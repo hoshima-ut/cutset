@@ -22,3 +22,9 @@
 - 対応を確認したテスト：[pauses_are_found_and_removed_in_one_pass](../../../../crates/edit/src/transcript/tests.rs)。
 
 固定候補のCLI試聴計画でフレーム境界を照合済み。GUIでの試聴と推論は未確認。 [実行記録](../../../development/progress.md)
+
+<a id="premiere-27-2"></a>
+
+## 案件を参照して操作を提案するAI（27.0との照合）
+
+- [ ] 同名の配置を別シーケンスにも置く。質問で履歴が増えず、現シーケンスの一括変更だけを確定できること、確定前に配置が変われば再確認になることを試す。

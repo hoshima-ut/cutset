@@ -2161,42 +2161,42 @@
       "id": "A309",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/generative-media-tool-overview.html",
       "feature": "AI-08",
-      "referenceScope": "26.5正式は映像・効果音。静止画生成と映像同期の効果音は27.0",
+      "referenceScope": "26.5のリリースで映像・効果音を案内。日本語の操作手順はBetaと表示。静止画生成と映像同期の効果音は27.0",
       "probe": "生成映像・効果音が編集可能な素材として追加される版を確認し、生成した配置を独立して移動・削除できるか試す。"
     },
     {
       "id": "A310",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/generate-media-with-generative-media-tool.html",
       "feature": "AI-08",
-      "referenceScope": "26.5正式は映像・効果音。静止画生成と映像同期の効果音は27.0",
+      "referenceScope": "26.5のリリースで映像・効果音を案内。日本語の操作手順はBetaと表示。静止画生成と映像同期の効果音は27.0",
       "probe": "生成内容と保存先を指定し、選んだ結果の追加、失敗時の既存タイムライン保持、版ごとのベータ表記を照合する。"
     },
     {
       "id": "A311",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/generative-media-tool-faq.html",
       "feature": "AI-08",
-      "referenceScope": "26.5正式は映像・効果音。静止画生成と映像同期の効果音は27.0",
+      "referenceScope": "26.5のリリースで映像・効果音を案内。日本語の操作手順はBetaと表示。静止画生成と映像同期の効果音は27.0",
       "probe": "生成ツールの利用条件とクレジットの表示を対象26系で読み、確定前と取り消し後の扱いを記録する。"
     },
     {
       "id": "A312",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/generate-music-overview.html",
       "feature": "AI-08",
-      "referenceScope": "27.0正式の音楽生成。26系正式の対象外",
+      "referenceScope": "27.0のリリースノートに音楽生成を掲載。26系正式の対象外",
       "probe": "音楽生成の提供版・利用資格を26系のリリース記載と照合し、該当版のみ入力できる尺やスタイルを記録する。"
     },
     {
       "id": "A313",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/add-generated-music-to-your-timeline.html",
       "feature": "AI-08",
-      "referenceScope": "27.0正式の音楽生成。26系正式の対象外",
+      "referenceScope": "27.0のリリースノートに音楽生成を掲載。26系正式の対象外",
       "probe": "対象ビルドに音楽生成がある場合は追加位置と曲尺を確認し、タイムライン上で短縮後も曲を独立に扱えるか試す。"
     },
     {
       "id": "A314",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/generate-music-faq.html",
       "feature": "AI-08",
-      "referenceScope": "27.0正式の音楽生成。26系正式の対象外",
+      "referenceScope": "27.0のリリースノートに音楽生成を掲載。26系正式の対象外",
       "probe": "生成音楽の利用制約・対応期間・使用量表示について、提供開始版と該当しない26系の表示を対照する。"
     },
     {
@@ -2210,7 +2210,7 @@
       "id": "A316",
       "url": "https://helpx.adobe.com/premiere/desktop/edit-projects/edit-with-generative-ai/add-generated-soundscape-to-your-timeline.html",
       "feature": "AI-08",
-      "referenceScope": "27.0正式のサウンドスケープ生成。26系正式の対象外",
+      "referenceScope": "27.0のリリースノートにサウンドスケープ生成を掲載。26系正式の対象外",
       "probe": "サウンドスケープ追加の提供版を確認し、対応時だけ選択区間・音声トラックと生成後の長さを照合する。"
     },
     {

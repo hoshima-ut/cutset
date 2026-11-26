@@ -24,3 +24,9 @@
 - [A194](https://helpx.adobe.com/premiere/desktop/organize-media/edit-metadata/create-metadata-schemas-and-properties.html)　新しいスキーマに独自項目を加え、同名の既存項目と混ざらず型に沿った値が記録されるか確認する。（公開手順）
 - [A195](https://helpx.adobe.com/premiere/desktop/organize-media/edit-metadata/view-clip-data-in-the-metadata-panel.html)　同じファイルを参照する別のクリップを順に選び、クリップ固有の説明が正しい項目に表示されるか見る。（公開手順）
 - [A196](https://helpx.adobe.com/premiere/desktop/organize-media/edit-metadata/link-clip-data-to-xmp-metadata.html)　クリップ項目とXMP項目を連動させた状態で値を更新し、連動を解除した場合との差を再読込後に照合する。（公開手順）
+
+<a id="premiere-27-17"></a>
+
+## 素材とタイムラインでiXMLを表示する（27.0との照合）
+
+録音ファイルから取得したiXMLを素材IDに結び付け、素材モニターと各配置から参照する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/get-started/preferences-and-settings/media-preferences.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-17)と[受入試験](tasks.md#premiere-27-17)に記載する。

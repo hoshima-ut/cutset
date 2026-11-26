@@ -17,3 +17,9 @@
 ## 参照資料と確認項目
 
 - [A155](https://helpx.adobe.com/premiere/desktop/organize-media/file-organization/navigate-timelines-with-sequence-index.html)　Sequence Indexでオフラインと短いカットを絞り、結果行から正しい位置へ移動しCSVの行とも対応するか確かめる。（26.2でSequence Indexを追加）
+
+## 一覧からの移動とCSV書き出し
+
+現在のシーケンスのクリップを名前・トラックやオフライン状態、短いカットで絞り込む。行を選択すると対応する配置へ移動する。CSVには表示対象となった行と選択した列を指定順で書き出す。
+
+[Premiere 26.x との照合](../../premiere-releases-2026-11.md)

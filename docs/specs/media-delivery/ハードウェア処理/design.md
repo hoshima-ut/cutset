@@ -19,3 +19,9 @@
 確認した関数：[hardware_decoder_for](../../../../crates/platform/src/lib.rs)。映像サンプルの記述に対応するハードウェア復号経路を問い合わせる。描画・符号化・実測性能の表示は個別に確認する。
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
+
+<a id="premiere-27-10"></a>
+
+## Windows ARMでのGPU・AI処理（27.0との照合）
+
+CPUアーキテクチャ、GPU、ドライバー、推論バックエンドを操作単位で判定する。RTX Spark（N1X）とTensorRTは実機の検証対象とし、利用できる代替経路を示す。
