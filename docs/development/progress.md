@@ -74,3 +74,9 @@ AとBを選ぶと残すCは [700,725)、終端は1500。三つとも選ぶと映
 2026-11-26に259機能を[機能別の要件・設計・作業](../specs/index.md)に分割した。上流コマンドの登録情報、参照できる既存テスト、実行で確かめた範囲は[検証範囲と残件](../verification/coverage.md)を参照。次のM1では[候補試聴の作業表](../specs/workflow/無音短縮の試聴/tasks.md)で実機試聴とフォーカス復帰を確認する。
 
 社内試用に向けて、Appleシリコン版のDMGからコピーしたアプリの起動・編集・保存と、付属CLIでの再読込・書き出しを確認した。次の配布確認は、組織の署名・公証を使った別端末への導入と既存版との共存。担当は[ビルド手順](build-installer.md)と[検証記録](../verification/macos-install.md)を使用する。編集者には[操作マニュアル](../manual/README.md)を渡す。
+
+## Mac試用版と正式公開
+
+Cutset 0.20.1のAppleシリコン向け試用DMGで、インストール後の編集・保存・書き出しを確認した。署名・公証と別端末での受入、GitHub Releasesへの公開は[Issue #1](https://github.com/hoshima-ut/cutset/issues/1)で追う。[試用版の実測結果](../verification/macos-install.md)
+
+アプリ名は映像のカット、編集環境のセットアップ、グラフ理論のカットセットに由来する。製品設計に反映し、正式ロゴは[比較用の3案](visual-identity.md)を検討中。上流取り込み時の文書競合は[同期手順](upstream-sync.md)で確認できる。

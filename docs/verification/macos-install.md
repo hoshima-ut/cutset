@@ -35,6 +35,19 @@ ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,sample_
 
 画面だけで書き出す場合は[音量・字幕・MP4の操作手順](../manual/audio-captions-export.md)を参照してください。
 
+## Cutset試用版の実測結果
+
+2026-11-26、AppleシリコンのMacで `0210ec7b` の試用DMGを読み取り専用で開き、空のフォルダーへコピーした `Cutset.app` を起動しました。バージョンは0.20.1、Cargo既定機能でのビルドです。
+
+| 確認項目 | 結果 |
+| --- | --- |
+| DMGとアプリ | SHA-256、ディスクイメージの整合性、アプリとCLIのアドホック署名を検証。ボリューム名はCutset。Applicationsへのリンクを確認し、Finderレイアウト、背景、アプリアイコンを梱包元と照合。 |
+| 識別子 | `io.github.hoshima-ut.cutset`、既存の `.fcproj` の登録は代替エディター（Alternate）。 |
+| 編集操作 | コピーしたアプリで編集画面と書き出し画面を切り替え、マーカーの個数が追加・Undo・Redoで4→5→4→5と変わることを確認。保存・終了後、ZIPから展開したCLIで同じ案件を再読込。 |
+| 出力と自動化 | MP4の映像はH.264 480×270、音声はAAC 48 kHzステレオ、長さ0.512秒。OMFにもCutsetの作成者情報を確認。CLIの719命令を仕様台帳と照合。 |
+
+このDMGのSHA-256は `6c4513745ce8583c8990c2872df6ee1b146763714059be1423ee4ceca3b28b29`。ダウンロードした際の初回警告や会社管理端末での許可は別端末で確認します。[試用版の開き方](../manual/install.md) ・ [正式版の公開Issue](https://github.com/hoshima-ut/cutset/issues/1)
+
 ## 社内配布版を別のMacで受け入れる
 
 署名用Mac以外のMacで、社内の通常の配布経路から正式DMGを取得します。受け渡しと初回起動を、配布先と同じユーザー権限で試します。
