@@ -3,7 +3,7 @@
 The L2 container and codec hub connects media sources to FilmCraft's software and registered
 hardware decoders. It provides container openers, GOP-aware video seeking, packet audio decoding
 and standalone audio imports. See the crate-level API documentation in `src/lib.rs` and
-[`docs/architecture.md`](../../docs/architecture.md) for the source and decoder interfaces.
+[`docs/architecture/engine.md`](../../docs/architecture/engine.md) for the source and decoder interfaces.
 
 ## Symphonia audio failure handling (#2798)
 

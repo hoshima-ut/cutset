@@ -1,7 +1,7 @@
 //! Project links shared by the desktop and web interfaces.
 
 pub const GITHUB: &str = "https://github.com/hoshima-ut/cutset";
-pub const HANDBOOK: &str = "https://github.com/hoshima-ut/cutset/tree/main/handbook";
+pub const HANDBOOK: &str = "https://github.com/hoshima-ut/cutset/tree/main/docs/development";
 
 /// Command id, localized label key and URL, in menu order.
 pub const ALL: [(&str, &str, &str); 2] = [("help.github", "Source code on GitHub", GITHUB), ("help.handbook", "Handbook", HANDBOOK)];
@@ -107,7 +107,7 @@ mod tests {
 
     #[test]
     fn links_belong_to_cutset() {
-        assert_eq!(HANDBOOK, format!("{GITHUB}/tree/main/handbook"));
+        assert_eq!(HANDBOOK, format!("{GITHUB}/tree/main/docs/development"));
         assert_eq!(GITHUB, "https://github.com/hoshima-ut/cutset");
         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
         assert_eq!(url_for("help.github"), Some(GITHUB));

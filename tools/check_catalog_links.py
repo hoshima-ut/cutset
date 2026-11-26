@@ -10,8 +10,11 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from feature_docs import sync
+
 ROOT = Path(__file__).resolve().parents[1]
-SPEC = ROOT / "spec"
+SPEC = ROOT / "docs/specs"
+DATA = SPEC / "data"
 FEATURE_COUNTS = {
     "UI": 20, "IO": 56, "ED": 59, "FX": 21, "CO": 10, "GR": 8,
     "CC": 4, "AU": 18, "MN": 35, "UX": 14, "AI": 9, "WB": 5,
@@ -19,7 +22,7 @@ FEATURE_COUNTS = {
 
 
 def rows(relative_path, key):
-    data = json.loads((SPEC / relative_path).read_text(encoding="utf-8"))
+    data = json.loads((DATA / relative_path).read_text(encoding="utf-8"))
     result = data[key]
     if not isinstance(result, list) or not all(isinstance(r, dict) for r in result):
         raise ValueError(f"{relative_path}: expected an array of records at {key}")
@@ -61,54 +64,8 @@ def checked_reference(value, feature_ids, source):
         raise ValueError(f"{source}: unknown feature {value!r}")
 
 
-CATEGORY_NAMES = {
-    "workspace": "ワークスペース", "media-delivery": "素材管理と納品",
-    "editing": "タイムライン編集", "effects": "合成と動き", "color": "カラー",
-    "graphics": "グラフィック", "captions": "字幕", "audio": "音声",
-    "commands": "メニューと文脈依存の操作", "workflow": "編集者のワークフロー",
-    "ai-plugin": "AIと拡張", "browser": "ブラウザ",
-}
-
-DISPOSITIONS = {
-    "reuse-partially": "上流部品を再利用", "extend": "上流部品を拡張",
-    "new-design": "新規設計", "verify": "上流対応を要調査",
-}
-
-
-def feature_overview(features):
-    lines = [
-        "# Cutsetの機能仕様", "",
-        "[機械可読の正本](../catalog.json)にある各項目の操作と受入条件。"
-        "記載する状態は開発計画で、上流部品の存在だけでは編集者向けの受入合格にならない。", "",
-        "各領域の[操作・アクセシビリティ・AIの共通条件](interaction.md)、"
-        "[180のキー操作意図](keyboard.json)、[効果・音響処理・形式別の受入](rendering.md)、"
-        "[12件の横断試験](journeys.json)も同じ仕様に含む。"
-        "領域をまたぐ入力の扱いは[モデル接続](../model-connections.md)を参照。", "",
-        "[資料台帳](../sources.json)は公開記事ごとの版注記と独自の照合例を持つ。"
-        "27系・ベータ・旧版・障害診断・外部サービスに関する項目は比較用の根拠である。"
-        "特定ビルドの全画面・非公開仕様を観測したという意味は持たない。", "",
-        "操作IDの既存実装は[継承コマンド](../native-commands.tsv)から引ける。"
-        "各機能の上流実装候補と出典URLは正本の同じIDに記録する。", "",
-        "更新時は正本を編集して `python3 tools/check_catalog_links.py --write-overview` で本ページを再生成する。", "",
-    ]
-    for category, name in CATEGORY_NAMES.items():
-        lines.append(f"- [{name}](#{category})")
-    for category, name in CATEGORY_NAMES.items():
-        lines.extend(["", f'<a id="{category}"></a>', "", f"## {name}", ""])
-        for item in features:
-            if item["category"] != category:
-                continue
-            lines.extend([
-                f"### {item['id']} {item['title']}", "",
-                item["scope"], "",
-                f"**受入**　{item['acceptance']}", "",
-                f"**実装方針**　{DISPOSITIONS[item['baselineDisposition']]} ・ [目標 {item['milestone']}](../milestones.md)", "",
-            ])
-    return "\n".join(lines).rstrip() + "\n"
-
-
 def check_native(ids, commands_json):
-    with (SPEC / "native-commands.tsv").open(encoding="utf-8", newline="") as stream:
+    with (DATA / "native-commands.tsv").open(encoding="utf-8", newline="") as stream:
         reader = csv.DictReader(stream, delimiter="\t")
         if not {"command", "feature", "registrySource", "label", "menu", "defaultShortcut", "params"} <= set(reader.fieldnames or []):
             raise ValueError("native-commands.tsv: required header missing")
@@ -131,7 +88,7 @@ def check_native(ids, commands_json):
         raise ValueError("native-commands.tsv: no commands")
     canonical = ("\n".join(sorted(command_ids)) + "\n").encode("utf-8")
     if hashlib.sha256(canonical).hexdigest() != (
-        SPEC / "native-command-set.sha256"
+        DATA / "native-command-set.sha256"
     ).read_text(encoding="utf-8").strip():
         raise ValueError("native command IDs differ from the pinned registry digest")
     if commands_json is not None:
@@ -148,7 +105,9 @@ def check_native(ids, commands_json):
 
 
 def verify(commands_json, write_overview):
-    features = rows("catalog.json", "features")
+    catalog_path = DATA / "catalog.json"
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    features = catalog["features"]
     ids = unique_set((row["id"] for row in features), "catalog")
     expected = {
         f"{prefix}-{i:02d}" for prefix, count in FEATURE_COUNTS.items()
@@ -175,7 +134,7 @@ def verify(commands_json, write_overview):
         if not article["probe"].strip() or not article["referenceScope"].strip():
             raise ValueError(f"{article['id']}: missing version scope or probe")
 
-    journeys = rows("features/journeys.json", "journeys")
+    journeys = rows("journeys.json", "journeys")
     journey_ids = unique_set((row["id"] for row in journeys), "journeys")
     exact(journey_ids, {f"QA-{i:02d}" for i in range(1, 13)}, "journey IDs")
     for journey in journeys:
@@ -184,7 +143,7 @@ def verify(commands_json, write_overview):
         for feature_id in journey["features"]:
             checked_reference(feature_id, ids, journey["id"])
 
-    groups = rows("features/keyboard.json", "groups")
+    groups = rows("keyboard.json", "groups")
     intents = []
     for group in groups:
         checked_reference(group["feature"], ids, group["context"])
@@ -193,12 +152,9 @@ def verify(commands_json, write_overview):
         raise ValueError("expected 180 contextual keyboard intents")
 
     native_count = check_native(ids, commands_json)
-    overview = feature_overview(features)
-    overview_file = SPEC / "features/README.md"
+    sync(SPEC, features, write_overview)
     if write_overview:
-        overview_file.write_text(overview, encoding="utf-8")
-    elif overview_file.read_text(encoding="utf-8") != overview:
-        raise ValueError("feature overview stale: use --write-overview")
+        catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     return {"features": len(ids), "sources": len(articles), "journeys": len(journeys),
             "keyboard_intents": len(intents), "native_commands": native_count}
@@ -208,7 +164,7 @@ def verify(commands_json, write_overview):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--commands-json", type=Path, help="filmcraft-cli commands --json output")
-    parser.add_argument("--write-overview", action="store_true", help="refresh the catalog Markdown")
+    parser.add_argument("--write-overview", action="store_true", help="update indexes and project the editable requirements into catalog.json")
     arguments = parser.parse_args()
     try:
         print(json.dumps(verify(arguments.commands_json, arguments.write_overview)))

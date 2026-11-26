@@ -1,5 +1,5 @@
 //! Load-time migration for projects saved before stills applied EXIF Orientation (#4613,
-//! the limitation documented as G10 in docs/gaps.md).
+//! the limitation documented as G10 in docs/reference/filmcraft/gaps.md).
 //!
 //! A build from before #1583 stored a still's size as the file stores it, unturned, and a
 //! clip placed from the still baked its Motion anchor point from that size. The picture

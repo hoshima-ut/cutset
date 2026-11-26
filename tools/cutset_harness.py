@@ -11,6 +11,8 @@ import subprocess
 import sys
 import tempfile
 
+from feature_docs import sync_projection
+
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED = {
     ("python3", "tools/test_cutset_harness.py"),
@@ -164,8 +166,9 @@ class Session:
     def __init__(self, root):
         self.root = root
         self.state = snapshot(root)
-        catalog, manifest = (read(root / "spec" / name) for name in ("catalog.json", "graph.json"))
+        catalog, manifest = (read(root / "docs/specs/data" / name) for name in ("catalog.json", "graph.json"))
         self.graph = Graph(catalog, manifest)
+        sync_projection(root / "docs/specs", list(self.graph.features.values()))
         data = json.dumps([catalog, manifest], sort_keys=True).encode()
         self.digest = hashlib.sha256(data).hexdigest()
         self.directory = root / "target" / "cutset-harness" / self.state["revision"]
@@ -305,7 +308,7 @@ def main(argv=None):
                        ("limit" if len(runs) == args.limit else "no_ready_checks"))
         print(json.dumps(out, ensure_ascii=False))
         return int(failed)
-    except (OSError, ValueError, subprocess.CalledProcessError) as exc:
+    except (OSError, KeyError, ValueError, subprocess.CalledProcessError) as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False))
         return 2
 

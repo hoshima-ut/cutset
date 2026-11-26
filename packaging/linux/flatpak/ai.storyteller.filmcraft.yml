@@ -34,7 +34,7 @@ finish-args:
   - --socket=pulseaudio
   # GPU access for the wgpu compositor, scopes and effects (Vulkan, or GL as a fallback).
   - --device=dri
-  # A project refers to its media by absolute path (docs/project-files.md), and the document
+  # A project refers to its media by absolute path (docs/reference/filmcraft/project-files.md), and the document
   # portal only exposes the file it was handed, not the media beside it: a project opened from
   # ~/Videos found none of its clips (#107). So, as other video editors do, FilmCraft reads and
   # writes the home directory (media, projects, exports, autosave next to the project) and the

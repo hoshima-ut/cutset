@@ -13,7 +13,7 @@
 //! measured with `/usr/bin/time`). Wall-clock results depend on machine load, so every row
 //! records the load average, and CPU-time columns are reported alongside. Fixtures are generated
 //! with ffmpeg into `target/fixtures/playback/` on first use (see `fixtures.rs`); sections whose
-//! fixtures cannot be made are skipped. See `docs/performance.md`.
+//! fixtures cannot be made are skipped. See `docs/reference/filmcraft/performance.md`.
 
 mod fixtures;
 #[allow(dead_code)]

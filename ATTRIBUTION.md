@@ -122,7 +122,7 @@ is traced or derived from Adobe artwork.
 ## Optional build input: craft-fonts
 
 These fonts are **not files in this repository**. Builds made with the optional build input
-`CRAFT_FONTS_DIR` (all official releases; see [docs/contributing.md](docs/contributing.md#building-with-craft-fonts))
+`CRAFT_FONTS_DIR` (all official releases; see [docs/development/rust.md](docs/development/rust.md#building-with-craft-fonts))
 embed them from [storytold/craft-fonts](https://github.com/storytold/craft-fonts), where each file,
 its author, pinned upstream source and licence text are listed in its
 [ATTRIBUTION.md](https://github.com/storytold/craft-fonts/blob/main/ATTRIBUTION.md). Release packages
@@ -157,7 +157,7 @@ the original copyright and permission notice in its header.
 These files are never in the repository or the app bundle. FilmCraft downloads them into the
 per-user data directory (`<data dir>/models/<id>/`) only after the user confirms a dialog that shows
 the size, the source URL and the licence. Every file is pinned to a revision and checked against its
-SHA-256 (`crates/speech/src/models.rs`, `docs/transcripts.md`).
+SHA-256 (`crates/speech/src/models.rs`, `docs/reference/filmcraft/transcripts.md`).
 
 | Asset | Author | Source | Licence |
 |---|---|---|---|

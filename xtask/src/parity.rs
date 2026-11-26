@@ -1,5 +1,5 @@
 //! `cargo xtask parity [--area menus|effects|transitions] [--reference FILE] [--ours FILE]
-//! [--out FILE] [--min PERCENT]`: measured parity (docs/gaps.md G7).
+//! [--out FILE] [--min PERCENT]`: measured parity (docs/reference/filmcraft/gaps.md G7).
 //!
 //! Compares one area of what FilmCraft ships with a reference list, and reports presence and
 //! placement separately: a reference item is *same place* when we have its label at the same path,

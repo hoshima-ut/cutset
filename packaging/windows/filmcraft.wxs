@@ -15,7 +15,7 @@
     <Property Id="ARPPRODUCTICON" Value="FilmcraftIcon.ico" />
     <Property Id="ARPURLINFOABOUT" Value="https://github.com/hoshima-ut/cutset" />
     <Property Id="ARPURLUPDATEINFO" Value="https://github.com/hoshima-ut/cutset" />
-    <Property Id="ARPHELPLINK" Value="https://github.com/hoshima-ut/cutset/tree/main/handbook" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/hoshima-ut/cutset/tree/main/docs/development" />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
       <Directory Id="CraftSuiteFolder" Name="ArtCraft">

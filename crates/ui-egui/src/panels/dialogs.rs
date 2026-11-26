@@ -428,7 +428,7 @@ fn delete_tracks(app: &mut FilmcraftApp, ctx: &egui::Context) -> bool {
 
 /// Help ▸ About Cutset, in three tabs: About (version and Cutset project links),
 /// Contributors and Models (the credits compiled in from `contributors/contributors.json`, see
-/// `crate::credits` and docs/contributors.md).
+/// `crate::credits` and docs/reference/filmcraft/contributors.md).
 ///
 /// Automation ids: `about.tab.about`, `about.tab.contributors`, `about.tab.models`; the About tab's
 /// links and the credits controls are listed on [`about_tab`] and [`crate::credits::contributors_ui`].

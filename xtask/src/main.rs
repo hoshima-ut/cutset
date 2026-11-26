@@ -1,11 +1,11 @@
 //! Workspace automation: `cargo xtask <layers|wasm|ci>`.
 //!
-//! - `layers`: enforces the dependency layering of `docs/architecture.md` §1 (downward-only edges,
+//! - `layers`: enforces the dependency layering of `docs/architecture/engine.md` §1 (downward-only edges,
 //!   listed same-layer edges, L0 codec crates depend on `bitstream` only, no UI/OS crates below L5).
 //! - `wasm`: `cargo check --target wasm32-unknown-unknown` for every crate in L0–L4, the egui UI
 //!   and the web app.
 //! - `web [--dev] [--serve PORT]`: build the web app (`apps/filmcraft-web`) into
-//!   `<target>/web/dist` with `wasm-bindgen` (docs/web.md); `--serve` serves it on localhost.
+//!   `<target>/web/dist` with `wasm-bindgen` (docs/reference/filmcraft/web.md); `--serve` serves it on localhost.
 //! - `assets`: every asset file (image, icon, font, LUT, audio, video…) has a complete
 //!   `<file>.attribution` sidecar and an entry in `ATTRIBUTION.md` (standards/clean-room.md).
 //! - `fixtures [crate…]`: pre-generate the ffmpeg fixture matrix of the oracle tests (runs each
@@ -14,7 +14,7 @@
 //! - `parity [--area menus|effects|transitions] [--reference FILE] [--out FILE] [--min PERCENT]`:
 //!   measured parity of our shipped menu bar, or of the effects / transitions the Effects panel
 //!   lists, against a reference list (default: the local `plan/premiere/<area>.json`), presence and
-//!   placement reported separately (`parity.rs`, docs/gaps.md G7).
+//!   placement reported separately (`parity.rs`, docs/reference/filmcraft/gaps.md G7).
 //! - `ico <out.ico> <in.png>…`: pack PNGs into a Windows `.ico` (used by `packaging/icons.sh`).
 //! - `i18n-report`: print the interface strings each language's catalog lacks (they show in
 //!   English). It never fails.
@@ -139,7 +139,7 @@ fn layers() -> Result<(), String> {
     let mut errors = Vec::new();
     for (name, deps) in workspace_crates(&md) {
         let Some(l) = layer_of(&name) else {
-            errors.push(format!("{name}: not assigned a layer (add it to xtask LAYERS and docs/architecture.md §1)"));
+            errors.push(format!("{name}: not assigned a layer (add it to xtask LAYERS and docs/architecture/engine.md §1)"));
             continue;
         };
         for d in &deps {
@@ -273,7 +273,7 @@ fn target_dir() -> std::path::PathBuf {
     std::env::var_os("CARGO_TARGET_DIR").map(std::path::PathBuf::from).unwrap_or_else(|| std::path::PathBuf::from("target"))
 }
 
-/// Build the web app into `<target>/web/dist` (see docs/web.md).
+/// Build the web app into `<target>/web/dist` (see docs/reference/filmcraft/web.md).
 fn web(args: &[String]) -> Result<(), String> {
     let dev = args.iter().any(|a| a == "--dev");
     let serve = args.iter().position(|a| a == "--serve").map(|i| args.get(i + 1).and_then(|p| p.parse::<u16>().ok()).unwrap_or(8765));
@@ -547,7 +547,7 @@ fn bench_playback() -> Result<(), String> {
 
 /// The benchmark suite (`crates/ui-egui/examples/bench/`): decode, playback, scrubbing, timeline
 /// UI, export, project save/open and peak memory, written to `target/bench/bench-<label>.{json,md}`
-/// (`cargo xtask bench --sections decode,scrub --repeat 3 --label after`). See docs/performance.md.
+/// (`cargo xtask bench --sections decode,scrub --repeat 3 --label after`). See docs/reference/filmcraft/performance.md.
 fn bench() -> Result<(), String> {
     let extra: Vec<String> = std::env::args().skip(2).collect();
     run(Command::new(env!("CARGO")).args(["run", "--release", "-p", "filmcraft-ui-egui", "--example", "bench", "--"]).args(&extra))

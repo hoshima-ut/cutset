@@ -2,7 +2,7 @@
 //!
 //! `request`, `execute`, `commands`, `uiInspect` and `screenshot` come from `craft-web-api`
 //! (storytold/craft-libs#413), the same in every Craft app; FilmCraft adds its own functions on the
-//! same object. The same JSON methods as the desktop control channel (`docs/control-protocol.md`)
+//! same object. The same JSON methods as the desktop control channel (`docs/reference/filmcraft/control-protocol.md`)
 //! and the same engine commands as MCP, as promises:
 //!
 //! ```js

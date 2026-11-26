@@ -8,7 +8,7 @@ model).
 
 ## Stability
 
-This crate is internal to the FilmCraft workspace (layer **L1**, see `docs/architecture.md`)
+This crate is internal to the FilmCraft workspace (layer **L1**, see `docs/architecture/engine.md`)
 and is not published. Its public items exist for the other workspace crates (`engine`, `render`,
 `export`, `tts`, `ui-egui`) only and may change or be removed without notice; there is no
 supported use from outside the workspace and no deprecation policy. Items no workspace crate

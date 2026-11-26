@@ -329,23 +329,23 @@ Hardware H.264 encoding, Apple M1 (8 cores), single runs: 1080p25 camera footage
 encoder alone 200 fps at 4, 8 and 16 Mb/s (8× real time); a 9:29 timeline (camera clip, ProRes 4444
 overlays, AAC, loudness) exported in 311 s against 793 s with the built-in encoder (84 s against 395 s
 for its densest 134 s), the outputs at SSIM 0.990 / PSNR 46.5 dB. Details in
-[docs/performance.md](../../docs/performance.md).
+[docs/reference/filmcraft/performance.md](../../docs/reference/filmcraft/performance.md).
 
 Hardware H.265 encoding, same machine: no faster than H.264 (the 9:29 timeline in 195 s against
 204 s, both bound by the CPU compositor); same picture quality at 10 Mb/s and above, and 22–31 % less
-bitrate for the same PSNR at 3–6 Mb/s ([docs/performance.md](../../docs/performance.md), HW3).
+bitrate for the same PSNR at 3–6 Mb/s ([docs/reference/filmcraft/performance.md](../../docs/reference/filmcraft/performance.md), HW3).
 
 Hardware decoding, M4 Pro:
 
 M4 Pro, load 150–190 (`cargo xtask bench --hw off|auto`): CPU per decoded frame H.264 2160p
 119 → 4.2 ms, HEVC 2160p 86 → 3.7 ms; decode 35 → 107 fps and 49 → 217 fps; 4K H.264 and HEVC
 playback with no dropped frames at Full, 1/2 and 1/4. Details in
-[docs/performance.md](../../docs/performance.md).
+[docs/reference/filmcraft/performance.md](../../docs/reference/filmcraft/performance.md).
 
 Hardware decoding, Linux (Intel Iris Xe, iHD driver; `cargo xtask bench --hw off|auto`): CPU per
 decoded frame H.264 1080p 104 → 2.3 ms, 2160p 417 → 11.4 ms; HEVC 1080p 46 → 2.3 ms, 2160p
 203 → 10.1 ms, Main 10 2160p 212 → 18.4 ms.
-Details in [docs/performance.md](../../docs/performance.md).
+Details in [docs/reference/filmcraft/performance.md](../../docs/reference/filmcraft/performance.md).
 
 ## Not yet
 

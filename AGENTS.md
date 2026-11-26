@@ -1,8 +1,8 @@
 # Cutsetで作業するエージェントへ
 
-製品の正本は[機能仕様](spec/README.md)。仕様→作業→実装→ローカル検証→独立レビューを一つの受入条件で辿る。[検証ループ](spec/harness.md)を使う。
+製品の正本は[機能仕様](docs/specs/README.md)。仕様→作業→実装→ローカル検証→独立レビューを一つの受入条件で辿る。[検証ループ](docs/development/harness.md)を使う。
 
-このforkの作業は[ハンドブック](handbook/README.md)から始め、[作業台](handbook/tasks.md)の受入条件を一つ選ぶ。実装前に[開発規約](handbook/engineering.md)と[秘密情報の扱い](handbook/secrets.md)を使う。GitHub Actionsは停止中。ローカルで検証したコマンド・終了結果・未確認項目を記録する。外部への投稿、公開、配布は依頼の範囲を確認する。
+このforkの作業は[ハンドブック](docs/development/README.md)から始め、[作業台](docs/development/progress.md)の受入条件を一つ選ぶ。実装前に[開発規約](docs/development/engineering.md)と[秘密情報の扱い](docs/security/credentials.md)を使う。GitHub Actionsは停止中。ローカルで検証したコマンド・終了結果・未確認項目を記録する。外部への投稿、公開、配布は依頼の範囲を確認する。
 
 以下はFilmCraftから継承した技術契約と上流への寄稿規約。§0〜§3のRust・素材・編集モデルの規約を引き継ぐ。上流へのissue投稿・claim、共有CI、寄稿者登録は本家に変更を提案する場合の手順。Cutset側の作業順、レビュー先、日常と節目の検証範囲は上記ハンドブックで決める。
 
@@ -71,9 +71,9 @@ The key words MUST, MUST NOT, SHOULD, SHOULD NOT and MAY are used as in RFC 2119
 ## This repository
 <!-- craft-agents:end -->
 
-FilmCraft is a Rust video editor (workspace edition 2024). Run it with `cargo run -p filmcraft -- --control 9876` (`docs/control-protocol.md`); look at `ui.screenshot` for UI work.
+FilmCraft is a Rust video editor (workspace edition 2024). Run it with `cargo run -p filmcraft -- --control 9876` (`docs/reference/filmcraft/control-protocol.md`); look at `ui.screenshot` for UI work.
 
-- **Layout:** `crates/*` and `apps/*` (globbed), `xtask/`. Layers L0 to L5 are in `docs/architecture.md` §1; nothing below L5 depends on egui, eframe, winit, rfd or cpal. New crates include `[lints] workspace = true`; production crate roots declare their lint attributes before modules.
+- **Layout:** `crates/*` and `apps/*` (globbed), `xtask/`. Layers L0 to L5 are in `docs/architecture/engine.md` §1; nothing below L5 depends on egui, eframe, winit, rfd or cpal. New crates include `[lints] workspace = true`; production crate roots declare their lint attributes before modules.
 - **Checks for the crates you changed:** `cargo fmt --check`; `cargo clippy -p <crate> --all-targets -- -D warnings`; `cargo nextest run -p <crate>` (or `cargo test -p <crate>`); `cargo xtask layers` for dependency changes; `cargo xtask assets` for asset changes; `cargo xtask wasm` for L0 to L4, `filmcraft-ui-egui` and `filmcraft-web` (wasm32). `cargo xtask ci` runs all of them. Set `CRAFT_FONTS_DIR` too for font code.
 - **`unsafe`:** the workspace sets `unsafe_code = "forbid"`. `crates/platform` is the one crate that uses it (OS media FFI; `unsafe_code = "deny"`, `#[allow(unsafe_code)]` on its FFI modules only; `docs/adr/0001-platform-ffi.md`).
 - **Panic net:** the hook in `crates/ui-egui/src/crash.rs` logs panics; the UI pass runs under `catch_unwind`; `panic = "unwind"`. Clean crates deny the panicking lints; `clippy.toml` allows them in tests.
@@ -82,6 +82,6 @@ FilmCraft is a Rust video editor (workspace edition 2024). Run it with `cargo ru
 - **Attribution:** each asset `X` has a sidecar `X.attribution` and a row in `ATTRIBUTION.md`; `cargo xtask assets` checks both. Code-drawn assets live in `crates/ui-egui/src/icons.rs`, `crates/media` and `crates/render`. The ArtCraft brand marks in `docs/brand/` use `LicenseRef-ArtCraft-Trademark`.
 - **Fonts:** the optional build input `CRAFT_FONTS_DIR` (a craft-fonts checkout) feeds `crates/text/build.rs`; unset, the build uses bundled and system fonts.
 - **Corpora and fixtures:** large real-file corpora go in `storytold/photocraft-corpus`, fetched pinned by commit and sha256-verified, not into this repository; FilmCraft has no fetch command yet. `cargo xtask fixtures` generates media fixtures with ffmpeg into `target/fixtures/`.
-- **Credits:** `docs/contributors.md`; `contributors/people.toml` holds names people chose.
-- **Notes and work lists:** `plan/` is an optional gitignored notebook. Public lists: `ROADMAP.md`, `docs/gaps.md`, `docs/agents.md`. Commit subjects start with a task id (`M2.4: CABAC residual decoding`).
-- **Docs:** `CONTRIBUTING.md`, `docs/contributing.md`, `docs/architecture.md`, `docs/testing.md`, `docs/agents.md`, `docs/control-protocol.md`.
+- **Credits:** `docs/reference/filmcraft/contributors.md`; `contributors/people.toml` holds names people chose.
+- **Notes and work lists:** `plan/` is an optional gitignored notebook. Public lists: `docs/development/roadmap.md`, `docs/reference/filmcraft/gaps.md`, `docs/reference/filmcraft/agents.md`. Commit subjects start with a task id (`M2.4: CABAC residual decoding`).
+- **Docs:** `docs/CONTRIBUTING.md`, `docs/development/rust.md`, `docs/architecture/engine.md`, `docs/verification/engine.md`, `docs/reference/filmcraft/agents.md`, `docs/reference/filmcraft/control-protocol.md`.

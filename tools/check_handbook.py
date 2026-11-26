@@ -1,24 +1,22 @@
 #!/usr/bin/env python3
-"""Check that Cutset's Markdown entry points still lead to the maintained guides."""
-
+"""Check local Markdown links from the Cutset documentation and its entry points."""
 from pathlib import Path
 import re
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-HANDBOOK = ROOT / "handbook"
+DOCS = ROOT / "docs"
 ENTRY_POINTS = {
-    "README.md": "README.md",
-    "AGENTS.md": "README.md",
-    "CONTRIBUTING.md": "README.md",
-    "SECURITY.md": "secrets.md",
+    "README.md": "docs/README.md",
+    "AGENTS.md": "docs/specs/README.md",
+    "docs/CONTRIBUTING.md": "docs/development/README.md",
+    "docs/SECURITY.md": "docs/security/credentials.md",
 }
 LINK = re.compile(r"\]\(([^ )]+)\)")
 FENCE = re.compile(r"^\s*(?:```|~~~)")
 
 
 def relative_targets(document):
-    """Read inline Markdown links, excluding code examples and web URLs."""
     fenced = False
     for line in document.read_text(encoding="utf-8").splitlines():
         if FENCE.match(line):
@@ -31,32 +29,18 @@ def relative_targets(document):
 
 
 def main():
-    guides = set(HANDBOOK.glob("*.md"))
-    roots = [ROOT / name for name in ENTRY_POINTS]
-    index = HANDBOOK / "README.md"
-    errors = []
-    if not index.is_file():
-        errors.append("Missing handbook/README.md")
-    checked = 0
-    for document in sorted(guides.union(roots)):
-        if not document.is_file():
-            errors.append(f"Missing {document.relative_to(ROOT)}")
-            continue
+    documents = set(DOCS.rglob("*.md")) | {ROOT / name for name in ENTRY_POINTS}
+    count = 0
+    for document in sorted(documents):
+        relative = document.relative_to(ROOT).as_posix()
         targets = set(relative_targets(document))
+        count += len(targets)
         for target in targets:
             if not target.is_relative_to(ROOT) or not target.exists():
-                errors.append(f"{document.relative_to(ROOT)} has a missing or external local target: {target.name}")
-        if document == index:
-            for guide in sorted(guides - targets - {index}):
-                errors.append(f"Handbook index omits {guide.name}")
-        if document.parent == ROOT:
-            required = HANDBOOK / ENTRY_POINTS[document.name]
-            if required not in targets:
-                errors.append(f"{document.name} must link to handbook/{required.name}")
-        checked += len(targets)
-    if errors:
-        raise SystemExit("\n".join(errors))
-    print(f"Handbook OK ({len(guides)} guides, {checked} distinct local links across documents)")
+                raise SystemExit(f"{relative}: missing or external local target {target}")
+        if relative in ENTRY_POINTS and ROOT / ENTRY_POINTS[relative] not in targets:
+            raise SystemExit(f"{relative}: missing link to {ENTRY_POINTS[relative]}")
+    print(f"Documentation OK ({len(documents)} pages, {count} local links)")
 
 
 if __name__ == "__main__":

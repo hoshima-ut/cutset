@@ -1,0 +1,7 @@
+{"id":"sequence.inspect","params":{}}
+{"id":"markers.add","params":{"target":"program","time":0,"name":"Cutset spec check"}}
+{"id":"sequence.inspect","params":{}}
+{"id":"edit.undo","params":{}}
+{"id":"sequence.inspect","params":{}}
+{"id":"edit.redo","params":{}}
+{"id":"sequence.inspect","params":{}}

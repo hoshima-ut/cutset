@@ -4,15 +4,15 @@ Cutsetは、FilmCraftをベースにしたオープンソースの動画編集�
 
 ## 仕様と開発計画
 
-既存機能と追加機能の動作、検証条件、実装の順序を公開しています。[製品仕様](spec/README.md) ・ [マイルストーン](spec/milestones.md) ・ [AIモデルと個人プランの設計](spec/model-connections.md)
+既存機能と追加機能の動作、検証条件、実装の順序を公開しています。[ドキュメント](docs/README.md) ・ [機能別の仕様](docs/specs/index.md) ・ [マイルストーン](docs/development/milestones.md) ・ [AIモデルと個人プランの設計](docs/architecture/model-connections.md)
 
 ## 変更を始める前に
 
-Git・Python 3.9以上・Gitleaks 8.30.1を用意し、クローンごとにリポジトリ直下で `tools/install-hooks` を一度実行します。`python3 tools/check_handbook.py` で文書の入口、`tools/secret-guard staged` でコミット予定の内容を確認できます。[秘密情報の保護と復旧](handbook/secrets.md)
+Git・Python 3.9以上・Gitleaks 8.30.1を用意し、クローンごとにリポジトリ直下で `tools/install-hooks` を一度実行します。`python3 tools/check_handbook.py` で文書の入口、`tools/secret-guard staged` でコミット予定の内容を確認できます。[秘密情報の保護と復旧](docs/security/credentials.md)
 
 ## 手元で起動する
 
-macOSではXcode Command Line ToolsとRust stable 1.95以上を用意し、リポジトリのルートで次を実行します。現在のCargoパッケージ名と生成バイナリ名は上流と同じです。他のOSの前提と、ビルド時に追加できる日本語フォントは上流の手引きにあります。[開発環境](docs/contributing.md)
+macOSではXcode Command Line ToolsとRust stable 1.95以上を用意し、リポジトリのルートで次を実行します。現在のCargoパッケージ名と生成バイナリ名は上流と同じです。他のOSの前提と、ビルド時に追加できる日本語フォントは上流の手引きにあります。[開発環境](docs/development/rust.md)
 
 ```sh
 cargo test --locked -p filmcraft-time
@@ -23,8 +23,8 @@ mkdir -p target/first-run
 
 ## 開発に参加する
 
-- Cutsetの目的・設計・作業順は[開発ハンドブック](handbook/README.md)で確認できます。AIエージェントによる変更は[エージェント向けの入口](AGENTS.md)から始めます。
-- 編集エンジンの構造、ローカルテスト、既存の編集命令はFilmCraftの技術資料を参照します。[構成](docs/architecture.md) · [テスト](docs/testing.md) · [CLI・MCP](docs/agents.md)
+- Cutsetの目的・設計・作業順は[開発ハンドブック](docs/development/README.md)で確認できます。AIエージェントによる変更は[エージェント向けの入口](AGENTS.md)から始めます。
+- 編集エンジンの構造、ローカルテスト、既存の編集命令はFilmCraftの技術資料を参照します。[構成](docs/architecture/engine.md) · [テスト](docs/verification/engine.md) · [CLI・MCP](docs/reference/filmcraft/agents.md)
 - FilmCraft v0.20.1の機能一覧と対応環境は、上流のREADMEで確認できます。[上流の機能一覧](https://github.com/storytold/filmcraft/blob/v0.20.1/README.md)
 
 ## ライセンスとクレジット

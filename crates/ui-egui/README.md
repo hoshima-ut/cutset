@@ -30,7 +30,7 @@ field: one click or 12 drag steps. Negative, fractional, non-numeric and over-li
 return errors before queuing any input. Zero clicks emit no button events; 0–1 drag steps use 2.
 `control::input_bounds_tests` covers defaults, rejection, unchanged pending input and valid
 gestures; `keyboard_ui` verifies that rejected requests leave the UI usable. See the
-[control protocol](../../docs/control-protocol.md).
+[control protocol](../../docs/reference/filmcraft/control-protocol.md).
 
 ## Transition drop previews
 
@@ -85,7 +85,7 @@ panels.
 `source_playback.rs` auditions media independently of Program playback. It reuses MediaSource
 decoding, output mapping, the device clock and the desktop play-ahead buffer. Only one monitor
 owns the device at a time. Source frame jobs use the existing frame server and Source resolution.
-The live project, undo stack and timeline playhead are unchanged. See [monitor documentation](../../docs/monitors.md)
+The live project, undo stack and timeline playhead are unchanged. See [monitor documentation](../../docs/reference/filmcraft/monitors.md)
 for behavior, commands, limitations and regression tests. Source playback tests use synthetic
 demo media and fake audio outputs; no third-party assets are introduced.
 

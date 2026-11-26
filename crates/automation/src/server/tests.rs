@@ -204,7 +204,7 @@ async fn modern_clients_get_result_type_and_cache_hints() {
     }
 }
 
-/// docs/agents.md § Long exports: a blocking export reports `notifications/progress` for its
+/// docs/reference/filmcraft/agents.md § Long exports: a blocking export reports `notifications/progress` for its
 /// token (none without one), answers `ping` meanwhile, and `notifications/cancelled` stops
 /// it, deletes the partial file and sends no response.
 #[tokio::test(flavor = "multi_thread")]

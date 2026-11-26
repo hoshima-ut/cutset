@@ -455,7 +455,7 @@ fn tight_image_matches_full_render() {
 /// #3361: Responsive Design – Time remaps the keyframes of the graphic's *layers* only. The clip's
 /// own effects and masks (Opacity, Motion, ...) are read at plain media time, like on any clip,
 /// so trimming a graphic with an outro moves a layer's outro animation with the clip end but not a
-/// keyframe on the clip's own effect. Documented in docs/graphics.md.
+/// keyframe on the clip's own effect. Documented in docs/reference/filmcraft/graphics.md.
 #[test]
 fn responsive_time_remaps_layer_keyframes_not_the_clips_own_effects() {
     use filmcraft_project::graphic_design::GraphicMeta;

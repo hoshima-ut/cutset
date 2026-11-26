@@ -26,7 +26,7 @@ use filmcraft_time::Tick;
 
 use crate::{SAMPLE_RATE, TICKS_PER_SAMPLE};
 
-/// Tunables (defaults chosen on LibriSpeech test-clean dialogues; see `docs/transcripts.md`).
+/// Tunables (defaults chosen on LibriSpeech test-clean dialogues; see `docs/reference/filmcraft/transcripts.md`).
 #[derive(Clone, Debug, PartialEq)]
 pub struct Params {
     pub chunk_gap: Tick,

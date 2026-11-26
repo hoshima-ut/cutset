@@ -1,5 +1,5 @@
 //! The shared harness of the scripted UI tests: the real `FilmcraftApp` runs headless under
-//! `egui_kittest` and is driven through the JSON control channel (`docs/control-protocol.md`).
+//! `egui_kittest` and is driven through the JSON control channel (`docs/reference/filmcraft/control-protocol.md`).
 //!
 //! Each test file keeps its own `Driver` (its fields and the helpers that are genuinely its own),
 //! declared with [`driver!`], which implements [`Drive`] for it; the stepping, request and

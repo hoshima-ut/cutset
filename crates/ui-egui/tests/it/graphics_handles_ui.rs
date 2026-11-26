@@ -1,6 +1,6 @@
 //! Headless UI tests of the handles of graphic layers in the Program monitor: point text scales
 //! about its anchor point, a paragraph-text box is resized, a shape's Size follows the handle
-//! while its opposite side and anchor point stay (docs/graphics.md).
+//! while its opposite side and anchor point stay (docs/reference/filmcraft/graphics.md).
 //!
 //! With `FILMCRAFT_UI_SHOTS=<dir>` the tests also render the UI with wgpu and save PNGs there.
 

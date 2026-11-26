@@ -6,7 +6,7 @@
 //! bounded ([`MAX_LINE`]) and so is the number of open connections ([`MAX_CONNECTIONS`]); junk
 //! never reaches the UI thread. Every request must carry the session credential from
 //! `FILMCRAFT_CONTROL_TOKEN`; without a configured credential the listener stays closed.
-//! See `docs/control-protocol.md`.
+//! See `docs/reference/filmcraft/control-protocol.md`.
 
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
@@ -56,7 +56,7 @@ impl DisabledWhy {
     /// The reason as one line, for `filmcraft.log` and the status bar.
     pub fn reason(&self) -> String {
         match self {
-            Self::Token => "FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/control-protocol.md)".into(),
+            Self::Token => "FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/reference/filmcraft/control-protocol.md)".into(),
             Self::Bind { port, error } => format!("could not bind 127.0.0.1:{port}: {error}"),
         }
     }

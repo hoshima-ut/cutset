@@ -3593,7 +3593,7 @@
 	Shows the version, community links and credits in a Cutset window.	Prikazuje verziju, veze zajednice i zasluge u Cutset prozoru.
 	Couldn't open your web browser	Nije moguće otvoriti vaš web preglednik
 	Open this address in your browser yourself:	Sami otvorite ovu adresu u svom pregledniku:
-	The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/control-protocol.md)	Kontrolni server je onemogućen: FILMCRAFT_CONTROL_TOKEN mora sadržavati 64 nasumična heksadecimalna znaka (pogledajte docs/control-protocol.md)
+	The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/reference/filmcraft/control-protocol.md)	Kontrolni server je onemogućen: FILMCRAFT_CONTROL_TOKEN mora sadržavati 64 nasumična heksadecimalna znaka (pogledajte docs/reference/filmcraft/control-protocol.md)
 	Delete Redoable Actions	Izbriši radnje koje se mogu ponoviti
 	Clear History	Očisti historiju
 	Delete the dimmed actions after the current state? They cannot be redone.	Izbrisati zatamnjene radnje nakon trenutnog stanja? Neće se moći ponoviti.

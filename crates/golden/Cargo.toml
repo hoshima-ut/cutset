@@ -11,7 +11,7 @@ publish = false
 workspace = true
 
 # Test-only: the library is empty and everything is a dev-dependency, so the crate adds no edges
-# to the layer graph. Goldens live in `goldens/` (see docs/testing.md §3).
+# to the layer graph. Goldens live in `goldens/` (see docs/verification/engine.md §3).
 [dependencies]
 
 [dev-dependencies]

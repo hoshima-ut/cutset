@@ -120,7 +120,7 @@ impl BridgeClient {
             .await
             .map_err(|_| AutomationError::Bridge(format!("timed out connecting to {}", self.addr)))?
             .map_err(|e| AutomationError::Bridge(format!(
-                "cannot connect to {} ({e}); start the app with `filmcraft --control <port>` and set FILMCRAFT_CONTROL_TOKEN to the same 64-hex-character value on both sides (see docs/control-protocol.md)",
+                "cannot connect to {} ({e}); start the app with `filmcraft --control <port>` and set FILMCRAFT_CONTROL_TOKEN to the same 64-hex-character value on both sides (see docs/reference/filmcraft/control-protocol.md)",
                 self.addr
             )))?;
         let (r, w) = s.into_split();
@@ -304,7 +304,7 @@ mod tests {
         let (addr, seen) = fake_app(Value::Null).await;
         let mut b = BridgeClient::new(addr).unwrap();
         // Inject directly to avoid mutating the process environment in parallel tests.
-        let token = "0123456789abcdef".repeat(4);
+        let token = "ab".repeat(32);
         b.token = Some(token.clone());
         b.call("ui.inspect", json!({})).await.unwrap();
         b.execute("file.saveAs", json!({"path": "/owner/project.fcproj"})).await.unwrap();

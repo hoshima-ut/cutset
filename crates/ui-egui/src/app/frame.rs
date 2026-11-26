@@ -102,7 +102,7 @@ impl FilmcraftApp {
             match notice {
                 crate::ControlNotice::Token => {
                     self.ui.status =
-                        tl!("The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/control-protocol.md)")
+                        tl!("The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/reference/filmcraft/control-protocol.md)")
                             .into()
                 }
             }

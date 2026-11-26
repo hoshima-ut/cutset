@@ -1,7 +1,7 @@
 # filmcraft-speech
 
 Speech-to-text for FilmCraft's Text panel ▸ Transcript (L2). User-facing behaviour, commands and
-model handling: [docs/transcripts.md](../../docs/transcripts.md).
+model handling: [docs/reference/filmcraft/transcripts.md](../../docs/reference/filmcraft/transcripts.md).
 
 - `Transcriber` trait (mono 16 kHz in, word-timed `filmcraft_project::Transcript` out) and
   `FixedTranscriber` for tests and agents.

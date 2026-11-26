@@ -154,7 +154,7 @@ Registering a hardware decoder never makes a file undecodable, and never changes
 ## Consequences
 
 - 4K H.264 / HEVC decode costs ~4 ms of CPU per frame instead of 85–120 ms
-  ([performance.md](../performance.md)).
+  ([performance.md](../reference/filmcraft/performance.md)).
 - Better patent posture for the most encumbered formats: H.264 / HEVC decoding is done by the
   operating system, which carries the licences, wherever hardware decoding is used.
 - A new review burden: changes to `crates/platform` need the same scrutiny as any FFI code.

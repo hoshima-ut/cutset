@@ -3648,7 +3648,7 @@
 	Show Audio Names	Visa ljudnamn
 	Video Names	Videonamn
 	Audio Names	Ljudnamn
-	The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/control-protocol.md)	Kontrollservern är inaktiverad: FILMCRAFT_CONTROL_TOKEN måste innehålla 64 slumpmässiga hexadecimala tecken (se docs/control-protocol.md)
+	The control server is disabled: FILMCRAFT_CONTROL_TOKEN must contain 64 random hex characters (see docs/reference/filmcraft/control-protocol.md)	Kontrollservern är inaktiverad: FILMCRAFT_CONTROL_TOKEN måste innehålla 64 slumpmässiga hexadecimala tecken (se docs/reference/filmcraft/control-protocol.md)
 	Clip Mismatch Warning	Varning för avvikande klipp
 	This clip does not match the sequence settings.	Klippet matchar inte sekvensinställningarna.
 	Clip: {settings}	Klipp: {settings}

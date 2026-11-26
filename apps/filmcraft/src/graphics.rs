@@ -1,5 +1,5 @@
 //! Graphics start-up: the wgpu backends and adapter the window is created with, and the fallback
-//! when a start fails (docs/gaps.md G4, #820).
+//! when a start fails (docs/reference/filmcraft/gaps.md G4, #820).
 //!
 //! A graphics driver can crash inside wgpu instance or device creation (Intel's Vulkan driver
 //! `igvk64.dll`, #512 #413; AMD's OpenGL driver `atio6axx.dll`, #477), where no Rust error

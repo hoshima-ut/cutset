@@ -8,9 +8,11 @@ import tempfile
 import unittest
 
 from cutset_harness import Graph
+from feature_docs import PAGES
 
 ROOT = Path(__file__).resolve().parents[1]
-FEATURE = {"id": "AI-03", "title": "Proposal preview", "acceptance": "Read the preview."}
+FEATURE = {"id": "AI-03", "title": "Proposal preview", "category": "ai-plugin",
+           "scope": "Read the plan.", "acceptance": "Read the preview."}
 PASS = """import unittest
 class Contract(unittest.TestCase):
     def test_acceptance(self):
@@ -21,7 +23,7 @@ if __name__ == "__main__":
 
 
 def manifest():
-    return json.loads((ROOT / "spec/graph.json").read_text())
+    return json.loads((ROOT / "docs/specs/data/graph.json").read_text(encoding="utf-8"))
 
 
 class GraphTest(unittest.TestCase):
@@ -73,13 +75,22 @@ class LoopTest(unittest.TestCase):
         self.addCleanup(tmp.cleanup)
         self.base = Path(tmp.name)
         (self.base / "tools").mkdir()
-        (self.base / "spec").mkdir()
+        (self.base / "docs/specs/data").mkdir(parents=True)
         self.write(".gitignore", "/target/\n__pycache__/\n")
-        shutil.copy(ROOT / "tools/cutset_harness.py", self.base / "tools")
+        for name in ("cutset_harness.py", "feature_docs.py"):
+            shutil.copy(ROOT / "tools" / name, self.base / "tools")
+        directory = self.base / "docs/specs/ai-plugin/AI-03"
+        directory.mkdir(parents=True)
+        bodies = {"目的と範囲": FEATURE["scope"], "受入条件": FEATURE["acceptance"]}
+        for name, headings in PAGES.items():
+            text = "# AI-03 Proposal preview\n"
+            for heading in headings:
+                text += f"\n## {heading}\n\n{bodies.get(heading, 'Fixture detail.')}\n"
+            (directory / name).write_text(text, encoding="utf-8")
         self.write("tools/test_cutset_harness.py", PASS)
         self.write("tools/test_cutset_trial.py", PASS)
-        self.write("spec/catalog.json", json.dumps({"features": [FEATURE]}))
-        self.write("spec/graph.json", json.dumps(manifest()))
+        self.write("docs/specs/data/catalog.json", json.dumps({"features": [FEATURE]}))
+        self.write("docs/specs/data/graph.json", json.dumps(manifest()))
         self.git("init", "-q")
         self.commit("fixture")
 
@@ -120,6 +131,21 @@ class LoopTest(unittest.TestCase):
         self.commit("update")
         self.assertEqual(self.cli("ready")["tasks"]["CHECK-PREVIEW"], "blocked")
 
+    def test_clean_commit_with_stale_requirements_is_rejected(self):
+        page = self.base / "docs/specs/ai-plugin/AI-03/requirements.md"
+        page.write_text(page.read_text(encoding="utf-8").replace(
+            FEATURE["acceptance"], "Read the revised preview."), encoding="utf-8")
+        self.commit("change canonical acceptance")
+        for args in (("show", "AI-03"), ("ready",), ("run", "HARNESS-CONTRACT"), ("loop",)):
+            with self.subTest(args=args):
+                self.assertIn("AI-03", self.cli(*args, code=2)["error"])
+        self.assertFalse((self.base / "target").exists())
+        updated = dict(FEATURE, acceptance="Read the revised preview.")
+        self.write("docs/specs/data/catalog.json", json.dumps({"features": [updated]}))
+        self.commit("refresh projection")
+        self.assertEqual(self.cli("show", "AC-AI-03")["node"]["description"], updated["acceptance"])
+        self.assertTrue(self.cli("run", "HARNESS-CONTRACT")["results"][0]["passed"])
+
     def test_malformed_receipt_is_ignored(self):
         row = self.cli("run", "HARNESS-CONTRACT")
         path = self.base / "target" / "cutset-harness" / row["snapshot"]["revision"] / "HARNESS-CONTRACT.json"
@@ -136,7 +162,7 @@ class LoopTest(unittest.TestCase):
         self.assertIn("lock", self.cli("run", "HARNESS-CONTRACT", code=2)["error"])
         self.assertEqual(self.cli("ready")["tasks"]["CHECK-PREVIEW"], "blocked")
         self.write("tools/test_cutset_harness.py",
-                   'from pathlib import Path\nPath("spec/graph.json").touch()\n'
+                   'from pathlib import Path\nPath("docs/specs/data/graph.json").touch()\n'
                    'Path("changed.txt").write_text("changed during check")\n' + PASS)
         self.commit("check modifies its worktree")
         self.assertIn("changed", self.cli("run", "HARNESS-CONTRACT", code=2)["error"])

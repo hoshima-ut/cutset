@@ -1,4 +1,4 @@
-//! Workflow acceptance tests (docs/gaps.md G6): real editing jobs done end to end the way an agent
+//! Workflow acceptance tests (docs/reference/filmcraft/gaps.md G6): real editing jobs done end to end the way an agent
 //! does them, through the headless MCP server of the `filmcraft-cli` binary (`filmcraft-cli mcp`,
 //! JSON-RPC over stdio) and the CLI itself, on media that looks like what people shoot:
 //!

@@ -10,7 +10,7 @@
 //! Each play simulates display refreshes at `--refresh` Hz on the wall clock (as the app does
 //! without an audio device) and counts shown/dropped frames with the same meter as the app. Wall-
 //! clock numbers depend on machine load, so every run also reports CPU time (process and per
-//! frame-worker thread), which does not. See `docs/testing.md` §5.
+//! frame-worker thread), which does not. See `docs/verification/engine.md` §5.
 //!
 //! Fixtures are generated with ffmpeg into `target/fixtures/playback/` on first use (never
 //! committed). Scenarios that need them are skipped when ffmpeg is missing.

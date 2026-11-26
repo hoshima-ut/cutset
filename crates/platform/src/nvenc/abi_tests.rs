@@ -4,7 +4,7 @@
 //! To regenerate, put NVIDIA's MIT-licensed `nvEncodeAPI.h` 12.1 in `ffnvcodec/` next to a program
 //! printing `sizeof` / `alignof` / `offsetof` of the structures of `src/nvenc/ffi.rs`, the constants
 //! and GUIDs it uses and, for the bit-fields of the `flags` words (`offsetof` cannot take those), the
-//! word with that one field set (see docs/testing.md). H.264 and HEVC are both covered.
+//! word with that one field set (see docs/verification/engine.md). H.264 and HEVC are both covered.
 //!
 //! The expectations were generated with MSVC (Windows x64, LLP64) and also hold on Linux x86_64
 //! (LP64), where these tests run too: every field the structures use is a fixed-width integer
