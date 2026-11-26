@@ -1,7 +1,7 @@
 asset:        filmcraft-nightly-1024.png
-title:        Cutset nightly Cutline icon
+title:        Cutset nightly wordmark icon
 author:       Cutset contributors
-source:       Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh.
+source:       Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh.
 license:      MIT OR Apache-2.0
 license-file: LICENSE-MIT, LICENSE-APACHE
-added:        2026-11-26
+added:        2026-11-27

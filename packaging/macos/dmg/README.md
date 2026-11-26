@@ -1,10 +1,10 @@
 # Cutset installer window
 
-Finder displays the application and an Applications folder link on a 660 × 400 pt
-background. The editable [vector](background.svg) contains the Cutset wordmark,
-two timeline tracks, a direction arrow, and an installation instruction. The
-Inter wordmark and instruction are outlines so rendering does not depend on the
-host's fonts. The light background keeps Finder's icon labels legible.
+Finder displays the app and an Applications folder link on a 660 × 400 pt
+background. The [installer artwork](background.svg) places the approved
+[Cutset wordmark](../../../assets/app-icon/cutset-wordmark.svg) on a warm white field.
+The generator embeds the shared SVG for rendering. The direction arrow and outlined
+installation instruction remain legible behind Finder’s native icons and labels.
 
 The layout places `Cutset.app` at (170, 212) and `Applications` at (490, 212).
 The volume name `Cutset` must match the background alias in the DS_Store and the

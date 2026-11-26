@@ -1,6 +1,6 @@
-# filmcraft-web
+# Cutset for the web
 
-FilmCraft in the browser (wasm32): the engine and egui UI on eframe's web runner, with browser
+The `filmcraft-web` crate runs Cutset in the browser (wasm32). It uses eframe's web runner and browser
 implementations of the host services (Blob media reads, downloads, OPFS auto-save and recovery,
 WebAudio output, WebCodecs decoding) and the `window.filmcraft` agent API.
 

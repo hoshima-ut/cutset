@@ -1,7 +1,7 @@
 asset:        background.svg
 title:        Cutset macOS installer window
 author:       Cutset contributors
-source:       Original geometric installer artwork with outlined Inter lettering (Inter Project Authors, OFL-1.1).
+source:       Original installer design using the approved assets/app-icon/cutset-wordmark.svg and outlined Inter instruction (Inter Project Authors, OFL-1.1).
 license:      MIT OR Apache-2.0
 license-file: LICENSE-MIT, LICENSE-APACHE
 added:        2026-11-26

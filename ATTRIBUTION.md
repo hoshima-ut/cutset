@@ -31,30 +31,32 @@ iconography, images or other Adobe assets; open licences only; every asset attri
 | `assets/fonts/Inter-Italic.ttf` | The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) |
 | `assets/fonts/NotoSerif-Regular.ttf` | The Noto Project Authors | https://github.com/notofonts/latin-greek-cyrillic | OFL-1.1 (`assets/fonts/OFL-NotoSerif.txt`) |
 | `assets/fonts/JetBrainsMono-Regular.ttf` | The JetBrains Mono Project Authors | https://github.com/JetBrains/JetBrainsMono | OFL-1.1 (`assets/fonts/OFL-JetBrainsMono.txt`) |
-| `assets/app-icon/filmcraft.svg` | Cutset contributors | Original geometric vector made for Cutset. | MIT OR Apache-2.0 |
-| `packaging/macos/dmg/background.svg` | Cutset contributors | Original geometric installer artwork with outlined Inter lettering (Inter Project Authors, OFL-1.1). | MIT OR Apache-2.0 |
+| `assets/app-icon/cutset-wordmark.svg` | Cutset contributors, with OpenAI ImageGen | Vector outlines traced from the original ImageGen wordmark selected for Cutset in 2026. | MIT OR Apache-2.0 |
+| `assets/app-icon/cutset-wordmark.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft.svg` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `packaging/macos/dmg/background.svg` | Cutset contributors | Cutset installer artwork from assets/app-icon/cutset-wordmark.svg with outlined Inter instructions (Inter Project Authors, OFL-1.1). | MIT OR Apache-2.0 |
 | `packaging/macos/dmg/background.tiff` | Cutset contributors | Rendered from packaging/macos/dmg/background.svg by packaging/macos/dmg/generate.py. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-small.svg` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-1024.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-macos-512.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft.icns` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft.ico` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-nightly.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-nightly-1024.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-nightly.ico` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-nightly.icns` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/filmcraft-nightly-macos-512.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-small.svg` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-1024.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-macos-512.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft.icns` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft.ico` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly-1024.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.ico` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly.icns` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/filmcraft-nightly-macos-512.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 | `docs/development/images/cutset-logo-studies.png` | Cutset contributors, with OpenAI ImageGen | Original text-to-image design study for the documentation. | MIT OR Apache-2.0 |
-| `apps/filmcraft-web/web/favicon.png` | Cutset contributors | Generated from assets/app-icon/filmcraft.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
+| `apps/filmcraft-web/web/favicon.png` | Cutset contributors | Generated from assets/app-icon/cutset-wordmark.svg by packaging/icons.sh. | MIT OR Apache-2.0 |
 
 ## Golden test images
 

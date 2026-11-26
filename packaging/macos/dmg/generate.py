@@ -10,8 +10,10 @@ from the machine that made them: no local paths, user or disk names, dates or vo
     python3 packaging/macos/dmg/generate.py
 """
 
+import base64
 import datetime
 import os
+from pathlib import Path
 import shutil
 import subprocess
 import sys
@@ -64,8 +66,18 @@ def srgb_profile():
 def write_tiff(svg, out):
     """1x (72 dpi) and 2x (144 dpi) in one TIFF, as `tiffutil -cathidpicheck` writes them."""
     with tempfile.TemporaryDirectory() as tmp:
+        # librsvg restricts external references to the source directory. Embed the shared
+        # master in the temporary render input so Finder receives the exact approved glyphs.
+        source = Path(svg)
+        mark = "../../../assets/app-icon/cutset-wordmark.svg"
+        template = source.read_text(encoding="utf-8")
+        if template.count(f'xlink:href="{mark}"') != 1:
+            sys.exit("error: installer SVG must reference the shared Cutset wordmark once")
+        data = base64.b64encode((source.parent / mark).read_bytes()).decode("ascii")
+        standalone = Path(tmp, "installer.svg")
+        standalone.write_text(template.replace(mark, f"data:image/svg+xml;base64,{data}"), encoding="utf-8")
         one, two = (
-            quantize(render(svg, WIDTH * s, os.path.join(tmp, f"{s}x.png"))) for s in (1, 2)
+            quantize(render(standalone, WIDTH * s, os.path.join(tmp, f"{s}x.png"))) for s in (1, 2)
         )
     two.encoderinfo = {"dpi": (144, 144)}  # the rest as the first page
     # Opaque 16-colour palette, Deflate: the artwork is three inks plus antialiasing, and a palette

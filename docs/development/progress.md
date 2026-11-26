@@ -79,4 +79,4 @@ AとBを選ぶと残すCは [700,725)、終端は1500。三つとも選ぶと映
 
 Cutset 0.20.1のAppleシリコン向け試用DMGで、インストール後の編集・保存・書き出しを確認した。署名・公証と別端末での受入、GitHub Releasesへの公開は[Issue #1](https://github.com/hoshima-ut/cutset/issues/1)で追う。[試用版の実測結果](../verification/macos-install.md)
 
-アプリ名は映像のカット、編集環境のセットアップ、グラフ理論のカットセットに由来する。製品設計に反映し、正式ロゴは[比較用の3案](visual-identity.md)を検討中。上流取り込み時の文書競合は[同期手順](upstream-sync.md)で確認できる。
+アプリ名は映像のカット、編集環境のセットアップ、グラフ理論のカットセットに由来する。正式ロゴには、小文字の `cutset` のうち `s` だけを山吹色にした紫の[ワードマーク](visual-identity.md)を採用した。上流取り込み時の文書競合は[同期手順](upstream-sync.md)で確認できる。

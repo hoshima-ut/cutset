@@ -461,6 +461,20 @@ fn about(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
     }
 }
 
+/// The same lettering used by the installer. Keep the texture in its owning UI context.
+fn wordmark_texture(ctx: &egui::Context) -> Option<egui::TextureHandle> {
+    let key = egui::Id::unique("cutset-wordmark");
+    if let Some(texture) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(key)) {
+        return Some(texture);
+    }
+    let pixels = image::load_from_memory(include_bytes!("../../../../assets/app-icon/cutset-wordmark.png")).ok()?.into_rgba8();
+    let size = [pixels.width() as usize, pixels.height() as usize];
+    let image = egui::ColorImage::from_rgba_unmultiplied(size, pixels.as_raw());
+    let texture = ctx.load_texture("cutset-wordmark", image, egui::TextureOptions::LINEAR);
+    ctx.data_mut(|d| d.insert_temp(key, texture.clone()));
+    Some(texture)
+}
+
 /// About ▸ About: version, upstream credit and project links.
 ///
 /// Automation ids: `about.github`, `about.handbook`.
@@ -469,7 +483,16 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
     use crate::links;
     let t = app.tokens;
     ui.set_width(380.0);
-    ui.heading(crate::os_window::name());
+    if let Some(texture) = wordmark_texture(ui.ctx()) {
+        egui::Frame::new().fill(egui::Color32::WHITE).inner_margin(8).corner_radius(6).show(ui, |ui| {
+            ui.add(egui::Image::new(&texture).fit_to_exact_size(texture.size_vec2() * 0.375).alt_text(crate::os_window::name()));
+        });
+        if crate::os_window::identity() == crate::os_window::LaunchIdentity::NightlyV1 {
+            ui.label(crate::os_window::name());
+        }
+    } else {
+        ui.heading(crate::os_window::name());
+    }
     ui.label(tlf!("Version {version}", version = crate::os_window::display_version()));
     ui.label("Based on FilmCraft by the ArtCraft Team.");
     ui.add_space(10.0);

@@ -1,4 +1,4 @@
-The Cutline geometric mark and icon artwork were created for Cutset in 2026.
+The Cutset wordmark and icon artwork were created for Cutset in 2026.
 Copyright (c) 2026 Cutset contributors.
 
 The source SVG and its desktop, web, package and nightly derivatives are

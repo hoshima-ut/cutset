@@ -1,11 +1,12 @@
-# Hosting FilmCraft for the web
+# Hosting Cutset for the web
 
-`filmcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+`filmcraft-web-<version>.zip` (built with `packaging/web/package.sh`) holds a
 static site in `filmcraft-web-<version>/`:
 
 | File | What it is |
 |---|---|
 | `index.html` | The page. It loads everything through relative URLs. |
+| `cutset-wordmark.svg`, `favicon.png` | The startup wordmark and browser tab icon. |
 | `filmcraft_web.js` | wasm-bindgen glue (generated, ES module) |
 | `filmcraft_web_bg.wasm` | The app, about 13 MB, or 5 MB with compression |
 | `_headers`, `.htaccess` | Sample header rules for Netlify/Cloudflare Pages and Apache |
@@ -15,10 +16,9 @@ There is no server-side code. Upload the folder's contents anywhere that serves 
 ## Any path works
 
 All URLs in `index.html` are relative, so the site works at a domain root
-(`https://example.com/`), under a prefix (`https://example.com/tools/filmcraft/`) and from a CDN
-bucket. The assets carry a content
-hash in their URL (`index.html` loads them with `?v=<build hash>`), so they can be cached
-forever. Only `index.html` needs revalidation.
+(`https://example.com/`), under a prefix (`https://example.com/tools/cutset/`) and from a CDN
+bucket. The JavaScript and WebAssembly URLs include a build hash. Revalidate the page,
+wordmark and favicon so browsers can pick up branding changes.
 
 ## Required server settings
 
@@ -33,7 +33,7 @@ forever. Only `index.html` needs revalidation.
   be cached, or a browser can pair an old page with new files.
 - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
-- **No special isolation headers:** FilmCraft doesn't use `SharedArrayBuffer`, so it doesn't
+- **No special isolation headers:** Cutset doesn't use `SharedArrayBuffer`, so it doesn't
   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
   when the files live on a CDN) on the app's files.
@@ -41,8 +41,8 @@ forever. Only `index.html` needs revalidation.
 nginx example:
 
 ```nginx
-location /filmcraft/ {
-    types { application/wasm wasm; text/javascript js; text/html html; }
+location /cutset/ {
+    types { application/wasm wasm; text/javascript js; text/html html; image/svg+xml svg; image/png png; }
     gzip on;
     gzip_types application/wasm text/javascript text/html;
     location ~* \.(wasm|js)$ { add_header Cache-Control "public, max-age=31536000, immutable"; }
@@ -56,8 +56,8 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
 
 ```html
 <iframe
-  src="https://example.com/filmcraft/"
-  title="FilmCraft video editor"
+  src="https://example.com/cutset/"
+  title="Cutset video editor"
   style="width: 100%; height: 720px; border: 0;"
   allow="fullscreen; clipboard-read; clipboard-write"
   allowfullscreen>
@@ -77,8 +77,8 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
 
 ## The parent bridge (`?host=parent`)
 
-A page framing FilmCraft in a **same-origin** iframe can add `?host=parent` to the iframe's URL
-(`https://example.com/filmcraft/?host=parent`) and have FilmCraft hand its files over instead of
+A page framing Cutset in a **same-origin** iframe can add `?host=parent` to the iframe's URL
+(`https://example.com/cutset/?host=parent`) and have Cutset hand its files over instead of
 downloading them. The two sides talk `postMessage` with plain window messages that carry a `type`:
 
 | Message | Direction | Fields |
@@ -97,8 +97,8 @@ outside an iframe gives the normal app with downloads.
 
 ## Same-document host mode (no iframe)
 
-A host application can also run FilmCraft from its own document: it loads the wasm-bindgen module
-itself and gives FilmCraft one of its own canvases, so there is no iframe and no `?host=parent`.
+A host application can also run Cutset from its own document: it loads the wasm-bindgen module
+itself and gives Cutset one of its own canvases, so there is no iframe and no `?host=parent`.
 It opts in with `data-host="page"` on that canvas — the exact value `page` — and the canvas keeps
 the id the app looks up (`id="filmcraft_canvas"`).
 
@@ -153,23 +153,23 @@ await start("filmcraft_canvas"); // the canvas id the app renders on
   the host decides where the file goes.
 - The assets carry their build hash as a `?v=` query (as `index.html` loads them), so they can
   be cached forever.
-- FilmCraft has no user names that work could be signed with, so there is no `?author=`.
+- Cutset has no user names that work could be signed with, so there is no `?author=`.
 - An unframed page that uses `?host=parent` keeps the normal app with downloads.
   `data-host="page"` turns this mode on only when `?host=parent` is absent: if `?host=parent` is
   present it takes precedence, so a same-origin framed page uses the parent bridge, while an
   unframed or cross-origin page gets no bridge and keeps normal downloads.
 
-The messages and both transports are the shared contract of [`craft-web-host`](https://github.com/storytold/craft-libs/tree/main/crates/web-host) (storytold/craft-libs#420), the same for every Craft app: its README lists every message, including `saved`, with the compatibility notes. In `filmcraft:ready`, `version` is the contract's (`"1"`) and `appVersion` is this app's release. FilmCraft reads bytes, so a host sends `bytes`, not a `File`.
+The messages and both transports are the shared contract of [`craft-web-host`](https://github.com/storytold/craft-libs/tree/main/crates/web-host) (storytold/craft-libs#420), the same for every Craft app: its README lists every message, including `saved`, with the compatibility notes. In `filmcraft:ready`, `version` is the contract's (`"1"`) and `appVersion` is this app's release. Cutset reads bytes, so a host sends `bytes`, not a `File`.
 
 ### Trust and limits
 
-- **Who is trusted.** In page host mode the page and FilmCraft share one document, so any script on the page can drive the app: open files in it and receive what it saves. Use this mode only for a page you control. The iframe mode (`?host=parent`) answers only the parent window, on the page's own origin.
+- **Who is trusted.** In page host mode the page and Cutset share one document, so any script on the page can drive the app: open files in it and receive what it saves. Use this mode only for a page you control. The iframe mode (`?host=parent`) answers only the parent window, on the page's own origin.
 - **Files from the host are untrusted input.** An opened file goes through the same reading as one picked with File ▸ Open or dropped on the window, with the same format limits; before it is copied into the app's memory, its size is checked against the host open limit (512 MiB) and a larger file is refused, and a name is cut to 255 characters.
 - **The event and message names are the interface.** `filmcraft:ready`, `filmcraft:open`, `filmcraft:save`, `filmcraft:dirty` and `filmcraft:failed`, and the fields they carry (the same as the `?host=parent` messages), stay stable; changing one is a breaking change.
 
 ## Renderer selection and fallback flags
 
-FilmCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
+Cutset renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
 **WebGL2** on its own. URL query flags override this, and they work on the iframe `src` too:
 
 | Flag | Effect |
@@ -178,6 +178,6 @@ FilmCraft renders with wgpu. It uses **WebGPU** when the browser has it and fall
 | `?webgl` | Force the WebGL2 backend (useful when a WebGPU driver misbehaves). The page reloads with it by itself when WebGPU is present but fails to start |
 | `?cpu` | Force the CPU canvas path (slowest, most compatible) |
 
-For example: `<iframe src="https://example.com/filmcraft/?webgl" ...>`.
+For example: `<iframe src="https://example.com/cutset/?webgl" ...>`.
 
 A browser with neither WebGPU nor WebGL2 gets a message in place of the app.

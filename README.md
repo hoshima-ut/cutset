@@ -1,6 +1,4 @@
-# Cutset
-
-![Cutsetのロゴ](assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png)
+# <img src="assets/app-icon/cutset-wordmark.svg" width="320" alt="Cutset">
 
 Cutsetは、FilmCraftをベースにしたオープンソースの動画編集ソフトです。AIによる編集支援と、他の動画編集ソフトとの編集データの受け渡しに取り組んでいます。
 
@@ -36,6 +34,6 @@ mkdir -p target/first-run
 
 ## ライセンスとクレジット
 
-Cutsetのロゴと配布用の画像はこちらで確認できます。[ロゴの設計と候補](docs/development/visual-identity.md)
+ロゴのSVG原稿とアイコンの使い分けは[ロゴガイド](docs/development/visual-identity.md)にまとめています。
 
 FilmCraft本体はMITまたはApache-2.0を選択して利用できます。著作権表示は「Copyright (c) 2026 ArtCraft Team and the FilmCraft contributors」です。フォント、画像などの素材には個別の条件があり、ArtCraftの名称・ロゴにはブランド利用条件が適用されます。[MIT](LICENSE-MIT) · [Apache-2.0](LICENSE-APACHE) · [NOTICE](NOTICE) · [素材の帰属表示](ATTRIBUTION.md) · [ブランド利用条件](docs/brand/LICENSE-brand.txt)

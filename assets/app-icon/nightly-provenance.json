@@ -1,10 +1,10 @@
 {
-  "title": "Cutset Cutline nightly icon",
+  "title": "Cutset nightly wordmark icon",
   "author": "Cutset contributors",
   "license": "MIT OR Apache-2.0",
-  "source": "assets/app-icon/filmcraft.svg",
+  "source": "assets/app-icon/cutset-wordmark.svg",
   "generator": "packaging/icons.sh",
-  "method": "Render the original Cutline geometry with an ice-blue cut in place of the stable lime cut. The macOS variants include the same transparent margin as the stable icon.",
-  "stable_accent": "#B8F44A",
-  "nightly_accent": "#8CCDE3"
+  "method": "Reuse the approved violet letters and golden yellow s. The nightly tile is lavender with a purple underline. On macOS both channels have the same transparent system margin.",
+  "stable_tile": "#FFFFFF",
+  "nightly_tile": "#E5D6F3"
 }
