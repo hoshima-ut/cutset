@@ -20,8 +20,8 @@
 
 編集画面・支援技術・エージェント操作の共通条件は[分野別の操作契約](../../shared/interaction.md)を適用する。
 
-<a id="premiere-27-10"></a>
+<a id="windows-arm-acceleration"></a>
 
-## Windows ARMでのGPU・AI処理（27.0との照合）
+## Windows ARMでのGPU・AI処理
 
 CPUアーキテクチャ、GPU、ドライバー、推論バックエンドを操作単位で判定する。RTX Spark（N1X）とTensorRTは実機の検証対象とし、利用できる代替経路を示す。

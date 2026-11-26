@@ -19,3 +19,7 @@
 ソースで確認した試験の入口。機能全体の合格判定はこのページの具体例で行う。
 
 - 関連する既存テストモジュール：[crates/dng/src/raw.rs](../../../../crates/dng/src/raw.rs)。
+
+## 機種と収録形式ごとの取り込み
+
+- [ ] Sony FX5のX-OCN（LT・C1・C2）、ALEXA 35 XtremeのARRIRAW・ARRICORE、Cinema RAW Light、R3D・R3D NE、N-RAWは入手できた試料ごとに復号結果とメタデータを記録する。対応表には確認した機種・形式・環境を記載する。

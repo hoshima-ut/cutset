@@ -26,10 +26,8 @@
 
 開始フレームの被写体を選び、シャープまたはスムーズを選択して前後に追跡する。硬い小道具では境界の内外を分け、髪の毛や動きぼけでは中間の透明度を残す。遮蔽から被写体が戻ったフレームを指定して追跡を再開できる。
 
-[Premiere 26.x との照合](../../premiere-releases-2026-11.md)
+## 追跡マスクの保存と復元
 
-<a id="premiere-27-14"></a>
+手修正アンカーを案件に保持し、追跡結果には元素材との対応と版を記録する。
 
-## 追跡マスクの保存と復元（27.0との照合）
-
-手修正アンカーを案件に保持し、追跡結果には元素材との対応と版を記録する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/work-with-masks/mask-tracking-tools.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-14)と[受入試験](tasks.md#premiere-27-14)に記載する。
+[設計](design.md#追跡マスクの保存と復元) ・ [受入試験](tasks.md#追跡マスクの保存と復元)

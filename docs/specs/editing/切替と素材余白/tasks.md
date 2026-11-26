@@ -20,8 +20,6 @@
 
 - 関連する既存テストモジュール：[crates/ui-egui/src/panels/transition_controls.rs](../../../../crates/ui-egui/src/panels/transition_controls.rs)。
 
-<a id="premiere-27-15"></a>
-
-## トランジションに足りないフレームを生成する（27.0との照合）
+## トランジションに足りないフレームを生成する
 
 - [ ] 片側に6フレーム必要で実在が2なら生成候補は4。辞退すれば元編集が残り、採用後は元の2フレームを使い、一度のUndoで遷移と生成配置が戻る。

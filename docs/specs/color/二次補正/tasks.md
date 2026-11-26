@@ -20,8 +20,6 @@
 
 - 関連する既存テストモジュール：[crates/engine/src/color_tests.rs](../../../../crates/engine/src/color_tests.rs)。
 
-<a id="premiere-27-13"></a>
-
-## HSLマスクと他のマスクを組み合わせる（27.0との照合）
+## HSLマスクと他のマスクを組み合わせる
 
 - [ ] 画面の左右に赤い被写体を置き、HSLと左側の矩形を交差させる。保存・再読込後も左の赤だけが補正される。

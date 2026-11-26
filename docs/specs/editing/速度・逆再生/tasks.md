@@ -22,8 +22,6 @@
 - [maintain_audio_pitch_goes_with_the_clip_and_its_sound](../../../../crates/engine/src/linked_speed_tests.rs#L157) は <code>clip.speedDuration</code> を呼ぶ。
 - [maintain_audio_pitch_leaves_a_locked_linked_sound_alone](../../../../crates/engine/src/linked_speed_tests.rs#L189) は <code>clip.speedDuration</code> を呼ぶ。
 
-<a id="premiere-27-18"></a>
-
-## 音声の時間伸縮方式と音程を選ぶ（27.0との照合）
+## 音声の時間伸縮方式と音程を選ぶ
 
 - [ ] 4秒の基準音を50%で8秒にし、音程保持と音程変更を個別に試す。再読込後の尺と、指定した基音の変化を出力音声で測る。

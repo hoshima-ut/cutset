@@ -25,14 +25,14 @@
 - [A542](https://helpx.adobe.com/premiere/desktop/add-audio-effects/adjust-volume-and-levels/apply-enhance-audio-to-clips.html)　処理するクリップを一つに限定して分離量を変更し、隣のクリップと元音声が保存されるか確認する。（27.0で正式提供。26系のEnhance Speechと音声分離を含むEnhance Audioを区別）
 - [A778](https://helpx.adobe.com/premiere/desktop/troubleshooting/audio-issues/enhance-speech-is-running-slow.html)　音声強調の処理中も元音声を試聴でき、完了・取消時の状態を追跡できる。（障害診断）
 
-<a id="premiere-27-6"></a>
+## 会話音声の成分別調整
 
-## 会話音声の成分別調整（27.0との照合）
+対応モデルの音声成分と調整可能な値を表示する。
 
-対応モデルの音声成分と調整可能な値を表示する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-audio-effects/adjust-volume-and-levels/apply-enhance-audio-to-clips.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-6)と[受入試験](tasks.md#premiere-27-6)に記載する。
+[設計](design.md#会話音声の成分別調整) ・ [受入試験](tasks.md#会話音声の成分別調整)
 
-<a id="premiere-27-7"></a>
+## 重なって話す二人の声を分離する
 
-## 重なって話す二人の声を分離する（27.0との照合）
+単一のミックスから時間原点を共有する二つの音声素材を作る。
 
-単一のミックスから時間原点を共有する二つの音声素材を作る。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-audio-effects/basic-audio-editing/separate-overlapping-speakers.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-7)と[受入試験](tasks.md#premiere-27-7)に記載する。
+[設計](design.md#重なって話す二人の声を分離する) ・ [受入試験](tasks.md#重なって話す二人の声を分離する)

@@ -36,14 +36,14 @@
 - [A428](https://helpx.adobe.com/premiere/desktop/add-video-effects/effects-and-transitions-library/video-effects.html)　映像効果の参照項目を実機検索し、該当効果を一つの標準クリップへ加えた描画の差を記録する。（公開手順）
 - [A458](https://helpx.adobe.com/premiere/desktop/add-video-effects/commonly-used-effects/add-lightning-effects.html)　対象ビルドで使用可能な稲妻効果を調べ、旧案件での描画と新規追加の可否を分けて記録する。（公開手順）
 
-<a id="premiere-27-9"></a>
+## 効果のサムネイルと素材上の試写
 
-## 効果のサムネイルと素材上の試写（27.0との照合）
+検索結果に見本画像と動画を示し、選択素材で適用前の効果を試写する。
 
-検索結果に見本画像と動画を示し、選択素材で適用前の効果を試写する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/about-effects-and-effects-panel.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-9)と[受入試験](tasks.md#premiere-27-9)に記載する。
+[設計](design.md#効果のサムネイルと素材上の試写) ・ [受入試験](tasks.md#効果のサムネイルと素材上の試写)
 
-<a id="premiere-27-11"></a>
+## 立体、階調、ぼかしの追加効果
 
-## 立体、階調、ぼかしの追加効果（27.0との照合）
+効果の表示名、安定したID、対応する画素形式、パラメーターを登録する。
 
-効果の表示名、安定したID、対応する画素形式、パラメーターを登録する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/effects.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-11)と[受入試験](tasks.md#premiere-27-11)に記載する。
+[設計](design.md#shading-posterization-and-blur) ・ [受入試験](tasks.md#shading-posterization-and-blur)

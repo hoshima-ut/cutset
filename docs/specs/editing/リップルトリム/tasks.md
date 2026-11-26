@@ -22,3 +22,7 @@ A[0,20)、B[20,50)、C[50,70)でB末尾を−3。B終端47、C開始47、列終�
 
 - 関連する既存テストモジュール：[crates/engine/src/trim_tests.rs](../../../../crates/engine/src/trim_tests.rs)。
 - 対応を確認したテスト：[ripple_trim_group_takes_a_split_edit_along](../../../../crates/edit/src/tests.rs)。
+
+## ドラッグ中のプレビュー
+
+- [ ] トリム中に後続の配置を追従表示する設定と、指を離した時点で表示を更新する設定で、同じ端を3フレーム動かす。確定後の配置とUndoの結果が一致する。

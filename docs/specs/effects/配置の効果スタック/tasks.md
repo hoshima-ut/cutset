@@ -22,8 +22,8 @@
 - [paste_attributes_with_scaled_keyframes_and_remove_attributes](../../../../crates/engine/src/clip_ops_tests.rs#L139) は <code>edit.pasteAttributes</code> を呼ぶ。
 - [default_audio_transition_is_used_by_apply](../../../../crates/engine/src/mixer_tests.rs#L403) は <code>effects.setDefaultTransition</code> を呼ぶ。
 
-<a id="premiere-27-12"></a>
+<a id="effect-and-mask-properties"></a>
 
-## プロパティで映像・音声効果とマスクを調整する（27.0との照合）
+## プロパティで映像・音声効果とマスクを調整する
 
 - [ ] 映像と音声を含む配置でマスクの値を変え、詳細画面で確認する。Undoを1回行い両画面とプレビューが同時に戻る。

@@ -6,7 +6,6 @@
 | --- | --- |
 | 各機能の振る舞い、現状、受け入れ条件 | [機能索引](index.md) ・ [機械可読台帳](data/catalog.json) |
 | 実装済みの編集命令と入口 | [上流コマンド台帳](data/native-commands.tsv) ・ [エンジンの命令定義](../../crates/engine/src/commands.rs) |
-| Premiereの主要機能とCutsetの対応 | [26.xとAREA記事の7項目](premiere-releases-2026-11.md) ・ [27.0の追加機能](premiere-27-0.md) |
 | 公開資料を元に確認する操作 | [公開資料と個別確認ケース](data/sources.json) |
 | プラグイン、APIキー、個人プラン | [AIモデルの接続と編集権限](../architecture/model-connections.md) |
 | 実装の順序と完了判定 | [マイルストーン](../development/milestones.md) ・ [仕様グラフと検証ループ](../development/harness.md) |
@@ -41,7 +40,7 @@ Cutsetでは、編集者と確認した要件を保ちながら、実装方式�
 
 ## 公開仕様の読み方
 
-比較対象はPremiere 26.xとFilmCraftの公開資料・ソース。安定版、ベータや別版、外部サービス、実機が必要な確認を区別する。Cutsetの仕様は編集者が達成する操作・結果を自分たちの言葉で定める。公開資料の照合件数は操作の実装数やPremiereとの完全一致を表さない。26.xの修正はAdobeの版別リリースノートに戻って照合する。[Adobe Premiereリリースノート](https://helpx.adobe.com/premiere/desktop/whats-new/release-notes.html)
+各機能の要件は、編集者が何を操作し、どんな結果を得られるかを示します。実装を確認した範囲と環境は[検証記録](../verification/coverage.md)で確認できます。
 
 ### 継承コマンドの読み方
 

@@ -22,8 +22,6 @@
 - [edit_original_and_update_metadata_refuse_a_stored_path_media_access_refuses](../../../../crates/engine/src/project_tools/tests.rs#L411) は <code>clip.updateMetadata</code> を呼ぶ。
 - [edit_original_update_metadata_and_clip_items](../../../../crates/engine/src/project_tools/tests.rs#L371) は <code>clip.updateMetadata</code> を呼ぶ。
 
-<a id="premiere-27-17"></a>
-
-## 素材とタイムラインでiXMLを表示する（27.0との照合）
+## 素材とタイムラインでiXMLを表示する
 
 - [ ] テイク名と2つのチャンネル名が異なるWAVを2回配置する。素材と両配置で値が一致し、iXMLのないWAVには前の値が残らない。

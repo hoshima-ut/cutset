@@ -21,8 +21,8 @@
 - [A123](https://helpx.adobe.com/premiere/desktop/organize-media/import-files/record-audio-using-the-audio-track-mixer.html)　ミキサーで録音対象トラックを準備し、二つの入力から指定したチャンネルだけが記録されたか照合する。（既存録音機能。Voice-Over／ミキサー録音中に波形をリアルタイム描画する拡張は27.0）
 - [A124](https://helpx.adobe.com/premiere/desktop/organize-media/import-files/mute-input-during-recording.html)　マイク入力を録音中だけモニターミュートし、返しの音が消えても録音ファイルに発声が残るか聴く。（公開手順）
 
-<a id="premiere-27-16"></a>
+## 録音中の波形をタイムラインに表示する
 
-## 録音中の波形をタイムラインに表示する（27.0との照合）
+ミキサー録音とボイスオーバーの入力を短いブロックで集計し、収録中の位置まで波形を描く。
 
-ミキサー録音とボイスオーバーの入力を短いブロックで集計し、収録中の位置まで波形を描く。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/organize-media/import-files/record-a-voice-over-on-an-audio-track-from-the-timeline.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-16)と[受入試験](tasks.md#premiere-27-16)に記載する。
+[設計](design.md#録音中の波形をタイムラインに表示する) ・ [受入試験](tasks.md#録音中の波形をタイムラインに表示する)

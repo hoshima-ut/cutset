@@ -21,8 +21,8 @@
 - [A246](https://helpx.adobe.com/premiere/desktop/edit-projects/change-clip-speed/change-clip-speed-and-duration-using-the-rate-stretch-tool.html)　Rate Stretchでクリップを空き区間に合わせ、素材の最初と最後を使ったまま指定の尺に収まるか試す。（公開手順）
 - [A250](https://helpx.adobe.com/premiere/desktop/edit-projects/change-clip-speed/freeze-a-video-frame-for-the-duration-of-a-clip.html)　選んだソースフレームでクリップ全尺を静止させ、冒頭・中央・末尾のフレーム番号がすべて同じか見る。（公開手順）
 
-<a id="premiere-27-18"></a>
+## 音声の時間伸縮方式と音程を選ぶ
 
-## 音声の時間伸縮方式と音程を選ぶ（27.0との照合）
+再生速度、伸縮方式、音程を別々に保存する。
 
-再生速度、伸縮方式、音程を別々に保存する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/edit-projects/change-clip-speed/change-clip-speed-using-the-speedduration-option.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-18)と[受入試験](tasks.md#premiere-27-18)に記載する。
+[設計](design.md#音声の時間伸縮方式と音程を選ぶ) ・ [受入試験](tasks.md#音声の時間伸縮方式と音程を選ぶ)

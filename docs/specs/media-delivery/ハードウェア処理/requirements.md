@@ -27,8 +27,8 @@ H.264/HEVCの8-bitと10-bit 4:2:2をCPU/GPU別に再生・出力し、対応表�
 - [A781](https://helpx.adobe.com/premiere/desktop/troubleshooting/playback-issues/hardware-setup-not-optimal-for-playback-performance.html)　ディスク、GPU、音声機器の構成を記録し、機器交換前後を同じ区間で比較する。（障害診断）
 - [A783](https://helpx.adobe.com/premiere/desktop/troubleshooting/playback-issues/optimize-playback-performance-for-h264-h265-media.html)　H.264とHEVCで同じ内容を再生し、デコード方式とシーク応答を別々に記録する。（障害診断）
 
-<a id="premiere-27-10"></a>
+## Windows ARMでのGPU・AI処理
 
-## Windows ARMでのGPU・AI処理（27.0との照合）
+CPUアーキテクチャ、GPU、ドライバー、推論バックエンドを操作単位で判定する。
 
-CPUアーキテクチャ、GPU、ドライバー、推論バックエンドを操作単位で判定する。[Adobeの公開資料](https://helpx.adobe.com/jp/x-productkb/multi/windows-arm-support.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-10)と[受入試験](tasks.md#premiere-27-10)に記載する。
+[設計](design.md#windows-arm-acceleration) ・ [受入試験](tasks.md#windows-arm-acceleration)

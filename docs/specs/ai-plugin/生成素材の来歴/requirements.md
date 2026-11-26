@@ -36,26 +36,24 @@
 
 映像、環境音、または両方を選んでクリップの先頭・末尾を延ばす。生成前に希望時間と利用するモデルの上限を示す。環境音の延長では発話を補完せず、音楽のように扱えない入力は確定前に示す。延長部分は元の映像・音声と個別に取り消せる。
 
-[Premiere 26.x との照合](../../premiere-releases-2026-11.md)
-
 ## タイムラインからの映像・効果音生成
 
 編集者は挿入位置と素材の種類を指定し、指示文から生成した映像や効果音を比較できる。使用モデル、送信内容と見積もりを実行前に表示する。候補を選んで初めて、個別にトリム・移動できるクリップを配置する。
 
-<a id="premiere-27-3"></a>
+## タイムラインの指定範囲に静止画を生成する
 
-## タイムラインの指定範囲に静止画を生成する（27.0との照合）
+映像トラックに描いた範囲を候補の配置先として保持する。
 
-映像トラックに描いた範囲を候補の配置先として保持する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/edit-projects/edit-with-generative-ai/generate-media-with-generative-media-tool.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-3)と[受入試験](tasks.md#premiere-27-3)に記載する。
+[設計](design.md#タイムラインの指定範囲に静止画を生成する) ・ [受入試験](tasks.md#タイムラインの指定範囲に静止画を生成する)
 
-<a id="premiere-27-4"></a>
+## 音楽生成と映像に同期する効果音
 
-## 音楽生成と映像に同期する効果音（27.0との照合）
+音楽は尺と音声トラック、効果音は任意の映像同期点を指定する。
 
-音楽は尺と音声トラック、効果音は任意の映像同期点を指定する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/edit-projects/edit-with-generative-ai/add-generated-music-to-your-timeline.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-4)と[受入試験](tasks.md#premiere-27-4)に記載する。
+[設計](design.md#音楽生成と映像に同期する効果音) ・ [受入試験](tasks.md#音楽生成と映像に同期する効果音)
 
-<a id="premiere-27-5"></a>
+## 映像に合わせて環境音をレイヤー生成する
 
-## 映像に合わせて環境音をレイヤー生成する（27.0との照合）
+送信する映像範囲と生成先を表示する。
 
-送信する映像範囲と生成先を表示する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/edit-projects/edit-with-generative-ai/add-generated-soundscape-to-your-timeline.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-5)と[受入試験](tasks.md#premiere-27-5)に記載する。
+[設計](design.md#映像に合わせて環境音をレイヤー生成する) ・ [受入試験](tasks.md#映像に合わせて環境音をレイヤー生成する)

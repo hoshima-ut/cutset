@@ -18,8 +18,8 @@
 
 - [A735](https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/overview.html)　27系の比較試験でAI Assistantを呼び、26系の標準画面と機能の有無および操作履歴を区別する。（27.0正式のAI Assistant。26系正式の対象外）
 
-<a id="premiere-27-2"></a>
+## 案件を参照して操作を提案するAI
 
-## 案件を参照して操作を提案するAI（27.0との照合）
+案件への質問は参照した素材や配置を示して回答する。
 
-案件への質問は参照した素材や配置を示して回答する。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/premiere-ai-assistant/overview.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-2)と[受入試験](tasks.md#premiere-27-2)に記載する。
+[設計](design.md#案件を参照して操作を提案するai) ・ [受入試験](tasks.md#案件を参照して操作を提案するai)

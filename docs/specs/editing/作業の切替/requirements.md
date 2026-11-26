@@ -18,8 +18,8 @@
 
 - [A202](https://helpx.adobe.com/premiere/desktop/edit-projects/intro-to-editing/edit-video-in-premiere.html)　3素材をビンから粗編集し、再生モニターでカット順・合計尺・音声のつながりを確認して初稿を書き出す。（公開手順）
 
-<a id="premiere-27-1"></a>
+## 編集からカラーへ切り替える
 
-## 編集からカラーへ切り替える（27.0との照合）
+選択配置、再生フレーム、再生範囲を保ってカラー作業面へ移る。
 
-選択配置、再生フレーム、再生範囲を保ってカラー作業面へ移る。[Adobeの公開資料](https://helpx.adobe.com/jp/premiere/desktop/correct-color/color-mode-fundamentals/color-mode-basics.html)に対応するCutsetの操作条件を、[設計](design.md#premiere-27-1)と[受入試験](tasks.md#premiere-27-1)に記載する。
+[設計](design.md#編集からカラーへ切り替える) ・ [受入試験](tasks.md#編集からカラーへ切り替える)
