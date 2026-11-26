@@ -110,9 +110,9 @@ def feature_overview(features):
 def check_native(ids, commands_json):
     with (SPEC / "native-commands.tsv").open(encoding="utf-8", newline="") as stream:
         reader = csv.DictReader(stream, delimiter="\t")
-        if not {"command", "feature", "registrySource"} <= set(reader.fieldnames or []):
+        if not {"command", "feature", "registrySource", "label", "menu", "defaultShortcut", "params"} <= set(reader.fieldnames or []):
             raise ValueError("native-commands.tsv: required header missing")
-        commands = []
+        contract_by_command = {}
         for line, row in enumerate(reader, start=2):
             label = f"native-commands.tsv line {line}"
             checked_reference(row["feature"], ids, label)
@@ -122,8 +122,11 @@ def check_native(ids, commands_json):
             })
             if not row["command"] or any(c.isspace() for c in row["command"]):
                 raise ValueError(f"{label}: invalid command ID")
-            commands.append(row["command"])
-    command_ids = unique_set(commands, "native command IDs")
+            name = row["command"]
+            if name in contract_by_command:
+                raise ValueError(f"{label}: duplicate command ID {name}")
+            contract_by_command[name] = (row["label"], row["menu"], row["defaultShortcut"], row["params"])
+    command_ids = set(contract_by_command)
     if not command_ids:
         raise ValueError("native-commands.tsv: no commands")
     canonical = ("\n".join(sorted(command_ids)) + "\n").encode("utf-8")
@@ -137,6 +140,10 @@ def check_native(ids, commands_json):
             raise ValueError("--commands-json: expected filmcraft-cli commands --json array")
         live = unique_set((cmd["id"] for cmd in registry), "live command registry")
         exact(command_ids, live, "live command registry")
+        for cmd in registry:
+            observed = (cmd["label"], " > ".join(cmd["menu"]), cmd["defaultShortcut"] or "", cmd["params"])
+            if observed != contract_by_command[cmd["id"]]:
+                raise ValueError(f"live command metadata differs for {cmd['id']}")
     return len(command_ids)
 
 
