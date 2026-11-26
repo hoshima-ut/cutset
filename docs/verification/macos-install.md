@@ -35,7 +35,13 @@ ffprobe -v error -show_entries stream=codec_type,codec_name,width,height,sample_
 
 画面だけで書き出す場合は[音量・字幕・MP4の操作手順](../manual/audio-captions-export.md)を参照してください。
 
-## Cutset試用版の実測結果
+## 新ロゴのCutset試用版（2026年11月27日）
+
+AppleシリコンのMacで、ソース `eddd56f3` の試用DMGとCLIを検証しました。読み取り専用でマウントし、背景・Finder配置・アイコンを原稿と照合しました。DMGを取り出した後、コピーしたアプリで「Cutsetについて」を開き、閉じて編集に戻れました。マーカー追加・取り消し・やり直しで件数は4→5→4→5となり、保存後にCLIで同じ案件を再読込できました。書き出した0.512秒のMP4はH.264（480×270）とAAC（48 kHz、ステレオ）です。
+
+このDMGのSHA-256は `61f66b0e4b364e6b971aa7ea57582e175e940bb72e222a624c323d29dba06728` です。DMG、アプリ、CLIのアドホック署名を確認しました。別のMacでの初回起動、Developer ID署名と公証は[正式配布のIssue](https://github.com/hoshima-ut/cutset/issues/1)で扱います。
+
+## 以前のCutset試用版（2026年11月26日）
 
 2026-11-26、AppleシリコンのMacで `0210ec7b` の試用DMGを読み取り専用で開き、空のフォルダーへコピーした `Cutset.app` を起動しました。バージョンは0.20.1、Cargo既定機能でのビルドです。
 
