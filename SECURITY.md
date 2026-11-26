@@ -1,20 +1,16 @@
 # Security policy
 
-FilmCraft processes untrusted media, projects, interchange files, fonts and presets,
+Cutset and its FilmCraft engine process untrusted media, projects, interchange files, fonts and presets,
 and provides CLI, control-channel and MCP automation. Security reports about those
 inputs, automation boundaries, dependencies or release artifacts are welcome.
 
 ## Reporting a vulnerability
 
-GitHub private vulnerability reporting is not currently enabled for this repository,
-and no dedicated private security address is documented. Contact the maintainers
-through the [project's existing community channels](https://discord.gg/artcraft)
-with a minimal, non-exploitable description and ask for a private transfer method.
-Do not publish a working exploit, malicious attachment, credential, private project,
-or sensitive crash dump in a public issue or chat. Wait for a private channel before
-sharing those details; if none is established, withhold sensitive material.
+For a Cutset issue, use **Security → Report a vulnerability** on the Cutset repository if the button is available. Otherwise ask the Cutset maintainer for a private contact method using only a generic request. Supply sensitive technical details only through the agreed private channel. Never attach a credential, private project, or sensitive crash dump to a public issue, chat or model prompt.
 
-A useful report includes the FilmCraft version or commit, operating system and
+If a real credential may have left a trusted device, revoke or rotate it with its issuer immediately. Review its usage, then coordinate repository cleanup privately. Removing the file or a commit does not revoke a credential. See [Cutset's local prevention and incident guide](handbook/secrets.md).
+
+A useful report includes the Cutset or upstream FilmCraft version or commit, operating system and
 architecture, affected component, impact, reproduction steps, and any workaround.
 For media or project parsing problems, initially describe the file format, size,
 cryptographic hash and whether the sample is synthetic or privately owned. Remove
@@ -34,4 +30,4 @@ for clean-room implementation, asset attribution and the no-crash rules. Large m
 fixtures belong in the project's approved corpus workflow rather than ordinary PRs.
 
 Ordinary feature requests, editing problems and usage questions should use the
-normal issue forms or community help channel.
+Cutset issue forms when available.

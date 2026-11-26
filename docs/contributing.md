@@ -41,7 +41,7 @@ cargo xtask web --serve 8765                          # the web app on http://12
 | `FILMCRAFT_CONTROL_TOKEN` | Required for `--control`: 64 random hex characters, inherited by authorized clients; [setup](control-protocol.md) |
 | `FILMCRAFT_CPU_COMPOSITE=1` | Disables the GPU compositor |
 | `FILMCRAFT_DEV_DESKTOP_ENTRY=1` | Linux, opt-in: a run from a source tree installs a user-level desktop entry (and the icons from `assets/app-icon`) so the taskbar shows the FilmCraft icon. Nothing is written without it; packaged runs never write one |
-| `FILMCRAFT_DATA_DIR` | Same as `--data-dir <dir>`: auto-save, crash recovery, settings and logs |
+| `CUTSET_DATA_DIR` | Same as `--data-dir <dir>`: auto-save, crash recovery, settings and logs |
 | `RUST_LOG` | Log levels for standard error and the log file (see [Logs](#logs)) |
 
 `filmcraft --help` lists the app's options. An option it does not know, or a control port that is
@@ -56,7 +56,7 @@ playback and codec speed, use `--release`.
 The desktop app writes its `log` records to standard error and to `Logs/filmcraft.log` in the data
 directory (`~/.local/share/filmcraft/Logs/` or `$XDG_DATA_HOME/filmcraft/Logs/` on Linux,
 `~/Library/Application Support/FilmCraft/Logs/` on macOS, `%APPDATA%\FilmCraft\Logs\` on Windows,
-or under `--data-dir` / `FILMCRAFT_DATA_DIR`), next to the crash logs; Help ▸ Reveal Log Files opens
+or under `--data-dir` / `CUTSET_DATA_DIR`), next to the crash logs; Help ▸ Reveal Log Files opens
 the folder. A start from a desktop menu or the Dock has no terminal, so this file is what to attach
 to a bug report: GPU compositor fallbacks, audio output problems, panicked frame jobs and container
 warnings all land there. Each launch moves the previous log to `filmcraft.1.log` (and that one to

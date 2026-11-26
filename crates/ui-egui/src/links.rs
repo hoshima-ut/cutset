@@ -1,30 +1,10 @@
-//! Community and project links (Help menu, About dialog, header Discord button, Home screen).
-//!
-//! FilmCraft is part of the ArtCraft family: the community lives on the ArtCraft Discord, every
-//! app has a page on the ArtCraft website and a public GitHub repository.
+//! Project links shared by the desktop and web interfaces.
 
-/// The app's short name, used in the website and repository URLs.
-pub const APP: &str = "filmcraft";
+pub const GITHUB: &str = "https://github.com/hoshima-ut/cutset";
+pub const HANDBOOK: &str = "https://github.com/hoshima-ut/cutset/tree/main/handbook";
 
-/// The ArtCraft community Discord.
-pub const DISCORD: &str = "https://discord.gg/artcraft";
-/// The ArtCraft website.
-pub const WEBSITE: &str = "https://getartcraft.com";
-/// FilmCraft's page on the ArtCraft website.
-pub const APP_PAGE: &str = "https://getartcraft.com/apps/filmcraft";
-/// FilmCraft's source repository.
-pub const GITHUB: &str = "https://github.com/storytold/filmcraft";
-/// New issue on FilmCraft's repository.
-pub const ISSUES: &str = "https://github.com/storytold/filmcraft/issues";
-
-/// (command id, label, url) for every link, in menu order.
-pub const ALL: [(&str, &str, &str); 5] = [
-    ("help.discord", "Join the ArtCraft Discord…", DISCORD),
-    ("help.website", "ArtCraft Website", WEBSITE),
-    ("help.appPage", "FilmCraft on getartcraft.com", APP_PAGE),
-    ("help.github", "FilmCraft on GitHub", GITHUB),
-    ("help.reportIssue", "Report an Issue…", ISSUES),
-];
+/// Command id, localized label key and URL, in menu order.
+pub const ALL: [(&str, &str, &str); 2] = [("help.github", "Source code on GitHub", GITHUB), ("help.handbook", "Handbook", HANDBOOK)];
 
 /// A link the web browser couldn't open (`ui.failedLink`): the address and the reason.
 #[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize)]
@@ -49,8 +29,8 @@ pub fn menu_hint(command: &str) -> Option<String> {
         match command {
             "help.revealLogFiles" => tl!("Saves this session's log and shows it in your file manager."),
             "help.systemCompatibilityReport" => tl!("Shows a report on this computer."),
-            "app.about" => tl!("Shows the version, community links and credits in a FilmCraft window."),
-            "app.checkForUpdates" => tl!("Looks for a newer FilmCraft release and offers to update."),
+            "app.about" => tl!("Shows the version, community links and credits in a Cutset window."),
+            "app.checkForUpdates" => tl!("Looks for a newer Cutset release and offers to update."),
             _ => return None,
         }
         .to_string(),
@@ -126,17 +106,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn urls_follow_the_artcraft_scheme() {
-        assert_eq!(APP_PAGE, format!("{WEBSITE}/apps/{APP}"));
-        assert_eq!(GITHUB, format!("https://github.com/storytold/{APP}"));
+    fn links_belong_to_cutset() {
+        assert_eq!(HANDBOOK, format!("{GITHUB}/tree/main/handbook"));
+        assert_eq!(GITHUB, "https://github.com/hoshima-ut/cutset");
         assert!(ALL.iter().all(|(id, _, u)| id.starts_with("help.") && u.starts_with("https://")));
-        assert_eq!(url_for("help.discord"), Some(DISCORD));
+        assert_eq!(url_for("help.github"), Some(GITHUB));
         assert_eq!(url_for("help.nope"), None);
     }
 
     #[test]
     fn links_open_through_the_host_hook() {
-        // #642: on the desktop every link (Help menu, About, Discord button, Import screen) must
+        // #642: on the desktop every link (Help menu, About, repository button, Import screen) must
         // reach the host's browser opener; `ctx.open_url` alone is a no-op natively.
         use std::cell::RefCell;
         use std::rc::Rc;
@@ -153,8 +133,8 @@ mod tests {
             assert_eq!(r["url"], url, "{id}");
             assert_eq!(opened.borrow().last().map(String::as_str), Some(url), "{id}");
         }
-        open(&mut app, &ctx, DISCORD);
-        assert_eq!(opened.borrow().last().map(String::as_str), Some(DISCORD));
+        open(&mut app, &ctx, GITHUB);
+        assert_eq!(opened.borrow().last().map(String::as_str), Some(GITHUB));
         assert_eq!(opened.borrow().len(), ALL.len() + 1);
 
         // A failing opener falls back to `ctx.open_url` instead of losing the click.

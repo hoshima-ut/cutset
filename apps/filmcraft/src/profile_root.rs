@@ -104,6 +104,9 @@ fn forbidden_roots(platform: Platform, env: &impl Fn(&str) -> Option<OsString>, 
             // %LOCALAPPDATA%\FilmCraft is fenced as well, so no future local cache can land there.
             let mut roots =
                 ["APPDATA", "LOCALAPPDATA"].into_iter().map(|key| required_base(env, key).map(|p| p.join("FilmCraft"))).collect::<Result<Vec<_>, _>>()?;
+            for key in ["APPDATA", "LOCALAPPDATA"] {
+                roots.push(required_base(env, key)?.join("Cutset"));
+            }
             // The MSI's default per-user and per-machine folders (install-policy.wxi). A custom
             // install folder is not known here; the executable's own folder is fenced below.
             roots.push(required_base(env, "LOCALAPPDATA")?.join("Programs").join("ArtCraft").join("FilmCraft"));
@@ -118,16 +121,19 @@ fn forbidden_roots(platform: Platform, env: &impl Fn(&str) -> Option<OsString>, 
             // The data directory is real; the config, cache and state roots are fenced so a
             // future one cannot point Nightly at stable state. `~/.var/app` is the stable
             // Flatpak's own per-app folder.
-            let mut roots =
+            let mut roots = Vec::new();
+            for (key, fallback) in
                 [("XDG_DATA_HOME", ".local/share"), ("XDG_CONFIG_HOME", ".config"), ("XDG_CACHE_HOME", ".cache"), ("XDG_STATE_HOME", ".local/state")]
-                    .into_iter()
-                    .map(|(key, fallback)| xdg_base(env, key, fallback).map(|p| p.join("filmcraft")))
-                    .collect::<Result<Vec<_>, _>>()?;
+            {
+                let base = xdg_base(env, key, fallback)?;
+                roots.extend([base.join("filmcraft"), base.join("cutset")]);
+            }
             roots.extend(["/usr/bin/filmcraft", "/usr/local/bin/filmcraft", "/opt/filmcraft"].map(PathBuf::from));
             let data = xdg_base(env, "XDG_DATA_HOME", ".local/share")?;
             // Dev builds write a desktop entry and its hicolor icons into the XDG data dir
             // (apps/filmcraft/src/dev_icon.rs); a Nightly profile is never inside them.
             roots.push(data.join("applications").join("ai.storyteller.filmcraft.desktop"));
+            roots.push(data.join("applications").join(format!("{}.desktop", filmcraft_ui_egui::os_window::APP_ID)));
             roots.push(data.join("icons").join("hicolor"));
             roots.push(required_base(env, "HOME")?.join(".var/app/ai.storyteller.filmcraft"));
             roots
@@ -136,6 +142,7 @@ fn forbidden_roots(platform: Platform, env: &impl Fn(&str) -> Option<OsString>, 
             let home = required_base(env, "HOME")?;
             let library = home.join("Library");
             vec![
+                library.join("Application Support/Cutset"),
                 library.join("Application Support/FilmCraft"),
                 library.join("Caches/FilmCraft"),
                 library.join("Caches/ai.storyteller.filmcraft"),
@@ -192,7 +199,9 @@ fn is_portable_layout(path: &Path, platform: Platform) -> bool {
         ancestor.join(PORTABLE_MARKER).is_file() && (depth == 0 || ["filmcraft.exe", "filmcraft", "FilmCraft"].iter().any(|exe| ancestor.join(exe).is_file()))
     }) || path.ancestors().any(|ancestor| {
         let named_data = ancestor.file_name().is_some_and(|name| {
-            if platform.ignores_case() { name.to_string_lossy().eq_ignore_ascii_case(PORTABLE_DATA_DIR) } else { name == PORTABLE_DATA_DIR }
+            [PORTABLE_DATA_DIR, "cutset-data"]
+                .iter()
+                .any(|dir| if platform.ignores_case() { name.to_string_lossy().eq_ignore_ascii_case(dir) } else { name == *dir })
         });
         named_data && ancestor.parent().is_some_and(|install| install.join(PORTABLE_MARKER).is_file())
     })
@@ -229,8 +238,8 @@ fn validate_for(
 ) -> Result<PathBuf, String> {
     absolute(root.to_path_buf(), "the nightly profile root")?;
     // The stable data-directory override would point every write outside the private profile.
-    if env("FILMCRAFT_DATA_DIR").is_some_and(|v| !v.is_empty()) {
-        return Err("nightly-v1 cannot be combined with FILMCRAFT_DATA_DIR".into());
+    if env("CUTSET_DATA_DIR").is_some_and(|v| !v.is_empty()) {
+        return Err("nightly-v1 cannot be combined with CUTSET_DATA_DIR".into());
     }
     if platform != Platform::Windows {
         // A native Nightly package must not inherit a Flatpak runtime: its socket namespace could
@@ -383,6 +392,21 @@ mod tests {
         // Only the Nightly Flatpak's own id may inherit a sandbox; every other one is refused.
         fixture.env.insert("FLATPAK_ID".into(), "ai.storyteller.filmcraft".into());
         assert!(fixture.refuse(Platform::Linux, &sandbox).contains("Flatpak"));
+    }
+
+    #[test]
+    fn nightly_refuses_cutset_and_upstream_stable_profiles() {
+        let fixture = Fixture::new();
+        let windows_base = PathBuf::from(fixture.get("APPDATA").unwrap());
+        for (platform, parent, names) in [
+            (Platform::Linux, fixture.home().join(".local/share"), ["cutset", "filmcraft"]),
+            (Platform::Mac, fixture.home().join("Library/Application Support"), ["Cutset", "FilmCraft"]),
+            (Platform::Windows, windows_base, ["Cutset", "FilmCraft"]),
+        ] {
+            for name in names {
+                assert!(fixture.refuse(platform, &parent.join(name).join("Recovery")).contains("overlap"));
+            }
+        }
     }
 
     #[test]
@@ -597,9 +621,9 @@ mod tests {
         fixture.env.insert("XDG_CACHE_HOME".into(), "relative/cache".into());
         assert!(fixture.refuse(Platform::Linux, &candidate).contains("absolute"));
         fixture.env.remove("XDG_CACHE_HOME");
-        fixture.env.insert("FILMCRAFT_DATA_DIR".into(), fixture.home().join("custom-stable").into_os_string());
-        assert!(fixture.refuse(Platform::Linux, &candidate).contains("FILMCRAFT_DATA_DIR"));
-        fixture.env.remove("FILMCRAFT_DATA_DIR");
+        fixture.env.insert("CUTSET_DATA_DIR".into(), fixture.home().join("custom-stable").into_os_string());
+        assert!(fixture.refuse(Platform::Linux, &candidate).contains("CUTSET_DATA_DIR"));
+        fixture.env.remove("CUTSET_DATA_DIR");
         fixture.env.insert("FLATPAK_ID".into(), "ai.storyteller.filmcraft".into());
         assert!(fixture.refuse(Platform::Linux, &candidate).contains("Flatpak"));
         fixture.env.insert("FLATPAK_ID".into(), "ai.storyteller.filmcraft.nightly-v1".into());

@@ -32,7 +32,10 @@ async fn root() -> Result<FileSystemDirectoryHandle, JsValue> {
         return Err("OPFS not available".into());
     }
     let w = web_sys::window().ok_or("no window")?;
-    JsFuture::from(w.navigator().storage().get_directory()).await?.dyn_into()
+    let origin: FileSystemDirectoryHandle = JsFuture::from(w.navigator().storage().get_directory()).await?.dyn_into()?;
+    let options = web_sys::FileSystemGetDirectoryOptions::new();
+    options.set_create(true);
+    JsFuture::from(origin.get_directory_handle_with_options("cutset", &options)).await?.dyn_into()
 }
 
 /// The directory holding `rel` (created when `create`) and the file name.

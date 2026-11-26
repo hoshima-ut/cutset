@@ -492,12 +492,12 @@ impl Preferences {
 }
 
 /// A file with this name next to the executable makes the install portable: its data directory is
-/// `<exe dir>/data` instead of the per-user one (the Windows portable zip ships it).
+/// `<exe dir>/cutset-data` instead of the per-user one (the Windows portable zip ships it).
 pub const PORTABLE_MARKER: &str = "portable.txt";
 
-/// `<exe_dir>/data` when `exe_dir` holds [`PORTABLE_MARKER`], else `None`.
+/// `<exe_dir>/cutset-data` when `exe_dir` holds [`PORTABLE_MARKER`], else `None`.
 pub fn portable_data_dir(exe_dir: &Path) -> Option<PathBuf> {
-    exe_dir.join(PORTABLE_MARKER).is_file().then(|| exe_dir.join("data"))
+    exe_dir.join(PORTABLE_MARKER).is_file().then(|| exe_dir.join("cutset-data"))
 }
 
 /// The private data directory a hosted (Nightly) start selected before its first write.
@@ -523,28 +523,44 @@ pub fn data_dir_override() -> Option<&'static Path> {
 }
 
 /// The data directory. A selected private root ([`set_data_dir_override`]) wins; otherwise
-/// `FILMCRAFT_DATA_DIR` overrides; a portable install ([`PORTABLE_MARKER`] next to the executable)
-/// uses `<exe dir>/data`; otherwise the per-user directory:
-/// macOS `~/Library/Application Support/FilmCraft`, Windows `%APPDATA%\FilmCraft`,
-/// elsewhere `$XDG_DATA_HOME/filmcraft` or `~/.local/share/filmcraft`.
+/// `CUTSET_DATA_DIR` overrides; a portable install ([`PORTABLE_MARKER`] next to the executable)
+/// uses `<exe dir>/cutset-data`; otherwise the per-user directory:
+/// macOS `~/Library/Application Support/Cutset`, Windows `%APPDATA%\Cutset`,
+/// elsewhere `$XDG_DATA_HOME/cutset` or `~/.local/share/cutset`.
 pub fn default_data_dir() -> Option<PathBuf> {
     if let Some(root) = data_dir_override() {
         return Some(root.to_path_buf());
     }
     let env = |k: &str| std::env::var_os(k).filter(|v| !v.is_empty()).map(PathBuf::from);
-    if let Some(d) = env("FILMCRAFT_DATA_DIR") {
+    if let Some(d) = env("CUTSET_DATA_DIR") {
         return Some(d);
     }
     if let Some(d) = std::env::current_exe().ok().and_then(|exe| exe.parent().and_then(portable_data_dir)) {
         return Some(d);
     }
-    if cfg!(target_os = "macos") {
-        return env("HOME").map(|h| h.join("Library/Application Support/FilmCraft"));
+    user_data_dir(std::env::consts::OS, env)
+}
+
+fn user_data_dir(os: &str, env: impl Fn(&str) -> Option<PathBuf>) -> Option<PathBuf> {
+    match os {
+        "macos" => env("HOME").map(|h| h.join("Library/Application Support/Cutset")),
+        "windows" => env("APPDATA").map(|d| d.join("Cutset")),
+        _ => env("XDG_DATA_HOME").map(|d| d.join("cutset")).or_else(|| env("HOME").map(|h| h.join(".local/share/cutset"))),
     }
-    if cfg!(windows) {
-        return env("APPDATA").map(|h| h.join("FilmCraft"));
+}
+
+#[cfg(test)]
+mod profile_paths {
+    use super::*;
+
+    #[test]
+    fn defaults_are_private_to_cutset_on_each_platform() {
+        let env = |key: &str| Some(PathBuf::from(key));
+        assert_eq!(user_data_dir("macos", env), Some(PathBuf::from("HOME/Library/Application Support/Cutset")));
+        assert_eq!(user_data_dir("windows", env), Some(PathBuf::from("APPDATA/Cutset")));
+        assert_eq!(user_data_dir("linux", env), Some(PathBuf::from("XDG_DATA_HOME/cutset")));
+        assert_eq!(user_data_dir("linux", |k| (k == "HOME").then(|| PathBuf::from(k))), Some(PathBuf::from("HOME/.local/share/cutset")));
     }
-    env("XDG_DATA_HOME").map(|d| d.join("filmcraft")).or_else(|| env("HOME").map(|h| h.join(".local/share/filmcraft")))
 }
 
 pub fn unix_now() -> i64 {

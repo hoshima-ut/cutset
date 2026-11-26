@@ -18,7 +18,7 @@ Options:
   --recover          recover the newest unsaved changes without asking
   --no-recover       start without asking about unsaved changes
   --data-dir <dir>   folder for auto-save, crash recovery and logs
-                     (also: FILMCRAFT_DATA_DIR)
+                     (also: CUTSET_DATA_DIR)
   --graphics <mode>  start with this graphics mode and keep it: default,
                      dx12 (Windows), low-power (Linux),
                      software (Windows, Linux);

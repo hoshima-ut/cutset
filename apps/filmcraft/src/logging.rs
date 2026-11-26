@@ -3,7 +3,7 @@
 //! Without a logger every `log::warn!`/`log::error!` in the workspace (GPU compositor fallbacks,
 //! audio output problems, a panicked frame job or audio mixer, container warnings) vanished. A
 //! launch from a desktop menu has no terminal, so the file is what a bug report can attach:
-//! `<data dir>/Logs/filmcraft.log`, next to the crash logs (`--data-dir`, `FILMCRAFT_DATA_DIR` or
+//! `<data dir>/Logs/filmcraft.log`, next to the crash logs (`--data-dir`, `CUTSET_DATA_DIR` or
 //! `filmcraft_engine::autosave::default_data_dir`; Help ▸ Reveal Log Files opens the folder). Each
 //! start moves the previous log to `filmcraft.1.log` (and that one to `.2`), so the log of a run
 //! that crashed survives the next launch.

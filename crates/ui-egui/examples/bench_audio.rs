@@ -3,7 +3,7 @@
 //! would hear them. Nothing is played out loud.
 //!
 //! ```sh
-//! FILMCRAFT_DATA_DIR=/tmp/fc-bench cargo run --release -p filmcraft-ui-egui --example bench_audio -- \
+//! CUTSET_DATA_DIR=/tmp/fc-bench cargo run --release -p filmcraft-ui-egui --example bench_audio -- \
 //!     "Project.fcproj" --seconds 20 [--sequence "One hero" …] [--mode direct|ahead|both] [--json out.json] [--wav dir]
 //! ```
 //!

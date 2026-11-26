@@ -6,11 +6,11 @@
 use std::sync::OnceLock;
 
 /// Matches the `.desktop` file and hicolor icon name, so Wayland docks pick up the icon.
-pub const APP_ID: &str = "ai.storyteller.filmcraft";
+pub const APP_ID: &str = "io.github.hoshima_ut.cutset";
 
 /// The nightly channel's window/Wayland app id. The package, bundle and Launcher identity is
 /// [`NIGHTLY_PACKAGE_ID`] instead: two different strings, both are needed.
-pub const NIGHTLY_V1_APP_ID: &str = "ai.storyteller.filmcraft.nightly-v1";
+pub const NIGHTLY_V1_APP_ID: &str = "io.github.hoshima_ut.cutset.nightly-v1";
 
 /// The Nightly package, bundle and Launcher id (also `FLATPAK_ID` inside its own sandbox).
 pub const NIGHTLY_PACKAGE_ID: &str = "ai.storyteller.filmcraft.nightly";
@@ -53,8 +53,8 @@ pub fn app_id() -> &'static str {
 
 pub const fn name_for(identity: LaunchIdentity) -> &'static str {
     match identity {
-        LaunchIdentity::Stable => "FilmCraft",
-        LaunchIdentity::NightlyV1 => "FilmCraft Nightly",
+        LaunchIdentity::Stable => "Cutset",
+        LaunchIdentity::NightlyV1 => "Cutset Nightly",
     }
 }
 
@@ -92,7 +92,7 @@ mod tests {
     #[test]
     fn the_package_identity_and_the_window_identity_are_two_different_strings() {
         // The bundle/package id the Launcher and macOS plist use, and the window/AUMID one.
-        assert_eq!("ai.storyteller.filmcraft.nightly-v1", NIGHTLY_V1_APP_ID);
+        assert_eq!("io.github.hoshima_ut.cutset.nightly-v1", NIGHTLY_V1_APP_ID);
         assert_eq!("ai.storyteller.filmcraft.nightly", NIGHTLY_PACKAGE_ID);
         assert_ne!(NIGHTLY_PACKAGE_ID, NIGHTLY_V1_APP_ID);
         assert_ne!(NIGHTLY_PACKAGE_ID, APP_ID);

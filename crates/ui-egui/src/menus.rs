@@ -147,15 +147,12 @@ pub const UI_COMMANDS: &[UiCommand] = &[
     uic!("mode.import", "Import", [], None),
     uic!("mode.edit", "Edit", [], None),
     uic!("mode.export", "Export", ["File", "Export"], Some("Cmd+M")),
-    uic!("help.discord", "Join the ArtCraft Discord…", ["Help"], None),
-    uic!("help.website", "ArtCraft Website", ["Help"], None),
-    uic!("help.appPage", "FilmCraft on getartcraft.com", ["Help"], None),
-    uic!("help.github", "FilmCraft on GitHub", ["Help"], None),
-    uic!("help.reportIssue", "Report an Issue…", ["Help"], None),
+    uic!("help.github", "Source code on GitHub", ["Help"], None),
+    uic!("help.handbook", "Handbook", ["Help"], None),
     uic!("help.revealLogFiles", "Reveal Log Files…", ["Help"], None),
     uic!("help.systemCompatibilityReport", "System Compatibility Report…", ["Help"], None),
     uic!("app.checkForUpdates", "Check for Updates…", ["Help"], None),
-    uic!("app.about", "About FilmCraft", ["Help"], None),
+    uic!("app.about", "About Cutset", ["Help"], None),
     uic!("app.keyboardShortcuts", "Keyboard Shortcuts…", ["Edit"], Some("Cmd+Alt+K")),
     uic!("app.settings.general", "General…", ["Edit", "Preferences"], Some("Cmd+,")),
     uic!("app.settings.appearance", "Appearance…", ["Edit", "Preferences"], None),
@@ -523,10 +520,7 @@ pub fn invoke_command(app: &mut FilmcraftApp, ctx: &egui::Context, id: &str, mut
             app.ui.mode = Mode::Export;
             return Ok(Value::Null);
         }
-        "app.checkForUpdates" => {
-            let _ = crate::updates_ui::check(app);
-            return Ok(serde_json::Value::Null);
-        }
+        "app.checkForUpdates" => return crate::updates_ui::check(app),
         "app.about" => {
             app.dialog = Some(crate::Dialog::About);
             return Ok(Value::Null);
@@ -947,13 +941,15 @@ pub const MENUS: [&str; 9] = ["File", "Edit", "Clip", "Sequence", "Markers", "Gr
 /// Labels only the native macOS app menu shows, with no command in the menu tree behind them: the
 /// Settings submenu and the predefined Hide, Hide Others and Quit items. They are translated through
 /// the catalogs like menu labels (`apps/filmcraft/src/native_menu.rs`).
-pub const NATIVE_APP_MENU: [&str; 4] = ["Settings", "Hide FilmCraft", "Hide Others", "Quit FilmCraft"];
+pub const NATIVE_APP_MENU: [&str; 4] = ["Settings", "Hide Cutset", "Hide Others", "Quit Cutset"];
 
 pub fn menu_items(app: &FilmcraftApp) -> Vec<MenuItem> {
     let mut v = menu_items_for(&app.session);
     for it in &mut v {
         it.label = app.ui.language.tr(&it.label).to_string();
         match it.id.as_str() {
+            #[cfg(not(target_arch = "wasm32"))]
+            "app.checkForUpdates" => it.enabled = !app.updates_rt.disabled,
             "app.language.english" => it.checked = Some(app.ui.language == crate::i18n::Language::En),
             "app.language.japanese" => it.checked = Some(app.ui.language == crate::i18n::Language::Ja),
             "app.language.spanish" => it.checked = Some(app.ui.language == crate::i18n::Language::Es),

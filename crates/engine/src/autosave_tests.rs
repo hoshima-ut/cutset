@@ -407,7 +407,7 @@ fn portable_marker_keeps_data_next_to_the_executable() {
     assert_eq!(autosave::portable_data_dir(&d), None, "a directory is not the marker");
     std::fs::remove_dir_all(d.join(autosave::PORTABLE_MARKER)).unwrap();
     std::fs::write(d.join(autosave::PORTABLE_MARKER), "").unwrap();
-    assert_eq!(autosave::portable_data_dir(&d), Some(d.join("data")));
+    assert_eq!(autosave::portable_data_dir(&d), Some(d.join("cutset-data")));
     let _ = std::fs::remove_dir_all(&d);
 }
 

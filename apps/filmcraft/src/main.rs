@@ -13,7 +13,7 @@
 //! either source.
 //!
 //! Auto-save and the crash-recovery journal run in every session (data in `--data-dir`, else
-//! `FILMCRAFT_DATA_DIR`, else the per-user application data folder). If a previous session died
+//! `CUTSET_DATA_DIR`, else the per-user application data folder). If a previous session died
 //! with unsaved changes the app asks to recover them; `--recover` recovers the newest without
 //! asking, `--no-recover` starts without asking (the changes stay available via File ▸ Recover
 //! Unsaved Changes…).
@@ -143,7 +143,7 @@ fn prepare_launch() -> Option<Vec<std::ffi::OsString>> {
     // --version`: answered before root validation, process identity, logging or any window.
     if build_flavor::COMPILED == build_flavor::BuildFlavor::NightlyV1 && (build_flavor::version_query(&argv) || launch_profile::version_query(&argv)) {
         use std::io::Write as _;
-        let _ = writeln!(std::io::stdout(), "FilmCraft {}", build_flavor::version(build_flavor::COMPILED, version_text()));
+        let _ = writeln!(std::io::stdout(), "Cutset {}", build_flavor::version(build_flavor::COMPILED, version_text()));
         return None;
     }
     // The graphics test child is an internal re-entry of this same program
@@ -207,12 +207,6 @@ fn runnable_argv(internal: bool, argv: Vec<std::ffi::OsString>, launch: &launch_
 fn main() -> eframe::Result {
     let Some(arguments) = prepare_launch() else { return Ok(()) };
     let nightly = launch_profile::current().is_nightly();
-    // Windows: the update helper is a copy of this program started with `--finish-update`. A
-    // Nightly is updated by ArtCraft Launcher, never by the stable updater.
-    #[cfg(windows)]
-    if !nightly && let Some(result) = craft_update::self_update::finish(&filmcraft_ui_egui::UPDATE_APP, &arguments) {
-        std::process::exit(i32::from(result.is_err()));
-    }
     // Windows: the graphics test start (graphics/probe.rs) is this program started with
     // `--test-graphics-start <mode>`. It creates the device the window would, then exits.
     let args: Vec<std::ffi::OsString> = arguments.clone();
@@ -246,7 +240,7 @@ fn main() -> eframe::Result {
         }
     };
     if nightly && (launch.control_port.is_some() || launch.control_input_only) {
-        eprintln!("filmcraft: a nightly-v1 start does not start the stable control server; drive FilmCraft Nightly through ArtCraft Launcher");
+        eprintln!("filmcraft: a nightly-v1 start does not start the stable control server; use the configured nightly launch profile");
         std::process::exit(2);
     }
     let data_root = launch.data_dir.clone().or_else(default_data_dir);
@@ -264,7 +258,7 @@ fn main() -> eframe::Result {
             Some(Err(e)) => log::warn!("no log file: {e}"),
             None => {
                 logger.stderr_only();
-                log::warn!("no log file: no data directory (set FILMCRAFT_DATA_DIR or --data-dir)");
+                log::warn!("no log file: no data directory (set CUTSET_DATA_DIR or --data-dir)");
             }
         }
     }
@@ -293,7 +287,7 @@ fn main() -> eframe::Result {
         log::error!("{msg}");
         filmcraft_ui_egui::crash::record(&msg);
         graphics.abandon();
-        let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+        let _ = rfd::MessageDialog::new().set_title("Cutset").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
         std::process::exit(1);
     }
     // The GPU export renderer creates its own wgpu instance with every backend; after a start
@@ -408,7 +402,7 @@ fn main() -> eframe::Result {
         }
         log::error!("{msg}");
         filmcraft_ui_egui::crash::record(&msg);
-        let _ = rfd::MessageDialog::new().set_title("FilmCraft").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
+        let _ = rfd::MessageDialog::new().set_title("Cutset").set_description(&msg).set_level(rfd::MessageLevel::Error).show();
     }
     started
 }
@@ -564,15 +558,14 @@ fn app_creator(
             }
         }
         let mut app = FilmcraftApp::new(session);
-        app.set_startup_update_check(session_notice.is_none());
+        // Development builds have no Cutset binary release channel.
+        app.disable_updates();
         if let Some(health) = session_notice {
-            // Updated by ArtCraft Launcher, never by the stable updater.
-            app.disable_updates();
             if health.previous_unclean || health.warning {
                 let message = if health.previous_unclean {
-                    "The previous FilmCraft Nightly session did not finish normally. You can report a problem from About. No diagnostics have been sent."
+                    "The previous Cutset Nightly session did not finish normally. You can report a problem from About. No diagnostics have been sent."
                 } else {
-                    "FilmCraft Nightly could not record session health in its private profile. You can still edit, but abnormal-exit detection is unavailable."
+                    "Cutset Nightly could not record session health in its private profile. You can still edit, but abnormal-exit detection is unavailable."
                 };
                 let mut notice = filmcraft_ui_egui::notices::Notice::new(filmcraft_ui_egui::os_window::name(), vec![message.to_owned()]);
                 // Cleared only once a kept pass drew the notice: closing before that keeps the

@@ -12,7 +12,7 @@
 # sekwencja, panel = panel, workspace = obszar roboczy, keyframe = klatka kluczowa, caption = napis,
 # preferences = preferencje. Edit types keep their established names (ripple, roll, slip, slide).
 
-	About FilmCraft	O programie FilmCraft
+	About Cutset	O programie Cutset
 	Add Audio Submix Track	Dodaj ścieżkę submiksu audio
 	Add Caption at Playhead	Dodaj napis w miejscu głowicy
 	Add Chapter Marker…	Dodaj znacznik rozdziału…
@@ -38,7 +38,6 @@
 	Apply Default Transitions to Selection	Zastosuj domyślne przejścia do zaznaczenia
 	Apply Video Transition	Zastosuj przejście wideo
 	Arrange	Rozmieść
-	ArtCraft Website	Strona ArtCraft
 	Assembly	Montaż wstępny
 	Attach Proxies…	Dołącz proxy…
 	Audio Channels…	Kanały audio…
@@ -132,8 +131,6 @@
 	File…	Plik…
 	Fill frame	Wypełnij klatkę
 	FilmCraft Help…	Pomoc FilmCraft…
-	FilmCraft on GitHub	FilmCraft w serwisie GitHub
-	FilmCraft on getartcraft.com	FilmCraft w getartcraft.com
 	Find Next	Znajdź następny
 	Find…	Znajdź…
 	Fit	Dopasuj
@@ -177,7 +174,6 @@
 	Insert Frame Hold Segment	Wstaw segment stopklatki
 	Install Motion Graphics Template…	Zainstaluj szablon grafiki ruchomej…
 	Interpret Footage…	Interpretuj materiał…
-	Join the ArtCraft Discord…	Dołącz do Discorda ArtCraft…
 	Keyboard Shortcuts…	Skróty klawiaturowe…
 	Label	Etykieta
 	Labels…	Etykiety…
@@ -372,7 +368,6 @@
 	Master volume: use the Audio Track Mixer	Głośność główna: użyj miksera ścieżek audio
 	Search	Szukaj
 	Quick Export	Szybki eksport
-	Join the ArtCraft Discord (discord.gg/artcraft)	Dołącz do Discorda ArtCraft (discord.gg/artcraft)
 	Cancel	Anuluj
 	OK	OK
 	Interpret Footage	Interpretuj materiał
@@ -415,8 +410,6 @@
 	Delete Caption Track	Usuń ścieżkę napisów
 	Delete Empty Caption Tracks	Usuń puste ścieżki napisów
 	Version {version}	Wersja {version}
-	A clean-room, pure-Rust non-linear video editor. Part of the ArtCraft family.	Niezależnie stworzony nieliniowy edytor wideo w czystym Ruście. Część rodziny ArtCraft.
-	Join the ArtCraft Discord	Dołącz do Discorda ArtCraft
 	Source code on GitHub	Kod źródłowy w serwisie GitHub
 	Report an issue	Zgłoś problem
 	MIT OR Apache-2.0. Fonts: Inter, Noto Serif and JetBrains Mono (SIL OFL 1.1).	MIT LUB Apache-2.0. Czcionki: Inter, Noto Serif i JetBrains Mono (SIL OFL 1.1).
@@ -457,7 +450,6 @@
 	Bars and Tone	Pasy i ton
 	SMPTE HD bars with 1 kHz reference tone	Pasy SMPTE HD z tonem odniesienia 1 kHz
 	Community	Społeczność
-	Join us on Discord	Dołącz do nas na Discordzie
 	OMF Export Settings	Ustawienia eksportu OMF
 	AAF Export Settings	Ustawienia eksportu AAF
 	OMF Title:	Tytuł OMF:
@@ -3233,7 +3225,7 @@
 	QuickTime, ProRes 4444 (4:4:4) with alpha channel, 24-bit 48 kHz PCM	QuickTime, ProRes 4444 (4:4:4) z kanałem alfa, PCM 24-bit 48 kHz
 	QuickTime, ProRes 4444 XQ (4:4:4), 24-bit 48 kHz PCM	QuickTime, ProRes 4444 XQ (4:4:4), PCM 24-bit 48 kHz
 	QuickTime, ProRes 422, 24-bit 48 kHz PCM	QuickTime, ProRes 422, PCM 24-bit 48 kHz
-	Quit FilmCraft	Zakończ FilmCraft
+	Quit Cutset	Zakończ Cutset
 	Rate Stretch Tool	Narzędzie Rozciąganie szybkości
 	Razor Tool	Narzędzie Żyletka
 	Rectangle Tool	Narzędzie Prostokąt
@@ -3597,12 +3589,12 @@
 	Opens in your web browser: {url}	Otwiera w przeglądarce: {url}
 	Saves this session's log and shows it in your file manager.	Zapisuje dziennik tej sesji i pokazuje go w menedżerze plików.
 	Shows a report on this computer.	Pokazuje raport o tym komputerze.
-	Shows the version, community links and credits in a FilmCraft window.	Pokazuje wersję, linki społeczności i współtwórców w oknie FilmCraft.
+	Shows the version, community links and credits in a Cutset window.	Pokazuje wersję, linki społeczności i współtwórców w oknie Cutset.
 	Couldn't open your web browser	Nie udało się otworzyć przeglądarki
 	Open this address in your browser yourself:	Otwórz ten adres w przeglądarce samodzielnie:
 	Hardware decoding: Auto uses the system's video decoder (VideoToolbox on macOS, Media Foundation on Windows, VA-API for H.264 and HEVC on Linux) for the streams it supports, and FilmCraft's own decoder for everything else or if the hardware fails. Media that is already open keeps its decoder until it is reopened.	Dekodowanie sprzętowe: Auto używa systemowego dekodera wideo (VideoToolbox w macOS, Media Foundation w Windows, VA-API dla H.264 i HEVC w Linuksie) dla obsługiwanych strumieni, a własnego dekodera FilmCraft dla pozostałych lub gdy sprzęt zawiedzie. Już otwarte multimedia zachowują swój dekoder do ponownego otwarcia.
 	Settings	Ustawienia
-	Hide FilmCraft	Ukryj FilmCraft
+	Hide Cutset	Ukryj Cutset
 	Hide Others	Ukryj pozostałe
 # Added 2026-10-29: strings main gained since the catalog was written.
 	Delete Redoable Actions	Usuń akcje do ponowienia

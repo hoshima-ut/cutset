@@ -84,7 +84,7 @@ fn ensure() -> Result<(), DevIconError> {
             && let Some(parent) = dest.parent()
         {
             // The checkout this binary was built from; a missing icon only costs the icon.
-            let src = std::path::Path::new(ICON_DIR).join(&rel);
+            let src = std::path::Path::new(ICON_DIR).join(rel.with_file_name("ai.storyteller.filmcraft.png"));
             if !src.is_file() {
                 log::warn!("dev desktop entry: icon {} not found; skipping it", src.display());
                 continue;
@@ -95,7 +95,7 @@ fn ensure() -> Result<(), DevIconError> {
     }
     let applications = user_dir.join("applications");
     std::fs::create_dir_all(&applications).map_err(DevIconError::Io)?;
-    let body = desktop_file_content(APP_ID, "FilmCraft", exe);
+    let body = desktop_file_content(APP_ID, "Cutset", exe);
     std::fs::write(applications.join(&file_name), body).map_err(DevIconError::Io)?;
     Ok(())
 }

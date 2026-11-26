@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+"""Install a branch-independent hook snapshot without overwriting other hooks."""
+
+import hashlib
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+
+
+FILES = (".githooks/pre-commit", ".githooks/pre-push", "tools/secret-guard")
+
+
+def query(*args):
+    return subprocess.run(["git", *args], capture_output=True, text=True)
+
+
+def git_path(*args):
+    result = query("rev-parse", *args)
+    if result.returncode:
+        sys.exit("Cannot locate this Git clone.")
+    return Path(result.stdout.strip()).resolve()
+
+
+def fingerprint(base):
+    digest = hashlib.sha256()
+    for name in FILES:
+        path = base/name
+        if path.is_symlink() or not path.is_file() or not os.access(path,os.X_OK):
+            sys.exit("Cutset hook files must be regular, executable files.")
+        digest.update(name.encode()+b"\0"+hashlib.sha256(path.read_bytes()).digest())
+    return digest.hexdigest()
+
+
+def existing_managed(path, storage):
+    # Only a verified snapshot of these three files qualifies for an upgrade.
+    version = path.parent
+    return (path.is_absolute() and version.parent == storage and path.name == ".githooks"
+            and re.fullmatch(r"[0-9a-f]{64}",version.name) and not path.is_symlink()
+            and not version.is_symlink() and path.is_dir()
+            and {p.name for p in path.iterdir()} == {"pre-commit","pre-push"}
+            and fingerprint(version) == version.name)
+
+
+def main():
+    root = git_path("--show-toplevel")
+    os.chdir(root)
+    if not shutil.which("gitleaks"):
+        sys.exit("Install gitleaks before enabling Cutset hooks (macOS: brew install gitleaks).")
+    storage = git_path("--git-common-dir")/"cutset-hooks"
+    if storage.is_symlink():
+        sys.exit("Cutset hook storage must be a private Git directory.")
+    version = fingerprint(root)
+    destination = storage/version
+    hooks = destination/".githooks"
+    configured = query("config","--get-all","core.hooksPath")
+    if configured.returncode not in (0,1):
+        sys.exit("Cannot inspect Git hook configuration.")
+    if configured.returncode == 0:
+        values = configured.stdout.splitlines()
+        if len(values) != 1 or not existing_managed(Path(values[0]),storage):
+            sys.exit("Existing core.hooksPath found. Its owner must integrate Cutset manually.")
+        if Path(values[0]) == hooks:
+            print("Cutset hooks are already enabled at this version.")
+            return
+    else:
+        native_hooks = git_path("--git-path","hooks")
+        if native_hooks.is_dir() and any(p.is_file() and os.access(p,os.X_OK)
+                                        and not p.name.endswith(".sample") for p in native_hooks.iterdir()):
+            sys.exit("Existing executable Git hooks found. Their owner must integrate Cutset manually.")
+    storage.mkdir(mode=0o700,exist_ok=True)
+    if not destination.exists():
+        with tempfile.TemporaryDirectory(dir=storage) as temp:
+            snapshot = Path(temp)/"snapshot"
+            for name in FILES:
+                target = snapshot/name
+                target.parent.mkdir(mode=0o700,parents=True,exist_ok=True)
+                shutil.copy2(root/name,target)
+            if fingerprint(snapshot) != version:
+                sys.exit("The hook sources changed during installation. Retry.")
+            try:
+                snapshot.rename(destination)
+            except OSError:
+                if not destination.is_dir():
+                    raise
+    if not existing_managed(hooks,storage):
+        sys.exit("Existing Cutset hook snapshot could not be verified.")
+    if query("config","--local","core.hooksPath",str(hooks)).returncode:
+        sys.exit("Cannot configure local Git hooks.")
+    print("Enabled Cutset pre-commit and pre-push hooks for all branches of this clone.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except OSError:
+        sys.exit("Could not install Cutset hooks. Inspect permissions on the local repository.")

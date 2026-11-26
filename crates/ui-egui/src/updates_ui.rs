@@ -22,7 +22,7 @@ pub(crate) struct Runtime {
     startup_check: bool,
     /// The Nightly channel is updated by ArtCraft Launcher, never by this app's updater.
     #[cfg(not(target_arch = "wasm32"))]
-    disabled: bool,
+    pub(crate) disabled: bool,
     #[cfg(not(target_arch = "wasm32"))]
     check_requested: bool,
     /// The context of the last frame, to wake the UI when a check is queued from a menu callback.
@@ -71,7 +71,7 @@ pub(crate) fn check(app: &mut FilmcraftApp) -> Result<Value, String> {
     #[cfg(not(target_arch = "wasm32"))]
     {
         if app.updates_rt.disabled {
-            return Err("Updates are managed by ArtCraft Launcher.".into());
+            return Err("Updates are unavailable in this Cutset build.".into());
         }
         app.updates_rt.check_requested = true;
         app.updates_rt.manual_window_open = true;
@@ -165,7 +165,7 @@ pub(crate) fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
     #[cfg(target_arch = "wasm32")]
     if app.updates_rt.manual_window_open {
         let mut open = true;
-        egui::Window::new(crate::i18n::t("FilmCraft Updates"))
+        egui::Window::new(crate::i18n::t("Cutset Updates"))
             .open(&mut open)
             .collapsible(false)
             .resizable(false)
@@ -218,7 +218,9 @@ fn sync_check_dialog(rt: &mut Runtime) {
 /// does the same, and later calls do nothing.
 pub(crate) fn exiting(app: &mut FilmcraftApp) {
     #[cfg(not(target_arch = "wasm32"))]
-    app.updates_rt.updater.start_pending_update();
+    if !app.updates_rt.disabled {
+        app.updates_rt.updater.start_pending_update();
+    }
     #[cfg(target_arch = "wasm32")]
     let _ = app;
 }
@@ -258,7 +260,7 @@ mod tests {
             record.borrow_mut().push(url.to_owned());
             Ok(())
         }));
-        let url = "https://github.com/storytold/filmcraft/releases/tag/v99.0.0";
+        let url = "https://github.com/hoshima-ut/cutset/releases/tag/v99.0.0";
         offer_and_wait(
             &mut app.updates_rt.updater,
             craft_update::Release { tag: "v99.0.0".into(), version: craft_update::parse_version("99.0.0"), html_url: url.into(), ..Default::default() },
@@ -314,7 +316,7 @@ mod tests {
             tag: "v99.0.0".into(),
             version: craft_update::parse_version("99.0.0"),
             name: "FilmCraft 99.0.0".into(),
-            html_url: "https://github.com/storytold/filmcraft/releases/tag/v99.0.0".into(),
+            html_url: "https://github.com/hoshima-ut/cutset/releases/tag/v99.0.0".into(),
             ..Default::default()
         };
         offer_and_wait(&mut app.updates_rt.updater, release);
@@ -360,6 +362,6 @@ mod nightly_tests {
         let mut app = crate::FilmcraftApp::new(filmcraft_engine::Session::default());
         app.set_startup_update_check(true);
         app.disable_updates();
-        assert!(super::check(&mut app).unwrap_err().contains("ArtCraft Launcher"));
+        assert!(super::check(&mut app).unwrap_err().contains("unavailable"));
     }
 }

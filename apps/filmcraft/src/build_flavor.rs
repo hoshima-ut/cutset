@@ -12,7 +12,7 @@ pub const COMPILED: BuildFlavor = if cfg!(filmcraft_nightly_v1) { BuildFlavor::N
 
 pub fn require_profile(flavor: BuildFlavor, profile: &Profile) -> Result<(), String> {
     match (flavor, profile.is_nightly()) {
-        (BuildFlavor::NightlyV1, false) => Err("Open FilmCraft Nightly from ArtCraft Launcher".into()),
+        (BuildFlavor::NightlyV1, false) => Err("Start Cutset Nightly with a nightly launch profile".into()),
         (BuildFlavor::Stable, true) => Err("This is a stable FilmCraft build; nightly-v1 requires the nightly build".into()),
         _ => Ok(()),
     }
@@ -48,7 +48,7 @@ mod tests {
     fn nightly_build_without_a_profile_is_refused_before_startup() {
         let started = std::cell::Cell::new(false);
         let result = require_profile(BuildFlavor::NightlyV1, &Profile::Stable).map(|()| started.set(true));
-        assert!(result.unwrap_err().contains("ArtCraft Launcher"));
+        assert!(result.unwrap_err().contains("nightly launch profile"));
         assert!(!started.get());
     }
     #[test]

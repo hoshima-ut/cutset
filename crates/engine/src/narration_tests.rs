@@ -422,13 +422,13 @@ fn natural_voices_are_listed_and_explain_what_is_missing() {
 }
 
 /// Starts `tts.downloadVoices` and cancels it before the 336 MB model lands. Run with
-/// `FILMCRAFT_DATA_DIR` set to a throwaway directory so a cancelled fetch cannot write into a
+/// `CUTSET_DATA_DIR` set to a throwaway directory so a cancelled fetch cannot write into a
 /// real user models folder.
 #[cfg(feature = "neural-voices")]
 #[test]
-#[ignore = "starts a real download; run with FILMCRAFT_DATA_DIR in a throwaway directory"]
+#[ignore = "starts a real download; run with CUTSET_DATA_DIR in a throwaway directory"]
 fn download_voices_is_accepted_when_the_build_includes_natural_voices() {
-    let data = std::env::var_os("FILMCRAFT_DATA_DIR").expect("set FILMCRAFT_DATA_DIR to a throwaway directory");
+    let data = std::env::var_os("CUTSET_DATA_DIR").expect("set CUTSET_DATA_DIR to a throwaway directory");
     let _ = std::fs::create_dir_all(&data);
     let mut s = demo();
     assert!(crate::narration::natural_voices_available());

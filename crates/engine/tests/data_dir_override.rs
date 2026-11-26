@@ -1,7 +1,7 @@
 //! The private data-directory hook a hosted (Nightly) start installs.
 //!
 //! This lives in its own test binary: the override is process-wide and must not leak into the
-//! unit tests that exercise the per-user, portable and `FILMCRAFT_DATA_DIR` resolution. It is one
+//! unit tests that exercise the per-user, portable and `CUTSET_DATA_DIR` resolution. It is one
 //! test on purpose — the hook can be selected once per process.
 
 use filmcraft_engine::autosave;

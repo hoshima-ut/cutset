@@ -198,6 +198,9 @@ fn assets() -> Result<(), String> {
     for f in files.iter().filter(|f| is_asset(f)) {
         n += 1;
         let lower = f.to_ascii_lowercase();
+        if lower.starts_with("docs/brand/") || lower.contains("artcraft-logo") || lower.contains("artcraft-mark") {
+            errors.push(format!("{f}: upstream trademark artwork cannot ship in Cutset (docs/brand/LICENSE-brand.txt)"));
+        }
         if lower.contains("adobe") || lower.contains("premiere") {
             errors.push(format!("{f}: asset paths must not reference Adobe/Premiere (AGENTS.md §1)"));
         }

@@ -1,16 +1,7 @@
-# Contributing to FilmCraft
+# Contributing to Cutset
 
-Thanks for helping. Before you start:
+Start with the [Cutset handbook](handbook/README.md), install the [local secret checks](handbook/secrets.md), then select an acceptance case from the [task board](handbook/tasks.md). Use synthetic media when sharing a reproduction. Keep a change small enough for another person to repeat the same editing operation and check its result.
 
-1. Read **[AGENTS.md](AGENTS.md)**: the shared rules and the facts about this repository.
-2. **Never crash.** A crash loses someone's work, so this rule outranks feature work: no `unwrap()`,
-   `expect()`, `panic!`, `unreachable!`, `todo!` or `unimplemented!` in production code, and no `unsafe` outside `crates/platform`;
-   return `Result` and treat every input as hostile. See rule 13 of [AGENTS.md](AGENTS.md).
-3. Follow **[docs/contributing.md](docs/contributing.md)**: setup per OS, building and running,
-   the checks, commit conventions, and how to add commands, effects,
-   transitions, codecs, panels and assets.
+Run the local checks for the affected paths and record what actually ran. Document any editor listening test that still needs a person. GitHub Actions is disabled for this fork. Contributors and agents share the [engineering workflow](handbook/engineering.md) and the inherited [Rust and asset rules](AGENTS.md). The [technical contributor guide](docs/contributing.md) explains how to change a command, effect, codec or panel.
 
-More reading: [docs/architecture.md](docs/architecture.md), [docs/testing.md](docs/testing.md),
-[docs/agents.md](docs/agents.md), [ROADMAP.md](ROADMAP.md).
-
-Contributions are licensed under MIT OR Apache-2.0, the project licence.
+Contributions to the code are licensed under MIT OR Apache-2.0. Preserve the applicable notices and third-party asset attributions. Use [SECURITY.md](SECURITY.md) for security reports.

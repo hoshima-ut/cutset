@@ -1,3 +1,11 @@
+# Cutsetで作業するエージェントへ
+
+製品の正本は[機能仕様](spec/README.md)。仕様→作業→実装→ローカル検証→独立レビューを一つの受入条件で辿る。[検証ループ](spec/harness.md)を使う。
+
+このforkの作業は[ハンドブック](handbook/README.md)から始め、[作業台](handbook/tasks.md)の受入条件を一つ選ぶ。実装前に[開発規約](handbook/engineering.md)と[秘密情報の扱い](handbook/secrets.md)を使う。GitHub Actionsは停止中。ローカルで検証したコマンド・終了結果・未確認項目を記録する。外部への投稿、公開、配布は依頼の範囲を確認する。
+
+以下はFilmCraftから継承した技術契約と上流への寄稿規約。§0〜§3のRust・素材・編集モデルの規約を引き継ぐ。上流へのissue投稿・claim、共有CI、寄稿者登録は本家に変更を提案する場合の手順。Cutset側の作業順、レビュー先、日常と節目の検証範囲は上記ハンドブックで決める。
+
 <!-- craft-agents:start source=5b1a2b1982fe7c774739d06d4a3818033cf4884c sha256=41dc0e35957946bfe7639237fbf1eca92093fe7f6bd76a778779c359c4e4a82a -->
 # Rules for agents in Craft repositories
 
