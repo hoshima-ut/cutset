@@ -1,9 +1,11 @@
 # macOS DMG window
 
-What Finder shows when the DMG opens: a 660 × 400 pt background with the app icon and the
-`Applications` link side by side. `package.sh` copies these files into the image; nothing here is
-generated at build time, so the DMG still builds with `hdiutil makehybrid` (no mounted device, no
-Finder scripting on CI, nothing extra installed in the signing job).
+The bundled layout describes a 660 × 400 pt background with the app icon and the
+`Applications` link side by side. `package.sh` copies these files into an APFS disk image using
+`hdiutil create`. The layout is prebuilt and requires no Finder scripting. Building the image
+requires a macOS session that permits DiskImages to attach a temporary device. The local install check
+mounts the volume without opening Finder. Automatic window opening and the background image on
+an APFS volume still need a visual check in Finder.
 
 | File | What |
 |---|---|

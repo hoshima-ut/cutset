@@ -152,13 +152,11 @@ ln -s /Applications "$STAGE/Applications"
 mkdir -p "$STAGE/.background"
 cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
-rm -f "$DMG" "$WORK/raw.dmg"
-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
-hdiutil makehybrid -hfs -hfs-volume-name "FilmCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
-rm -f "$WORK/raw.dmg"
+# HFS hybrid authoring adds FinderInfo to bundle entries when the app is copied to APFS.
+# Preserve the signed bundle's metadata across installation and keep the Finder layout's volume name.
+hdiutil create -fs APFS -format UDZO -imagekey zlib-level=9 -volname "FilmCraft" \
+  -srcfolder "$STAGE" "$WORK/FilmCraft.dmg"
+mv -f "$WORK/FilmCraft.dmg" "$DMG"
 sign "$DMG"
 codesign --verify --strict --verbose=2 "$DMG"
 if [[ "$NOTARIZE" = 1 ]]; then
