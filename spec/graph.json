@@ -1,0 +1,34 @@
+{
+  "tasks": [
+    {
+      "id": "HARNESS-CONTRACT",
+      "title": "検証グラフと作業状態の回帰検証",
+      "specs": [],
+      "requires": [],
+      "acceptance": ["HARNESS-LOCAL"]
+    },
+    {
+      "id": "CHECK-PREVIEW",
+      "title": "試用シナリオの試聴・短縮候補をフレーム単位で読む",
+      "specs": ["AI-03"],
+      "requires": ["HARNESS-CONTRACT"],
+      "acceptance": ["PREVIEW-PLAN"]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "HARNESS-LOCAL",
+      "description": "グラフの整合性、検証順序、実行上限、検証証跡とリビジョンの一致をローカルで再現できる。",
+      "checks": ["HARNESS-TESTS"]
+    },
+    {
+      "id": "PREVIEW-PLAN",
+      "description": "25 fpsの試用素材A、B、Cから、AとBの短縮候補とCの保持をフレーム単位で読み出せる。プロジェクトは書き換えない。この証跡の対象は読み取り専用のCLIである。",
+      "checks": ["PREVIEW-TESTS"]
+    }
+  ],
+  "checks": [
+    {"id": "HARNESS-TESTS", "argv": ["python3", "tools/test_cutset_harness.py"]},
+    {"id": "PREVIEW-TESTS", "argv": ["python3", "tools/test_cutset_trial.py"]}
+  ]
+}
