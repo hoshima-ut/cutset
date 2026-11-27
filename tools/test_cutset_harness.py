@@ -9,7 +9,7 @@ import unittest
 from unicodedata import normalize
 from unittest.mock import patch
 
-from cutset_harness import Graph, cargo_tests, command
+from cutset_harness import Graph, cargo_tests, command, minimum
 from feature_docs import PAGES, check_pages, indexes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,7 +77,7 @@ class GraphTest(unittest.TestCase):
             Graph({"features": [FEATURE]}, cfg)
 
 
-CARGO = {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::"}
+CARGO = {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::", "min_tests": 19}
 
 
 class CargoCheckTest(unittest.TestCase):
@@ -92,10 +92,11 @@ class CargoCheckTest(unittest.TestCase):
         self.assertEqual(command(graph.checks["RUST-TESTS"]),
                          ["cargo", "test", "--locked", "-p", "filmcraft-interchange", "--test", "it", "--", "fcp7::"])
         self.assertEqual(graph.checks_for("BUILD-AI-03"), ["RUST-TESTS"])
+        self.assertEqual(minimum(graph.checks["RUST-TESTS"]), 19)
 
     def test_cargo_check_rejects_unknown_package_and_shell_text(self):
         for fault in ({"package": "other-crate"}, {"filter": "fcp7; rm -rf /"}, {"test": "../it"},
-                      {"extra": "--release"}, {"package": 3}):
+                      {"extra": "--release"}, {"package": 3}, {"min_tests": 0}, {"min_tests": "19"}):
             with self.subTest(fault=fault):
                 with self.assertRaisesRegex(ValueError, "cargo"):
                     self.graph_with(dict(CARGO, **fault))

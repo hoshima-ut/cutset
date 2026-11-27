@@ -22,7 +22,7 @@ ID = re.compile(r"[A-Z][A-Z0-9-]*\Z")
 MAX_STEPS = 10
 # A Rust check names a workspace package, one integration test binary and a test-name filter; the
 # harness builds the command itself, so the graph cannot smuggle flags or shell text into it.
-CARGO_FIELDS = {"package", "test", "filter"}
+CARGO_FIELDS = {"package", "test", "filter", "min_tests"}
 CARGO_NAME = re.compile(r"[a-z][a-z0-9_-]*\Z")
 CARGO_FILTER = re.compile(r"[A-Za-z0-9_:]+\Z")
 CARGO_RESULT = re.compile(r"^test result: (ok|FAILED)\. (\d+) passed; (\d+) failed", re.MULTILINE)
@@ -87,7 +87,8 @@ def validate_check(key, check, packages):
                and tuple(argv) in ALLOWED, f"{key}: unsupported command")
         return
     demand("argv" not in check and isinstance(cargo, dict) and set(cargo) == CARGO_FIELDS
-           and all(isinstance(cargo[f], str) for f in CARGO_FIELDS), f"{key}: invalid cargo check")
+           and all(isinstance(cargo[f], str) for f in CARGO_FIELDS - {"min_tests"})
+           and type(cargo["min_tests"]) is int and cargo["min_tests"] > 0, f"{key}: invalid cargo check")
     demand(CARGO_NAME.fullmatch(cargo["package"]) and cargo["package"] in packages,
            f"{key}: unknown cargo package {cargo['package']}")
     demand(CARGO_NAME.fullmatch(cargo["test"]) and CARGO_FILTER.fullmatch(cargo["filter"]),
@@ -200,6 +201,11 @@ def python_tests(output):
     return int(summary[1]) if summary else 0
 
 
+def minimum(check):
+    """Fewest passing tests a check accepts: a filter that stops matching most tests fails."""
+    return check["cargo"]["min_tests"] if "cargo" in check else 1
+
+
 def run_check(root, check):
     argv = command(check)
     kind = "cargo" if "cargo" in check else "python"
@@ -212,7 +218,7 @@ def run_check(root, check):
     output = proc.stdout.decode("utf-8", errors="replace")
     count = (cargo_tests if kind == "cargo" else python_tests)(output)
     return dict(id=check["id"], argv=argv, exit_code=proc.returncode,
-                tests=count, passed=proc.returncode == 0 and count > 0)
+                tests=count, passed=proc.returncode == 0 and count >= minimum(check))
 
 
 class Session:
@@ -247,7 +253,8 @@ class Session:
                 if (not isinstance(result, dict) or result.get("id") != key
                     or result.get("argv") != command(self.graph.checks[key])
                     or result.get("exit_code") != 0 or result.get("passed") is not True
-                    or type(result.get("tests")) is not int or result["tests"] <= 0):
+                    or type(result.get("tests")) is not int
+                    or result["tests"] < minimum(self.graph.checks[key])):
                     return None
             return row
         except (ValueError, OSError):

@@ -54,8 +54,8 @@
   "checks": [
     {"id": "HARNESS-TESTS", "argv": ["python3", "tools/test_cutset_harness.py"]},
     {"id": "PREVIEW-TESTS", "argv": ["python3", "tools/test_cutset_trial.py"]},
-    {"id": "FCP7-XML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::"}},
-    {"id": "FCPXML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcpxml"}},
-    {"id": "AAF-OMF-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "aaf_omf::"}}
+    {"id": "FCP7-XML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::", "min_tests": 19}},
+    {"id": "FCPXML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcpxml", "min_tests": 23}},
+    {"id": "AAF-OMF-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "aaf_omf::", "min_tests": 17}}
   ]
 }
