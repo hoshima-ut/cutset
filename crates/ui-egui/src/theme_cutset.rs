@@ -23,7 +23,23 @@ const fn rgb(hex: u32) -> Color32 {
 
 /// The accent of every Cutset theme; `DEFAULT_HIGHLIGHT` in the engine settings names the same colour.
 const ACCENT: Color32 = rgb(0x7c4dcc);
-const ACCENT_HOVER: Color32 = rgb(0x8d5fdd);
+/// Darker than the accent on hover, so white button text keeps its contrast.
+const ACCENT_HOVER: Color32 = rgb(0x6c3fb8);
+/// The inherited default highlight. Settings files saved before Cutset's palette still hold it;
+/// it stands for "the theme's own highlight", not a choice of blue.
+const INHERITED_DEFAULT_HIGHLIGHT: [u8; 3] = [0x2f, 0x6b, 0xdf];
+
+/// The highlight to apply: the inherited default saved by an earlier version means the current
+/// theme's own highlight, so the theme keeps its playhead and focus colours.
+pub fn current_default(highlight: Option<[u8; 3]>) -> Option<[u8; 3]> {
+    match highlight {
+        Some(c) if c == INHERITED_DEFAULT_HIGHLIGHT => {
+            let [r, g, b, _] = ACCENT.to_array();
+            Some([r, g, b])
+        }
+        other => other,
+    }
+}
 const GRAPHITE: Color32 = rgb(0x17161c);
 
 /// The darkest theme, the default.
@@ -98,6 +114,7 @@ pub fn daylight(base: Tokens) -> Tokens {
         timecode: purple,
         track_target: rgb(0x8d5fdd),
         playhead: rgb(0x8a5a00),
+        row_selected: rgb(0xd9cdf0),
         ..base
     }
 }
@@ -150,6 +167,30 @@ mod tests {
             }
         }
         at_least(4.5, Color32::WHITE, t.accent, "text on the accent");
+        at_least(4.5, Color32::WHITE, t.accent_hover, "text on the hovered accent");
+    }
+
+    #[test]
+    fn medium_and_light_text_and_highlights_read() {
+        for kind in [ThemeKind::Medium, ThemeKind::Light] {
+            let t = Tokens::for_kind(kind);
+            for (name, bg) in [("panel", t.panel_bg), ("selected row", t.row_selected), ("track", t.tl_track_bg)] {
+                for (role, fg) in [("text", t.text), ("dim text", t.text_dim), ("timecode", t.timecode), ("value", t.hot_text)] {
+                    at_least(4.5, fg, bg, &format!("{kind:?}: {role} on {name}"));
+                }
+            }
+            at_least(3.0, t.focus, t.panel_bg, &format!("{kind:?}: focus outline"));
+            at_least(4.5, Color32::WHITE, t.accent_hover, &format!("{kind:?}: text on the hovered accent"));
+        }
+    }
+
+    #[test]
+    fn a_highlight_saved_by_an_earlier_version_keeps_the_cutset_look() {
+        for kind in [ThemeKind::Dark, ThemeKind::Medium, ThemeKind::Light] {
+            let fresh = Tokens::for_kind(kind);
+            let saved = fresh.with_appearance(Some([0x2f, 0x6b, 0xdf]), false);
+            assert_eq!((saved.playhead, saved.focus, saved.accent), (fresh.playhead, fresh.focus, fresh.accent), "{kind:?}");
+        }
     }
 
     #[test]
