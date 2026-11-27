@@ -9,7 +9,7 @@ import unittest
 from unicodedata import normalize
 from unittest.mock import patch
 
-from cutset_harness import Graph
+from cutset_harness import Graph, cargo_tests, command
 from feature_docs import PAGES, check_pages, indexes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +25,13 @@ if __name__ == "__main__":
 
 
 def manifest():
-    return json.loads((ROOT / "docs/specs/data/graph.json").read_text(encoding="utf-8"))
+    """The Python part of the real graph: fixture repositories have no Rust workspace."""
+    cfg = json.loads((ROOT / "docs/specs/data/graph.json").read_text(encoding="utf-8"))
+    rust = {check["id"] for check in cfg["checks"] if "cargo" in check}
+    criteria = {row["id"] for row in cfg["acceptance"] if set(row["checks"]) & rust}
+    return dict(checks=[c for c in cfg["checks"] if c["id"] not in rust],
+                acceptance=[a for a in cfg["acceptance"] if a["id"] not in criteria],
+                tasks=[t for t in cfg["tasks"] if not set(t["acceptance"]) & criteria])
 
 
 class GraphTest(unittest.TestCase):
@@ -69,6 +75,37 @@ class GraphTest(unittest.TestCase):
         cfg["acceptance"][-1]["description"] = "a weaker condition"
         with self.assertRaisesRegex(ValueError, "catalog acceptance"):
             Graph({"features": [FEATURE]}, cfg)
+
+
+CARGO = {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::"}
+
+
+class CargoCheckTest(unittest.TestCase):
+    def graph_with(self, cargo):
+        cfg = manifest()
+        cfg["checks"].append({"id": "RUST-TESTS", "cargo": cargo})
+        cfg["acceptance"].append({"id": "AC-AI-03", "checks": ["RUST-TESTS"]})
+        return Graph({"features": [FEATURE]}, cfg, packages={"filmcraft-interchange"})
+
+    def test_cargo_check_builds_a_fixed_command(self):
+        graph = self.graph_with(CARGO)
+        self.assertEqual(command(graph.checks["RUST-TESTS"]),
+                         ["cargo", "test", "--locked", "-p", "filmcraft-interchange", "--test", "it", "--", "fcp7::"])
+        self.assertEqual(graph.checks_for("BUILD-AI-03"), ["RUST-TESTS"])
+
+    def test_cargo_check_rejects_unknown_package_and_shell_text(self):
+        for fault in ({"package": "other-crate"}, {"filter": "fcp7; rm -rf /"}, {"test": "../it"},
+                      {"extra": "--release"}, {"package": 3}):
+            with self.subTest(fault=fault):
+                with self.assertRaisesRegex(ValueError, "cargo"):
+                    self.graph_with(dict(CARGO, **fault))
+
+    def test_cargo_summary_counts_every_binary_and_rejects_failures(self):
+        ok = "test result: ok. 3 passed; 0 failed; 0 ignored\n\ntest result: ok. 2 passed; 0 failed\n"
+        self.assertEqual(cargo_tests(ok), 5)
+        self.assertEqual(cargo_tests("test result: ok. 0 passed; 0 failed\n"), 0)
+        self.assertEqual(cargo_tests(ok + "test result: FAILED. 1 passed; 1 failed\n"), 0)
+        self.assertEqual(cargo_tests("error[E0432]: unresolved import\n"), 0)
 
 
 class LoopTest(unittest.TestCase):

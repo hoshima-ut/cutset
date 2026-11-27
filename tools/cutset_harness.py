@@ -20,6 +20,13 @@ ALLOWED = {
 }
 ID = re.compile(r"[A-Z][A-Z0-9-]*\Z")
 MAX_STEPS = 10
+# A Rust check names a workspace package, one integration test binary and a test-name filter; the
+# harness builds the command itself, so the graph cannot smuggle flags or shell text into it.
+CARGO_FIELDS = {"package", "test", "filter"}
+CARGO_NAME = re.compile(r"[a-z][a-z0-9_-]*\Z")
+CARGO_FILTER = re.compile(r"[A-Za-z0-9_:]+\Z")
+CARGO_RESULT = re.compile(r"^test result: (ok|FAILED)\. (\d+) passed; (\d+) failed", re.MULTILINE)
+TIMEOUT = {"python": 60, "cargo": 1800}
 
 
 def demand(condition, message):
@@ -54,8 +61,49 @@ def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def workspace_packages(root):
+    """Package names of the workspace members under crates/ and apps/."""
+    names = set()
+    for manifest in [*root.glob("crates/*/Cargo.toml"), *root.glob("apps/*/Cargo.toml")]:
+        found = re.search(r'^name\s*=\s*"([^"]+)"', manifest.read_text(encoding="utf-8"), re.MULTILINE)
+        if found:
+            names.add(found[1])
+    return names
+
+
+def command(check):
+    """The argv a check runs; Python checks are listed in ALLOWED, Rust checks are built here."""
+    cargo = check.get("cargo")
+    if cargo is None:
+        return check["argv"]
+    return ["cargo", "test", "--locked", "-p", cargo["package"], "--test", cargo["test"], "--", cargo["filter"]]
+
+
+def validate_check(key, check, packages):
+    cargo = check.get("cargo")
+    if cargo is None:
+        argv = check.get("argv")
+        demand(isinstance(argv, list) and all(isinstance(arg, str) for arg in argv)
+               and tuple(argv) in ALLOWED, f"{key}: unsupported command")
+        return
+    demand("argv" not in check and isinstance(cargo, dict) and set(cargo) == CARGO_FIELDS
+           and all(isinstance(cargo[f], str) for f in CARGO_FIELDS), f"{key}: invalid cargo check")
+    demand(CARGO_NAME.fullmatch(cargo["package"]) and cargo["package"] in packages,
+           f"{key}: unknown cargo package {cargo['package']}")
+    demand(CARGO_NAME.fullmatch(cargo["test"]) and CARGO_FILTER.fullmatch(cargo["filter"]),
+           f"{key}: invalid cargo test or filter")
+
+
+def cargo_tests(output):
+    """Tests passed across every test binary, or 0 when any binary failed or none ran."""
+    results = CARGO_RESULT.findall(output)
+    if not results or any(state != "ok" or int(failed) for state, _, failed in results):
+        return 0
+    return sum(int(passed) for _, passed, _ in results)
+
+
 class Graph:
-    def __init__(self, catalog, manifest):
+    def __init__(self, catalog, manifest, packages=frozenset()):
         demand(isinstance(catalog, dict) and isinstance(manifest, dict), "expected JSON objects")
         self.features = keyed(catalog.get("features"), "feature")
         self.tasks = keyed(manifest.get("tasks"), "task")
@@ -94,10 +142,8 @@ class Graph:
         demand(used_criteria == set(self.criteria), "orphan acceptance criterion")
         demand(used_checks == set(self.checks), "orphan check")
         for key, check in self.checks.items():
-            argv = check.get("argv")
-            demand(isinstance(argv, list) and all(isinstance(arg, str) for arg in argv)
-                   and tuple(argv) in ALLOWED, f"{key}: unsupported command")
-            self.nodes["check:" + key] = dict(type="check", **check)
+            validate_check(key, check, packages)
+            self.nodes["check:" + key] = dict(check, type="check", argv=command(check))
         self.ensure_acyclic()
 
     def node(self, kind, row, text):
@@ -149,16 +195,23 @@ def snapshot(root):
     }
 
 
-def run_check(root, check):
-    try:
-        proc = subprocess.run([sys.executable, "-E", "-s", "-B", check["argv"][1]], cwd=root,
-                              stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=60)
-    except subprocess.TimeoutExpired:
-        return dict(id=check["id"], argv=check["argv"], exit_code=124, tests=0, passed=False)
-    output = proc.stdout.decode("utf-8", errors="replace")
+def python_tests(output):
     summary = re.search(r"^Ran (\d+) tests? in [^\n]+\s+OK\s*\Z", output, re.MULTILINE)
-    count = int(summary[1]) if summary else 0
-    return dict(id=check["id"], argv=check["argv"], exit_code=proc.returncode,
+    return int(summary[1]) if summary else 0
+
+
+def run_check(root, check):
+    argv = command(check)
+    kind = "cargo" if "cargo" in check else "python"
+    runnable = argv if kind == "cargo" else [sys.executable, "-E", "-s", "-B", argv[1]]
+    try:
+        proc = subprocess.run(runnable, cwd=root, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                              timeout=TIMEOUT[kind])
+    except subprocess.TimeoutExpired:
+        return dict(id=check["id"], argv=argv, exit_code=124, tests=0, passed=False)
+    output = proc.stdout.decode("utf-8", errors="replace")
+    count = (cargo_tests if kind == "cargo" else python_tests)(output)
+    return dict(id=check["id"], argv=argv, exit_code=proc.returncode,
                 tests=count, passed=proc.returncode == 0 and count > 0)
 
 
@@ -167,7 +220,7 @@ class Session:
         self.root = root
         self.state = snapshot(root)
         catalog, manifest = (read(root / "docs/specs/data" / name) for name in ("catalog.json", "graph.json"))
-        self.graph = Graph(catalog, manifest)
+        self.graph = Graph(catalog, manifest, workspace_packages(root))
         sync_projection(root / "docs/specs", list(self.graph.features.values()))
         data = json.dumps([catalog, manifest], sort_keys=True).encode()
         self.digest = hashlib.sha256(data).hexdigest()
@@ -192,7 +245,7 @@ class Session:
                 return None
             for key, result in zip(checks, results):
                 if (not isinstance(result, dict) or result.get("id") != key
-                    or result.get("argv") != self.graph.checks[key]["argv"]
+                    or result.get("argv") != command(self.graph.checks[key])
                     or result.get("exit_code") != 0 or result.get("passed") is not True
                     or type(result.get("tests")) is not int or result["tests"] <= 0):
                     return None
@@ -288,7 +341,8 @@ def main(argv=None):
                    else graph.query(args.id, args.command == "impact"))
         elif args.command == "ready":
             states = {key: session.status(key) for key in graph.tasks}
-            out = {"snapshot": session.state, "tasks": states}
+            counts = {state: list(states.values()).count(state) for state in sorted(set(states.values()))}
+            out = {"snapshot": session.state, "counts": counts, "tasks": states}
         elif args.command == "run":
             out = session.execute(args.id)
             failed = not all(check["passed"] for check in out["results"])

@@ -13,6 +13,20 @@
       "specs": ["AI-03"],
       "requires": ["HARNESS-CONTRACT"],
       "acceptance": ["PREVIEW-PLAN"]
+    },
+    {
+      "id": "PREMIERE-XML",
+      "title": "Premiereが読み書きするXMLでシーケンスを往復する",
+      "specs": ["IO-53"],
+      "requires": ["HARNESS-CONTRACT"],
+      "acceptance": ["XML-ROUNDTRIP"]
+    },
+    {
+      "id": "PREMIERE-AAF",
+      "title": "音声ポスト向けのAAF・OMFでシーケンスを往復する",
+      "specs": ["IO-55"],
+      "requires": ["HARNESS-CONTRACT"],
+      "acceptance": ["AAF-OMF-ROUNDTRIP"]
     }
   ],
   "acceptance": [
@@ -25,10 +39,23 @@
       "id": "PREVIEW-PLAN",
       "description": "25 fpsの試用素材A、B、Cから、AとBの短縮候補とCの保持をフレーム単位で読み出せる。プロジェクトは書き換えない。この証跡の対象は読み取り専用のCLIである。",
       "checks": ["PREVIEW-TESTS"]
+    },
+    {
+      "id": "XML-ROUNDTRIP",
+      "description": "FCP7 XML（xmeml）とFCPXMLの書き出し・読み込みで、配置・トラック・マーカー・切替・音量・ネストがCutsetの案件に戻る。相手側アプリでの実データ照合は別に記録する。",
+      "checks": ["FCP7-XML-TESTS", "FCPXML-TESTS"]
+    },
+    {
+      "id": "AAF-OMF-ROUNDTRIP",
+      "description": "AAFとOMFの書き出し・読み込みで、音声配置・ハンドル・トラック・開始時刻・ネストが案件に戻る。音声ポスト側での実データ照合は別に記録する。",
+      "checks": ["AAF-OMF-TESTS"]
     }
   ],
   "checks": [
     {"id": "HARNESS-TESTS", "argv": ["python3", "tools/test_cutset_harness.py"]},
-    {"id": "PREVIEW-TESTS", "argv": ["python3", "tools/test_cutset_trial.py"]}
+    {"id": "PREVIEW-TESTS", "argv": ["python3", "tools/test_cutset_trial.py"]},
+    {"id": "FCP7-XML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcp7::"}},
+    {"id": "FCPXML-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "fcpxml"}},
+    {"id": "AAF-OMF-TESTS", "cargo": {"package": "filmcraft-interchange", "test": "it", "filter": "aaf_omf::"}}
   ]
 }
