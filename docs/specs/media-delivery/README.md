@@ -60,3 +60,5 @@
 | 編集決定リスト（IO-54） | [要件](編集決定リスト/requirements.md) | [設計](編集決定リスト/design.md) | [作業](編集決定リスト/tasks.md) | 既存部品を利用 | M4 |
 | 音声ポスト受け渡し（IO-55） | [要件](音声ポスト受け渡し/requirements.md) | [設計](音声ポスト受け渡し/design.md) | [作業](音声ポスト受け渡し/tasks.md) | 既存部品を利用 | M4 |
 | 素材の収集と保管（IO-56） | [要件](素材の収集と保管/requirements.md) | [設計](素材の収集と保管/design.md) | [作業](素材の収集と保管/tasks.md) | 既存部品を利用 | M4 |
+| prproj案件の読込（IO-57） | [要件](prproj案件の読込/requirements.md) | [設計](prproj案件の読込/design.md) | [作業](prproj案件の読込/tasks.md) | 新規設計 | M4 |
+| prproj案件の書き出し（IO-58） | [要件](prproj案件の書き出し/requirements.md) | [設計](prproj案件の書き出し/design.md) | [作業](prproj案件の書き出し/tasks.md) | 新規設計 | M5 |

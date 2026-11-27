@@ -1184,6 +1184,40 @@
       "milestone": "M4"
     },
     {
+      "id": "IO-57",
+      "title": "prproj案件の読込",
+      "category": "media-delivery",
+      "status": "planned",
+      "scope": "Premiereで保存した案件ファイル（`.prproj`）をCutsetで直接開き、シーケンス・トラック・クリップの切り点・素材参照・マーカー・ビンを新しいCutset案件として再現する。Premiere側でXMLを書き出す手間と、XMLで落ちる情報を減らす。原本は書き換えない。[編集ソフト間の引き継ぎ](../../workflow/編集ソフト間の引き継ぎ/requirements.md)のH1判定で着手が決まった場合に実装する。書き出しは[IO-58](../prproj案件の書き出し/requirements.md)。",
+      "acceptance": "自社で作った見本を開くと、各シーケンスが[照合の基準](design.md#照合の基準)で、同じ案件からPremiereが書き出したXMLの読込結果と一致する。ビン・ラベル色・効果の値は作成票の値と許容差内で一致する。再現できなかった要素は要素キー・場所・件数つきで取込報告に出る。原本のsha256と更新日時は読込の前後で変わらない。",
+      "baselineDisposition": "new-design",
+      "baselineEvidence": [
+        "crates/interchange/src/lib.rs",
+        "crates/interchange/src/timeline_model.rs",
+        "crates/engine/src/interchange.rs"
+      ],
+      "publicReferences": [
+        "https://helpx.adobe.com/premiere/desktop/organize-media/create-projects/backward-compatibility-of-projects.html"
+      ],
+      "milestone": "M4"
+    },
+    {
+      "id": "IO-58",
+      "title": "prproj案件の書き出し",
+      "category": "media-delivery",
+      "status": "planned",
+      "scope": "Cutsetの案件を、Premiereがそのまま開ける `.prproj` として書き出す。[編集ソフト間の引き継ぎ](../../workflow/編集ソフト間の引き継ぎ/design.md#段階と出口)の段階H6で、次の着手条件をすべて満たした場合だけ着手する。それまでは仕様だけを置く。\n\n1. H5の後も、Cutset→Premiereの引き継ぎ表で骨格または編集の詳細に「手直し」「欠落」「値違い」が残り、困り度3の行があるか、受け手の編集者が「XMLでは受け取らない」と記録している。\n2. その原因の要素を、IO-57のP3までで読めている。\n3. 対象のPremiereの版を2つ以内に絞り、見本作成者が版の更新ごとに確かめる工数を確保できる。",
+      "acceptance": "対象版のPremiereで、書き出したファイルが警告・オフライン素材・欠落の表示なしに開く（画面の写しと版を記録）。要素キーごとの判定がXML経路より悪くならない。書き出したファイルをPremiereで開いて保存し直し、Cutsetで読み戻した結果が元の案件と照合の基準で一致する。満たさない版には配布しない。",
+      "baselineDisposition": "new-design",
+      "baselineEvidence": [
+        "crates/interchange/src/lib.rs"
+      ],
+      "publicReferences": [
+        "https://helpx.adobe.com/premiere/desktop/organize-media/create-projects/backward-compatibility-of-projects.html"
+      ],
+      "milestone": "M5"
+    },
+    {
       "id": "ED-01",
       "title": "作業の切替",
       "category": "editing",
@@ -3489,6 +3523,23 @@
         "https://www.blackmagicdesign.com/jp/products/davinciresolve"
       ],
       "milestone": "M5"
+    },
+    {
+      "id": "UX-15",
+      "title": "編集ソフト間の引き継ぎ",
+      "category": "workflow",
+      "status": "planned",
+      "scope": "Cutsetで作った編集をPremiereの編集者が引き継いで続きを編集でき、逆にPremiereで作った編集をCutsetで続けられるようにする。成果はファイル形式ではなく「受け取った人が、同じフレーム・同じ構成のまま、短い手直しで続きの編集を始められること」で測る。引き継げない要素は、渡す前と受け取った後の両方で一覧に示す。\n\n対象は単独のファイルで受け渡す案件。Premiereのチーム共同編集・クラウド共有・プロダクション機能への参加、他アプリとの動的な連携は対象外。",
+      "acceptance": "基準案件A・B（[作業・試験](tasks.md#具体的な試験)）を両方向で引き継ぎ、要素ごとの判定を[引き継ぎ表](design.md#引き継ぎ表)に記録する。合否は分類ごとに次で決める。\n\n- **骨格**：すべて「そのまま」。カット点・In/Out・シーケンスの開始タイムコード（ドロップ／ノンドロップを含む）は両方向で0フレーム差。音声は全チャンネルが元と同じトラック・チャンネルに割り当たる。\n- **編集の詳細・音**：「欠落」と「値違い」が0件。「手直し」は1案件あたり合計15分以内。\n- **画・文字・整理**：「値違い」が0件。「欠落」は書き出し前の一覧と読込後の報告の両方に出ていれば可とし、件数を記録する。\n- **受け手の時間**：受け取ってから続きの編集を始めるまでと、手直しの時間の合計が、両方向とも30分以内なら合格、60分を超えたら不合格、その間はオーナーが判断する。\n\n時間の数値は仮置きで、段階H1の実測後にオーナーが決め直す。\n\n要素一覧（分類と要素キー。キーは取込報告・引き継ぎ表で共通に使う）：\n\n| 分類 | 要素 |\n| --- | --- |\n| 骨格 | シーケンス設定（解像度・フレームレート・ドロップ／ノンドロップ・音声サンプルレート）`skeleton.sequence`、開始タイムコード `skeleton.start_tc`、カット・In/Out `skeleton.cut`、トラック構成 `skeleton.tracks`、リンクした音声 `skeleton.link`、空白 `skeleton.gap`、複数シーケンス `skeleton.sequences`、ネスト `skeleton.nest`、素材の参照とソースタイムコード `skeleton.media`、音声チャンネルの割当（モノラル分割・ステレオ組・チャンネル数）`skeleton.channels` |\n| 編集の詳細 | 速度・逆再生・静止 `edit.speed`、クロスディゾルブとディップ（黒）`edit.transition`、シーケンスとクリップのマーカー `edit.marker`、フレームレートの違う素材の混在 `edit.mixed_rate`、可変フレームレート素材 `edit.vfr` |\n| 音 | 音量・パンの値とキーフレーム `audio.level`、フェード `audio.fade` |\n| 画 | 位置・スケール・回転・不透明度の値とキーフレーム `picture.motion`、明るさ・コントラスト・彩度 `picture.basic_color` |\n| 文字 | 字幕トラック `text.captions`、1行のテロップ（書体・大きさ・位置・文言）`text.title` |\n| 整理 | ビン `organize.bin`、ラベル色 `organize.label`、クリップ名・シーケンス名（日本語を含む）`organize.name` |\n\nPremiere由来でCutsetに同等の部品がない要素は、H1で実測してから扱いを決める。既定案は設計の[相手側由来の要素](design.md#相手側由来の要素)にある。",
+      "baselineDisposition": "extend",
+      "baselineEvidence": [
+        "crates/interchange/src/timeline_model.rs",
+        "crates/engine/src/interchange.rs"
+      ],
+      "publicReferences": [
+        "https://helpx.adobe.com/premiere/desktop/render-and-export/export-files/export-a-project-as-a-final-cut-pro-xml-file.html"
+      ],
+      "milestone": "M4"
     },
     {
       "id": "AI-01",

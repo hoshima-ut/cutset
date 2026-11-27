@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = ROOT / "docs/specs"
 DATA = SPEC / "data"
 FEATURE_COUNTS = {
-    "UI": 20, "IO": 56, "ED": 59, "FX": 21, "CO": 10, "GR": 8,
-    "CC": 4, "AU": 18, "MN": 35, "UX": 14, "AI": 9, "WB": 5,
+    "UI": 20, "IO": 58, "ED": 59, "FX": 21, "CO": 10, "GR": 8,
+    "CC": 4, "AU": 18, "MN": 35, "UX": 15, "AI": 9, "WB": 5,
 }
 
 
