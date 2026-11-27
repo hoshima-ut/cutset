@@ -150,7 +150,18 @@ pub struct Tokens {
 }
 
 impl Tokens {
+    /// A theme's tokens: the inherited theme with the Cutset palette (`theme_cutset`) on top.
     pub fn for_kind(kind: ThemeKind) -> Self {
+        let base = Self::inherited(kind);
+        match kind {
+            ThemeKind::Dark => crate::theme_cutset::night(base),
+            ThemeKind::Medium => crate::theme_cutset::dusk(base),
+            ThemeKind::Light => crate::theme_cutset::daylight(base),
+        }
+    }
+
+    /// The theme as inherited from FilmCraft, before the Cutset palette.
+    pub(crate) fn inherited(kind: ThemeKind) -> Self {
         // Measured from Premiere 26 "Darkest" (plan/premiere/02-ui-ux.md §1).
         let dark = Tokens {
             kind,
