@@ -139,12 +139,12 @@ mod tests {
 
         // A failing opener falls back to `ctx.open_url` instead of losing the click.
         app.hooks.open_url = Some(Box::new(|_: &str| Err("no browser".into())));
-        open(&mut app, &ctx, ISSUES);
+        open(&mut app, &ctx, HANDBOOK);
         let fallback: Vec<String> =
             ctx.output(|o| o.commands.iter().filter_map(|c| if let egui::OutputCommand::OpenUrl(u) = c { Some(u.url.clone()) } else { None }).collect());
-        assert_eq!(fallback, [ISSUES]);
+        assert_eq!(fallback, [HANDBOOK]);
         // ... and keeps the address on screen with the reason until the dialog is closed
-        assert_eq!(app.ui.failed_link, Some(FailedLink { url: ISSUES.into(), error: "no browser".into() }));
+        assert_eq!(app.ui.failed_link, Some(FailedLink { url: HANDBOOK.into(), error: "no browser".into() }));
     }
 
     /// The failed-link dialog shows the address until it is closed, and Copy copies it.
