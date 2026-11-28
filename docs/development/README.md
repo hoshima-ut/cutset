@@ -8,6 +8,7 @@ Cutsetの開発手順、設計上の判断、検証方法をまとめていま�
 | FilmCraftの更新を取り込む | [上流との差分と競合を確認する](upstream-sync.md) |
 | ソースを読む順番を決める、Rustの型と編集履歴の関係を理解する | [ディレクトリ案内](repository-map.md) ・ [Rustコードの読み方](reading-rust.md) |
 | 編集者に何を届けるか、編集命令・互換性・Webの境界を決める | [製品設計](../architecture/product.md) |
+| 画面と操作を速く、編集者に寄り添ったものにする | [最速で編集できる画面の設計](../architecture/editor-ux.md) ・ [デザインのDNA](visual-identity.md#デザインのdna) |
 | 次の作業を一つ選ぶ、担当を交代する | [作業台と再開メモ](progress.md) |
 | AIと人の分担、変更の粒度と検証方法を決める | [開発規約](engineering.md) |
 | 追跡対象とpush履歴を検査してから作業する | [鍵を公開しない開発手順](../security/credentials.md) |
