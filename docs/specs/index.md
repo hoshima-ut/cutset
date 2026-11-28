@@ -6,7 +6,7 @@
 | --- | ---: |
 | [ワークスペース](workspace/README.md) | 20 |
 | [素材管理と納品](media-delivery/README.md) | 56 |
-| [タイムライン編集](editing/README.md) | 59 |
+| [タイムライン編集](editing/README.md) | 60 |
 | [エフェクト](effects/README.md) | 21 |
 | [カラー](color/README.md) | 10 |
 | [グラフィック](graphics/README.md) | 8 |

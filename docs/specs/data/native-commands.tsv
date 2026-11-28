@@ -398,7 +398,7 @@ media.offlineAll	IO-23	Offline All			{}  (mark every missing file offline, saved
 media.proxyPresets	IO-24	Proxy Presets			{}	crates/engine/src/proxies.rs
 media.reconnectFullRes	IO-24	Reconnect Full Resolution Media…	Clip > Proxy		"{""item"":id,""path"":str}"	crates/engine/src/proxies.rs
 media.refreshChanged	IO-23	Refresh Changed Media			{}	crates/engine/src/relink.rs
-media.relink	IO-23	Relink Media			"{""item"":id,""path"":str,""force"":bool=false,""relinkOthers"":bool=true,""alignTimecode"":bool=false,""match"":{""fileName"":bool,""extension"":bool,""clipId"":bool,""duration"":bool,""mediaStart"":bool,""metadata"":bool}?}"	crates/engine/src/relink.rs
+media.relink	IO-23	Relink Media			"{""item"":id,""path"":str,""force"":bool=false,""confirmScriptSameFootage"":bool=false,""relinkOthers"":bool=true,""alignTimecode"":bool=false,""match"":{""fileName"":bool,""extension"":bool,""clipId"":bool,""duration"":bool,""mediaStart"":bool,""metadata"":bool}?}"	crates/engine/src/relink.rs
 media.replaceFootage	IO-23	Replace Footage…			"{""item"":id,""path"":str}"	crates/engine/src/relink.rs
 media.search	IO-23	Search for Media			"{""folder"":str,""item"":id?,""exactName"":bool=true}"	crates/engine/src/relink.rs
 media.status	IO-23	Media Status			"{""item"":id?}"	crates/engine/src/relink.rs
@@ -540,6 +540,35 @@ project.viewPreset.restore	ED-03	Restore View Preset			"{""slot"":1..10}"	crates
 project.viewPreset.save	ED-03	Save Current View Preset			"{""slot"":1..10?,""name"":str?}"	crates/engine/src/project_panel.rs
 project.viewPreset.saveAs	ED-03	Save As New View Preset			"{""name"":str?,""slot"":1..10?}"	crates/engine/src/project_panel.rs
 scopes.read	CO-09	Read Video Scopes			"{""scopes"":[""waveform"",""parade"",""histogram"",""vectorscopeYuv"",""vectorscopeHls""]?,""waveformType"":""rgb|luma|yc|ycNoChroma""?,""paradeType"":""rgb|yuv|rgbWhite""?,""colorSpace"":""auto|601|709|2100""?,""clamp"":bool=true,""columns"":n=8,""peaks"":n=8,""bins"":bool=true,""scale"":0.5,""time"":ticks?|""frame""|""seconds""|""timecode""}"	crates/engine/src/scopes.rs
+script.addMark	ED-60	Add Script Mark			"{""item"":id,""take"":id,""line"":id,""sourceTime"":ticks}"	crates/engine/src/script_commands.rs
+script.addSlate	ED-60	Add Script Slate			"{""item"":id,""name"":str}"	crates/engine/src/script_commands.rs
+script.addTake	ED-60	Add Script Take			"{""item"":id,""slate"":id?,""source"":id,""startLine"":id,""endLine"":id,""x"":number?}"	crates/engine/src/script_commands.rs
+script.copySection	ED-60	Copy Script Section			"{""item"":id,""startLine"":id,""endLine"":id,""slates"":[id]}"	crates/engine/src/script_commands.rs
+script.create	ED-60	New Script			"{""name"":str,""bin"":id?}"	crates/engine/src/script_commands.rs
+script.cueLine	ED-60	Cue Script Take Row			"{""item"":id,""take"":id,""line"":id}"	crates/engine/src/script_commands.rs
+script.cueMark	ED-60	Cue Script Mark			"{""item"":id,""take"":id,""mark"":id,""focus"":bool?}"	crates/engine/src/script_commands.rs
+script.deleteLine	ED-60	Delete Script Line			"{""item"":id,""line"":id}"	crates/engine/src/script_commands.rs
+script.deleteMark	ED-60	Delete Script Mark			"{""item"":id,""take"":id,""mark"":id}"	crates/engine/src/script_commands.rs
+script.deleteSlate	ED-60	Delete Script Setup			"{""item"":id,""slate"":id}"	crates/engine/src/script_commands.rs
+script.deleteTake	ED-60	Delete Script Take			"{""item"":id,""take"":id}"	crates/engine/src/script_commands.rs
+script.editLine	ED-60	Edit Script Line			"{""item"":id,""line"":id,""text"":str}"	crates/engine/src/script_commands.rs
+script.importText	ED-60	Import Script Text			"{""name"":str,""text"":str,""bin"":id?}"	crates/engine/src/script_commands.rs
+script.insertLine	ED-60	Insert Script Line			"{""item"":id,""after"":id?,""text"":str}"	crates/engine/src/script_commands.rs
+script.inspect	ED-60	Inspect Script			"{""item"":id}"	crates/engine/src/script_commands.rs
+script.mergeWithPrevious	ED-60	Join Script Lines			"{""item"":id,""line"":id,""text"":str}"	crates/engine/src/script_commands.rs
+script.moveMark	ED-60	Move Script Mark			"{""item"":id,""take"":id,""mark"":id,""line"":id}"	crates/engine/src/script_commands.rs
+script.moveTake	ED-60	Reorder Script Take			"{""item"":id,""take"":id,""direction"":-1|1}"	crates/engine/src/script_commands.rs
+script.moveThumbnail	ED-60	Move Script Thumbnail			"{""item"":id,""slate"":id,""line"":id,""x"":number?}"	crates/engine/src/script_commands.rs
+script.pasteSection	ED-60	Paste Script Section			"{""item"":id,""afterLine"":id?,""section"":object}"	crates/engine/src/script_commands.rs
+script.pasteText	ED-60	Paste Script Text			"{""item"":id,""text"":str,""afterLine"":id?,""line"":id?,""baseText"":str?,""start"":number?,""end"":number?}"	crates/engine/src/script_commands.rs
+script.rebindTake	ED-60	Rebind Script Take			"{""item"":id,""take"":id,""source"":id,""discardMarks"":bool?,""allMatching"":bool?}"	crates/engine/src/script_commands.rs
+script.setCoverage	ED-60	Set Script Take Coverage			"{""item"":id,""take"":id,""startLine"":id,""endLine"":id}"	crates/engine/src/script_commands.rs
+script.setLabel	ED-60	Set Script Scene/Page			"{""item"":id,""line"":id,""scene"":str|null?,""page"":str|null?}"	crates/engine/src/script_commands.rs
+script.setMarkTime	ED-60	Set Script Mark Time			"{""item"":id,""take"":id,""mark"":id,""sourceTime"":ticks}"	crates/engine/src/script_commands.rs
+script.setTakeStyle	ED-60	Set Script Take Style			"{""item"":id,""take"":id,""color"":str?,""lineColors"":[{""line"":id,""color"":str}]?,""offscreenLines"":[id]?}"	crates/engine/src/script_commands.rs
+script.setThumbnailTime	ED-60	Set Script Thumbnail Frame			"{""item"":id,""take"":id,""time"":ticks}"	crates/engine/src/script_commands.rs
+script.shiftSlate	ED-60	Move Script Setup			"{""item"":id,""slate"":id,""delta"":number,""x"":number?}"	crates/engine/src/script_commands.rs
+script.splitLine	ED-60	Split Script Line			"{""item"":id,""line"":id,""text"":str,""at"":number}"	crates/engine/src/script_commands.rs
 sequence.addEdit	ED-19	Add Edit	Sequence	Cmd+K	"{""time"":ticks?}"	crates/engine/src/commands.rs
 sequence.addEditAllTracks	ED-19	Add Edit to All Tracks	Sequence	Cmd+Shift+K	"{""time"":ticks?}"	crates/engine/src/commands.rs
 sequence.addTracks	ED-11	Add Tracks…	Sequence		"{""video"":n=1,""audio"":n=0,""submix"":n=0,""videoAfter"":""first""|""V2""|n?,""audioAfter"":""first""|""A2""|n?,""submixAfter"":""first""|""S1""|n?,""audioType"":""standard|5.1|adaptive|mono""?,""submixType"":""stereo|5.1|adaptive|mono""?}"	crates/engine/src/commands.rs
@@ -611,7 +640,7 @@ source.close	ED-04	Close			{}	crates/engine/src/commands.rs
 source.closeAll	ED-04	Close All			{}	crates/engine/src/commands.rs
 source.insert	ED-15	Insert	Clip	,	"{""matchSequence"":bool=false}"	crates/engine/src/commands.rs
 source.inspect	ED-04	Inspect Source Monitor			{}	crates/engine/src/commands.rs
-source.open	ED-04	Open in Source Monitor			"{""item"":id?,""clip"":id?}"	crates/engine/src/commands.rs
+source.open	ED-04	Open in Source Monitor			"{""item"":id?,""clip"":id?,""focus"":bool?}"	crates/engine/src/commands.rs
 source.overwrite	ED-15	Overwrite	Clip	.	"{""matchSequence"":bool=false}"	crates/engine/src/commands.rs
 source.setPlayhead	ED-04	Set Source Playhead			"{""time"":ticks|""frame"":i64|""seconds"":f64}"	crates/engine/src/commands.rs
 state.inspect	AI-06	Inspect Editor State			{}	crates/engine/src/commands.rs
