@@ -1,0 +1,4 @@
+# Public repositories this fork merges from. Commits these advertise are already public,
+# so the pre-push secret guard does not rescan them or content identical to their trees.
+# Add a URL only after confirming the repository is public. Never list a private repository.
+https://github.com/storytold/filmcraft.git

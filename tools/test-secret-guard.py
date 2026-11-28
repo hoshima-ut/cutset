@@ -142,6 +142,43 @@ class SecretGuardTests(unittest.TestCase):
         self.git("commit","--allow-empty","-qm",TOKEN)
         self.push_guard(False)
 
+    def public_merge(self):
+        """Merge a published upstream whose history matches a credential rule."""
+        public = self.repo.parent / "public.git"
+        self.git("init", "-q", "--bare", str(public))
+        self.git("push", "-q", str(self.remote), "main")
+        self.git("switch", "-qc", "upstream")
+        self.write("upstream.txt", TOKEN)
+        self.git("add", "upstream.txt")
+        self.git("commit", "-qm", "Upstream content")
+        self.git("push", "-q", str(public), "upstream:main")
+        self.git("switch", "-q", "main")
+        self.write("fork.txt", "fork")
+        self.git("add", "fork.txt")
+        self.git("commit", "-qm", "Fork change")
+        self.git("merge", "-q", "--no-ff", "--no-commit", "upstream")
+        return public
+
+    def test_published_upstream_is_not_rescanned_but_merge_resolutions_are(self):
+        public = self.public_merge()
+        self.git("commit", "-qm", "Merge upstream")
+        self.push_guard(False)
+        self.write("tools/public-sources.txt", f"# reviewed public sources\n{public}\n")
+        self.git("add", "tools/public-sources.txt")
+        self.git("commit", "-qm", "List the public source")
+        self.push_guard(True, remote_old=self.git("rev-parse", "main~2").strip())
+        self.write("resolution.txt", TOKEN + "x")
+        self.git("add", "resolution.txt")
+        self.git("commit", "-qm", "Fork content")
+        self.push_guard(False)
+
+    def test_public_source_must_be_listed_in_the_repository(self):
+        public = self.public_merge()
+        self.git("commit", "-qm", "Merge upstream")
+        self.git("remote", "add", "upstream", str(public))
+        self.git("config", "cutset.publicSource", str(public))
+        self.push_guard(False)
+
     def test_installer_preserves_active_hooks(self):
         for file in (".githooks/pre-commit",".githooks/pre-push","tools/secret-guard","tools/install-hooks"):
             path=self.repo/file
