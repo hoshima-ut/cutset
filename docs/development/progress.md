@@ -2,6 +2,13 @@
 
 この表で次の担当者が着手範囲と受入条件を確認する。課題・検証結果を更新する手順は[開発規約](engineering.md)、編集の目的は[製品設計](../architecture/product.md)、素材とフレーム位置は[パイロット](../verification/interview.md)にある。
 
+## 当面の目標（2026-11-28、オーナー決定）
+
+1. **Premiereとの編集の引き継ぎ**。同じ編集をPremiereとCutsetの両方向で続けられる。`.prproj` の読込を含む。[UX-15](../specs/workflow/編集ソフト間の引き継ぎ/requirements.md) ・ [Issue #3](https://github.com/hoshima-ut/cutset/issues/3)
+2. **UI/UXのモダン化**。開いた瞬間にワクワクする画面にする。[デザインのDNA](visual-identity.md#デザインのdna) ・ [Issue #2](https://github.com/hoshima-ut/cutset/issues/2)
+
+この二つが終わるまで、下の01〜04はこの目標に必要なものから進める。リリースビルドと版のタグはオーナーの指示で行う（[ビルドの種類と版](engineering.md#ビルドの種類と版)）。
+
 | タスク | 状態 | 担当と引き渡し条件 |
 | --- | --- | --- |
 | 01　三つの候補を聴き比べる | 次に着手 | UI担当とエンジン担当。一人で兼務可。確定操作を含まない試聴をローカルで実演し、試験・未確認項目を記録する。 |
