@@ -5,7 +5,7 @@
 | 分野 | 機能数 |
 | --- | ---: |
 | [ワークスペース](workspace/README.md) | 20 |
-| [素材管理と納品](media-delivery/README.md) | 56 |
+| [素材管理と納品](media-delivery/README.md) | 58 |
 | [タイムライン編集](editing/README.md) | 60 |
 | [エフェクト](effects/README.md) | 21 |
 | [カラー](color/README.md) | 10 |
@@ -13,6 +13,6 @@
 | [字幕](captions/README.md) | 4 |
 | [音声](audio/README.md) | 18 |
 | [メニューと文脈操作](commands/README.md) | 35 |
-| [編集ワークフロー](workflow/README.md) | 14 |
+| [編集ワークフロー](workflow/README.md) | 15 |
 | [AIと拡張](ai-plugin/README.md) | 9 |
 | [ブラウザ](browser/README.md) | 5 |
