@@ -2000,6 +2000,21 @@
       "milestone": "M2"
     },
     {
+      "id": "ED-60",
+      "title": "台本とテイクの対応付け",
+      "category": "editing",
+      "status": "planned",
+      "scope": "台本のテキストを案件に取り込み、各セリフの行にどのテイクのどの範囲が対応するかを縦の線で示す。編集者は台本の行から、そのセリフを撮ったテイクを選んで再生・配置できる。上流FilmCraftで実装済みの機能を、Cutsetの編集者の作業で使えるかを確かめる。",
+      "acceptance": "テキストを貼り付けて台本を作り、二つのテイクを行範囲に割り当てる。行を選ぶと対応するテイクの開始位置が分かり、テイクの範囲を縮めても行・注記・色は元の行IDのまま残る。保存して開き直しても同じ対応が残り、元素材が消えたテイクは欠落として示され、再接続できる。",
+      "baselineDisposition": "verify",
+      "baselineEvidence": [
+        "crates/engine/src/script_commands.rs",
+        "crates/project/src/script.rs"
+      ],
+      "publicReferences": [],
+      "milestone": "M5"
+    },
+    {
       "id": "FX-01",
       "title": "効果の検索",
       "category": "effects",

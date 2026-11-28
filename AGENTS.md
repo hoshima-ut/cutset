@@ -4,6 +4,8 @@
 
 このforkの作業は[ハンドブック](docs/development/README.md)から始め、[作業台](docs/development/progress.md)の受入条件を一つ選ぶ。実装前に[開発規約](docs/development/engineering.md)と[秘密情報の扱い](docs/security/credentials.md)を使う。GitHub Actionsは停止中。ローカルで検証したコマンド・終了結果・未確認項目を記録する。外部への投稿、公開、配布は依頼の範囲を確認する。
 
+画面に関わる変更は[デザインのDNA](docs/development/visual-identity.md#デザインのdna)に従う。合言葉は**ワクワク**。開いた瞬間に触りたくなる、ロゴのようにちょっとポップで、編集者とエンジニアが好むクールで洗練された道具にする。
+
 以下はFilmCraftから継承した技術契約と上流への寄稿規約。§0〜§3のRust・素材・編集モデルの規約を引き継ぐ。上流へのissue投稿・claim、共有CI、寄稿者登録は本家に変更を提案する場合の手順。Cutset側の作業順、レビュー先、日常と節目の検証範囲は上記ハンドブックで決める。
 
 <!-- craft-agents:start source=5b1a2b1982fe7c774739d06d4a3818033cf4884c sha256=41dc0e35957946bfe7639237fbf1eca92093fe7f6bd76a778779c359c4e4a82a -->
@@ -71,11 +73,11 @@ The key words MUST, MUST NOT, SHOULD, SHOULD NOT and MAY are used as in RFC 2119
 ## This repository
 <!-- craft-agents:end -->
 
-FilmCraft is a Rust video editor (workspace edition 2024). Run it with `cargo run -p filmcraft -- --control 9876` (`docs/reference/filmcraft/control-protocol.md`); look at `ui.screenshot` for UI work.
+FilmCraft is a Rust video editor (workspace edition 2024). Run it with `cargo run -p filmcraft -- --control 9886` (`docs/reference/filmcraft/control-protocol.md`); look at `ui.screenshot` for UI work.
 
 - **Layout:** `crates/*` and `apps/*` (globbed), `xtask/`. Layers L0 to L5 are in `docs/architecture/engine.md` §1; nothing below L5 depends on egui, eframe, winit, rfd or cpal. New crates include `[lints] workspace = true`; production crate roots declare their lint attributes before modules.
 - **Checks for the crates you changed:** `cargo fmt --check`; `cargo clippy -p <crate> --all-targets -- -D warnings`; `cargo nextest run -p <crate>` (or `cargo test -p <crate>`); `cargo xtask layers` for dependency changes; `cargo xtask assets` for asset changes; `cargo xtask wasm` for L0 to L4, `filmcraft-ui-egui` and `filmcraft-web` (wasm32). `cargo xtask ci` runs all of them. Set `CRAFT_FONTS_DIR` too for font code.
-- **`unsafe`:** the workspace sets `unsafe_code = "forbid"`. `crates/platform` is the one crate that uses it (OS media FFI; `unsafe_code = "deny"`, `#[allow(unsafe_code)]` on its FFI modules only; `docs/adr/0001-platform-ffi.md`).
+- **`unsafe`:** the workspace sets `unsafe_code = "forbid"`. `crates/platform` is the one crate that uses it (OS media FFI, and on macOS lowering the scheduling priority of background job threads, `docs/adr/0002-background-thread-priority.md`; `unsafe_code = "deny"`, `#[allow(unsafe_code)]` on its FFI modules only; `docs/adr/0001-platform-ffi.md`).
 - **Panic net:** the hook in `crates/ui-egui/src/crash.rs` logs panics; the UI pass runs under `catch_unwind`; `panic = "unwind"`. Clean crates deny the panicking lints; `clippy.toml` allows them in tests.
 - **Time:** all edit math uses `filmcraft_time::Tick` (254 016 000 000 per second).
 - **Commands and automation:** commands live in `crates/engine`; UI, CLI, control channel and MCP dispatch by command id. Each interactive widget registers an automation id.
